@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Babykarte - Der Stadtplan für Eltern von Babys und Kleinkindern</title>
+    <meta charset='utf-8'>
+    <meta name='description' content='Gibt es hier irgendwo einen Wickeltisch? Welches Café in der Hamburger Innenstadt hat eine Spielecke? Wo ist der nächste Spielplatz? ✔ Die Babykarte weiß es'> 
+    <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no'>
+    <link rel='stylesheet' href='https://unpkg.com/leaflet@1.0.3/dist/leaflet.css' /> <!--https://policies.google.com/privacy#infocollect-->
+    <link rel='stylesheet' href='/css/style.css' />
+    <link rel='icon' href='/favicon.ico' type='image/x-icon'>
+  </head>
+  <body id='site-map'>
+  	<div id='progressbar'></div>
+  	<div class='info'><div id='infoPopup'></div></div>
+  	<section>
+  	<div class='layermenu'>
+  		<div class='lang-select'>
+  			<div class='dropdown'><span class='small-icon'>🌍 <span id='languageOfUser'></span></span></div>
+  			<div class='dropdown-menu'>
+  				<a href='#' class='nounderlinestyle' onclick='loadLang(this, "en");'><span class='small-icon'>🇬🇧</span></a>
+  				<a href='#' class='nounderlinestyle' onclick='loadLang(this, "de");'><span class='small-icon'>🇩🇪</span></a>
+  				<a href='#' class='nounderlinestyle' onclick='loadLang(this, "fr");'><span class='small-icon'>🇫🇷</span></a>
+  			</div>
+  		<a href='/impressum.html#de' id='lnk-impress' target='_blank'>Impressum</a><a href='/privacypolicy-de.html' id='linkToPP' target='_blank;'>Datenschutz (v.1)</a></div>
+     	<div id='searchgroup'>
+     		<div style='display:flex;max-height:50px;'>
+     			<span id='menubutton' onclick='togglemenu();mobileTrue()'>&#9776;</span><input type='text' onclick='geocode()' placeholder='Ort' id='searchfield'>
+     		</div>
+		</div>
+		<div id='filtersGround'></div>  
+        <a href='https://github.com/Discostu36/Babykarte' target='_blank' id='linkToGitHub'>Auf Github</a>
+        <a href='https://wiki.openstreetmap.org/wiki/Baby-Karte' target='_blank' id='linkToOSMWiki'>OSM Wiki</a>
+    
+    </div>
+    <div id='autocomplete'></div>
+    <div id='map'>
+    	<div id='map-overlay-notify'></div>
+    	<div class='leaflet-control-container'>
+			<div class='leaflet-top leaflet-right own-control-style'>
+				<div class='leaflet-bar leaflet-control'>
+					<span class='custom-leaflet-icon pdv-icon locatingBtn' onclick='requestLocation()'>☉</span>
+				</div>
+			</div>
+		</div>
+    </div>
+	</section>
+    <script src='https://unpkg.com/leaflet@1.0.3/dist/leaflet.js'></script> <!--https://policies.google.com/privacy#infocollect-->
+    <script src='https://code.jquery.com/jquery-3.2.1.min.js'></script> <!--https://www.digitalocean.com/legal/privacy-policy/-->
+    <script src='/js/lang.js'></script>
+    <script src='/js/filters.js'></script>
+    <script src='/js/searchbox.js'></script>
+    <script src='/js/overpass.js'></script>
+  </body>
+</html>

@@ -672,3 +672,7 @@ may consider it more useful to permit linking proprietary applications with
 the library.  If this is what you want to do, use the GNU Lesser General
 Public License instead of this License.  But first, please read
 <https://www.gnu.org/licenses/why-not-lgpl.html>.
+
+------------------------------------------------------
+The file 'images/facebook-logo.svg' belongs to another lisence at https://en.facebookbrand.com/assets/f-logo/?audience=landing
+It is the 'F' logo from Facebook and the Babykarte uses this logo to indicate that the POI has an account on Facebook.

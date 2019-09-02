@@ -1,0 +1,5 @@
+body{padding:5px;box-sizing:border-box;}
+h1, h2, h3{display:block;padding:initial;margin:initial;color:initial;font-size:initial;}
+h1{font-size:2em;margin-top:0.83em;margin-bottom:0.83em;}
+h2{font-size:1.5em;color:darkblue;}
+h3{font-size:1.17em;color:darkgreen;}
