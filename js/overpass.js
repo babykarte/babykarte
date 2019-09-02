@@ -1,5 +1,6 @@
 var debug_markerobj;
 var markerStyles = {};
+var area = {};
 var zoomLevel = "";
 var url = "https://overpass-api.de/api/interpreter";
 var colorcode = {"yes": "color-green", "no": "color-red", "room": "color-green", "bench": "color-green", undefined: "color-grey", "limited": "color-yellow", "playground": "color-green"};
@@ -60,7 +61,7 @@ var PDV_babyTab = { //PDV = POI Details View
 						"description": {"values": [undefined, "*"]}				//		diaper:description=undefined|* (implicit specification)
 						}
 				},
-				"changing_table": {"nameInherit": true, "applyfor": {"health": true, "eat": true, "shop": true, "changingtable": true}, "triggers": function(data, local) {if (local.title == getText().PDV_CHANGINGTABLE_UNKNOWN) {delete data["changing_table"]}if (data["diaper"] && data["changing_table"]) {delete data["diaper"];} return data;}, "values": ["yes", "no", "limited", undefined, "*"],		//changing_table=yes|no|limited|undefined
+				"changing_table": {"nameInherit": true, "applyfor": {"health": true, "eat": true, "shop": true, "changingtable": true}, "triggers": function(data, local) {if (data.changing_table) {if (data.diaper) {delete data.diaper;}} return data;}, "values": ["yes", "no", "limited", undefined, "*"],		//changing_table=yes|no|limited|undefined
 					"children":
 						{"fee": {"values": ["yes", "no", undefined]},	//changing_table:fee=yes|no|undefined
 						"location": {"values": ["wheelchair_toilet", "female_toilet", "male_toilet", "unisex_toilet", "dedicated_room", "room", "sales_area", undefined]},	//changing_table:location=wheelchair_toilet|female_toilet|male_toilet|unisex_toilet|dedicated_room|room|sales_area|undefined
@@ -124,143 +125,76 @@ function locationError(e) {
 	showGlobalPopup(getText().LOCATING_FAILURE);
 	progressbar();
 }
-function checkboxes2overpass(bounds, actFilter) {
-	if (!bounds) {
-		bounds = map.getBounds().getSouth() + ',' + map.getBounds().getWest() + ',' + map.getBounds().getNorth() + ',' + map.getBounds().getEast();
-	}
-	if (!actFilter) {
-		actFilter = activeFilter;
-	}
+function createSQL(bbox, fltr) {
 	var andquery = "(";
-	for (var id in actFilter) {
-		for (var value in filter[id].query) {
-			var content = filter[id].query[value];
-			var name = value.trim();
-			name = value.split("|");
-			for (var type in name) {
-				andquery += name[type].replace(RegExp("_", "g"), "");
-				for (var i in content) {
-					andquery += content[i];
-				}
-				andquery += "(" + bounds + ");"
+	for (var value in filter[fltr].query) {
+		var content = filter[fltr].query[value];
+		var name = value.trim();
+		name = value.split("|");
+		for (var type in name) {
+			andquery += name[type].replace(RegExp("_", "g"), "");
+			for (var i in content) {
+				andquery += content[i];
 			}
+			andquery += "(" + bbox + ");"
 		}
 	}
 	return andquery + ");";
 }
-function locateNewArea(fltr, maxNorth, maxSouth, maxWest, maxEast) {
+function roundIt(number) {
+	number = String(number)
+	console.log(Number(number.slice(0, 5)));
+	return Number(number.slice(0, 5))
+}
+function locateNewArea(fltr) {
 	//Complex algorithm. It calculates the coordinates when the user moves the map. Then the coordinates will be used to fetch just more POIs without overwriting/overlaying the existing ones.
 	//NORTH: Number increases when moving to the top (North)
 	//SOUTH: Number decreases when moving to the bottom (South)
 	//WEST: Number decreases when moving to the left (West)
 	//EAST: Number increases when moving to the right (East)
-	var accuracy = 0.001;
-	var clear = 0;
-	var loadingAllowed = false;
-	var south_new = map.getBounds().getSouth();
-	var west_new = map.getBounds().getWest();
-	var north_new = map.getBounds().getNorth();
-	var east_new = map.getBounds().getEast();
-	var north_old = filter[fltr].coordinates.current.north;
-	var east_old = filter[fltr].coordinates.current.east;
-	var south_old = filter[fltr].coordinates.current.south;
-	var west_old = filter[fltr].coordinates.current.west;
-	if (north_new - north_old >= accuracy && west_old - west_new >= accuracy) {
-		south_new = north_old;
-		east_new = west_old;
-		if (north_new > maxNorth && maxWest > west_new) {
-			loadingAllowed = true;
-			maxNorth = north_new;
-			maxWest = west_new;
+	//LB: little box
+	var result = "";
+	var north_new = Number(map.getBounds().getNorth());
+	var east_new = Number(map.getBounds().getEast());
+	var south_new = Number(map.getBounds().getSouth());
+	var west_new = Number(map.getBounds().getWest());
+	south_new = roundIt(south_new); //Number(south_new.toFixed(2));
+	west_new = roundIt(west_new); //Number(west_new.toFixed(2));
+	east_new = roundIt(east_new); //Number(east_new.toFixed(2));
+	north_new = roundIt(north_new); //Number(north_new.toFixed(2));
+	var size = Number(0.02);
+	var LBs_vertical = roundIt(Number(north_new - south_new)/size ) //Number(Number((north_new - south_new) / size).toFixed());
+	var LBs_horizontal = roundIt(Number(east_new - west_new)/size ) //Number(Number((east_new - west_new) / size).toFixed());
+	console.log(south_new)
+	for (var i = 0;i <= LBs_vertical;i++) {
+		console.log(south_new);
+		for (var u = 0;u < LBs_horizontal;u++) {
+			console.log("  ", west_new);
+			if (!filter[fltr].littleboxes[String(south_new) + "+" + String(west_new)]) {
+				//var result2 = createSQL(south_new + "," + west_new + "," +  Number(Number(south_new + size).toFixed(2)) + "," +  Number(Number(west_new + size).toFixed(2)), fltr);
+				var result2 = createSQL(south_new + "," + west_new + "," + Number(south_new + size) + "," +  Number(west_new + size), fltr);
+				result += result2;
+				filter[fltr].littleboxes[String(south_new) + "+" + String(west_new)] = true;
+			}
+			west_new += size;
+			west_new = Number(west_new); //Number(Number(west_new).toFixed(2));
 		}
-	} else if (north_new - north_old >= accuracy) {
-		south_new = north_old;
-		if (north_new > maxNorth) {
-			loadingAllowed = true;
-			south_new = maxNorth;
-			maxNorth = north_new;
-			
-		}
-	} else if (north_new - north_old >= accuracy && east_new - east_old >= accuracy) {
-		south_new = north_old;
-		west_new = east_old;
-		if (north_new > maxNorth && east_new > maxEast) {
-			loadingAllowed = true;
-			clear = 1;
-			maxNorth = north_new;
-			maxEast = east_new;
-		}
-	} else if (east_new - east_old >= accuracy) {
-		west_new = east_old;
-		if (east_new > maxEast) {
-			loadingAllowed = true;
-			west_new = maxEast;
-			maxEast = east_new;
-		}
-	} else if (east_new - east_old >= accuracy && south_old - south_new >= accuracy) {
-		west_new = east_old;
-		north_new = south_old;
-		if (east_new > maxEast && maxSouth > south_new) {
-			loadingAllowed = true;
-			clear = 1;
-			maxEast = east_new;
-			maxSouth = south_new;
-		}
-	} else if (south_old - south_new >= accuracy) {
-		north_new = south_old;
-		if (maxSouth > south_new) {
-			loadingAllowed = true;
-			north_new = maxSouth;
-			maxSouth = south_new;
-		}
-	} else if (south_old - south_new >= accuracy && west_old - west_new >= accuracy) {
-		north_new = south_old;
-		east_new = west_old;
-		if (maxSouth > south_new && maxWest > west_new) {
-			loadingAllowed = true;
-			clear = 1;
-			maxSouth = south_new;
-			maxWest = west_new;
-		}
-	} else if (west_old - west_new >= accuracy) {
-		east_new = west_old;
-		if (maxWest > west_new) {
-			loadingAllowed = true;
-			east_new = maxWest;
-			maxWest = west_new;
-		}
+	south_new += size;
+	south_new = Number(south_new); //Number(Number(south_new).toFixed(2));
 	}
-	setCoordinatesOfFilter(fltr, {"south": south_new, "west": west_new, "north": north_new, "east": east_new}, ["current"]);
-	if (loadingAllowed) {
-		var dict = {};
-		dict[fltr] = true;
-		setCoordinatesOfFilter(fltr, {"south": maxSouth, "west": maxWest, "north": maxNorth, "east": maxEast}, ["max"]);
-		if (south_new == 0) {
-			south_new = map.getBounds().getSouth();
-		}
-		return checkboxes2overpass(String(south_new) + "," + String(west_new) + "," + String(north_new) + "," + String(east_new), dict);
-	}
-	return false;
-}
-function setCoordinatesOfFilter(fltr, values, entries=["current", "max"]) {
-	for (var value in values) {
-		for (var i in entries) {
-			filter[fltr].coordinates[entries[i]][value] = values[value];
-		}
+	if (result) {
+		return result;
+	} else {
+		return false;
 	}
 }
 function locateNewAreaBasedOnFilter() {
 	//Wrapper around locateNewArea().
 	//Adds filter compactibility to locateNewArea() function.
-	var values = {"south": map.getBounds().getSouth(), "west": map.getBounds().getWest(), "north": map.getBounds().getNorth(), "east": map.getBounds().getEast()};
 	var url = "";
 	var result = "";
 	for (var fltr in activeFilter) {
-		result = locateNewArea(fltr, filter[fltr].coordinates.max.north, filter[fltr].coordinates.max.south, filter[fltr].coordinates.max.west, filter[fltr].coordinates.max.east);
-		if (!filter[fltr].usedBefore) {
-			filter[fltr].usedBefore = true;
-			setCoordinatesOfFilter(fltr, values);
-		}
+		result = locateNewArea(fltr);
 		if (result) {
 			url += result
 		}
@@ -271,15 +205,6 @@ function locateNewAreaBasedOnFilter() {
 }
 function onMapMove() {
 	loadPOIS("", locateNewAreaBasedOnFilter());
-}
-function onMapZoom() {
-	var newZoomLevel = String(map.getZoom());
-	if (zoomLevel > newZoomLevel) {
-		//zoom out
-		for (var fltr in activeFilter) {
-			resetFilter(fltr);
-		}
-	}
 }
 function parseOpening_hours(value) {
 	if (!value) {
@@ -568,7 +493,7 @@ function loadPOIS(e, post) {
 		}
 	}
 	//Connect to OSM server
-	post = "[out:json][timeout:15];" + post + "out body center;";
+	post = "[out:json][timeout:50];" + post + "out body center;";
 	getData(url, "json", post, undefined, function (osmDataAsJson) {
 		//Go throw all elements (ways, relations, nodes) sent by Overpass
 		for (var poi in osmDataAsJson.elements) {
@@ -626,7 +551,6 @@ map.on("locationfound", locationFound);
 map.on("locationerror", locationError);
 map.on("click", function(e) {location.hash = String(map.getZoom()) + "&" + String(e.latlng.lat) + "&" + String(e.latlng.lng);})
 map.on("moveend", onMapMove);
-map.on("zoomend", onMapZoom);
 var Layergroup = new L.LayerGroup();
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
   maxZoom: 19,

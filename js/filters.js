@@ -21,7 +21,7 @@ var profiles = { //Colour profiles for the filters
 "violetMarker": {code: "#7a00b7"},
 "lightvioletMarker": {code: "#dc1369"}
 };
-var filter_defaultValues = {"active": false, "layers": [], "coordinates": {"max": {"north": 0, "south": 0, "east": 0, "west": 0}, "current": {"north": 0, "south": 0, "east": 0, "west": 0}}, "usedBefore" : false}; //its active state, markers belonging to that filter, the boundings of a filter (area downloaded and cached)
+var filter_defaultValues = {"active": false, "layers": [], "littleboxes": {},"usedBefore" : false}; //its active state, markers belonging to that filter, the boundings of a filter (area downloaded and cached)
 var filter = { //The filters, the query they trigger, their colour profile, their category and technical description as dictionary (JSON)
 0: {"query": {"node|way": ["[\"healthcare:speciality\"~\"paediatrics\"]"]},  "color": profiles.redMarker, "category" : "health paediatrics", "priorize": 1, "triggers": {}, "popup": "POIpopup", "markerStyle": "marker"},
 1: {"query": {"node|way": ["[\"healthcare\"=\"midwife\"]"]},  "color": profiles.darkredMarker, "category" : "health midwife", "priorize": 1, "triggers": {}, "popup": "POIpopup", "markerStyle": "marker"},
@@ -206,7 +206,7 @@ function getData(url, dataType, data,  fail, success, type) {
 			url: String(url),
 			dataType: String(dataType),
 			data: data,
-			fail: fail,
+			error: fail,
 			success: success,
 			complete: function(xhr, status) {queue.shift();
 				if (queue.length > 0) {
