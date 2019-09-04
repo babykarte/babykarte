@@ -8,22 +8,30 @@ Wir sind Michael Brandtner und Sören Reinecke und entwickeln für Dich die Baby
 
 - Anwendung
   - Unter "Anwendung" und "Anwendungen" werden im Sinne dieser Datenschutzerklärung alle unterschiedlichen Formen von Computercodeausführungen verstanden. Diese umfassen aber nicht ausschließlich Webapps, Webseiten, Apps, Softwareprogramme und Skripte.
+- Daten
+  - Jegliche Form der Information, die in Computersprache logisch und strukturiert dargestellt werden kann.
+- "Serverlogs" oder "Logs"
+  - Die Logs enthalten jeweils das Datum und die Uhrzeit einer eingegangenen Verbindung, welche Resource angefragt wurde und die anonymisierte Version der IP-Adresse, von der die Anfrage kam. Aber es wird auch erfasst wie lange der Server für die Antwort brauchte. Diese Daten für sich können nicht auf einzelne Nutzer zurückgeführt werden. Sie haben lediglich nur einen analytischen Zweck. Sie helfen uns zu erkennen, ob der Server überhaupt genutzt wird aber auch in welcher Intensität.
 - Datensparsamkeit
-  - Datensparsamkeit ist eine Idee zur Einsparung persönlicher und anderer Daten.
+  - Datensparsamkeit ist eine Idee zur Einsparung personenbezogener und sonstiger Daten.
 - Nutzungsdaten
   - Daten, die das kollektive Nutzungsverhalten der Nutzer darstellen.
 - individuelle Nutzungsdaten
   - Daten, die das Nutzungsverhalten eines Nutzers darstellen.
 - personenbezogene Daten
   - Daten, die Dich oder Dein Verhalten in Computersprache beschreiben.
-- Daten
-  - Jegliche Form der Information, die in Computersprache logisch und strukturiert dargestellt werden kann.
 - Server
-  - Eine technische feste Installation eines meist sehr leistungsfähigen Gerätes mit Anbindung zum Internet. Ein Server stellt Dienste im Internet zur Verfügung.
-- "IP" oder "IP Adresse"
+  - Eine feste Installation eines meist sehr digitalen leistungsfähigen Gerätes mit Anbindung zum Internet. Es stellt Dienste im Internet zur Verfügung.
+- "IP" oder "IP-Adresse"
   - Die Adresse unter der Dein Gerät im Internet erreichbar ist.
-- "Serverlogs" oder "Logs"
-  - Die Logs enthalten jeweils das Datum und die Uhrzeit einer eingegangenen Verbindung, welche Resource angefragt wurde und die anonymisierte Version der IP-Adresse, von der die Anfrage kam. Aber es wird auch erfasst wie lange der Server für die Antwort brauchte. Diese Daten für sich können nicht auf einzelne Nutzer zurückgeführt werden. Sie haben lediglich nur einen analytischen Zweck. Sie helfen uns zu erkennen, ob der Server überhaupt genutzt wird aber auch in welcher Intensität.
+- Cacheserver
+  - Ein Cacheserver stellt Resourcen zur Verfügung, die oft von den Browsern der 
+    Nutzer angefragt werden. Dadurch wird die Ladezeit einer Webseite in 
+    Deinem Browser verkürzt. Diese Resourcen werden von Entwicklern den Cacheservern manuell zur Verfügung gestellt. Diese Server könnten auch Serverlogs führen.
+- Betriebssystem
+  - Softwarecodes, die die Grundfunktionalität Deiner Arbeitsumgebung auf Deinem Computer sicherstellen.
+- Router
+  - Ein Gerät in Deinem Netzwerk, dass als Firewall zwischen den angeschlossenen Geräten und dem Internet fungiert.
 - "Wir", "Uns"
   - Mit "wir" und "uns" sind die natürlichen Personen Michael Brandtner und Sören Reinecke gemeint.
 - "Du", "Dich", "Nutzer"
@@ -33,15 +41,19 @@ Wir sind Michael Brandtner und Sören Reinecke und entwickeln für Dich die Baby
 
 Bei der Verwendung der Suche werden Deine Sucheingaben an Komoots Geosuchmaschine Photon gesendet. Diese Suchmaschine ist von Komoots sonstigen Diensten abgekoppelt und es sollten von Komoot keine individuellen Nutzungsdaten erhoben werden. Es werden höchstens Serverlogs geführt.
 
-Bei sonstigen Interaktionen mit der Babykarte (Laden der Webapp, Verschiebung der Karte, Klicks auf interaktive Elementen und weitere Anwendungsmöglichkeiten) werden Daten an [everest.openstreetmap.de](https://everest.openstreetmap.de) gesendet. Diese Daten sind für den Betrieb der Babykarte notwendig. Diese Daten für sich allein sind keine personenbezogenen Daten. In keinster Weise speichert der Server diese Daten oder gibt sie an Dritte weiter. Ersteres ist auch der Grund dafür, warum wir Dir keine Auskunft über Daten geben können, die Dein Browser an uns gesendet hat. Wir würden schon daran scheitern Dich im ganzen Datenstrom zu finden. Und da sie nur für den Moment der Verarbeitung im Arbeitsspeicher des Servers existiert, haben wir keinen Zugriff darauf. Dazu verläuft die Verarbeitung zu schnell ab.
+Beim Besuch der Babykarte fragt Dein Browser diverse Dateien bei Cacheservern ab, um die Ladezeit zu verringern. Diese sind von zwei unterschiedlichen Anbietern. Der erste ist Google und deren Datenschutzerklärung ist [hier einsehbar](https://policies.google.com/privacy#infocollect). Der zweite nennt sich DigitalOcean und hat ebenso eine eigene [Privacy Policy](https://www.digitalocean.com/legal/privacy-policy/). Hierbei sendet Dein Browser Daten an die Server, diesen Vorgang kann die Babykarte nicht beeinflussen.
 
-# Kontaktaufnahme mit uns
+Bei sonstigen Interaktionen mit der Babykarte (Laden der Webapp, Verschiebung der Karte, Klicks auf interaktive Elementen und weitere Anwendungsmöglichkeiten) werden Daten an [everest.openstreetmap.de](https://everest.openstreetmap.de) gesendet. Diese Daten sind für den Betrieb der Babykarte notwendig. Diese Daten für sich allein sind keine personenbezogenen Daten. In keinster Weise speichert der Server diese Daten oder gibt sie an Dritte weiter. Ersteres ist auch der Grund dafür, warum wir Dir keine Auskunft über Daten geben können, die Dein Browser an uns gesendet hat. Wir würden schon daran scheitern Dich im ganzen Datenstrom zu finden. Und da sie nur für den Moment der Verarbeitung im Arbeitsspeicher des Servers existiert, haben wir keinen Zugriff darauf. Dazu verläuft die Verarbeitung zu schnell ab. Das heißt auch, dass wir Deinen Standort nicht wissen, selbst wenn Du die "Zum Standort springen" Funktion genutzt hast.
+
+## Kontaktaufnahme Deines Browsers mit Servern
+
+Wenn Dein Browser auf bitten einer Anwendung einen Server kontaktiert, dann übermittelt der Browser neben der Daten, die die Anwendung mitgeschickt haben möchte, auch eigene Daten. So teilt er dem Server seinen Namen sowie Version und den Namen des Betriebssystems inklusive Versionsnummer mit. Dein Router fügt dann noch die von Deinem Internetprovider zugeteilte IP-Adresse hinzu.
+
+## Kontaktaufnahme mit uns
 
 Bei der Kontaktaufnahme mit uns über die verschiedenen Wege wie Post, Telefon, E-Mail und Github werden alle Deine Angaben dazu verwendet die Babykarte gegebenfalls zu verbessern. Bei der Verwendung von Mail und GitHub werden dazu Drittanbieter eingesetzt, die mit Daten anders umgehen als wir. Bitte rufe deren Datenschutzerklärung auf wenn es zu der Verarbeitung Deiner Daten auf deren Plattformen fragen geben sollte.
 
-
-
-# Hinweis zur verantwortlichen Stelle
+## Hinweis zur verantwortlichen Stelle
 
 Die verantwortliche Stelle für die Datenverarbeitung auf dieser Website ist:
 
@@ -68,6 +80,6 @@ Rechtsbehelfe.
 
 ## Aktualisierung dieser Datenschutzerklärung
 
-Eine Versionnummer auf dem Hyperlink zu dieser Datenschutzerklärung 
+Eine Versionnummer auf dem Link zu dieser Datenschutzerklärung 
 zeigt eine Änderung dieser Datenschutzerklärung an. Du bist selbst 
-verantwortlich dafür die Änderungen einzusehen.
+verantwortlich dafür die neue Fassung der Datenschutzerklärung einzusehen.
