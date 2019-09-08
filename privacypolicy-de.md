@@ -7,9 +7,9 @@ Wir sind Michael Brandtner und Sören Reinecke und entwickeln für Dich die Baby
 ## Definitionen
 
 - Anwendung
-- Unter „Anwendung“ und „Anwendungen“ werden im Sinne dieser Datenschutzerklärung alle unterschiedlichen Formen von Computercodeausführungen verstanden. Diese umfassen aber nicht ausschließlich Web-Apps, Webseiten, Apps, Softwareprogramme und Skripte.
+  - Unter „Anwendung“ und „Anwendungen“ werden im Sinne dieser Datenschutzerklärung alle unterschiedlichen Formen von Computercodeausführungen verstanden. Diese umfassen aber nicht ausschließlich Web-Apps, Webseiten, Apps, Softwareprogramme und Skripte.
 - Daten
-- Jegliche Form der Information, die in Computersprache logisch und strukturiert dargestellt werden kann.
+  - Jegliche Form der Information, die in Computersprache logisch und strukturiert dargestellt werden kann.
 - "Server-Logs" oder "Logs"
   - Die Logs enthalten jeweils das Datum und die Uhrzeit einer eingegangenen Verbindung, welche Ressource angefragt wurde und die anonymisierte Version der IP-Adresse, von der die Anfrage kam. Aber es wird auch erfasst, wie lange der Server für die Antwort brauchte. Diese Daten für sich können nicht auf einzelne Nutzer zurückgeführt werden. Sie haben lediglich nur einen analytischen Zweck. Sie helfen uns zu erkennen, ob der Server überhaupt genutzt wird aber auch in welcher Intensität.
 - Datensparsamkeit
@@ -59,11 +59,11 @@ Bei der Kontaktaufnahme mit uns über die verschiedenen Wege wie Post, Telefon, 
 
 Die verantwortliche Stelle für die Datenverarbeitung auf dieser Website ist:
 
-Michael Brandtner
-Weißenburgstraße 3
-24116 Kiel
+Michael Brandtner  
+Weißenburgstraße 3  
+24116 Kiel  
 
-Telefon: 0431 64367480
+Telefon: 0431 64367480  
 E-Mail: [brandtner_michael@yahoo.de](mailto:brandtner_michael@yahoo.de)
 
 Verantwortliche Stelle ist die natürliche oder juristische Person,
