@@ -10,7 +10,7 @@ Wir sind Michael Brandtner und Sören Reinecke und entwickeln für Dich die Baby
   - Unter „Anwendung“ und „Anwendungen“ werden im Sinne dieser Datenschutzerklärung alle unterschiedlichen Formen von Computercodeausführungen verstanden. Diese umfassen aber nicht ausschließlich Web-Apps, Webseiten, Apps, Softwareprogramme und Skripte.
 - Daten
   - Jegliche Form der Information, die in Computersprache logisch und strukturiert dargestellt werden kann.
-- "Server-Logs" oder "Logs"
+- „Server-Logs“ oder „Logs“
   - Die Logs enthalten jeweils das Datum und die Uhrzeit einer eingegangenen Verbindung, welche Ressource angefragt wurde und die anonymisierte Version der IP-Adresse, von der die Anfrage kam. Aber es wird auch erfasst, wie lange der Server für die Antwort brauchte. Diese Daten für sich können nicht auf einzelne Nutzer zurückgeführt werden. Sie haben lediglich nur einen analytischen Zweck. Sie helfen uns zu erkennen, ob der Server überhaupt genutzt wird aber auch in welcher Intensität.
 - Datensparsamkeit
   - Datensparsamkeit ist eine Idee zur Einsparung personenbezogener und sonstiger Daten.
@@ -45,8 +45,8 @@ Beim Besuch der Babykarte fragt Dein Browser diverse Dateien bei Cache-Servern a
 
 Des Weiteren nutzt die Babykarte zur Darstellung der Karte und anderen Daten wie z. B. Adresse, Öffnungszeiten und Name des Geschäftes/der Einrichtung, Kartenmaterial und andere Daten der OpenStreetMap Community. Diese Daten liegen auf unserem eigenen Server. Die Dateien für den Kartenhintergrund (Map Tiles) liegen jedoch auf den Servern der OpenStreetMap Foundation (St John’s Innovation Centre, Cowley Road, Cambridge, CB4 0WS, Großbritannien) (OSMF). Wie diese mit den Nutzungsdaten, die durch die Nutzung ihrer Dienste erhoben werden, umgehen, kannst Du in deren [Datenschutzerklärung](https://wiki.osmfoundation.org/wiki/Privacy_Policy) nachlesen.
 
-Bei sonstigen Interaktionen mit der Babykarte (Laden der Webapp, Verschiebung der Karte, Klicks auf interaktive Elementen und weitere Anwendungsmöglichkeiten) werden Daten an unseren Server [everest.openstreetmap.de](https://everest.openstreetmap.de) bzw. [babykarte.openstreetmap.de](https://babykarte.openstreetmap.de) gesendet. Diese Daten sind für den Betrieb der Babykarte notwendig und werden 
-nicht gespeichert. Der Server wird betrieben vom FOSSGIS e.V., [dessen Datenschutzerklärung Du hier findest](https://www.fossgis.de/datenschutzerklaerung). Der Server führt Logs über eingehende Verbindungen, doch diesen lassen keine Rückschlüsse auf das Verhalten einzelner Nutzer zu. Somit können wir Dir keine Auskunft über Daten geben, die Dein Browser an uns gesendet hat. Wir würden schon daran scheitern Dich im ganzen Datenstrom
+Bei sonstigen Interaktionen mit der Babykarte (Laden der Web-App, Verschiebung der Karte, Klicks auf interaktive Elementen und weitere Anwendungsmöglichkeiten) werden Daten an unseren Server [everest.openstreetmap.de](https://everest.openstreetmap.de) bzw. [babykarte.openstreetmap.de](https://babykarte.openstreetmap.de) gesendet. Diese Daten sind für den Betrieb der Babykarte notwendig und werden 
+nicht gespeichert. Der Server wird betrieben vom FOSSGIS e.V., [dessen Datenschutzerklärung Du hier findest](https://www.fossgis.de/datenschutzerklaerung). Der Server führt Logs über eingehende Verbindungen, doch diese lassen keine Rückschlüsse auf das Verhalten einzelner Nutzer zu. Somit können wir Dir keine Auskunft über Daten geben, die Dein Browser an uns gesendet hat. Wir würden schon daran scheitern Dich im ganzen Datenstrom
  zu finden.
 
 ## Kontaktaufnahme Deines Browsers mit Servern
