@@ -51,7 +51,7 @@ nicht gespeichert. Der Server wird betrieben vom FOSSGIS e.V., [dessen Datenschu
 
 ## Kontaktaufnahme Deines Browsers mit Servern
 
-Wenn Dein Browser auf Bitten einer Anwendung einen Server kontaktiert, dann übermittelt der Browser neben der Daten, die die Anwendung mitgeschickt haben möchte, auch eigene Daten. So teilt er dem Server seinen Namen sowie Version und den Namen des Betriebssystems inklusive Versionsnummer mit. Dein Router fügt dann noch die von Deinem Internetprovider zugeteilte IP-Adresse hinzu.
+Wenn Dein Browser auf Bitten einer Anwendung einen Server kontaktiert, dann übermittelt der Browser neben der Daten, die die Anwendung mitgeschickt haben möchte, auch eigene Daten. So teilt er dem Server seinen Namen sowie Version und den Namen des Betriebssystems inklusive Versionsnummer mit. Dein Router fügt dann noch die von Deinem Internetprovider zugeteilte IP-Adresse hinzu. Die IP-Adresse wird gekürzt, sodass nicht Deine volle IP-Adresse in den Logs steht.
 
 ## Kontaktaufnahme mit uns
 
