@@ -9,13 +9,13 @@
    xmlns="http://www.w3.org/2000/svg"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   width="52mm"
-   height="60mm"
-   viewBox="0 0 52 60"
+   width="106mm"
+   height="106mm"
+   viewBox="0 0 106 106"
    version="1.1"
    id="svg8"
-   inkscape:version="0.92.1 r15371"
-   sodipodi:docname="email.svg">
+   inkscape:version="0.92.4 5da689c313, 2019-01-14"
+   sodipodi:docname="icon-template.svg">
   <defs
      id="defs2" />
   <sodipodi:namedview
@@ -25,15 +25,15 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.68328423"
-     inkscape:cx="396.85039"
-     inkscape:cy="561.25984"
+     inkscape:zoom="1.9194772"
+     inkscape:cx="200.31496"
+     inkscape:cy="200.31496"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      showgrid="false"
      inkscape:window-width="1280"
      inkscape:window-height="960"
-     inkscape:window-x="1920"
+     inkscape:window-x="0"
      inkscape:window-y="27"
      inkscape:window-maximized="1" />
   <metadata
@@ -52,19 +52,5 @@
      inkscape:label="Layer 1"
      inkscape:groupmode="layer"
      id="layer1"
-     transform="translate(0,-237)">
-    <flowRoot
-       xml:space="preserve"
-       id="flowRoot4485"
-       style="font-style:normal;font-weight:normal;font-size:192px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#006691;fill-opacity:1;stroke:none"
-       transform="matrix(0.26458333,0,0,0.26458333,-53.436767,163.02086)"><flowRegion
-         id="flowRegion4487"
-         style="font-size:192px;fill:#006691;fill-opacity:1"><rect
-           id="rect4489"
-           width="193.1846"
-           height="226.84555"
-           x="207.81981"
-           y="275.14172"
-           style="font-size:192px;fill:#006691;fill-opacity:1" /></flowRegion><flowPara
-         id="flowPara4491">@</flowPara></flowRoot>  </g>
+     transform="translate(0,-191)" />
 </svg>

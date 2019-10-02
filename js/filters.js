@@ -19,25 +19,28 @@ var profiles = { //Colour profiles for the filters
 "greyMarker": {code: "#5c5c5c"},
 "lightgreyMarker": {code: "#a0a0a0"},
 "violetMarker": {code: "#7a00b7"},
-"lightvioletMarker": {code: "#dc1369"}
+"lightvioletMarker": {code: "#dc1369"},
+"oldrosa": {code: "#f07575"}
 };
 var filter_defaultValues = {"active": false, "layers": [], "littleboxes": {},"usedBefore" : false}; //its active state, markers belonging to that filter, the boundings of a filter (area downloaded and cached)
+var orderOfFilters = ["paediatrics", "midwife", "birthing_center", "playground", "play-equipment", "park", "shop-babygoods", "shop-toys", "shop-clothes", "childcare", "zoo", "changingtable", "changingtable-men", "cafe", "restaurant", "fast_food"]
 var filter = { //The filters, the query they trigger, their colour profile, their category and technical description as dictionary (JSON)
-0: {"query": {"node|way": ["[\"healthcare:speciality\"~\"paediatrics\"]"]},  "color": profiles.redMarker, "category" : "health paediatrics", "priorize": 1, "triggers": {}, "popup": "POIpopup", "markerStyle": "marker"},
-1: {"query": {"node|way": ["[\"healthcare\"=\"midwife\"]"]},  "color": profiles.darkredMarker, "category" : "health midwife", "priorize": 1, "triggers": {}, "popup": "POIpopup", "markerStyle": "marker"},
-2: {"query": {"node|way": ["[\"healthcare\"=\"birthing_center\"]"]},  "color": profiles.lightredMarker, "category" : "health birth", "priorize": 1, "triggers": {}, "popup": "POIpopup", "markerStyle": "marker"},
-3: {"query": {"nwr": ["[\"leisure\"=\"playground\"]", "[\"access\"!=\"private\"]", "[\"min_age\"!~\"[4-99]\"]"]},  "color": profiles.greenMarker, "category" : "activity playground", "priorize": 1, "triggers": {onclick: function() {;setFilter(4);}}, "popup": "POIpopup", "markerStyle": "marker"},
-4: {"query": {"node|way": ["[\"playground\"]", "[\"min_age\"!~\"[4-99]\"]"]},  "color": profiles.lightgreenMarker, "category" : "activity playground-equipment", "priorize": 2, "triggers": {}, "beforeFilter": "<span style='font-size:22px'>↳</span>", "popup": "playgroundPopup", "markerStyle": "dot"},
-5: {"query": {"way|relation": ["[\"leisure\"=\"park\"]", "[\"access\"!=\"private\"]", "[\"name\"]", "[\"min_age\"!~\"[4-99]\"]"]},  "color": profiles.darkgreenMarker, "category" : "rest park", "priorize": 1, "triggers": {}, "popup": "POIpopup", "markerStyle": "marker"},
-6: {"query": {"node|way": ["[\"shop\"=\"baby_goods\"]"]},  "color": profiles.blueMarker, "category" : "shop baby_goods", "priorize": 1, "triggers": {}, "popup": "POIpopup", "markerStyle": "marker"},
-7: {"query": {"node|way": ["[\"shop\"=\"toys\"]"]},  "color": profiles.darkblueMarker, "category" : "shop toys", "priorize": 1, "triggers": {}, "popup": "POIpopup", "markerStyle": "marker"},
-8: {"query": {"node|way": ["[\"shop\"=\"clothes\"]", "[\"clothes\"~\"babies|children\"]"]},  "color": profiles.lightblueMarker, "category" : "shop clothes", "priorize": 1, "triggers": {}, "popup": "POIpopup", "markerStyle": "marker"},
-9: {"query": {"node|way": ["[\"amenity\"~\"kindergarten|childcare\"]"]},  "color": profiles.orangeMarker, "category" : "childcare kindergarten", "priorize": 1, "triggers": {}, "popup": "POIpopup", "markerStyle": "marker"},
-10: {"query": {"node|way": ["[\"tourism\"=\"zoo\"]"]},  "color": profiles.yellowMarker, "category" : "activity zoo", "priorize": 1, "triggers": {}, "popup": "POIpopup", "markerStyle": "marker"},
-11: {"query": {"node|way": ["[\"diaper\"]", "[\"diaper\"!=\"no\"]"], "node|way_": ["[\"changing_table\"]", "[\"changing_table\"!=\"no\"]"]},  "color": profiles.lightgreyMarker, "category" : "changingtable diaper", "priorize": 3, "triggers": {}, "popup": "POIpopup", "markerStyle": "marker"},
-12: {"query": {"node|way": ["[\"diaper:male\"=\"yes\"]"], "node|way_": ["[\"diaper:unisex\"=\"yes\"]"], "node|way__": ["[\"diaper\"=\"room\"]"], "node|way___": ["[\"diaper:wheelchair\"=\"yes\"]"], "node|way____": ["[\"changing_table\"]","[\"changing_table:location\"!=\"female_toilet\"]"]},  "color": profiles.greyMarker, "category" : "changingtable diaper", "priorize": 2, "triggers": {}, "popup": "POIpopup", "markerStyle": "marker"},
-13: {"query": {"node|way": ["[\"amenity\"=\"cafe\"]", "[\"min_age\"!~\"[4-99]\"]"]},  "color": profiles.violetMarker, "category" : "eat cafe", "priorize": 1, "triggers": {}, "popup": "POIpopup", "markerStyle": "marker"},
-14: {"query": {"node|way": ["[\"amenity\"=\"restaurant\"]", , "[\"min_age\"!~\"[4-99]\"]"]},  "color": profiles.lightvioletMarker, "category" : "eat restaurant", "priorize": 1, "triggers": {}, "popup": "POIpopup", "markerStyle": "marker"}
+"paediatrics": {"color": profiles.redMarker, "category" : "health paediatrics", "priorize": 1, "triggers": {}, "popup": "POIpopup", "markerStyle": "marker"},
+"midwife": {"color": profiles.darkredMarker, "category" : "health midwife", "priorize": 1, "triggers": {}, "popup": "POIpopup", "markerStyle": "marker"},
+"birthing_center": {"color": profiles.lightredMarker, "category" : "health birth", "priorize": 1, "triggers": {}, "popup": "POIpopup", "markerStyle": "marker"},
+"playground": {"color": profiles.greenMarker, "category" : "activity playground", "priorize": 1, "triggers": {onclick: function() {;setFilter("play-equipment");}}, "popup": "POIpopup", "markerStyle": "marker"},
+"play-equipment": {"color": profiles.lightgreenMarker, "category" : "activity playground-equipment", "priorize": 2, "triggers": {}, "beforeFilter": "<span style='font-size:22px'>↳</span>", "popup": "playgroundPopup", "markerStyle": "dot"},
+"park": {"color": profiles.darkgreenMarker, "category" : "rest park", "priorize": 1, "triggers": {}, "popup": "POIpopup", "markerStyle": "marker"},
+"shop-babygoods": {"color": profiles.blueMarker, "category" : "shop baby_goods", "priorize": 1, "triggers": {}, "popup": "POIpopup", "markerStyle": "marker"},
+"shop-toys": {"color": profiles.darkblueMarker, "category" : "shop toys", "priorize": 1, "triggers": {}, "popup": "POIpopup", "markerStyle": "marker"},
+"shop-clothes": {"color": profiles.lightblueMarker, "category" : "shop clothes", "priorize": 1, "triggers": {}, "popup": "POIpopup", "markerStyle": "marker"},
+"childcare": {"color": profiles.orangeMarker, "category" : "childcare kindergarten", "priorize": 1, "triggers": {}, "popup": "POIpopup", "markerStyle": "marker"},
+"zoo": {"color": profiles.yellowMarker, "category" : "activity zoo", "priorize": 1, "triggers": {}, "popup": "POIpopup", "markerStyle": "marker"},
+"changingtable": {"color": profiles.lightgreyMarker, "category" : "changingtable diaper", "priorize": 3, "triggers": {}, "popup": "POIpopup", "markerStyle": "marker"},
+"changingtable-men": {"color": profiles.greyMarker, "category" : "changingtable diaper", "priorize": 2, "triggers": {}, "popup": "POIpopup", "markerStyle": "marker"},
+"cafe": {"color": profiles.violetMarker, "category" : "eat cafe", "priorize": 1, "triggers": {}, "popup": "POIpopup", "markerStyle": "marker"},
+"restaurant": {"color": profiles.lightvioletMarker, "category" : "eat restaurant", "priorize": 1, "triggers": {}, "popup": "POIpopup", "markerStyle": "marker"},
+"fast_food": {"color": profiles.oldrosa, "category" : "eat fast_food", "priorize": 1, "triggers": {}, "popup": "POIpopup", "markerStyle": "marker"}
 };
 function triggerActivationOfFilters() {
 	clearTimeout(timerForFilter);
@@ -135,7 +138,7 @@ function initFilters() {
 	var priorizeList = {}; //Dictionary used for priorizing filters like priorizing the 'restaurant' filter over the 'cafe' filter
 	var filtersGround = document.getElementById("filtersGround");
 	output += "<label style='color:#007399;'><input id='setFilters' onclick='setAllFilters()' type='checkbox'><span style='color:white;font-weight:bold;font-size:16px;'>&#9632; </span><span>" + String(getText().FLTR_SELECTALL) + "</span></label>"; //Adds the necessary HTML for checkbox element of '(Un)check them all'
-	for (var id in filter) {
+	for (var id of orderOfFilters) {
 		var beforeFilter = "";
 		if (filter[id].layers == undefined) {
 			filter[id] = $.extend(true, filter[id], filter_defaultValues); //Initialize the JSON variable 'filter'.
@@ -144,14 +147,14 @@ function initFilters() {
 		priorizeList[filter[id].priorize].push(id);
 		var fltr = filter[id];
 		if (filter[id].beforeFilter) {beforeFilter = filter[id].beforeFilter}
-		output += "<label>" + beforeFilter + "<input id='filter" + String(id) + "' onclick='setFilter(" + String(id) + ")' type='checkbox'><span style='color:" + fltr.color.code + ";font-weight:bold;font-size:16px;'>&#9632; </span><span>" + String(getText().filtername[id]) + "</span></label>";  //Adds the necessary HTML for checkbox element of every single filter
+		output += "<label>" + beforeFilter + "<input id='filter" + String(id) + "' onclick='setFilter(\"" + String(id) + "\")' type='checkbox'><span style='color:" + fltr.color.code + ";font-weight:bold;font-size:16px;'>&#9632; </span><span>" + String(getText().filtername[id]) + "</span></label>";  //Adds the necessary HTML for checkbox element of every single filter
 	}
 	filtersGround.innerHTML = output; //Add filters to the site (displaying them to user)
 	filtersSorted = getSortedListOfFilters(priorizeList);
 	document.getElementById("map-overlay-notify").style.display = "block";
 }
 function resetFilter(fltr) {
-	var values = {"south": 0, "west": 0, "north": 0, "east": 0}
+	var values = {"south": 0, "west": 0, "north": 0, "east": 0};
 	toggleLayers(fltr, 0);
 	filter[fltr].usedBefore = true;
 	setCoordinatesOfFilter(fltr, values);
@@ -229,34 +232,12 @@ function getSubtitle(poi) {
 	}
 	return undefined;
 }
-function groupIntoLayers(poi) {
-	// Guess which data received by Babykarte belongs to which filter
-	var tmp;
-	var priorizeList = {};
-	var marker = "";
-	var name = "";
+function initMarkerObject(poi) {
 	marker = new Object();
-	for (var id in activeFilter) {
-		if (!priorizeList[filter[id].priorize]) {priorizeList[filter[id].priorize] = [];}
-		priorizeList[filter[id].priorize].push(id);
-	}
-	tmp = getSortedListOfFilters(priorizeList)
-	for (var fltr in tmp) { //Goes throw all active filters. (Those the user has currently selected).
-		fltr = tmp[fltr];
-		var query = filter[fltr].query; //Gets the list of queries the filter has.
-		for (var type in query) { //Gets throw all the queries the filter has..
-			type = query[type]; //Instead of its query name it gets the content of the type.
-			if (osmExpression(poi, type[0])) {
-				marker.fltr = fltr;
-				marker.category = filter[fltr].category;
-				marker.color = filter[fltr].color.code;
-				marker.priorize = filter[fltr].priorize;
-				return marker;
-			}
-		}
-	}
-	marker.category = "";
-	marker.name = "";
-	marker.color = "default";
-	return marker;
+	console.log(poi.filter);
+	marker.category = poi.category;
+	marker.fltr = poi.filter;
+	marker.color = filter[poi.filter].color.code;
+	marker.priorize = filter[poi.filter].priorize;
+	return marker
 }

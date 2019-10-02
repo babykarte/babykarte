@@ -1,3 +1,4 @@
+/*-------------- GLOBAL SETTINGS ---------------------*/
 body {
 	padding: 0;
 	margin: 0;
@@ -28,21 +29,6 @@ h2 {
 	font-size:14px;
 	color:grey;
 }
-#autocomplete ul {
-	list-style-type:none;
-	margin:0px;
-	padding:0px;
-	color:#142a52;
-}
-#autocomplete li {
-	list-style-type:none;
-	padding-top:5px;
-	padding-bottom:5px;
-}
-#autocomplete li:hover {
-	cursor:pointer;
-	background-color:rgb(255, 64, 0, 0.6);
-}
 input[type=button] {
 	margin:10px;
 }
@@ -58,26 +44,7 @@ section {
 	width:100%;
 	height:100%;
 }
-#filtersGround label {
-	display:block;
-	margin-top:5px;
-	cursor:pointer;
-}
-.custom-leaflet-icon {
-	margin-top:6px !important;
-	margin:5px !important;
-}
-.own-control-style {
-	margin:5px;
-	border-radius:10px;
-	padding:5px;
-	background-color: rgba(0, 0, 0, 0.7);
-}
-.leaflet-bar {
-	margin:0px !important;
-	background-color: rgb(255, 255, 255);
-	border-radius:5px;
-}
+/*---------------------- POI DETAILS SETTINGS -------------------------------*/
 .tabcontent {
 	box-shadow: -10px 0px 5px -2px grey;
 	padding:2px;
@@ -98,35 +65,9 @@ section {
 	margin:0px;
 	font-size:12px;
 }
-.tabcontent details summary {
-	font-size:12px;
-}
-.layermenu {
-	z-index:1;
-	width:33.34%;
-	height:100%;
-	overflow:hidden;
-	padding-left:5px;
-	padding-right:4px;
-	box-sizing:border-box;
-}
-.info {
-	display:none;
-	font-size:22px;
-	top:0px;
-	position:absolute;
-	text-align:center;
-	margin-left:auto;
-	margin-right:auto;
-	margin-top:5px;
-	z-index:401;
-	width:100%;
-}
 .pdv-icon {
 	box-sizing:border-box;
-	height:25px;
-	width:25px;
-	margin:10px;
+	padding:15px;
 	font-size:25px;
 	cursor:pointer;
 	text-align:center;
@@ -158,15 +99,12 @@ section {
 .active[active] {
 	border-top:3px solid #52a0c9;
 }
-.lang-select {
-	margin-right:5px;
-	padding-left:0px;
-}
 .grid-container {
 	display:grid;
 	grid-template-columns:auto auto;
 	justify-content:start;
 }
+/*---------------------- COLOUR CODES FOR BABY FRIENDLINESS TAB -------------------------------- */
 .color-green {
 	color:#339933;
 }
@@ -182,22 +120,67 @@ section {
 .nounderlinestyle {
 	text-decoration:none;
 }
-.dropdown {
+/*-------------------- LEFT BAR SETTINGS ----------------------------*/
+.leftbar {
+	width:45px;
+	font-family:"Courier New", Courier, monospace;
+	background-color:white;
+}
+.bar-icon {
+	height:25px;
+	width:25px;
+}
+.menuitem {
+	padding:10px;
+}
+.menuitem:hover {
+	cursor:pointer;
+}
+.lang-select {
+	font-family:"Palatino Linotype", "Book Antiqua", Palatino, serif;
+	top:45px;
+}
+.searchbar {
+	font-family:"Palatino Linotype", "Book Antiqua", Palatino, serif;
+	top:90px;
+}
+.about {
+	font-family:"Palatino Linotype", "Book Antiqua", Palatino, serif;
+	top:0px;
+}
+.poibar {
+	height:29px;
+	box-sizing:border-box;
+	width:100%;
+	background-color:#ff531aff;
+}
+.closebtn {
+	float:right;
 	padding:5px;
-	padding-left:0px;
-	display:inline-block;
+	font-size:24px;
+	color:white;
+}
+.beautifulmenu {
+	padding-left:10px !important;
+	padding-right:10px !important;
+	width:450px;
+}
+.bigmenu {
+	padding:0px !important;
+	top:0px;
+	height:100% !important;
 }
 .dropdown-menu {
 	background-color:white;
-	padding:5px;
+	left:45px;
+	padding:10px;
 	display:none;
-	height:20px;
-	width:100px;
+	height:25px;
 	z-index:2;
 	position:absolute;
 }
 .dropdown-menu:hover {
-	display:flex;
+	display:block;
 }
 .dropdown-menu a {
 	box-sizing:border-box;
@@ -207,21 +190,74 @@ section {
 .dropdown-menu a:hover {
 	border-top:3px solid #d6e0f5;
 }
-.dropdown:hover ~ .dropdown-menu {
-	display:flex;
+.dropdown:hover > .dropdown-menu {
+	display:block;
+}
+#filtersGround label {
+	display:block;
+	margin-top:5px;
+	cursor:pointer;
+}
+#autocomplete {
+	background-color:white;
+	display:none;
+	padding:5px;
+	z-index:5;
+	top:0px;
+	box-sizing:border-box;
+}
+#autocomplete ul {
+	list-style-type:none;
+	margin:0px;
+	padding:0px;
+	color:#142a52;
+}
+#autocomplete li {
+	list-style-type:none;
+	padding-top:5px;
+	padding-bottom:5px;
+}
+#autocomplete li:hover {
+	cursor:pointer;
+	background-color:rgb(255, 64, 0, 0.6);
+}
+#poidetails {
+	padding-top:10px;
+	font-family:"Palatino Linotype", "Book Antiqua", Palatino, serif;
+	font-size:16px;
+}
+/*------------------------- ON MAP MODALS -----------------*/
+.custom-leaflet-icon {
+	margin-top:6px !important;
+	margin:5px !important;
+}
+.own-control-style {
+	margin:5px;
+	border-radius:10px;
+	padding:5px;
+	background-color: rgba(0, 0, 0, 0.7);
+}
+.leaflet-bar {
+	margin:0px !important;
+	background-color: rgb(255, 255, 255);
+	border-radius:5px;
+}
+
+.info {
+	display:none;
+	font-size:22px;
+	top:0px;
+	position:absolute;
+	text-align:center;
+	margin-left:auto;
+	margin-right:auto;
+	margin-top:5px;
+	z-index:401;
+	width:100%;
 }
 .locatingBtn {
 	z-index:402;
-}
-#menubutton {
-	display:none;
-	font-size:24px;
-	margin-top:8px;
-	margin-left:10px;
-	margin-right:-10px;
-	cursor:pointer;
-	width:50px;
-	opacity:0.7;
+	font-size:20px;
 }
 #map{
 	z-index:1;
@@ -240,32 +276,10 @@ section {
 	display:none;
 	background-color:rgba(0,0,0,0.7);
 }
-@media only screen and (min-width:800px) {
+/*@media only screen and (min-width:800px) {
 	#map-overlay-notify {
 		display:none !important;}
-}
-#searchfield {
-	padding-top:10px;
-	padding-bottom:10px;
-	padding-left:5px;
-	margin-top:5px;
-	margin-bottom:5px;
-	margin-left:4px;
-	width:95%;
-	-webkit-appearance: none;
-}
-#autocomplete {
-	display:none;
-	padding:5px;
-	z-index:5;
-	position:relative;
-	top:0px;
-	background-color:rgb(255, 64, 0, 0.1);
-	box-sizing:border-box;
-}
-#filtersGround {
-	margin-bottom: 25px;
-}
+}*/
 #infoPopup {
 	margin:auto;
 	width:400px;
@@ -284,14 +298,7 @@ section {
 	border-radius:50px;
 	background-color:rgba(204, 51, 0, 0.7);
 }
-#lnk-impress, #linkToPP {
-	float:right;
-	margin-top:5px;
-	font-size: 14px;
-}
-#linkToPP {
-	margin-right: 10px;
-}
+/* ---------------------- POI RATING SYSTEM ------------------ */
 #rating-default {
 	fill:none;
 }
@@ -307,45 +314,12 @@ section {
 	fill:#bb0202;
 	stroke:white;
 }
+/*------------------------ MOBILE VIEW ------------------------*/
 @media only screen and (max-width:800px) {
-section {
-	display:block;
-}
-.layermenu {
-	height:80px;
+.beautifulmenu {
 	width:100%;
 }
-.lang-select {
-	font-size:16px;
-}
-#menubutton {
-	display:block;
-}
-#autocomplete {
-	background-color:white;
-	border-left:5px solid #ff4000;
-}
-#infoPopup {
+/*#infoPopup {
 	width:200px;
-}
-#map {
-	width:100%;
-	height:calc(100% - 75px);
-}
-#searchfield {
-	margin-right:4px;
-	max-height:10px;
-}
-}
-@media only screen and (min-width:800px) and (max-width:990px) {
-	#lnk-impress, #linkToPP {
-	margin-top:7px;
-	font-size: 11px;
-	}
-	}
-@media only screen and (max-width:330px) {	
-	#lnk-impress, #linkToPP {
-	margin-top:7px;
-	font-size: 11px;
-	}
+}*/
 }

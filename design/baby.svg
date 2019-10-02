@@ -13,7 +13,10 @@
    height="224mm"
    width="210mm"
    sodipodi:docname="baby.svg"
-   inkscape:version="0.92.4 5da689c313, 2019-01-14">
+   inkscape:version="0.92.4 5da689c313, 2019-01-14"
+   inkscape:export-filename="/home/soren/Documents/Projekte/Babykarte/devel/design/baby.svg.png"
+   inkscape:export-xdpi="96"
+   inkscape:export-ydpi="96">
   <sodipodi:namedview
      pagecolor="#ffffff"
      bordercolor="#666666"
@@ -28,8 +31,8 @@
      id="namedview9"
      showgrid="false"
      inkscape:zoom="0.27875744"
-     inkscape:cx="-317.0319"
-     inkscape:cy="408.9577"
+     inkscape:cx="-1034.5015"
+     inkscape:cy="394.60831"
      inkscape:window-x="0"
      inkscape:window-y="27"
      inkscape:window-maximized="1"
@@ -45,7 +48,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>

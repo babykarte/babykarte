@@ -2,7 +2,7 @@ var debug_markerobj;
 var markerStyles = {};
 var area = {};
 var zoomLevel = "";
-var url = "https://overpass-api.de/api/interpreter";
+var url = "https://babykarte.openstreetmap.de/getDataForBabykarte.cgi";
 var colorcode = {"yes": "color-green", "no": "color-red", "room": "color-green", "bench": "color-green", undefined: "color-grey", "limited": "color-yellow", "playground": "color-green"};
 // 'undefined' is equal to 'tag does not exist'. In JS, 'undefined' is also a value
 // '*' is a placeholder for notes from mappers and any other value (even 'undefined')
@@ -125,28 +125,16 @@ function locationError(e) {
 	showGlobalPopup(getText().LOCATING_FAILURE);
 	progressbar();
 }
-function createSQL(bbox, fltr) {
-	var andquery = "(";
-	for (var value in filter[fltr].query) {
-		var content = filter[fltr].query[value];
-		var name = value.trim();
-		name = value.split("|");
-		for (var type in name) {
-			andquery += name[type].replace(RegExp("_", "g"), "");
-			for (var i in content) {
-				andquery += content[i];
-			}
-			andquery += "(" + bbox + ");"
-		}
-	}
-	return andquery + ");";
-}
-function roundIt(number) {
+function createSQL(bbox, fltr) { return String(fltr) + " - " + String(bbox) + "\n"; }
+/*function roundIt(number) {
 	number = String(number)
 	console.log(Number(number.slice(0, 5)));
 	return Number(number.slice(0, 5))
-}
+}*/
 function locateNewArea(fltr) {
+	return createSQL(map.getBounds().getSouth() + "," + map.getBounds().getWest() + "," + map.getBounds().getNorth() + "," +  map.getBounds().getEast(), fltr);
+}
+/*function locateNewAreaold(fltr) {
 	//Complex algorithm. It calculates the coordinates when the user moves the map. Then the coordinates will be used to fetch just more POIs without overwriting/overlaying the existing ones.
 	//NORTH: Number increases when moving to the top (North)
 	//SOUTH: Number decreases when moving to the bottom (South)
@@ -173,7 +161,7 @@ function locateNewArea(fltr) {
 			if (!filter[fltr].littleboxes[String(south_new) + "+" + String(west_new)]) {
 				//var result2 = createSQL(south_new + "," + west_new + "," +  Number(Number(south_new + size).toFixed(2)) + "," +  Number(Number(west_new + size).toFixed(2)), fltr);
 				var result2 = createSQL(south_new + "," + west_new + "," + Number(south_new + size) + "," +  Number(west_new + size), fltr);
-				result += result2;
+				result += "\n" + result2;
 				filter[fltr].littleboxes[String(south_new) + "+" + String(west_new)] = true;
 			}
 			west_new += size;
@@ -187,7 +175,7 @@ function locateNewArea(fltr) {
 	} else {
 		return false;
 	}
-}
+}*/
 function locateNewAreaBasedOnFilter() {
 	//Wrapper around locateNewArea().
 	//Adds filter compactibility to locateNewArea() function.
@@ -227,7 +215,7 @@ function parseOpening_hours(value) {
 	}
    	return value
 }
-function addrTrigger_intern(poi, marker) {
+/*function addrTrigger_intern(poi, marker) {
 	if (marker.popupContent.indexOf("%data_address%") > -1) {
 		$.get("https://nominatim.openstreetmap.org/reverse?accept-language=" + languageOfUser + "&format=json&osm_type=" + String(poi.type)[0].toUpperCase() + "&osm_id=" + String(poi.id), function(data, status, xhr, trash) {
 			var content = "";
@@ -246,9 +234,14 @@ function addrTrigger_intern(poi, marker) {
 		});
 	}
 }
+*/
 function addrTrigger(poi, marker) {
-	var timeout = setTimeout(addrTrigger_intern, 500, poi, marker);
-	return "%data_address%";
+	//var timeout = setTimeout(addrTrigger_intern, 500, poi, marker);
+	var street = poi.tags["addr:street"] || getText().PDV_STREET_UNKNOWN;
+	var housenumber = poi.tags["addr:housenumber"] || getText().PDV_HOUSENUMBER_UNKNOWN;
+	var postcode = poi.tags["addr:postcode"] || getText().PDV_ZIPCODE_UNKNOWN;
+	var city = poi.tags["addr:city"] || getText().PDV_COMMUNE_UNKNOWN;
+	return street + " " + housenumber + "<br/>" + postcode + " " + city;
 }
 function toggleTab(bla, id) {
 	var tab = document.getElementById(id);
@@ -272,7 +265,7 @@ function toggleTab(bla, id) {
 	}
 	tab.style.display = "block";
 }
-function addrTab(poi, prefix , condition, symbol, nounicode) {
+function contactTab(poi, prefix , condition, symbol, nounicode) {
 	var result = eval(condition);
 	if (nounicode == true) {
 		symbol = "<img class='small-icon' src='" + symbol + "' />";
@@ -280,8 +273,9 @@ function addrTab(poi, prefix , condition, symbol, nounicode) {
 		symbol = "<span class='small-icon'>" + symbol + "</span>";
 	}
 	if (result.startsWith("www.") && !prefix.startsWith("mail")) {result = "http://" + result}
-	return "<div class='grid-container'><a class='nounderlinestyle' target='_blank' href='" + prefix  + result + "'>" + symbol + "'</a><a target='_blank' href='"+ prefix + result + "'>" + result + "</a></div>\n";
+	return "<div class='grid-container'><a class='nounderlinestyle' target='_blank' href='" + prefix  + result + "'>" + symbol + "</a><a target='_blank' href='"+ prefix + result + "'>" + result + "</a></div>\n";
 }
+function closePoiView(event) {$("#poimenu").hide();/*bypassDOM("#poimenu")*/}
 function processContentDatabase_intern(marker, poi, database, tag, values, data, parent) {
 	if (!parent) {parent = tag;}
 	for (var i in values) {
@@ -424,12 +418,12 @@ function getRightPopup(marker, usePopup) {
 		{"home": {"content": `<h1>${ ((poi.tags["name"] == undefined) ? ((poi.tags["amenity"] == "toilets") ? getText().TOILET : getText().PDV_UNNAME) : poi.tags["name"]) }</h1><h2>${  String(marker.name) }</h2><address id='address${poi.classId}'>${addrTrigger(poi, marker)}</address>`, "symbol": "🏠", "title": getText().PDV_TITLE_HOME, "active": true, "default": true},
 		"baby": {"content": `${processContentDatabase(marker, poi, PDV_babyTab)}`, "symbol": "👶", "title": getText().PDV_TITLE_BABY, "active": true},
 		"opening_hours": {"content": `${ parseOpening_hours(poi.tags["opening_hours"]) || "NODISPLAY" }`, "symbol": "🕰️", "title": getText().PDV_TITLE_OH, "active": true},
-		"contact" : {"content": `${ addrTab(poi, "", "poi.tags['website'] || poi.tags['contact:website'] || 'NODISPLAY'", "🌍") }${ addrTab(poi, "tel:", "poi.tags['phone'] || poi.tags['contact:phone'] || 'NODISPLAY'", "☎️") }${ addrTab(poi, "mailto:", "poi.tags['email'] || poi.tags['contact:email'] || 'NODISPLAY'", "📧") }${ addrTab(poi, "", "((poi.tags['facebook'] != undefined) ? ((poi.tags['facebook'].indexOf('/') > -1) ? poi.tags['facebook'] : ((poi.tags['facebook'] == -1) ? 'https://www.facebook.com/' + poi.tags['facebook'] : undefined)) : ((poi.tags['contact:facebook'] != undefined) ? ((poi.tags['contact:facebook'].indexOf('/') > -1) ? poi.tags['contact:facebook'] : ((poi.tags['contact:facebook'] == -1) ? 'https://www.facebook.com/' + poi.tags['contact:facebook'] : 'NODISPLAY')) : 'NODISPLAY'))", "/images/facebook-logo.svg", true) }`, "symbol": "📧", "title": getText().PDV_TITLE_CONTACT, "active": true},
-		"furtherInfos": {"content": `<b>${ getText().PDV_OPERATOR }:</b><br/> ${ ((poi.tags["operator"]) ? poi.tags["operator"] + "<br/>" : "NODISPLAY") }\n<b>${ getText().PDV_DESCRIPTION }:</b><br/>"${ ((poi.tags["description:" + languageOfUser]) ? getText().PDV_DESCRIPTION + ": " + poi.tags["description:" + languageOfUser] : ((poi.tags["description"]) ? getText().PDV_DESCRIPTION + ": " + poi.tags["description"] : "NODISPLAY")) }"<br/>\n<a target='_blank' href='${ "https://www.openstreetmap.org/" + String(poi.type).toLowerCase() + "/" + String(poi.id) }'>${ getText().LNK_OSM_VIEW }</a><br/>\n<a href='${ "geo:" + poi.lat + "," + poi.lon }'>${ getText().LNK_OPEN_WITH }</a>`, "symbol": "ℹ️", "title": getText().PDV_TITLE_MI, "active": true}
+		"contact" : {"content": `${ contactTab(poi, "", "poi.tags['website'] || poi.tags['contact:website'] || 'NODISPLAY'", "🌍") }${ contactTab(poi, "tel:", "poi.tags['phone'] || poi.tags['contact:phone'] || 'NODISPLAY'", "☎️") }${ contactTab(poi, "mailto:", "poi.tags['email'] || poi.tags['contact:email'] || 'NODISPLAY'", "📧") }${ contactTab(poi, "", "((poi.tags['facebook'] != undefined) ? ((poi.tags['facebook'].indexOf('/') > -1) ? poi.tags['facebook'] : ((poi.tags['facebook'] == -1) ? 'https://www.facebook.com/' + poi.tags['facebook'] : undefined)) : ((poi.tags['contact:facebook'] != undefined) ? ((poi.tags['contact:facebook'].indexOf('/') > -1) ? poi.tags['contact:facebook'] : ((poi.tags['contact:facebook'] == -1) ? 'https://www.facebook.com/' + poi.tags['contact:facebook'] : 'NODISPLAY')) : 'NODISPLAY'))", "/images/facebook-logo.svg", true) }`, "symbol": "📧", "title": getText().PDV_TITLE_CONTACT, "active": true},
+		"furtherInfos": {"content": `<b>${ getText().PDV_OPERATOR }:</b><br/> ${ ((poi.tags["operator"]) ? poi.tags["operator"] + "<br/>" : "NODISPLAY") }\n<b>${ getText().PDV_DESCRIPTION }:</b><br/>"${ ((poi.tags["description:" + languageOfUser]) ? getText().PDV_DESCRIPTION + ": " + poi.tags["description:" + languageOfUser] : ((poi.tags["description"]) ? getText().PDV_DESCRIPTION + ": " + poi.tags["description"] : "NODISPLAY")) }"<br/>\n<a target='_blank' href='${ "https://www.openstreetmap.org/" + String(poi.type).toLowerCase() + "/" + String(poi.osm_id) }'>${ getText().LNK_OSM_VIEW }</a><br/>\n<a href='${ "geo:" + poi.lat + "," + poi.lon }'>${ getText().LNK_OPEN_WITH }</a>`, "symbol": "ℹ️", "title": getText().PDV_TITLE_MI, "active": true}
 		},
 	"playgroundPopup":
 		{"home": {"content": `<h1>${ ((poi.tags["name"] != undefined) ? poi.tags["name"] : marker.name) }</h1><h2>${ ((poi.tags["name"] == undefined) ? "" : marker.name) }</h2>${ processContentDatabase(marker, poi, PEP_data) }`, "symbol": "🏠", "title": getText().PDV_TITLE_HOME, "active": true, "default": true},
-		"furtherInfos": {"content": `<a target='_blank' href='${ "https://www.openstreetmap.org/" + String(poi.type).toLowerCase() + "/" + String(poi.id) }'>${ getText().LNK_OSM_VIEW }</a><br/>\n<a href='${ "geo:" + poi.lat + "," + poi.lon }'>${ getText().LNK_OPEN_WITH }</a>`, "symbol": "ℹ️", "title": getText().PDV_TITLE_MI, "active": true}
+		"furtherInfos": {"content": `<a target='_blank' href='${ "https://www.openstreetmap.org/" + String(poi.type).toLowerCase() + "/" + String(poi.osm_id) }'>${ getText().LNK_OSM_VIEW }</a><br/>\n<a href='${ "geo:" + poi.lat + "," + poi.lon }'>${ getText().LNK_OPEN_WITH }</a>`, "symbol": "ℹ️", "title": getText().PDV_TITLE_MI, "active": true}
 		}
 	};
 	createDialog(marker, poi, popup[usePopup]);
@@ -460,7 +454,7 @@ function createDialog(marker, poi, details_data) {
 		}
 		popupContent += "</div>";
 	}
-	popupContent_header += "<div style='display:flex;height:50px;'>";
+	popupContent_header = "<div style='display:flex;height:50px;'>";
 	for (var entry in details_data) {
 		var classList = "pdv-icon active";
 		var symbol = details_data[entry].symbol;
@@ -470,15 +464,25 @@ function createDialog(marker, poi, details_data) {
 		if (symbol.startsWith("/")) {
 			popupContent_header += "<img class='" + classList + "' id='icon" + poi.classId + entry + "' onclick='toggleTab(this, \"" + poi.classId + entry + "\")' src='" + symbol + "' alt='" + details_data[entry].title + "' title='" + details_data[entry].title + "' />";
 		} else {
-			popupContent_header += "<div class='" + classList + "' id='icon" + poi.classId + entry + "' onclick='toggleTab(this, \"" + poi.classId + entry + "\")' alt='" + details_data[entry].title + "' title='" + details_data[entry].title + "' />" + symbol + "</div>";
+			popupContent_header += "<div class='" + classList + "' id='icon" + poi.classId + entry + "' onclick='toggleTab(this, \"" + poi.classId + entry + "\")' alt='" + details_data[entry].title + "' title='" + details_data[entry].title + "'>" + symbol + "</div>";
 		}
 	}
 	popupContent_header += "</div>";
-	marker.popupContent = popupContent_header + popupContent + "<hr/><a target=\"_blank\" href=\"https://www.openstreetmap.org/edit?" + String(poi.type) + "=" + String(poi.id) + "\">" + getText().LNK_OSM_EDIT + "</a>&nbsp;&nbsp;<a target=\"_blank\" href=\"https://www.openstreetmap.org/note/new#map=17/" + poi.lat + "/" + poi.lon + "&layers=N\">" + getText().LNK_OSM_REPORT + "</a>";
-	marker.bindPopup(marker.popupContent);
+	marker.popupContent = popupContent_header + popupContent + "<hr/><a target=\"_blank\" href=\"https://www.openstreetmap.org/edit?" + String(poi.type) + "=" + String(poi.osm_id) + "\">" + getText().LNK_OSM_EDIT + "</a>&nbsp;&nbsp;<a target=\"_blank\" href=\"https://www.openstreetmap.org/note/new#map=17/" + poi.lat + "/" + poi.lon + "&layers=N\">" + getText().LNK_OSM_REPORT + "</a>";
+	$("#poidetails").html(marker.popupContent);
+	$("#poimenu").show();
+	//bypassDOM("#poimenu")
 	debug_markerobj = marker;
-	setTimeout(function() {debug_markerobj.openPopup();}, 100); //workaround for a Bug in Leaflet;
-} 
+}
+function bypassDOM(elem) {
+	setTimeout(function() {$(elem).attr("style", "")}, 1000);
+}
+function errorHandler(poi) {
+	var notes = poi.notes || undefined;
+	if (notes == "No Data") {
+		showGlobalPopup(getText().NODATA.replace("%s", getText().filtername[poi.filter]));progressbar();
+	}
+}
 function loadPOIS(e, post) {
 	hideFilterListOnMobile();
 	progressbar(50);
@@ -493,24 +497,27 @@ function loadPOIS(e, post) {
 		}
 	}
 	//Connect to OSM server
-	post = "[out:json][timeout:50];" + post + "out body center;";
-	getData(url, "json", post, undefined, function (osmDataAsJson) {
+	getData(url, "json", post, undefined, function (elements) {
 		//Go throw all elements (ways, relations, nodes) sent by Overpass
-		for (var poi in osmDataAsJson.elements) {
-			var marker;
-			poi = osmDataAsJson.elements[poi];
-			if (!poi.tags) {poi.tags = {};}
-			if (poi.center != undefined) {
-				poi.lat = poi.center.lat;
-				poi.lon = poi.center.lon;
+		for (var fltr in activeFilter) {
+			for (var layer of filter[fltr].layers) {
+				map.removeLayer(layer);
 			}
+		}
+		for (var poi in elements) {
+			var marker;
+			poi = elements[poi];
+			if (!poi.geometry) {errorHandler(poi);return false;}
+			if (!poi.tags) {poi.tags = {};}
+			poi.lat = poi.geometry.coordinates[1];
+			poi.lon = poi.geometry.coordinates[0];
 			//creates a new Marker() Object, put data in it, determine the right filter and do the rating (add yellow, green or a red dot on the icon).
-			marker = groupIntoLayers(poi);
+			marker = initMarkerObject(poi);
 			
 			poi = ratePOI(marker, poi);
 			marker = addMarkerIcon(poi, marker);
 			marker.data = poi;
-			marker.data.classId = String(poi.type)[0].toUpperCase() + String(poi.id);
+			marker.data.classId = String(poi.type)[0].toUpperCase() + String(poi.osm_id);
 			//marker.once("click", function(marker) {getRightPopup(marker, filter[marker.target.fltr].popup);});
 			marker.on("click", function(event) {getRightPopup(event, filter[event.target.fltr].popup)});
 			//Add marker to map
