@@ -9,9 +9,9 @@
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    id="svg8"
    version="1.1"
-   viewBox="0 0 227.37639 242.62736"
-   height="376mm"
-   width="376mm"
+   viewBox="0 0 137.27259 227.1404"
+   height="352mm"
+   width="227mm"
    sodipodi:docname="marker.svg"
    inkscape:version="0.92.4 5da689c313, 2019-01-14"
    inkscape:export-filename="/home/soren/Documents/Projekte/Babykarte/devel/design/marker.svg.png"
@@ -30,9 +30,9 @@
      inkscape:window-height="960"
      id="namedview10"
      showgrid="false"
-     inkscape:zoom="0.12032912"
-     inkscape:cx="2126.5791"
-     inkscape:cy="561.08789"
+     inkscape:zoom="0.48131648"
+     inkscape:cx="8.9695205"
+     inkscape:cy="739.70778"
      inkscape:window-x="0"
      inkscape:window-y="27"
      inkscape:window-maximized="1"
@@ -58,12 +58,12 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
   <g
-     transform="matrix(41.957678,0,0,32.652659,39.598109,-9461.4608)"
+     transform="matrix(41.957678,0,0,32.652659,-4.451519,-9469.4558)"
      id="layer1"
      style="fill:#ff531a;fill-opacity:1;stroke:url(#radialGradient12741);stroke-width:0.4194878;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1">
     <path
@@ -76,7 +76,7 @@
   <g
      style="fill:none;fill-opacity:1;stroke:#f4cd9c;stroke-opacity:1"
      id="layer1-5"
-     transform="matrix(0.39715017,0,0,0.34688879,70.927854,0.71096017)">
+     transform="matrix(0.39715017,0,0,0.34688879,26.878226,-7.2837693)">
     <ellipse
        style="opacity:1;fill:none;fill-opacity:1;fill-rule:nonzero;stroke:#f4cd9c;stroke-width:7.77127266;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        id="path4485"

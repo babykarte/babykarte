@@ -19,14 +19,12 @@ function hideFilterListOnMobile() { //Hides the menu when a filter loads (the gr
 		togglemenu(true); //Forces to close menu by opening it internally and then closing it internally. Its real state is being ignored.
 	}
 }
-function progressbar(value=false) { //Triggers the processbar and or its process
-	var elem = document.getElementById("progressbar");
-	if (!value) { //Reset the progressbar: Set its width to zero and hide it
-		elem.style.width = "0%";
+function spinner(value) { //Triggers the processbar and or its process
+	var elem = document.getElementById("spinner");
+	if (value) { //Show spinner
+		elem.style.display = "flex";
+	} else { //Hide spinner
 		elem.style.display = "none";
-	} else { //Set the width and show it
-		elem.style.width = String(value) + "%";
-		elem.style.display = "block";
 	}
 }
 function showGlobalPopup(m) { // Triggers the blue rounded message popup
@@ -41,6 +39,7 @@ function showGlobalPopup(m) { // Triggers the blue rounded message popup
 }
 function jumpto(elem, lat, lon) { // Function which fires when user clicks on a search suggestion. Forcing Babykarte to jump to a new position (e.g. Berlin central station)
 	if (elem.innerHTML) {
+		spinner(true);
 		$("#autocomplete").hide(); // Hide the search suggestions
 		map.on("moveend", function() {}); //Deactivate the dynamic loading of content
 		map.setView([lat, lon]); //Set the view (e.g. Berlin central station)
@@ -52,7 +51,6 @@ function jumpto(elem, lat, lon) { // Function which fires when user clicks on a 
 			resetFilter(id);
 		}
 		map.on("moveend", onMapMove); //Activate the dynamic loading of content
-		progressbar(50);
 		setTimeout(function() {onMapMove();}, 500); //After 5sec trigger the dynamic loading of content manually without user action.
 		showGlobalPopup(elem.innerHTML); //Show the message displaying the location is user is viewing
 	}

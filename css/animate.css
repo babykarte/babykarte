@@ -1,0 +1,54 @@
+.circle {
+	width:50px;
+	height:50px;
+	border-radius:50px;
+	margin-right:5px;
+	background-color:white;
+}
+#spinner #circle1 {
+	animation-name:load1;
+	animation-duration:1s;
+	animation-delay:0s;
+	animation-iteration-count:infinite;
+}
+#spinner #circle2 {
+	animation-name:load2;
+	animation-duration:1s;
+	animation-delay:0s;
+	animation-iteration-count:infinite;
+}
+#spinner #circle3 {
+	animation-name:load3;
+	animation-duration:1s;
+	animation-delay:0s;
+	animation-iteration-count:infinite;
+}
+#spinner {
+	display:flex;
+	height:50px;
+	width:100%;
+	position:absolute;
+	z-index:402;
+	margin-left:40%;
+	margin-right:40%;
+}
+@keyframes load1 {
+	0% {background-color:white;}
+	50% {background-color:#ff531aff;}
+	100% {background-color:white;}
+}
+@keyframes load2 {
+	0% {background-color:white;}
+	20% {background-color:white;}
+	40% {background-color:white;}
+	60% {background-color:#ff531aff;}
+	100% {background-color:white;}
+}
+@keyframes load3 {
+	0% {background-color:white;}
+	20% {background-color:white;}
+	40% {background-color:white;}
+	60% {background-color:white;}
+	80% {background-color:#ff531aff;}
+	100% {background-color:white;}
+}

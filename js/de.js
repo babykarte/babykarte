@@ -2,7 +2,7 @@ var refDe = {"site-map": {
 	"LOCATING_FAILURE": "Standort nicht ermittelbar",
 	"LOCATING_SUCCESS": "Dein Standort",
 	"LOADING_FAILURE": "Ein Fehler ist aufgetreten, bitte reinzoomen und erneut versuchen",
-	"NODATA": "Keine '<i>%s</i>' in Sicht für diesen Bereich",
+	"NODATA": "Keine '<i>%s</i>' hier gefunden",
 	"LNK_OSM_EDIT": "Mit OSM editieren",
 	"LNK_OSM_REPORT": "Falschinformationen melden",
 	"LNK_OSM_VIEW": "POI in OpenStreetMap ansehen",

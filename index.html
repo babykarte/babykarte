@@ -44,20 +44,16 @@
   			<div class='dropdown-menu bigmenu' id='poimenu'>
   				<div class='poibar'><div class='closebtn' onclicK='closePoiView(event)'>X</div></div>
   				<div id='poidetails' class='beautifulmenu'>
-  				
   				</div>
   			</div>
   		</div>
   	</div>
-  	<div class='layermenu'>
-		<!--  -->
-        <!--<a href='https://github.com/babykarte/babykarte' target='_blank' id='linkToGitHub'>Auf Github</a>
-        <a href='https://wiki.openstreetmap.org/wiki/Baby-Karte' target='_blank' id='linkToOSMWiki'>OSM Wiki</a>-->
-    
-    </div>
-    <div id='autocomplete'></div>
     <div id='map'>
-    	<div id='progressbar'></div>
+    	<div id='spinner'>
+    		<div class='circle' id='circle1'></div>
+    		<div class='circle' id='circle2'></div>
+    		<div class='circle' id='circle3'></div>
+    	</div>
     	<div class='info'><div id='infoPopup'></div></div>
     	<div id='map-overlay-notify'></div>
     	<div class='leaflet-control-container'>

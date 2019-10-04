@@ -2,7 +2,7 @@ var refFr = {"site-map": {
 	"LOCATING_FAILURE": "N'a pas trouvé votre lieu",
 	"LOCATING_SUCCESS": "Votre lieu",
 	"LOADING_FAILURE": "Une erreur s'est produite, veuillez zoomer et réessayer",
-	"NODATA": "No '<i>%s</i>' available for the area you are currently viewing (EN)",
+	"NODATA": "No '<i>%s</i>' found here! (EN)",
 	"LNK_OSM_EDIT": "Modifier dans OSM",
 	"LNK_OSM_REPORT": "Signaler une information erronée",
 	"LNK_OSM_VIEW": "Voir le Point d'intérêt dans OpenStreetMap",

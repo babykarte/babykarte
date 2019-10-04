@@ -202,7 +202,7 @@ function osmExpression(poi, value) {
 }
 function getData(url, dataType, data,  fail, success, type) {
 	if (type == undefined) {type = "GET"}
-	if (fail == undefined) {fail = function() {showGlobalPopup(getText().LOADING_FAILURE);progressbar();}}
+	if (fail == undefined) {fail = function() {showGlobalPopup(getText().LOADING_FAILURE);spinner(false);}}
 	request = function() {
 		$.ajax({
 			type: type,
@@ -234,7 +234,6 @@ function getSubtitle(poi) {
 }
 function initMarkerObject(poi) {
 	marker = new Object();
-	console.log(poi.filter);
 	marker.category = poi.category;
 	marker.fltr = poi.filter;
 	marker.color = filter[poi.filter].color.code;

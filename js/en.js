@@ -2,7 +2,7 @@ var refEn = {"site-map": {
 	"LOCATING_FAILURE": "Did not find your location",
 	"LOCATING_SUCCESS": "Your location",
 	"LOADING_FAILURE": "An error occurred, zoom in and try again please",
-	"NODATA": "No '<i>%s</i>' available for the area you are currently viewing",
+	"NODATA": "No '<i>%s</i>' found here!",
 	"LNK_OSM_EDIT": "Edit in OSM",
 	"LNK_OSM_REPORT": "Report wrong information",
 	"LNK_OSM_VIEW": "View POI in OpenStreetMap",

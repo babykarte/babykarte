@@ -2,7 +2,7 @@ var debug_markerobj;
 var markerStyles = {};
 var area = {};
 var zoomLevel = "";
-var url = "https://babykarte.openstreetmap.de/getDataForBabykarte.cgi";
+var url = "http://localhost/getDataForBabykarte.cgi" //"https://babykarte.openstreetmap.de/getDataForBabykarte.cgi";
 var colorcode = {"yes": "color-green", "no": "color-red", "room": "color-green", "bench": "color-green", undefined: "color-grey", "limited": "color-yellow", "playground": "color-green"};
 // 'undefined' is equal to 'tag does not exist'. In JS, 'undefined' is also a value
 // '*' is a placeholder for notes from mappers and any other value (even 'undefined')
@@ -118,12 +118,12 @@ var ratingData = {"diaper": {"multiplicator": 4,	// diaper=* 4
 function locationFound(e) {
 	//Fires the notification that Babykarte shows the location of the user.
 	showGlobalPopup(getText().LOCATING_SUCCESS);
-	progressbar();
+	spinner(false);
 }
 function locationError(e) {
 	//Fires the notification that Babykarte shows NOT the location of the user, because it has no permission to do so.
 	showGlobalPopup(getText().LOCATING_FAILURE);
-	progressbar();
+	spinner(false);
 }
 function createSQL(bbox, fltr) { return String(fltr) + " - " + String(bbox) + "\n"; }
 /*function roundIt(number) {
@@ -480,19 +480,19 @@ function bypassDOM(elem) {
 function errorHandler(poi) {
 	var notes = poi.notes || undefined;
 	if (notes == "No Data") {
-		showGlobalPopup(getText().NODATA.replace("%s", getText().filtername[poi.filter]));progressbar();
+		showGlobalPopup(getText().NODATA.replace("%s", getText().filtername[poi.filter]));spinner(false);
 	}
 }
 function loadPOIS(e, post) {
 	hideFilterListOnMobile();
-	progressbar(50);
+	spinner(true);
 	//Main function of POI loading.
 	//Handles connection to OSM Overpass server and parses the response into beautiful looking details views for each POI
 	if (!post) {
 		//No data to send was specified, because none of the filter functions called it.
 		post = locateNewAreaBasedOnFilter();
 		if (!post) {
-			progressbar();
+			spinner(false);
 			return 0;
 		}
 	}
@@ -526,7 +526,7 @@ function loadPOIS(e, post) {
 				addrTrigger_intern(poi, marker);
 			}*/
 		}
-		progressbar();
+		spinner(false);
 	}, "POST");
 }
 function getStateFromHash() {
@@ -550,7 +550,6 @@ function requestLocation() {map.locate({setView: true, zoom: zoomLevel});}
 
 
 //init map
-progressbar(30);
 var map = L.map('map');
 map.setView([saved_lat, saved_lon], 15);
 getStateFromHash();
@@ -565,7 +564,7 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
   attribution: 'Map data &copy; <a href="https://openstreetmap.org/copyright">OpenStreetMap</a> contributors</a>, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Map Tiles &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
 }).addTo(map);
 
-progressbar();
+spinner(false);
 
 zoomLevel = String(map.getZoom());
 loadLang("", languageOfUser);
