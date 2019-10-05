@@ -27,7 +27,7 @@ Wir sind Michael Brandtner und Sören Reinecke und entwickeln für Dich die Baby
 - Cache-Server
   - Ein Cache-Server stellt Ressourcen zur Verfügung, die oft von den Browsern der
     Nutzer angefragt werden. Dadurch wird die Ladezeit einer Webseite in
-    Deinem Browser verkürzt. Diese Ressourcen werden von Entwicklern den Cache-Servern manuell zur Verfügung gestellt. Diese Server könnten auch Server-Logs führen.
+    Deinem Browser verkürzt. Diese Ressourcen werden von den Entwicklern der Cache-Server über diese zur Verfügung gestellt. Diese Server könnten auch Server-Logs führen.
 - Betriebssystem
   - Softwarecodes, die die Grundfunktionalität Deiner Arbeitsumgebung auf Deinem Computer sicherstellen.
 - Router
@@ -55,7 +55,7 @@ Wenn Dein Browser auf Bitten einer Anwendung einen Server kontaktiert, dann übe
 
 ## Kontaktaufnahme mit uns
 
-Bei der Kontaktaufnahme mit uns über die verschiedenen Wege wie Post, Telefon, E-Mail und GitHub werden alle Deine Angaben dazu verwendet die Babykarte gegeben Falls zu verbessern. Bei der Verwendung von Mail und GitHub werden dazu Drittanbieter eingesetzt, die mit Daten anders umgehen als wir. Bitte rufe deren Datenschutzerklärung auf, wenn es zu der Verarbeitung Deiner Daten auf deren Plattformen Fragen geben sollte.
+Bei der Kontaktaufnahme mit uns über die verschiedenen Wege wie Post, Telefon, E-Mail und GitHub werden alle Deine Angaben dazu verwendet die Babykarte gegebenenfalls zu verbessern. Bei der Verwendung von Mail und GitHub werden dazu Drittanbieter eingesetzt, die mit Daten anders umgehen als wir. Bitte rufe deren Datenschutzerklärung auf, wenn es zu der Verarbeitung Deiner Daten auf deren Plattformen Fragen geben sollte.
 
 ## Hinweis zur verantwortlichen Stelle
 
