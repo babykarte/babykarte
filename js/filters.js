@@ -80,7 +80,6 @@ function toggleLayers(id, toggle) {
 	}
 }
 function activateFilters() {
-	hideFilterListOnMobile(); //Hides the menu on mobile devices when filter loads
 	for (var fltr of filtersSorted) {
 		if (filter[fltr].active) {
 			activeFilter[fltr] = true;
@@ -98,6 +97,7 @@ function activateFilters() {
 	} else {
 		document.getElementById("map-overlay-notify").style.display = "block";
 	}
+	hideOrShow("#filtermenu", "hide");
 }
 function setFilter(id) {
 	//Gets called when the user (un)checks a filter.
@@ -137,7 +137,7 @@ function initFilters() {
 	var output = "";
 	var priorizeList = {}; //Dictionary used for priorizing filters like priorizing the 'restaurant' filter over the 'cafe' filter
 	var filtersGround = document.getElementById("filtersGround");
-	output += "<label style='color:#007399;'><input id='setFilters' onclick='setAllFilters()' type='checkbox'><span style='color:white;font-weight:bold;font-size:16px;'>&#9632; </span><span>" + String(getText().FLTR_SELECTALL) + "</span></label>"; //Adds the necessary HTML for checkbox element of '(Un)check them all'
+	output += "<label style='color:#3090b5ff'><input id='setFilters' onclick='setAllFilters()' type='checkbox'><span style='color:white;font-weight:bold;font-size:16px;'>&#9632; </span><span>" + String(getText().FLTR_SELECTALL) + "</span></label>"; //Adds the necessary HTML for checkbox element of '(Un)check them all'
 	for (var id of orderOfFilters) {
 		var beforeFilter = "";
 		if (filter[id].layers == undefined) {

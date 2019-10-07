@@ -1,23 +1,14 @@
 var saved_lat = 54.32308131652028;
 var saved_lon = 10.139915941399524;
-var mobile = false;
 var message;
-function mobileTrue() {mobile = true;} // Gets triggered when user triggers the menu button which is available for mobile devices only (small screen size)
-function togglemenu(value=false) {
-	var obj = document.getElementsByClassName("layermenu")[0]; // JS code for the menu button
-	if (value == true) { // Opens the menu by order from inside the JS code (calibrating its real state)
-		obj.style.height = "auto";
+function hideOrShow(elem, mode) {
+	var obj;
+	if (elem.startsWith("#")) {
+		obj = document.getElementById(elem.replace("#", ""))
 	}
-	if (obj.style.height != "auto") { //Opens the menu by just knowing its current height (any value ecept 'auto')
-		obj.style.height = "auto";
-	} else {
-		obj.style.height = "80px"; //Closes the menu and applies given height for the searchbar, language buttons and legal links
-	}
-}
-function hideFilterListOnMobile() { //Hides the menu when a filter loads (the green loading bar appears)
-	if (mobile) {
-		togglemenu(true); //Forces to close menu by opening it internally and then closing it internally. Its real state is being ignored.
-	}
+	if (mode == "show") {obj.style.display = "block";} else {obj.style.display = "none";}
+	setTimeout(function() {obj.style = ""},1000)
+	document.getElementsByClassName("menuitem")[3].click();
 }
 function spinner(value) { //Triggers the processbar and or its process
 	var elem = document.getElementById("spinner");
@@ -39,6 +30,7 @@ function showGlobalPopup(m) { // Triggers the blue rounded message popup
 }
 function jumpto(elem, lat, lon) { // Function which fires when user clicks on a search suggestion. Forcing Babykarte to jump to a new position (e.g. Berlin central station)
 	if (elem.innerHTML) {
+		hideOrShow("#searchgroup", "hide")
 		spinner(true);
 		$("#autocomplete").hide(); // Hide the search suggestions
 		map.on("moveend", function() {}); //Deactivate the dynamic loading of content

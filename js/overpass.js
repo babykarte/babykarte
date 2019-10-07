@@ -2,7 +2,7 @@ var debug_markerobj;
 var markerStyles = {};
 var area = {};
 var zoomLevel = "";
-var url = "http://localhost/getDataForBabykarte.cgi" //"https://babykarte.openstreetmap.de/getDataForBabykarte.cgi";
+var url = "https://babykarte.openstreetmap.de/getDataForBabykarte.cgi";
 var colorcode = {"yes": "color-green", "no": "color-red", "room": "color-green", "bench": "color-green", undefined: "color-grey", "limited": "color-yellow", "playground": "color-green"};
 // 'undefined' is equal to 'tag does not exist'. In JS, 'undefined' is also a value
 // '*' is a placeholder for notes from mappers and any other value (even 'undefined')
@@ -275,7 +275,6 @@ function contactTab(poi, prefix , condition, symbol, nounicode) {
 	if (result.startsWith("www.") && !prefix.startsWith("mail")) {result = "http://" + result}
 	return "<div class='grid-container'><a class='nounderlinestyle' target='_blank' href='" + prefix  + result + "'>" + symbol + "</a><a target='_blank' href='"+ prefix + result + "'>" + result + "</a></div>\n";
 }
-function closePoiView(event) {$("#poimenu").hide();/*bypassDOM("#poimenu")*/}
 function processContentDatabase_intern(marker, poi, database, tag, values, data, parent) {
 	if (!parent) {parent = tag;}
 	for (var i in values) {
@@ -484,7 +483,6 @@ function errorHandler(poi) {
 	}
 }
 function loadPOIS(e, post) {
-	hideFilterListOnMobile();
 	spinner(true);
 	//Main function of POI loading.
 	//Handles connection to OSM Overpass server and parses the response into beautiful looking details views for each POI

@@ -94,10 +94,10 @@ section {
 	opacity:0.4;
 }
 .active:hover {
-	border-top:3px solid #d6e0f5;
+	color:#b53085;
 }
 .active[active] {
-	border-top:3px solid #52a0c9;
+	color:#b53085;
 }
 .grid-container {
 	display:grid;
@@ -188,7 +188,7 @@ section {
 	text-align:center;
 }
 .dropdown-menu a:hover {
-	border-top:3px solid #d6e0f5;
+	color:#b53085;
 }
 .dropdown:hover > .dropdown-menu {
 	display:block;
@@ -252,12 +252,8 @@ section {
 	margin-left:auto;
 	margin-right:auto;
 	margin-top:5px;
-	z-index:401;
+	z-index:403;
 	width:100%;
-}
-.locatingBtn {
-	z-index:402;
-	font-size:20px;
 }
 #map{
 	z-index:1;
@@ -297,6 +293,7 @@ section {
 	z-index:402;
 	margin-left:40%;
 	margin-right:40%;
+	margin-top:10px;
 }
 #spinner .circle {
 	width:50px;
@@ -364,7 +361,15 @@ section {
 .beautifulmenu {
 	width:100%;
 }
-/*#infoPopup {
+#infoPopup {
 	width:200px;
-}*/
+}
+#info {
+	width:100%;
+	border-radius:5px;
+}
+#spinner {
+	margin-left:10%;
+	margin-right:10%;
+}
 }
