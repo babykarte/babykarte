@@ -361,6 +361,12 @@ section {
 .beautifulmenu {
 	width:100%;
 }
+#poimenu {
+	top:initial !important;
+	bottom:0px;
+	height:250px !important;
+	width:calc(100% - 45px) !important;
+}
 #infoPopup {
 	width:200px;
 }
