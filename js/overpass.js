@@ -480,9 +480,9 @@ function errorHandler(poi) {
 	var notes = poi.notes || undefined;
 	if (notes == "No Data") {
 		showGlobalPopup(getText().NODATA.replace("%s", getText().filtername[poi.filter]));spinner(false);
-	} else (notes == "ERROR 404") {
+	} else if (notes == "ERROR 404") {
 		showGlobalPopup(getText().ERROR404.replace("%s", getText().filtername[poi.filter]));spinner(false);
-	} else (notes.startsWith("ERROR 503")) {
+	} else if (notes.startsWith("ERROR 503")) {
 		showGlobalPopup(getText().ERROR503.replace("%s", getText().filtername[poi.filter]));spinner(false);
 	} else {
 		showGlobalPopup(getText().ERROR.replace("%s", getText().filtername[poi.filter]));spinner(false);
