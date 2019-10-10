@@ -12,37 +12,36 @@
   <body id='site-map'>
   	<section>
   	<div class='leftbar'>
-  		<div class='menuitem dropdown'><img class='bar-icon' src='images/info.svg.png'>
-  			<div class='dropdown-menu about' id='aboutus'>
+  		<div class='menuitem dropdown'><img class='bar-icon' src='images/info.svg.png' onclick='toggleMenu(this)' />
+  			<div class='dropdown-menu about' id='aboutus' style='display:none;'>
   				<a href='https://github.com/babykarte/babykarte' target='_blank' id='linkToGitHub'>Auf Github</a>
         		<a href='https://wiki.openstreetmap.org/wiki/Baby-Karte' target='_blank' id='linkToOSMWiki'>OSM Wiki</a>
         		<a href='impressum.html#de' id='lnk-impress' target='_blank'>Impressum</a>
         		<a href='privacypolicy-de.html' id='linkToPP' target='_blank;'>Datenschutz (v.3)</a>
   			</div>
   		</div>
-  		<div class='menuitem dropdown'><img class='bar-icon' src='images/www.svg'>
-  			<div class='dropdown-menu lang-select'>
+  		<div class='menuitem dropdown'><img class='bar-icon' src='images/www.svg' onclick='toggleMenu(this)' />
+  			<div class='dropdown-menu lang-select' style='display:none;'>
   				<a href='#' class='nounderlinestyle' onclick='loadLang(this, "en");'><span class='small-icon'>EN</span></a>
   				<a href='#' class='nounderlinestyle' onclick='loadLang(this, "de");'><span class='small-icon'>DE</span></a>
   				<a href='#' class='nounderlinestyle' onclick='loadLang(this, "fr");'><span class='small-icon'>FR</span></a>
   			</div>
   		</div>
-  		<div class='menuitem dropdown'><img class='bar-icon' src='images/search.svg.png'>
-  		<div class='dropdown-menu searchbar' id='searchgroup'>
+  		<div class='menuitem dropdown'><img class='bar-icon' src='images/search.svg.png' onclick='toggleMenu(this)' />
+  			<div class='dropdown-menu searchbar' id='searchgroup style='display:none;''>
      			<input type='text' onclick='geocode()' placeholder='Ort' id='searchfield'>
      			<div id='autocomplete'></div>
+			</div>
 		</div>
-		</div>
-  		<div class='menuitem dropdown'><img class='bar-icon' src='images/checkmark.svg'>
-  			<div class='dropdown-menu bigmenu' id='filtermenu'>
+  		<div class='menuitem dropdown'><img class='bar-icon' src='images/checkmark.svg' onclick='toggleMenu(this)' />
+  			<div class='dropdown-menu bigmenu' id='filtermenu' style='display:none;'>
   				<div class='beautifulmenu'>
   					<div id='filtersGround'></div>
   				</div>
   			</div>
   		</div>
-  		<div class='menuitem dropdown'><img class='bar-icon' src='images/marker.svg' />
-  			<div class='dropdown-menu bigmenu' id='poimenu'>
-  				<div class='poibar'><div class='closebtn' onclicK='hideOrShow("#poimenu", "hide")'>X</div></div>
+  		<div class='menuitem dropdown'><img class='bar-icon' src='images/marker.svg' onclick='toggleMenu(this)' />
+  			<div class='dropdown-menu bigmenu' id='poimenu' style='display:none;'>
   				<div id='poidetails' class='beautifulmenu'>
   				</div>
   			</div>

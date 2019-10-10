@@ -1,14 +1,21 @@
 var saved_lat = 54.32308131652028;
 var saved_lon = 10.139915941399524;
 var message;
-function hideOrShow(elem, mode) {
-	var obj;
-	if (elem.startsWith("#")) {
-		obj = document.getElementById(elem.replace("#", ""))
+function hideAll() {
+	for (var menuitem of document.getElementsByClassName("dropdown-menu")) {
+		menuitem.style.display = "none";
 	}
-	if (mode == "show") {obj.style.display = "block";} else {obj.style.display = "none";}
-	setTimeout(function() {obj.style = ""},1000)
-	document.getElementsByClassName("menuitem")[3].click();
+}
+function toggleMenu(elem) {
+	var parent = elem.parentElement;
+	var menu = elem.nextElementSibling;
+	var state = menu.style.display;
+	hideAll();
+	if (state == "none") {
+		menu.style.display = "block";
+	} else {
+		menu.style.display = "none";
+	}
 }
 function spinner(value) { //Triggers the processbar and or its process
 	var elem = document.getElementById("spinner");
@@ -30,7 +37,7 @@ function showGlobalPopup(m) { // Triggers the blue rounded message popup
 }
 function jumpto(elem, lat, lon) { // Function which fires when user clicks on a search suggestion. Forcing Babykarte to jump to a new position (e.g. Berlin central station)
 	if (elem.innerHTML) {
-		hideOrShow("#searchgroup", "hide")
+		HideAll()
 		spinner(true);
 		$("#autocomplete").hide(); // Hide the search suggestions
 		map.on("moveend", function() {}); //Deactivate the dynamic loading of content
@@ -70,6 +77,8 @@ function geocode() { // Function which powers the search suggestion list
 				$("#autocomplete").show(); //Display the suggestion popup to the user
 			}
 		});
+	} else {
+		$("#autocomplete").hide();
 	}
 };
 // Makes the search happen directly after a char is typed in searchfield.

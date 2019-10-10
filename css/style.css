@@ -130,11 +130,11 @@ section {
 	height:25px;
 	width:25px;
 }
+.bar-icon:hover {
+	cursor:pointer;
+}
 .menuitem {
 	padding:10px;
-}
-.menuitem:hover {
-	cursor:pointer;
 }
 .lang-select {
 	font-family:"Palatino Linotype", "Book Antiqua", Palatino, serif;
@@ -147,12 +147,6 @@ section {
 .about {
 	font-family:"Palatino Linotype", "Book Antiqua", Palatino, serif;
 	top:0px;
-}
-.poibar {
-	height:29px;
-	box-sizing:border-box;
-	width:100%;
-	background-color:#ff531aff;
 }
 .closebtn {
 	float:right;
@@ -179,9 +173,6 @@ section {
 	z-index:2;
 	position:absolute;
 }
-.dropdown-menu:hover {
-	display:block;
-}
 .dropdown-menu a {
 	box-sizing:border-box;
 	display:inline-block;
@@ -189,9 +180,6 @@ section {
 }
 .dropdown-menu a:hover {
 	color:#b53085;
-}
-.dropdown:hover > .dropdown-menu {
-	display:block;
 }
 #filtersGround label {
 	display:block;

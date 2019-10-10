@@ -97,7 +97,7 @@ function activateFilters() {
 	} else {
 		document.getElementById("map-overlay-notify").style.display = "block";
 	}
-	hideOrShow("#filtermenu", "hide");
+	hideAll();
 }
 function setFilter(id) {
 	//Gets called when the user (un)checks a filter.
