@@ -46,11 +46,11 @@ section {
 }
 /*---------------------- POI DETAILS SETTINGS -------------------------------*/
 .tabcontent {
-	box-shadow: -10px 0px 5px -2px grey;
-	padding:2px;
-	overflow:auto;
+	padding-top:2px;
+	padding-bottom:2px;
+	padding-left:10px;
+	word-wrap:break-word;
 	display:none;
-	height:100px;
 }
 .tabcontent ul {
 	margin:0px;
@@ -67,7 +67,7 @@ section {
 }
 .pdv-icon {
 	box-sizing:border-box;
-	padding:15px;
+	padding:2px;
 	font-size:25px;
 	cursor:pointer;
 	text-align:center;
@@ -80,6 +80,7 @@ section {
 	margin-top:5px;
 	margin-left:5px;
 	margin-right:10px;
+	cursor:pointer;
 }
 .text-icon {
 	height:15px;
@@ -103,6 +104,19 @@ section {
 	display:grid;
 	grid-template-columns:auto auto;
 	justify-content:start;
+}
+.address {
+	font-size:12px;
+}
+.subtitle {
+	font-size:14px;
+}
+.openinghours {
+	color:black;
+}
+.socialmenu {
+	display:flex;
+	padding:3px;
 }
 /*---------------------- COLOUR CODES FOR BABY FRIENDLINESS TAB -------------------------------- */
 .color-green {
@@ -155,7 +169,7 @@ section {
 	color:white;
 }
 .beautifulmenu {
-	padding-left:10px !important;
+	/*padding-left:10px !important;*/
 	padding-right:10px !important;
 	width:450px;
 }
@@ -210,9 +224,8 @@ section {
 	background-color:rgb(255, 64, 0, 0.6);
 }
 #poidetails {
-	padding-top:10px;
 	font-family:"Palatino Linotype", "Book Antiqua", Palatino, serif;
-	font-size:16px;
+	font-size:14px;
 }
 /*------------------------- ON MAP MODALS -----------------*/
 .custom-leaflet-icon {
@@ -352,8 +365,9 @@ section {
 #poimenu {
 	top:initial !important;
 	bottom:0px;
-	height:250px !important;
-	width:calc(100% - 45px) !important;
+	left:10px;
+	height:200px !important;
+	width:calc(100% - 10px) !important;
 }
 #infoPopup {
 	width:200px;

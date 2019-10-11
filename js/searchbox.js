@@ -6,11 +6,14 @@ function hideAll() {
 		menuitem.style.display = "none";
 	}
 }
-function toggleMenu(elem) {
+function toggleMenu(elem, mode) {
+	mode = mode || "all"
 	var parent = elem.parentElement;
 	var menu = elem.nextElementSibling;
 	var state = menu.style.display;
-	hideAll();
+	if (mode == "all") {
+		hideAll();
+	}
 	if (state == "none") {
 		menu.style.display = "block";
 	} else {
