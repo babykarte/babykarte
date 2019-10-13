@@ -2,22 +2,33 @@ var saved_lat = 54.32308131652028;
 var saved_lon = 10.139915941399524;
 var message;
 function hideAll() {
-	for (var menuitem of document.getElementsByClassName("dropdown-menu")) {
-		menuitem.style.display = "none";
+	for (var dropdown of document.getElementsByClassName("dropdown-menu")) {
+		dropdown.classList.remove("dropdown-active");
+		//dropdown.style.display = "none";
+	}
+	for (var menuitem of document.getElementsByClassName("menuitem")) {
+		menuitem.classList.remove("item-active");
 	}
 }
 function toggleMenu(elem, mode) {
 	mode = mode || "all"
+	console.log("toggleMenu");
 	var parent = elem.parentElement;
 	var menu = elem.nextElementSibling;
-	var state = menu.style.display;
+	var active = menu.classList.contains("dropdown-active");
+	console.log(active);
 	if (mode == "all") {
 		hideAll();
 	}
-	if (state == "none") {
-		menu.style.display = "block";
+	if (!active) {
+		console.log("activate");
+		elem.classList.add("item-active");
+		menu.classList.add("dropdown-active");
+		//menu.style.display = "block";
 	} else {
-		menu.style.display = "none";
+		elem.classList.remove("item-active");
+		menu.classList.remove("dropdown-active");
+		//menu.style.display = "none";
 	}
 }
 function spinner(value) { //Triggers the processbar and or its process

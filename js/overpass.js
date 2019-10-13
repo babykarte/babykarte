@@ -87,7 +87,7 @@ var PDV_babyTab = { //PDV = POI Details View
 						}
 				}
 			};
-var ratingRules = {"max": 23, "green": {"default": 12, "color": "rating-green"}, "red": {"default": 18, "color": "rating-red"}};
+var ratingRules = {"red": {"default": 18, "color": "rating-red"}, "green": {"default": 12, "color": "rating-green"}};
 var ratingData = {"diaper": {"multiplicator": 4,	// diaper=* 4
 					"values" :
 						{"yes": 2,				//     yes 2
@@ -414,7 +414,7 @@ function getRightPopup(marker, usePopup) {
 	var name = getSubtitle(poi);
 	marker.name = name || getText().filtername[marker.fltr]; //Sets the subtitle which appears under the POI's name as text in grey
 	var popup = {"POIpopup": 
-		{"home": {"content": `<h2 class='subtitle'>${ ((poi.tags["operator"]) ? String(marker.name) + " - " + poi.tags["operator"] : String(marker.name)) }</h2>\n<h1>${ ((poi.tags["name"] == undefined) ? ((poi.tags["amenity"] == "toilets") ? getText().TOILET : getText().PDV_UNNAME) : poi.tags["name"]) }</h1>\n<h2 class='address' id='address${ poi.classId }'>${ addrTrigger(poi, marker) }</h2>\n<div class='socialmenu'>\n${ contactTab(poi, "", "poi.tags['website'] || poi.tags['contact:website'] || 'NODISPLAY'", "🌍") }${ contactTab(poi, "tel:", "poi.tags['phone'] || poi.tags['contact:phone'] || 'NODISPLAY'", "☎️") }${ contactTab(poi, "mailto:", "poi.tags['email'] || poi.tags['contact:email'] || 'NODISPLAY'", "📧") }${ contactTab(poi, "", "((poi.tags['facebook'] != undefined) ? ((poi.tags['facebook'].indexOf('/') > -1) ? poi.tags['facebook'] : ((poi.tags['facebook'] == -1) ? 'https://www.facebook.com/' + poi.tags['facebook'] : undefined)) : ((poi.tags['contact:facebook'] != undefined) ? ((poi.tags['contact:facebook'].indexOf('/') > -1) ? poi.tags['contact:facebook'] : ((poi.tags['contact:facebook'] == -1) ? 'https://www.facebook.com/' + poi.tags['contact:facebook'] : 'NODISPLAY')) : 'NODISPLAY'))", "images/facebook-logo.svg", true) }\n<div class='dropdown'><img class='small-icon' src='images/share.svg' onclick='toggleMenu(this, "single")' /><div class='dropdown-menu' style='display:none;'><a target='_blank' href='${ "https://www.openstreetmap.org/" + String(poi.type).toLowerCase() + "/" + String(poi.osm_id) }'>${ getText().LNK_OSM_VIEW }</a><br/>\n<a href='${ "geo:" + poi.lat + "," + poi.lon }'>${ getText().LNK_OPEN_WITH }</a></div></div></div>`, "symbol": "🏠", "title": getText().PDV_TITLE_HOME, "active": true, "default": true},
+		{"home": {"content": `<h2 class='subtitle'>${ ((poi.tags["operator"]) ? poi.tags["operator"] : "NODISPLAY") }</h2>\n<h1>${ ((poi.tags["name"] == undefined) ? ((poi.tags["amenity"] == "toilets") ? getText().TOILET : getText().PDV_UNNAME) : poi.tags["name"]) }</h1>\n<span class='subtitle'>${ String(marker.name) }</span> &#8231; <span class='subtitle' id='address${ poi.classId }'>${ addrTrigger(poi, marker) }</span>\n<div class='socialmenu'>\n${ contactTab(poi, "", "poi.tags['website'] || poi.tags['contact:website'] || 'NODISPLAY'", "🌍") }${ contactTab(poi, "tel:", "poi.tags['phone'] || poi.tags['contact:phone'] || 'NODISPLAY'", "☎️") }${ contactTab(poi, "mailto:", "poi.tags['email'] || poi.tags['contact:email'] || 'NODISPLAY'", "📧") }${ contactTab(poi, "", "((poi.tags['facebook'] != undefined) ? ((poi.tags['facebook'].indexOf('/') > -1) ? poi.tags['facebook'] : ((poi.tags['facebook'] == -1) ? 'https://www.facebook.com/' + poi.tags['facebook'] : undefined)) : ((poi.tags['contact:facebook'] != undefined) ? ((poi.tags['contact:facebook'].indexOf('/') > -1) ? poi.tags['contact:facebook'] : ((poi.tags['contact:facebook'] == -1) ? 'https://www.facebook.com/' + poi.tags['contact:facebook'] : 'NODISPLAY')) : 'NODISPLAY'))", "images/facebook-logo.svg", true) }\n<div class='dropdown'><img class='small-icon' src='images/share.svg' onclick='toggleMenu(this, "single")' /><div class='dropdown-menu' style='display:none;'><a target='_blank' href='${ "https://www.openstreetmap.org/" + String(poi.type).toLowerCase() + "/" + String(poi.osm_id) }'>${ getText().LNK_OSM_VIEW }</a><br/>\n<a href='${ "geo:" + poi.lat + "," + poi.lon }'>${ getText().LNK_OPEN_WITH }</a></div></div></div>`, "symbol": "🏠", "title": getText().PDV_TITLE_HOME, "active": true, "default": true},
 		"opening_hours": {"content": `${ parseOpening_hours(poi.tags["opening_hours"]) || "NODISPLAY" }`, "symbol": "🕰️", "title": getText().PDV_TITLE_OH, "active": true},
 		"baby": {"content": `${processContentDatabase(marker, poi, PDV_babyTab)}`, "symbol": "👶", "title": getText().PDV_TITLE_BABY, "active": true},
 		},
@@ -465,13 +465,10 @@ function createDialog(marker, poi, details_data) {
 		}
 	}
 	popupContent_header += "<div class='pdv-icon active'> <a class='nounderlinestyle' target=\"_blank\" href=\"https://www.openstreetmap.org/edit?" + String(poi.type) + "=" + String(poi.osm_id) + "\">&#128395;</a></div></div>";
-	marker.popupContent = "<div style='display:flex;'>" + popupContent_header + popupContent + "</div> <hr/> <a target=\"_blank\" href=\"https://www.openstreetmap.org/note/new#map=17/" + poi.lat + "/" + poi.lon + "&layers=N\">" + getText().LNK_OSM_REPORT + "</a>";
+	marker.popupContent = "<div style='display:flex;'>" + popupContent_header + popupContent + "</div> <a target=\"_blank\" href=\"https://www.openstreetmap.org/note/new#map=17/" + poi.lat + "/" + poi.lon + "&layers=N\">" + getText().LNK_OSM_REPORT + "</a>";
 	$("#poidetails").html(marker.popupContent);
 	$("#poimenu").show();
 	debug_markerobj = marker;
-}
-function bypassDOM(elem) {
-	setTimeout(function() {$(elem).attr("style", "")}, 1000);
 }
 function errorHandler(poi) {
 	var notes = poi.notes || undefined;
@@ -562,7 +559,7 @@ var Layergroup = new L.LayerGroup();
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
   maxZoom: 19,
   minZoom: 10,
-  attribution: 'Map data &copy; <a href="https://openstreetmap.org/copyright">OpenStreetMap</a> contributors</a>, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Map Tiles &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+  attribution: '&copy; <a href="https://openstreetmap.org/copyright">OpenStreetMap</a> data under <a href="https://opendatacommons.org/licenses/odbl/">ODbL</a>, Tiles &copy; <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC BY-SA</a>'
 }).addTo(map);
 
 spinner(false);

@@ -46,8 +46,8 @@ section {
 }
 /*---------------------- POI DETAILS SETTINGS -------------------------------*/
 .tabcontent {
-	padding-top:2px;
-	padding-bottom:2px;
+	padding-top:5px;
+	padding-bottom:5px;
 	padding-left:10px;
 	word-wrap:break-word;
 	display:none;
@@ -105,11 +105,9 @@ section {
 	grid-template-columns:auto auto;
 	justify-content:start;
 }
-.address {
-	font-size:12px;
-}
 .subtitle {
-	font-size:14px;
+	color:#333333;
+	font-size:12px;
 }
 .openinghours {
 	color:black;
@@ -194,6 +192,12 @@ section {
 }
 .dropdown-menu a:hover {
 	color:#b53085;
+}
+.dropdown-active { /* Style for opened dropdowns (tab, sub menus) */
+	display:block;
+}
+.item-active { /* Style for clicked (active) tab labels (menus) */
+	
 }
 #filtersGround label {
 	display:block;
