@@ -1,4 +1,5 @@
 var debug_markerobj;
+var activeMarker;
 var markerStyles = {};
 var area = {};
 var zoomLevel = "";
@@ -410,7 +411,13 @@ function addMarkerIcon(poi, marker) {
 }
 function getRightPopup(marker, usePopup) {
 	marker = marker.target;
+	console.log(marker)
 	var poi = marker.data;
+	if (activeMarker) {
+		activeMarker._icon.children[0].children[0].children[2].classList.remove("marker-active")
+	}
+	marker._icon.children[0].children[0].children[2].classList.add("marker-active")
+	activeMarker = marker;
 	var name = getSubtitle(poi);
 	marker.name = name || getText().filtername[marker.fltr]; //Sets the subtitle which appears under the POI's name as text in grey
 	var popup = {"POIpopup": 

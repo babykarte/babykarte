@@ -116,6 +116,9 @@ section {
 	display:flex;
 	padding:3px;
 }
+.marker-active { /* Style for the active marker, the marker the user has clicked on */
+	filter: brightness(300%);
+}
 /*---------------------- COLOUR CODES FOR BABY FRIENDLINESS TAB -------------------------------- */
 .color-green {
 	color:#339933;
