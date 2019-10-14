@@ -411,12 +411,13 @@ function addMarkerIcon(poi, marker) {
 }
 function getRightPopup(marker, usePopup) {
 	marker = marker.target;
-	console.log(marker)
 	var poi = marker.data;
-	if (activeMarker) {
-		activeMarker._icon.children[0].children[0].children[2].classList.remove("marker-active")
+	if (activeMarker && marker._icon != null) {
+		activeMarker._icon.children[0].children[0].children[2].classList.remove("marker-active") || false
 	}
-	marker._icon.children[0].children[0].children[2].classList.add("marker-active")
+	if (marker._icon != null) {
+		marker._icon.children[0].children[0].children[2].classList.add("marker-active") || false
+	}
 	activeMarker = marker;
 	var name = getSubtitle(poi);
 	marker.name = name || getText().filtername[marker.fltr]; //Sets the subtitle which appears under the POI's name as text in grey
@@ -474,7 +475,7 @@ function createDialog(marker, poi, details_data) {
 	popupContent_header += "<div class='pdv-icon active'> <a class='nounderlinestyle' target=\"_blank\" href=\"https://www.openstreetmap.org/edit?" + String(poi.type) + "=" + String(poi.osm_id) + "\">&#128395;</a></div></div>";
 	marker.popupContent = "<div style='display:flex;'>" + popupContent_header + popupContent + "</div> <a target=\"_blank\" href=\"https://www.openstreetmap.org/note/new#map=17/" + poi.lat + "/" + poi.lon + "&layers=N\">" + getText().LNK_OSM_REPORT + "</a>";
 	$("#poidetails").html(marker.popupContent);
-	$("#poimenu").show();
+	toggleMenu(document.getElementById("poimenu").previousElementSibling, "justopen")
 	debug_markerobj = marker;
 }
 function errorHandler(poi) {

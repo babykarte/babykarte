@@ -12,16 +12,16 @@ function hideAll() {
 }
 function toggleMenu(elem, mode) {
 	mode = mode || "all"
-	console.log("toggleMenu");
 	var parent = elem.parentElement;
 	var menu = elem.nextElementSibling;
 	var active = menu.classList.contains("dropdown-active");
-	console.log(active);
 	if (mode == "all") {
 		hideAll();
 	}
+	if (mode == "justopen") {
+		active = false;	
+	}
 	if (!active) {
-		console.log("activate");
 		elem.classList.add("item-active");
 		menu.classList.add("dropdown-active");
 		//menu.style.display = "block";
