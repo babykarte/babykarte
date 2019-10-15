@@ -79,7 +79,7 @@ section {
 	color:#006691ff;
 	margin-top:5px;
 	margin-left:5px;
-	margin-right:10px;
+	margin-right:20px;
 	cursor:pointer;
 }
 .text-icon {
@@ -118,6 +118,9 @@ section {
 }
 .marker-active { /* Style for the active marker, the marker the user has clicked on */
 	filter: brightness(300%);
+}
+.oneline-babyfriendliness {
+	font-size:12px;
 }
 /*---------------------- COLOUR CODES FOR BABY FRIENDLINESS TAB -------------------------------- */
 .color-green {
