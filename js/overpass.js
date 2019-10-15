@@ -269,12 +269,12 @@ function toggleTab(bla, id) {
 function contactTab(poi, prefix , condition, symbol, nounicode) {
 	var result = eval(condition);
 	if (nounicode == true) {
-		symbol = "<img class='small-icon' src='" + symbol + "' />";
+		symbol = "<img src='" + symbol + "' />";
 	} else {
-		symbol = "<span class='small-icon'>" + symbol + "</span>";
+		symbol = "<span class=''>" + symbol + "</span>";
 	}
 	if (result.startsWith("www.") && !prefix.startsWith("mail")) {result = "http://" + result}
-	return "<a class='nounderlinestyle' target='_blank' href='" + prefix  + result + "'>" + symbol + "</a>\n";
+	return "<a class='nounderlinestyle small-icon' target='_blank' href='" + prefix  + result + "'>" + symbol + "</a>\n";
 }
 function processContentDatabase_intern(marker, poi, database, tag, values, data, parent) {
 	if (!parent) {parent = tag;}
@@ -335,26 +335,41 @@ function processContentDatabase(marker, poi, database) {
 			}
 		}
 	}
-	for (var tag in database) {
-		if (database[tag].triggers) {data = database[tag].triggers(data, data[tag]);}
+	for (var tag in data) {
+		if (data[tag].title == "NODISPLAY") {
+			delete data[tag];
+		} 
 	}
 	for (var tag in data) {
+		if (database[tag].triggers) {data = database[tag].triggers(data, data[tag]);}
+	}
+	maxcount = Object.keys(data).length;
+	curcount = 1
+	for (var tag in data) {
 		if (Object.keys(data[tag].children).length == 0 || Object.keys(data[tag]).length == 0) {
-			output += "<ul><li class='" + data[tag].color + "'>" + data[tag].title + "</li></ul>\n";
+			output += "<span class='" + data[tag].color + "'>" + data[tag].title + "</span>";
 		} else {
-			output += "<details><summary class='" + data[tag].color + "'>" + data[tag].title + "</summary>\n<div>\n%content</div>\n</details>\n";
-			var childrenHTML = "";
+			output += "<span class='" + data[tag].color + "'>" + data[tag].title;
+			content = ""
 			if (data[tag].title != "NODISPLAY") {
 				for (var child in data[tag].children) {
-					childrenHTML += "<ul><li>" + data[tag].children[child].title + "</li></ul>\n";
+					if (content != "") {content += ", "}
+					content += data[tag].children[child].title.replace(data[tag].children[child].title[0], data[tag].children[child].title[0].toLowerCase()) + "\n";
 				}
 			}
-			output = output.replace("%content", childrenHTML);
+			output += " (\n" + content.trim() + "\n)"; 
+			output += "</span>";
 		}
+		if (maxcount > curcount) {output += " &#8231; \n"}
+		curcount += 1;
 	}
 	var result = output.split("\n");
 	output = ""
-	for (var i in result) {if (result[i].indexOf("NODISPLAY") == -1) {output += result[i];}}
+	for (var i in result) {
+		if (result[i].indexOf("NODISPLAY") == -1) {
+			output += result[i];
+		}
+	}
 	objref = data;
 	return output;
 }
@@ -422,9 +437,8 @@ function getRightPopup(marker, usePopup) {
 	var name = getSubtitle(poi);
 	marker.name = name || getText().filtername[marker.fltr]; //Sets the subtitle which appears under the POI's name as text in grey
 	var popup = {"POIpopup": 
-		{"home": {"content": `<h2 class='subtitle'>${ ((poi.tags["operator"]) ? poi.tags["operator"] : "NODISPLAY") }</h2>\n<h1>${ ((poi.tags["name"] == undefined) ? ((poi.tags["amenity"] == "toilets") ? getText().TOILET : getText().PDV_UNNAME) : poi.tags["name"]) }</h1>\n<span class='subtitle'>${ String(marker.name) }</span> &#8231; <span class='subtitle' id='address${ poi.classId }'>${ addrTrigger(poi, marker) }</span>\n<div class='socialmenu'>\n${ contactTab(poi, "", "poi.tags['website'] || poi.tags['contact:website'] || 'NODISPLAY'", "🌍") }${ contactTab(poi, "tel:", "poi.tags['phone'] || poi.tags['contact:phone'] || 'NODISPLAY'", "☎️") }${ contactTab(poi, "mailto:", "poi.tags['email'] || poi.tags['contact:email'] || 'NODISPLAY'", "📧") }${ contactTab(poi, "", "((poi.tags['facebook'] != undefined) ? ((poi.tags['facebook'].indexOf('/') > -1) ? poi.tags['facebook'] : ((poi.tags['facebook'] == -1) ? 'https://www.facebook.com/' + poi.tags['facebook'] : undefined)) : ((poi.tags['contact:facebook'] != undefined) ? ((poi.tags['contact:facebook'].indexOf('/') > -1) ? poi.tags['contact:facebook'] : ((poi.tags['contact:facebook'] == -1) ? 'https://www.facebook.com/' + poi.tags['contact:facebook'] : 'NODISPLAY')) : 'NODISPLAY'))", "images/facebook-logo.svg", true) }\n<div class='dropdown'><img class='small-icon' src='images/share.svg' onclick='toggleMenu(this, "single")' /><div class='dropdown-menu' style='display:none;'><a target='_blank' href='${ "https://www.openstreetmap.org/" + String(poi.type).toLowerCase() + "/" + String(poi.osm_id) }'>${ getText().LNK_OSM_VIEW }</a><br/>\n<a href='${ "geo:" + poi.lat + "," + poi.lon }'>${ getText().LNK_OPEN_WITH }</a></div></div></div>`, "symbol": "🏠", "title": getText().PDV_TITLE_HOME, "active": true, "default": true},
-		"opening_hours": {"content": `${ parseOpening_hours(poi.tags["opening_hours"]) || "NODISPLAY" }`, "symbol": "🕰️", "title": getText().PDV_TITLE_OH, "active": true},
-		"baby": {"content": `${processContentDatabase(marker, poi, PDV_babyTab)}`, "symbol": "👶", "title": getText().PDV_TITLE_BABY, "active": true},
+		{"home": {"content": `<h2 class='subtitle'>${ ((poi.tags["operator"]) ? poi.tags["operator"] : "NODISPLAY") }</h2>\n<h1>${ ((poi.tags["name"] == undefined) ? ((poi.tags["amenity"] == "toilets") ? getText().TOILET : getText().PDV_UNNAME) : poi.tags["name"]) }</h1>\n<span class='subtitle'>${ String(marker.name) }</span> &#8231; <span class='subtitle' id='address${ poi.classId }'>${ addrTrigger(poi, marker) }</span>\n<div class='socialmenu'>\n${ contactTab(poi, "", "poi.tags['website'] || poi.tags['contact:website'] || 'NODISPLAY'", "🌍") }${ contactTab(poi, "tel:", "poi.tags['phone'] || poi.tags['contact:phone'] || 'NODISPLAY'", "☎️") }${ contactTab(poi, "mailto:", "poi.tags['email'] || poi.tags['contact:email'] || 'NODISPLAY'", "📧") }${ contactTab(poi, "", "((poi.tags['facebook'] != undefined) ? ((poi.tags['facebook'].indexOf('/') > -1) ? poi.tags['facebook'] : ((poi.tags['facebook'] == -1) ? 'https://www.facebook.com/' + poi.tags['facebook'] : undefined)) : ((poi.tags['contact:facebook'] != undefined) ? ((poi.tags['contact:facebook'].indexOf('/') > -1) ? poi.tags['contact:facebook'] : ((poi.tags['contact:facebook'] == -1) ? 'https://www.facebook.com/' + poi.tags['contact:facebook'] : 'NODISPLAY')) : 'NODISPLAY'))", "images/facebook-logo.svg", true) }\n<div class='dropdown'><img class='small-icon' src='images/share.svg' onclick='toggleMenu(this, "single")' /><div class='dropdown-menu'><a target='_blank' href='${ "https://www.openstreetmap.org/" + String(poi.type).toLowerCase() + "/" + String(poi.osm_id) }'>${ getText().LNK_OSM_VIEW }</a><br/>\n<a href='${ "geo:" + poi.lat + "," + poi.lon }'>${ getText().LNK_OPEN_WITH }</a></div></div></div><div class='oneline-babyfriendliness'>${processContentDatabase(marker, poi, PDV_babyTab)}</div>`, "symbol": "🏠", "title": getText().PDV_TITLE_HOME, "active": true, "default": true},
+		"opening_hours": {"content": `${ parseOpening_hours(poi.tags["opening_hours"]) || "NODISPLAY" }`, "symbol": "🕰️", "title": getText().PDV_TITLE_OH, "active": true}
 		},
 	"playgroundPopup":
 		{"home": {"content": `<h1>${ ((poi.tags["name"] != undefined) ? poi.tags["name"] : marker.name) }</h1><h2>${ ((poi.tags["name"] == undefined) ? "" : marker.name) }</h2>${ processContentDatabase(marker, poi, PEP_data) }`, "symbol": "🏠", "title": getText().PDV_TITLE_HOME, "active": true, "default": true},
