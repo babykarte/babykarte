@@ -412,7 +412,7 @@ function addMarkerIcon(poi, marker) {
 function getRightPopup(marker, usePopup) {
 	marker = marker.target;
 	var poi = marker.data;
-	if (activeMarker && marker._icon != null) {
+	if (activeMarker && activeMarker._icon != null && marker._icon != null) { //Expression which prevents a JS error from ocurring when user loads a new filter or moves the map because both actions clean and refresh the map. That means some objects will be deleted and this expression can handle such cases by validating the object itself. See https://github.com/babykarte/babykarte/issues/17
 		activeMarker._icon.children[0].children[0].children[2].classList.remove("marker-active") || false
 	}
 	if (marker._icon != null) {

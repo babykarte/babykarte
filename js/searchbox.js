@@ -51,7 +51,7 @@ function showGlobalPopup(m) { // Triggers the blue rounded message popup
 }
 function jumpto(elem, lat, lon) { // Function which fires when user clicks on a search suggestion. Forcing Babykarte to jump to a new position (e.g. Berlin central station)
 	if (elem.innerHTML) {
-		HideAll()
+		hideAll()
 		spinner(true);
 		$("#autocomplete").hide(); // Hide the search suggestions
 		map.on("moveend", function() {}); //Deactivate the dynamic loading of content
