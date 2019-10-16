@@ -59,15 +59,15 @@ var PDV_babyTab = { //PDV = POI Details View
 						{"female": {"values": ["yes", "no", undefined]},		//		diaper:female=yes|no|undefined
 						"male": {"values": ["yes", "no", undefined]},			//		diaper:male=yes|no|undefined
 						"unisex": {"values": ["yes", "no", undefined]},			//		diaper:unisex=yes|no|undefined
-						"fee": {"values": ["yes", "no", undefined]},			//		diaper:fee=yes|no|undefined
-						"description": {"values": [undefined, "*"]}				//		diaper:description=undefined|* (implicit specification)
+						"fee": {"values": ["yes", "no", undefined]}/*,			//		diaper:fee=yes|no|undefined
+						"description": {"values": [undefined, "*"]}*/				//		diaper:description=undefined|* (implicit specification)
 						}
 				},
 				"changing_table": {"nameInherit": true, "applyfor": {"health": true, "eat": true, "shop": true, "changingtable": true}, "triggers": function(data, local) {if (data.changing_table) {if (data.diaper) {delete data.diaper;}} return data;}, "values": ["yes", "no", "limited", undefined, "*"],		//changing_table=yes|no|limited|undefined
 					"children":
 						{"fee": {"values": ["yes", "no", undefined]},	//changing_table:fee=yes|no|undefined
-						"location": {"values": ["wheelchair_toilet", "female_toilet", "male_toilet", "unisex_toilet", "dedicated_room", "room", "sales_area", undefined]},	//changing_table:location=wheelchair_toilet|female_toilet|male_toilet|unisex_toilet|dedicated_room|room|sales_area|undefined
-						"description": {"values": [undefined, "*"]}	//changing_table:description=undefined|* (implicit specification)
+						"location": {"values": ["wheelchair_toilet", "female_toilet", "male_toilet", "unisex_toilet", "dedicated_room", "room", "sales_area", undefined]}/*,	//changing_table:location=wheelchair_toilet|female_toilet|male_toilet|unisex_toilet|dedicated_room|room|sales_area|undefined
+						"description": {"values": [undefined, "*"]}*/	//changing_table:description=undefined|* (implicit specification)
 						}
 				},
 				"highchair": {"nameInherit": true, "applyfor": {"eat": true}, "values": ["yes", "no", undefined, "*"]},					// highchair=yes|no|undefined|*
@@ -220,9 +220,9 @@ function parseOpening_hours(value) {
 	}
    	return value
 }
-/*function addrTrigger_intern(poi, marker) {
+function addrTrigger_intern(poi, marker) {
 	if (marker.popupContent.indexOf("%data_address%") > -1) {
-		$.get("https://nominatim.openstreetmap.org/reverse?accept-language=" + languageOfUser + "&format=json&osm_type=" + String(poi.type)[0].toUpperCase() + "&osm_id=" + String(poi.id), function(data, status, xhr, trash) {
+		$.get("https://nominatim.openstreetmap.org/reverse?accept-language=" + languageOfUser + "&format=json&osm_type=" + String(poi.type)[0].toUpperCase() + "&osm_id=" + String(poi.osm_id), function(data, status, xhr, trash) {
 			var content = "";
 			var address = data["address"];
 			if (address) {
@@ -230,23 +230,19 @@ function parseOpening_hours(value) {
 				var housenumber = address["housenumber"] || address["house_number"] || getText().PDV_HOUSENUMBER_UNKNOWN;
 				var postcode = address["postcode"] || getText().PDV_ZIPCODE_UNKNOWN;
 				var city = address["city"] || address["town"] || address["county"] || address["state"] || getText().PDV_COMMUNE_UNKNOWN;
-				content = street + " " + housenumber + "<br/>" + postcode + " " + city;
+				content = street + " " + housenumber + ", " + postcode + " " + city;
 			} else {
-				content = "<i><span style='color:red;'>" + getText().PDV_ADDRESS_UNKNOWN + "</span></i>";
+				//content = "<i><span style='color:red;'>" + getText().PDV_ADDRESS_UNKNOWN + "</span></i>";
+				content = `<i><a href='${ "geo:" + poi.lat + "," + poi.lon }'>${ getText().LNK_OPEN_WITH }</a></i>`
 			}
 			marker.popupContent = marker.popupContent.replace("%data_address%", content);
-			marker.bindPopup(marker.popupContent);
+			$("#poidetails").html(marker.popupContent);
 		});
 	}
 }
-*/
 function addrTrigger(poi, marker) {
-	//var timeout = setTimeout(addrTrigger_intern, 500, poi, marker);
-	var street = poi.tags["addr:street"] || getText().PDV_STREET_UNKNOWN;
-	var housenumber = poi.tags["addr:housenumber"] || getText().PDV_HOUSENUMBER_UNKNOWN;
-	var postcode = poi.tags["addr:postcode"] || getText().PDV_ZIPCODE_UNKNOWN;
-	var city = poi.tags["addr:city"] || getText().PDV_COMMUNE_UNKNOWN;
-	return street + " " + housenumber + ", " + postcode + " " + city;
+	var timeout = setTimeout(addrTrigger_intern, 500, poi, marker);
+	return "%data_address%";
 }
 function toggleTab(bla, id) {
 	var tab = document.getElementById(id);
