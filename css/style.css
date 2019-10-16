@@ -106,6 +106,7 @@ section {
 	justify-content:start;
 }
 .subtitle {
+	display:flex;
 	color:#333333;
 	font-size:12px;
 }
