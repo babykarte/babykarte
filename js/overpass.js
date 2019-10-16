@@ -2,6 +2,7 @@ var debug_markerobj;
 var activeMarker;
 var markerStyles = {};
 var area = {};
+var freezeMapMoveEvent = false;
 var zoomLevel = "";
 var url = "https://babykarte.openstreetmap.de/getDataForBabykarte.cgi";
 var colorcode = {"yes": "color-green", "no": "color-red", "room": "color-green", "bench": "color-green", undefined: "color-grey", "limited": "color-yellow", "playground": "color-green"};
@@ -193,7 +194,10 @@ function locateNewAreaBasedOnFilter() {
 	return url
 }
 function onMapMove() {
-	loadPOIS("", locateNewAreaBasedOnFilter());
+	if (freezeMapMoveEvent != true) {
+		loadPOIS("", locateNewAreaBasedOnFilter());
+	}
+	freezeMapMoveEvent = false;
 }
 function parseOpening_hours(value) {
 	if (!value) {
@@ -490,6 +494,8 @@ function createDialog(marker, poi, details_data) {
 	marker.popupContent = "<div style='display:flex;'>" + popupContent_header + popupContent + "</div> <a target=\"_blank\" href=\"https://www.openstreetmap.org/note/new#map=17/" + poi.lat + "/" + poi.lon + "&layers=N\">" + getText().LNK_OSM_REPORT + "</a>";
 	$("#poidetails").html(marker.popupContent);
 	toggleMenu(document.getElementById("poimenu").previousElementSibling, "justopen")
+	freezeMapMoveEvent = true;
+	map.setView([poi.lat, poi.lon]); //Center the map relative to the POI the user opens
 	debug_markerobj = marker;
 }
 function errorHandler(poi) {
