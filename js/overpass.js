@@ -486,7 +486,7 @@ function createDialog(marker, poi, details_data) {
 			popupContent_header += "<div class='" + classList + "' id='icon" + poi.classId + entry + "' onclick='toggleTab(this, \"" + poi.classId + entry + "\")' alt='" + details_data[entry].title + "' title='" + details_data[entry].title + "'>" + symbol + "</div>";
 		}
 	}
-	popupContent_header += "<div class='pdv-icon active'> <a class='nounderlinestyle' target=\"_blank\" href=\"https://www.openstreetmap.org/edit?" + String(poi.type) + "=" + String(poi.osm_id) + "\">&#128395;</a></div></div>";
+	popupContent_header += "<div class='pdv-icon active'> <a class='nounderlinestyle' target=\"_blank\" href=\"https://www.openstreetmap.org/edit?" + String(poi.type) + "=" + String(poi.osm_id) + "\">✏️</a></div></div>";
 	marker.popupContent = "<div style='display:flex;'>" + popupContent_header + popupContent + "</div> <a target=\"_blank\" href=\"https://www.openstreetmap.org/note/new#map=17/" + poi.lat + "/" + poi.lon + "&layers=N\">" + getText().LNK_OSM_REPORT + "</a>";
 	$("#poidetails").html(marker.popupContent);
 	toggleMenu(document.getElementById("poimenu").previousElementSibling, "justopen")
