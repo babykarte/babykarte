@@ -1,37 +1,40 @@
 var saved_lat = 54.32308131652028;
 var saved_lon = 10.139915941399524;
 var message;
-function hideAll() {
+function hideAll(classes) {
 	for (var dropdown of document.getElementsByClassName("dropdown-menu")) {
-		dropdown.classList.remove("dropdown-active");
-		//dropdown.style.display = "none";
+		dropdown.classList.remove(classes[1]);
 	}
 	for (var menuitem of document.getElementsByClassName("menuitem")) {
-		menuitem.classList.remove("item-active");
+		menuitem.classList.remove(classes[0]);
 	}
 }
-function toggleMenu(elem, mode) {
+function intern_toggle(elem, mode, classes) {
 	mode = mode || "all"
 	var parent = elem.parentElement;
 	var menu = elem.nextElementSibling;
-	var active = menu.classList.contains("dropdown-active");
+	var active = menu.classList.contains(classes[1]);
 	if (mode == "all") {
-		hideAll();
+		hideAll(classes);
 	}
 	if (mode == "justopen") {
 		active = false;	
 	}
 	if (!active) {
-		elem.classList.add("item-active");
-		menu.classList.add("dropdown-active");
-		//menu.style.display = "block";
+		elem.classList.add(classes[0]);
+		menu.classList.add(classes[1]);
 	} else {
-		elem.classList.remove("item-active");
-		menu.classList.remove("dropdown-active");
-		//menu.style.display = "none";
+		elem.classList.remove(classes[0]);
+		menu.classList.remove(classes[1]);
 	}
 }
-function spinner(value) { //Triggers the processbar and or its process
+function toggleMenu(elem, mode) {
+	intern_toggle(elem, mode, ["item-active", "dropdown-active"]);
+}
+function toggleTooltip(elem) {
+	intern_toggle(elem, "all", ["tooltip-active", "tooltip-content-active"]);
+}
+function spinner(value) { //Show/hide spinner
 	var elem = document.getElementById("spinner");
 	if (value) { //Show spinner
 		elem.style.display = "flex";
