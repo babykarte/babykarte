@@ -45,12 +45,15 @@ section {
 	height:100%;
 }
 /*---------------------- POI DETAILS SETTINGS -------------------------------*/
+.grid-container {
+	display:grid;
+}
 .tabcontent {
 	padding-top:5px;
 	padding-bottom:5px;
 	padding-left:10px;
 	word-wrap:break-word;
-	display:none;
+	display:block;
 }
 .tabcontent ul {
 	margin:0px;
@@ -174,7 +177,7 @@ section {
 	color:white;
 }
 .beautifulmenu {
-	/*padding-left:10px !important;*/
+	padding-left:10px !important;
 	padding-right:10px !important;
 	width:450px;
 }
@@ -182,13 +185,13 @@ section {
 	padding:0px !important;
 	top:0px;
 	height:100% !important;
+	width:450px;
 }
 .dropdown-menu {
 	background-color:white;
 	left:45px;
 	padding:10px;
 	display:none;
-	height:25px;
 	z-index:2;
 	position:absolute;
 }
@@ -200,10 +203,25 @@ section {
 .dropdown-menu a:hover {
 	color:#b53085;
 }
-.dropdown-active { /* Style for opened dropdowns (tab, sub menus) */
+.dropdown-active { /* Style for opened dropdowns/tooltips (tab, sub menus, tips, more information, translated information) */
 	display:block;
 }
-.item-active { /* Style for clicked (active) tab labels (menus) */
+.tooltip {
+	position:relative;
+}
+.tooltip-content {
+	margin:5px;
+	padding:5px;
+	background-color:white;
+	position:absolute;
+	height:50px;
+	width:200px;
+	display:none;
+}
+.tooltip-content-active {
+	display:block;
+}
+.item-active, .tooltip-active{ /* Style for clicked (active) tab labels (menus) */
 	
 }
 #filtersGround label {
