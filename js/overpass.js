@@ -1,4 +1,3 @@
-var debug_markerobj;
 var activeMarker;
 var markerStyles = {};
 var area = {};
@@ -221,7 +220,7 @@ function parseOpening_hours(value) {
    	return value
 }
 function addrTrigger_intern(poi, marker) {
-	if (marker.popupContent.indexOf("%data_address%") > -1) {
+	if (marker.popupContent.indexOf(getText().PDV_ADDRESS_LOADING) > -1) {
 		$.get("https://nominatim.openstreetmap.org/reverse?accept-language=" + languageOfUser + "&format=json&osm_type=" + String(poi.type)[0].toUpperCase() + "&osm_id=" + String(poi.osm_id), function(data, status, xhr, trash) {
 			var content = "";
 			var address = data["address"];
@@ -235,14 +234,14 @@ function addrTrigger_intern(poi, marker) {
 				//content = "<i><span style='color:red;'>" + getText().PDV_ADDRESS_UNKNOWN + "</span></i>";
 				content = `<i><a href='${ "geo:" + poi.lat + "," + poi.lon }'>${ getText().LNK_OPEN_WITH }</a></i>`
 			}
-			marker.popupContent = marker.popupContent.replace("%data_address%", content);
+			marker.popupContent = marker.popupContent.replace(getText().PDV_ADDRESS_LOADING, content);
 			$("#poidetails").html(marker.popupContent);
 		});
 	}
 }
 function addrTrigger(poi, marker) {
 	var timeout = setTimeout(addrTrigger_intern, 500, poi, marker);
-	return "%data_address%";
+	return getText().PDV_ADDRESS_LOADING;
 }
 function toggleTab(bla, id) {
 	var tab = document.getElementById(id);
@@ -317,7 +316,6 @@ function processContentDatabase_intern(marker, poi, database, tag, values, data,
 }
 function processContentDatabase(marker, poi, database) {
 	var data = {};
-	var output = "";
 	for (var tag in database) {
 		var values = database[tag].values;
 		var children = database[tag].children;
@@ -343,6 +341,10 @@ function processContentDatabase(marker, poi, database) {
 	for (var tag in data) {
 		if (database[tag].triggers) {data = database[tag].triggers(data, data[tag]);}
 	}
+	return data;
+}
+function babyfriendliness_text(data, database) {
+	var output = "";
 	for (var tag in data) {
 		if (Object.keys(data[tag].children).length == 0 || Object.keys(data[tag]).length == 0) {
 			output += "<ul><li class='" + data[tag].color + "'>" + data[tag].title + "</i></ul>"
@@ -357,6 +359,24 @@ function processContentDatabase(marker, poi, database) {
 			}
 			output += " (\n" + content.trim() + "\n)"; 
 			output += "</i></ul>";
+		}
+	}
+	var result = output.split("\n");
+	output = ""
+	for (var i in result) {
+		if (result[i].indexOf("NODISPLAY") == -1) {
+			output += result[i];
+		}
+	}
+	return output;
+}
+function babyfriendliness_symbol(data, database) {
+	var output = "";
+	for (var tag in data) {
+		if (database[tag].symbol.indexOf("/") > -1) {
+			output += "\n<img src='" + database[tag].symbol + "' class='small-icon' />\n";
+		} else {
+			output += "\n<div class='small-icon'>" + database[tag].symbol + "</div>\n"
 		}
 	}
 	var result = output.split("\n");
@@ -432,8 +452,8 @@ function getRightPopup(marker, usePopup) {
 	var name = getSubtitle(poi);
 	marker.name = name || getText().filtername[marker.fltr]; //Sets the subtitle which appears under the POI's name as text in grey
 	var popup = {"POIpopup": 
-		{"home": {"content": `<h1>${ ((poi.tags["name"] == undefined) ? ((poi.tags["amenity"] == "toilets") ? getText().TOILET : getText().PDV_UNNAME) : poi.tags["name"]) }</h1>\n<div class='subtitle'><span>${ String(marker.name) }</span>&nbsp;&#8231;&nbsp;<span id='address${ poi.classId }'>${ addrTrigger(poi, marker) }</span>\n<div class='dropdown'>${ ((poi.tags["operator"]) ? "&nbsp;&#8231;&nbsp;<b>&#8595;</b>" : "")}<span style='cursor:pointer;text-decoration:underline;' onclick='toggleMenu(this, "single")'>${ ((poi.tags["operator"]) ? getText().PDV_OPERATOR : "NODISPLAY") }</span><div class='dropdown-menu'>${((poi.tags["operator"]) ? poi.tags["operator"].replace(new RegExp(";", "g"), ", ") : "NODISPLAY")}</div></div>\n</div>\n<div class='socialmenu'><div class='tooltip'><img class='small-icon' src='images/share.svg' onclick='toggleTooltip(this)' /><div class='tooltip-content'><a target='_blank' href='${ "https://www.openstreetmap.org/" + String(poi.type).toLowerCase() + "/" + String(poi.osm_id) }'>${ getText().LNK_OSM_VIEW }</a><br/>\n<a href='${ "geo:" + poi.lat + "," + poi.lon }'>${ getText().LNK_OPEN_WITH }</a></div></div><a class='nounderlinestyle small-icon' target=\"_blank\" href=\"https://www.openstreetmap.org/edit?" + String(poi.type) + "=" + String(poi.osm_id) + "\">✏️</a></div></div></div>`, "symbol": "🏠", "title": getText().PDV_TITLE_HOME, "active": true, "default": true},
-		"baby": {"content": `${processContentDatabase(marker, poi, PDV_babyTab)}`, "symbol": "👶", "title": getText().PDV_TITLE_BABY, "active": true},
+		{"home": {"content": `<h1>${ ((poi.tags["name"] == undefined) ? ((poi.tags["amenity"] == "toilets") ? getText().TOILET : getText().PDV_UNNAME) : poi.tags["name"]) } <a class='nounderlinestyle small-icon' target=\"_blank\" href=\"https://www.openstreetmap.org/edit?` + String(poi.type.toLowerCase()) + "=" + String(poi.osm_id) + `\">✏️</a></h1>\n<div class='subtitle'><span>${ String(marker.name) }</span>&nbsp;&#8231;&nbsp;<span id='address${ poi.classId }'>${ addrTrigger(poi, marker) }</span>\n<div class='dropdown'>${ ((poi.tags["operator"]) ? "&nbsp;&#8231;&nbsp;<b>&#8595;</b>" : "")}<span style='cursor:pointer;text-decoration:underline;' onclick='toggleMenu(this, "single")'>${ ((poi.tags["operator"]) ? getText().PDV_OPERATOR : "NODISPLAY") }</span><div class='dropdown-menu'>${((poi.tags["operator"]) ? poi.tags["operator"].replace(new RegExp(";", "g"), ", ") : "NODISPLAY")}</div></div>\n</div>\n<div class='socialmenu'>${ babyfriendliness_symbol(processContentDatabase(marker, poi, PDV_babyTab), PDV_babyTab) }<div class='tooltip'><img class='small-icon' src='images/share.svg' onclick='toggleTooltip(this)' /><div class='tooltip-content'><a target='_blank' href='${ "https://www.openstreetmap.org/" + String(poi.type).toLowerCase() + "/" + String(poi.osm_id) }'>${ getText().LNK_OSM_VIEW }</a><br/>\n<a href='${ "geo:" + poi.lat + "," + poi.lon }'>${ getText().LNK_OPEN_WITH }</a></div></div></div></div></div>`, "symbol": "🏠", "title": getText().PDV_TITLE_HOME, "active": true, "default": true},
+		"baby": {"content": `${ babyfriendliness_text(processContentDatabase(marker, poi, PDV_babyTab), PDV_babyTab) }`, "symbol": "👶", "title": getText().PDV_TITLE_BABY, "active": true},
 		"contact" : {"content": `${ addrTab(poi, "", "poi.tags['website'] || poi.tags['contact:website'] || 'NODISPLAY'", "🌍") }${ addrTab(poi, "tel:", "poi.tags['phone'] || poi.tags['contact:phone'] || 'NODISPLAY'", "☎️") }${ addrTab(poi, "mailto:", "poi.tags['email'] || poi.tags['contact:email'] || 'NODISPLAY'", "📧") }${ addrTab(poi, "", "((poi.tags['facebook'] != undefined) ? ((poi.tags['facebook'].indexOf('/') > -1) ? poi.tags['facebook'] : ((poi.tags['facebook'] == -1) ? 'https://www.facebook.com/' + poi.tags['facebook'] : undefined)) : ((poi.tags['contact:facebook'] != undefined) ? ((poi.tags['contact:facebook'].indexOf('/') > -1) ? poi.tags['contact:facebook'] : ((poi.tags['contact:facebook'] == -1) ? 'https://www.facebook.com/' + poi.tags['contact:facebook'] : 'NODISPLAY')) : 'NODISPLAY'))", "/images/facebook-logo.svg", true) }`, "symbol": "📧", "title": getText().PDV_TITLE_CONTACT, "active": true},
 		"opening_hours": {"content": `${ parseOpening_hours(poi.tags["opening_hours"]) || "NODISPLAY" }`, "symbol": "🕰️", "title": getText().PDV_TITLE_OH, "active": true}
 		},
@@ -456,39 +476,24 @@ function createDialog(marker, poi, details_data) {
 			defaultOpen = "style='display:block;'"
 		}
 		defaultOpen = "style='display:block;'"
-		popupContent += "<div class='tabcontent' id='" + poi.classId + entry + "' " + defaultOpen + ">";
+		tabContent = "<div class='tabcontent' id='" + poi.classId + entry + "' " + defaultOpen + ">";
 		for (var i in content) {
-			var tmp = "";
 			var result = "";
 			result += content[i];
 			if (result.indexOf("NODISPLAY") > -1) {result = "";}
 				tabContent += result;
 			}
-		if (tabContent == "") {
+		if (result == "") {
 			details_data[entry].active = false;
 		} else {
-			popupContent += tabContent;
+			popupContent += tabContent + "</div>";
 		}
-		popupContent += "</div>";
 	}
-	/*for (var entry in details_data) {
-		var classList = "pdv-icon active";
-		var symbol = details_data[entry].symbol;
-		if (!details_data[entry].active) {
-			classList = "pdv-icon inactive";
-		}
-		if (symbol.startsWith("/")) {
-			popupContent_header += "<img class='" + classList + "' id='icon" + poi.classId + entry + "' onclick='toggleTab(this, \"" + poi.classId + entry + "\")' src='" + symbol + "' alt='" + details_data[entry].title + "' title='" + details_data[entry].title + "' />";
-		} else {
-			popupContent_header += "<div class='" + classList + "' id='icon" + poi.classId + entry + "' onclick='toggleTab(this, \"" + poi.classId + entry + "\")' alt='" + details_data[entry].title + "' title='" + details_data[entry].title + "'>" + symbol + "</div>";
-		}
-	}*/
-	marker.popupContent = "<div>" + popupContent_header + popupContent + "</div> <a target=\"_blank\" href=\"https://www.openstreetmap.org/note/new#map=17/" + poi.lat + "/" + poi.lon + "&layers=N\">" + getText().LNK_OSM_REPORT + "</a>";
+	marker.popupContent = "<div>" + popupContent_header + popupContent/*+ "</div> <a target=\"_blank\" href=\"https://www.openstreetmap.org/note/new#map=17/" + poi.lat + "/" + poi.lon + "&layers=N\">" + getText().LNK_OSM_REPORT + "</a>"*/;
 	$("#poidetails").html(marker.popupContent);
 	toggleMenu(document.getElementById("poimenu").previousElementSibling, "justopen")
 	freezeMapMoveEvent = true;
 	map.setView([poi.lat, poi.lon]); //Center the map relative to the POI the user opens
-	debug_markerobj = marker;
 }
 function errorHandler(poi) {
 	var notes = poi.notes || undefined;

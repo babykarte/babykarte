@@ -29,8 +29,8 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="1.7073113"
-     inkscape:cx="202.44785"
-     inkscape:cy="200.31496"
+     inkscape:cx="183.51836"
+     inkscape:cy="179.52495"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -47,7 +47,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -56,13 +56,6 @@
      inkscape:groupmode="layer"
      id="layer1"
      transform="translate(0,-191)">
-    <ellipse
-       style="opacity:1;fill:#ff531a;fill-opacity:1;stroke:none;stroke-width:3.7254777;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
-       id="path812"
-       cx="52.875965"
-       cy="244.10086"
-       rx="51.419353"
-       ry="50.156422" />
     <flowRoot
        xml:space="preserve"
        id="flowRoot814"
@@ -77,5 +70,29 @@
            y="151.70052"
            style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Cantarell;-inkscape-font-specification:Cantarell;fill:#ffffff;fill-opacity:1" /></flowRegion><flowPara
          id="flowPara820"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:192px;font-family:'URW Chancery L';-inkscape-font-specification:'URW Chancery L';fill:#ffffff;fill-opacity:1">i</flowPara></flowRoot>  </g>
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:192px;font-family:'URW Chancery L';-inkscape-font-specification:'URW Chancery L';fill:#ffffff;fill-opacity:1">i</flowPara></flowRoot>    <flowRoot
+       xml:space="preserve"
+       id="flowRoot817"
+       style="font-style:normal;font-weight:normal;font-size:40px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:black;fill-opacity:1;stroke:none"
+       transform="matrix(0.26458333,0,0,0.26458333,0,191)"><flowRegion
+         id="flowRegion819"><rect
+           id="rect821"
+           width="202.07211"
+           height="264.74374"
+           x="119.48612"
+           y="103.67178" /></flowRegion><flowPara
+         id="flowPara823"
+         style="-inkscape-font-specification:'URW Chancery L';font-family:'URW Chancery L';font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal">i</flowPara></flowRoot>    <flowRoot
+       xml:space="preserve"
+       id="flowRoot825"
+       style="font-style:normal;font-weight:normal;font-size:40px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:black;fill-opacity:1;stroke:none"
+       transform="matrix(6.9728084,0,0,3.0358774,-563.75031,-101.07325)"><flowRegion
+         id="flowRegion827"><rect
+           id="rect829"
+           width="205.58641"
+           height="329.75827"
+           x="83.757423"
+           y="90.200302" /></flowRegion><flowPara
+         id="flowPara831"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Quicksand Medium';-inkscape-font-specification:'Quicksand Medium, ';fill:white;fill-opacity:1">i</flowPara></flowRoot>  </g>
 </svg>
