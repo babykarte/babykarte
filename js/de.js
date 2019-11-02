@@ -6,6 +6,7 @@ var refDe = {"site-map": {
 	"ERROR404": "Backend unterstützt Filter '<i>%s</i>' nicht",
 	"ERROR503": "Datenbankabfrage gescheitert für Filter '<i>%s</i>'",
 	"ERROR": "Ein unbekannter Fehler stört das Fest",
+	"SWIPE_INFO": "Nach oben wischen um mehr Details zu sehen.",
 	"LNK_OSM_EDIT": "Mit OSM editieren",
 	"LNK_OSM_REPORT": "Falschinformationen melden",
 	"LNK_OSM_VIEW": "POI in OpenStreetMap ansehen",

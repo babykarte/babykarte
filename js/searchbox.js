@@ -1,6 +1,29 @@
 var saved_lat = 54.32308131652028;
 var saved_lon = 10.139915941399524;
 var message;
+var touchSupport = false;
+var swipeData = [];
+document.body.ontouchstart = function(event) {
+	touchSupport = true;
+	document.getElementById("infotext-swipe").style.display = "block";
+}
+document.getElementById("poimenu").ontouchstart = function(event) {swipeData.push(event.changedTouches[0].clientY);};
+document.getElementById("poimenu").ontouchend = function(event) {
+	swipeData.push(event.changedTouches[0].clientY);
+	if (swipeData[0] - swipeData[1] > 55) {
+		//swipe up
+		for (var elem of document.getElementsByClassName("tabcontent")) {
+			elem.classList.add("tab-visible");
+		}
+	} else if (swipeData[0] - swipeData[1] < -55){
+		//swipe down
+		for (var elem of document.getElementsByClassName("tabcontent")) {
+			elem.classList.remove("tab-visible");
+		}
+		document.getElementsByClassName("tabcontent")[0].classList.add("tab-visible");
+	}
+	swipeData = [];
+};
 function hideAll(classes) {
 	for (var dropdown of document.getElementsByClassName("dropdown-menu")) {
 		dropdown.classList.remove(classes[1]);

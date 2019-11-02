@@ -126,6 +126,13 @@ section {
 .oneline-babyfriendliness {
 	font-size:12px;
 }
+#infotext-swipe {
+	color:grey;
+	background-color:white;
+	padding:5px;
+	text-align:center;
+	display:none;
+}
 /*---------------------- COLOUR CODES FOR BABY FRIENDLINESS TAB -------------------------------- */
 .color-green {
 	color:#339933;
