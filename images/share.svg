@@ -25,9 +25,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.43806014"
-     inkscape:cx="120.73881"
-     inkscape:cy="-29.837426"
+     inkscape:zoom="9.9121694"
+     inkscape:cx="359.2029"
+     inkscape:cy="390.40353"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -57,8 +57,8 @@
     <ellipse
        style="opacity:1;fill:#0080ff;fill-opacity:1;stroke:none;stroke-width:3.09688663;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
        id="path831-3"
-       cx="91.504272"
-       cy="205.34116"
+       cx="90.349678"
+       cy="204.67384"
        rx="13.967237"
        ry="13.634684" />
     <rect
@@ -66,22 +66,22 @@
        id="rect854-7"
        width="5.9802785"
        height="87.477898"
-       x="177.48975"
-       y="-242.70729"
+       x="177.61031"
+       y="-241.37918"
        ry="1.05698"
        transform="rotate(125.21298)" />
     <ellipse
        style="opacity:1;fill:#0080ff;fill-opacity:1;stroke:none;stroke-width:3.09688663;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
        id="path831-3-3"
-       cx="15.40171"
-       cy="242.03705"
+       cx="14.247118"
+       cy="241.36974"
        rx="13.967237"
        ry="13.634684" />
     <ellipse
        style="opacity:1;fill:#0080ff;fill-opacity:1;stroke:none;stroke-width:3.09688663;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
        id="path831-3-6"
-       cx="91.202278"
-       cy="282.80627"
+       cx="90.047684"
+       cy="282.13895"
        rx="13.967237"
        ry="13.634684" />
     <rect
@@ -89,8 +89,8 @@
        id="rect854-7-7"
        width="5.9802785"
        height="87.477898"
-       x="219.66412"
-       y="15.03616"
+       x="218.5098"
+       y="15.703944"
        ry="1.05698"
        transform="rotate(60.076315)" />
   </g>

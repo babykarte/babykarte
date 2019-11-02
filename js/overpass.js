@@ -1,4 +1,5 @@
 var activeMarker;
+var symbols = {};
 var markerStyles = {};
 var area = {};
 var freezeMapMoveEvent = false;
@@ -21,8 +22,18 @@ var PEP_data = {// PEP = Playground Equipment Popup
 				"surface": {"nameInherit": true, "applyfor": {"activity": true}, "values": ["sand", "grass", "woodchips", "rubbercrumb", "tartan", "gravel", "paving_stones", "wood", "asphalt", undefined], "children": {}},
 				"access": {"nameInherit": true, "applyfor": {"activity": true}, "values": ["yes", "no", "customers", "private", undefined], "children": {}},
 		};
+var PDV_contact = { //PDV = POI Details View
+				"contact:website": {"nameInherit": false, "values": [undefined, "*"], "applyfor": {"shop": true, "eat": true, "health": true}, "symbol": "🌍"},
+				"contact:email": {"nameInherit": false, "values": [undefined, "*"], "applyfor": {"shop": true, "eat": true, "health": true}, "symbol": "📧"},
+				"contact:facebook": {"nameInherit": false, "values": [undefined, "*"], "applyfor": {"shop": true, "eat": true, "health": true}, "symbol": "images/facebook-logo.svg"},
+				"contact:phone": {"nameInherit": false, "values": [undefined, "*"],  "applyfor": {"shop": true, "eat": true, "health": true}, "symbol": "☎️"},
+				"website": {"nameInherit": false, "values": [undefined, "*"],  "applyfor": {"shop": true, "eat": true, "health": true}, "symbol": "🌍"},
+				"email": {"nameInherit": false, "values": [undefined, "*"],  "applyfor": {"shop": true, "eat": true, "health": true}, "symbol": "📧"},
+				"facebook": {"nameInherit": false, "values": [undefined, "*"],  "applyfor": {"shop": true, "eat": true, "health": true}, "symbol": "images/facebook-logo.svg"},
+				"phone": {"nameInherit": false, "values": [undefined, "*"],  "applyfor": {"shop": true, "eat": true, "health": true}, "symbol": "☎️"},
+}
 var PDV_babyTab = { //PDV = POI Details View
-				"leisure": {"nameInherit": false, "applyfor": {"activity": true}, "values": ["playground", undefined], "triggers": function(data, local) {if (Object.keys(local.children).length == 0) {delete data["leisure"];} return data}, "symbol": "images/ball.svg",
+				"leisure": {"nameInherit": false, "applyfor": {"activity": true}, "values": ["playground", undefined], "triggers": function(data, local) {if (Object.keys(local.children).length == 0) {delete data["leisure"];} return data}, "symbol": "ball",
 					"children": 
 						{"playground:slide": {"values": ["yes", undefined]},
 						"playground:swing": {"values": ["yes", undefined]},
@@ -53,7 +64,7 @@ var PDV_babyTab = { //PDV = POI Details View
 						"playground:Skate_equipment": {"values": ["yes", undefined]}
 						}
 				},
-				"diaper": {"nameInherit": true, "applyfor": {"health": true, "eat": true, "shop": true, "changingtable": true}, "symbol": "images/changingtable.svg", "values": ["yes", "no", "room", "bench", undefined, "*"],											// diaper=yes|no|room|bench|undefined
+				"diaper": {"nameInherit": true, "applyfor": {"health": true, "eat": true, "shop": true, "changingtable": true}, "symbol": "changingtable", "values": ["yes", "no", "room", "bench", undefined, "*"],											// diaper=yes|no|room|bench|undefined
 					"children": 
 						{"female": {"values": ["yes", "no", undefined]},		//		diaper:female=yes|no|undefined
 						"male": {"values": ["yes", "no", undefined]},			//		diaper:male=yes|no|undefined
@@ -62,18 +73,18 @@ var PDV_babyTab = { //PDV = POI Details View
 						"description": {"values": [undefined, "*"]}*/				//		diaper:description=undefined|* (implicit specification)
 						}
 				},
-				"changing_table": {"nameInherit": true, "applyfor": {"health": true, "eat": true, "shop": true, "changingtable": true}, "triggers": function(data, local) {if (data.changing_table) {if (data.diaper) {delete data.diaper;}} return data;}, "symbol": "images/changingtable.svg", "values": ["yes", "no", "limited", undefined, "*"],		//changing_table=yes|no|limited|undefined
+				"changing_table": {"nameInherit": true, "applyfor": {"health": true, "eat": true, "shop": true, "changingtable": true}, "triggers": function(data, local) {if (data.changing_table) {if (data.diaper) {delete data.diaper;}} return data;}, "symbol": "changingtable", "values": ["yes", "no", "limited", undefined, "*"],		//changing_table=yes|no|limited|undefined
 					"children":
 						{"fee": {"values": ["yes", "no", undefined]},	//changing_table:fee=yes|no|undefined
 						"location": {"values": ["wheelchair_toilet", "female_toilet", "male_toilet", "unisex_toilet", "dedicated_room", "room", "sales_area", undefined]}/*,	//changing_table:location=wheelchair_toilet|female_toilet|male_toilet|unisex_toilet|dedicated_room|room|sales_area|undefined
 						"description": {"values": [undefined, "*"]}*/	//changing_table:description=undefined|* (implicit specification)
 						}
 				},
-				"highchair": {"nameInherit": true, "applyfor": {"eat": true}, "symbol": "images/highchair.svg", "values": ["yes", "no", undefined, "*"]},					// highchair=yes|no|undefined|*
-				"stroller": {"nameInherit": true, "applyfor": {"eat": true, "shop": true, "health": true, "changingtable": true}, "symbol": "images/stroller.svg", "values": ["yes", "limited", "no", undefined],									// stroller=yes|limited|no|undefined
+				"highchair": {"nameInherit": true, "applyfor": {"eat": true}, "symbol": "highchair", "values": ["yes", "no", undefined, "*"]},					// highchair=yes|no|undefined|*
+				"stroller": {"nameInherit": true, "applyfor": {"eat": true, "shop": true, "health": true, "changingtable": true}, "symbol": "stroller", "values": ["yes", "limited", "no", undefined],									// stroller=yes|limited|no|undefined
 					"children": {"description": {"values" : [undefined, "*"]}}			//		stroller:description=undefined|* (implicit specification) (implicit specification)
 				},
-				"kids_area": {"nameInherit": true, "applyfor": {"eat": true, "shop": true}, "symbol": "images/ball.svg", "values": ["yes", "no", undefined],																// kids_area=yes|no|undefined
+				"kids_area": {"nameInherit": true, "applyfor": {"eat": true, "shop": true}, "symbol": "ball", "values": ["yes", "no", undefined],																// kids_area=yes|no|undefined
 					"children":
 						{"indoor" :  {"values": ["yes", "no", undefined]},		//		kids_area:indoor=yes|no|undefined
 						"outdoor": {"values": ["yes", "no", undefined]},		//		kids_area:outdoor=yes|no|undefined
@@ -265,16 +276,6 @@ function toggleTab(bla, id) {
 	}
 	tab.style.display = "block";
 }
-function addrTab(poi, prefix , condition, symbol, nounicode) {
-	var result = eval(condition);
-	if (nounicode == true) {
-		symbol = "<img class='small-icon' src='" + symbol + "' />";
-	} else {
-		symbol = "<span class='small-icon'>" + symbol + "</span>";
-	}
-	if (result.startsWith("www.") && !prefix.startsWith("mail")) {result = "http://" + result}
-	return "<div class='grid-container'><a class='nounderlinestyle' target='_blank' href='" + prefix  + result + "'>" + symbol + "'</a><a target='_blank' href='"+ prefix + result + "'>" + result + "</a></div>\n";
-}
 function processContentDatabase_intern(marker, poi, database, tag, values, data, parent) {
 	if (!parent) {parent = tag;}
 	for (var i in values) {
@@ -289,6 +290,7 @@ function processContentDatabase_intern(marker, poi, database, tag, values, data,
 			if (database[parent].applyfor[marker.category.split(" ")[0]]) {
 				title = getText("PDV_" + langcode.toUpperCase()) || undefined;
 				if (title != undefined && title.indexOf("%s") > -1 && poi.tags[tag]) {
+					console.log("  1");
 					title = title.replace("%s", poi.tags[tag]);
 				} else if (title != undefined && title.indexOf("%s") > -1) {
 					title = undefined;
@@ -376,7 +378,42 @@ function babyfriendliness_symbol(data, database) {
 		if (database[tag].symbol.indexOf("/") > -1) {
 			output += "\n<img src='" + database[tag].symbol + "' class='small-icon' />\n";
 		} else {
-			output += "\n<div class='small-icon'>" + database[tag].symbol + "</div>\n"
+			output += "\n<svg class='small-icon'>" + symbols[database[tag].symbol].html.replace(new RegExp("rating-color", "g"), data[tag].color) + "</svg>\n"
+		}
+	}
+	var result = output.split("\n");
+	output = ""
+	for (var i in result) {
+		if (result[i].indexOf("NODISPLAY") == -1) {
+			output += result[i];
+		}
+	}
+	return output;
+}
+function contact_text(data, database) {
+	var output = "";
+	for (var tag in data) {
+		var url = ((tag.endsWith("phone")) ? "tel:" + data[tag].title : ((tag.endsWith("email")) ? "mailto:" + data[tag].title : ((tag.endsWith("facebook") && !data[tag].title.startsWith("http:")) ? "https://facebook.com/" + data[tag].title : data[tag].title)));
+		output += "\n<div><a href='" + url + "' style='text-align:justify;'>" + data[tag].title + "</a></div>\n"
+	}
+	var result = output.split("\n");
+	output = ""
+	for (var i in result) {
+		if (result[i].indexOf("NODISPLAY") == -1) {
+			output += result[i];
+		}
+	}
+	return output;
+}
+function contact_symbol(data, database) {
+	var output = "";
+	for (var tag in data) {
+		console.log(tag, data);
+		var url = ((tag.endsWith("phone")) ? "tel:" + data[tag].title : ((tag.endsWith("email")) ? "mailto:" + data[tag].title : ((tag.endsWith("facebook") && !data[tag].title.startsWith("http:")) ? "https://facebook.com/" + data[tag].title : data[tag].title)));
+		if (database[tag].symbol.indexOf("/") > -1) {
+			output += "\n<a class='nounderlinestyle' href='" + url + "'><img src='" + database[tag].symbol + "' class='small-icon' style='margin-top:0px;' /></a>\n";
+		} else {
+			output += "\n<a class='nounderlinestyle' href='" + url + "'><span class='small-icon'>" + database[tag].symbol + "</span></a>\n"
 		}
 	}
 	var result = output.split("\n");
@@ -449,13 +486,14 @@ function getRightPopup(marker, usePopup) {
 		marker._icon.children[0].children[0].children[2].classList.add("marker-active") || false
 	}
 	activeMarker = marker;
+	//${ addrTab(poi, "", "poi.tags['website'] || poi.tags['contact:website'] || 'NODISPLAY'", "🌍") }${ addrTab(poi, "tel:", "poi.tags['phone'] || poi.tags['contact:phone'] || 'NODISPLAY'", "☎️") }${ addrTab(poi, "mailto:", "poi.tags['email'] || poi.tags['contact:email'] || 'NODISPLAY'", "📧") }${ addrTab(poi, "", "((poi.tags['facebook'] != undefined) ? ((poi.tags['facebook'].indexOf('/') > -1) ? poi.tags['facebook'] : ((poi.tags['facebook'] == -1) ? 'https://www.facebook.com/' + poi.tags['facebook'] : undefined)) : ((poi.tags['contact:facebook'] != undefined) ? ((poi.tags['contact:facebook'].indexOf('/') > -1) ? poi.tags['contact:facebook'] : ((poi.tags['contact:facebook'] == -1) ? 'https://www.facebook.com/' + poi.tags['contact:facebook'] : 'NODISPLAY')) : 'NODISPLAY'))", "/images/facebook-logo.svg", true) }`, "symbol": "📧", "title": getText().PDV_TITLE_CONTACT, "active": true},
 	var name = getSubtitle(poi);
 	marker.name = name || getText().filtername[marker.fltr]; //Sets the subtitle which appears under the POI's name as text in grey
 	var popup = {"POIpopup": 
-		{"home": {"content": `<h1>${ ((poi.tags["name"] == undefined) ? ((poi.tags["amenity"] == "toilets") ? getText().TOILET : getText().PDV_UNNAME) : poi.tags["name"]) } <a class='nounderlinestyle small-icon' target=\"_blank\" href=\"https://www.openstreetmap.org/edit?` + String(poi.type.toLowerCase()) + "=" + String(poi.osm_id) + `\">✏️</a></h1>\n<div class='subtitle'><span>${ String(marker.name) }</span>&nbsp;&#8231;&nbsp;<span id='address${ poi.classId }'>${ addrTrigger(poi, marker) }</span>\n<div class='dropdown'>${ ((poi.tags["operator"]) ? "&nbsp;&#8231;&nbsp;<b>&#8595;</b>" : "")}<span style='cursor:pointer;text-decoration:underline;' onclick='toggleMenu(this, "single")'>${ ((poi.tags["operator"]) ? getText().PDV_OPERATOR : "NODISPLAY") }</span><div class='dropdown-menu'>${((poi.tags["operator"]) ? poi.tags["operator"].replace(new RegExp(";", "g"), ", ") : "NODISPLAY")}</div></div>\n</div>\n<div class='socialmenu'>${ babyfriendliness_symbol(processContentDatabase(marker, poi, PDV_babyTab), PDV_babyTab) }<div class='tooltip'><img class='small-icon' src='images/share.svg' onclick='toggleTooltip(this)' /><div class='tooltip-content'><a target='_blank' href='${ "https://www.openstreetmap.org/" + String(poi.type).toLowerCase() + "/" + String(poi.osm_id) }'>${ getText().LNK_OSM_VIEW }</a><br/>\n<a href='${ "geo:" + poi.lat + "," + poi.lon }'>${ getText().LNK_OPEN_WITH }</a></div></div></div></div></div>`, "symbol": "🏠", "title": getText().PDV_TITLE_HOME, "active": true, "default": true},
+		{"home": {"content": `<h1 style='display:flex;'><span style='padding-top:4px;padding-bottom:4px;padding-right:3px;'>${ ((poi.tags["name"] == undefined) ? ((poi.tags["amenity"] == "toilets") ? getText().TOILET : getText().PDV_UNNAME) : poi.tags["name"]) }</span> <a class='nounderlinestyle small-icon' target=\"_blank\" href=\"https://www.openstreetmap.org/edit?` + String(poi.type.toLowerCase()) + "=" + String(poi.osm_id) + `\">✏️</a><div class='tooltip'><img class='small-icon' src='images/share.svg' onclick='toggleTooltip(this)' /><div class='tooltip-content'><a target='_blank' href='${ "https://www.openstreetmap.org/" + String(poi.type).toLowerCase() + "/" + String(poi.osm_id) }'>${ getText().LNK_OSM_VIEW }</a><br/>\n<a href='${ "geo:" + poi.lat + "," + poi.lon }'>${ getText().LNK_OPEN_WITH }</a></div></div></h1>\n<div class='subtitle'><span>${ String(marker.name) }</span>&nbsp;&#8231;&nbsp;<span id='address${ poi.classId }'>${ addrTrigger(poi, marker) }</span>\n<div class='dropdown'>${ ((poi.tags["operator"]) ? "&nbsp;&#8231;&nbsp;<b>&#8595;</b>" : "")}<span style='cursor:pointer;text-decoration:underline;' onclick='toggleMenu(this, "single")'>${ ((poi.tags["operator"]) ? getText().PDV_OPERATOR : "NODISPLAY") }</span><div class='dropdown-menu'>${((poi.tags["operator"]) ? poi.tags["operator"].replace(new RegExp(";", "g"), ", ") : "NODISPLAY")}</div></div>\n</div>\n<div class='socialmenu'>${ contact_symbol(processContentDatabase(marker, poi, PDV_contact ), PDV_contact)}</div><div class='socialmenu'>${ babyfriendliness_symbol(processContentDatabase(marker, poi, PDV_babyTab), PDV_babyTab) }</div></div></div>`, "symbol": "🏠", "title": getText().PDV_TITLE_HOME, "active": true, "default": true},
 		"baby": {"content": `${ babyfriendliness_text(processContentDatabase(marker, poi, PDV_babyTab), PDV_babyTab) }`, "symbol": "👶", "title": getText().PDV_TITLE_BABY, "active": true},
-		"contact" : {"content": `${ addrTab(poi, "", "poi.tags['website'] || poi.tags['contact:website'] || 'NODISPLAY'", "🌍") }${ addrTab(poi, "tel:", "poi.tags['phone'] || poi.tags['contact:phone'] || 'NODISPLAY'", "☎️") }${ addrTab(poi, "mailto:", "poi.tags['email'] || poi.tags['contact:email'] || 'NODISPLAY'", "📧") }${ addrTab(poi, "", "((poi.tags['facebook'] != undefined) ? ((poi.tags['facebook'].indexOf('/') > -1) ? poi.tags['facebook'] : ((poi.tags['facebook'] == -1) ? 'https://www.facebook.com/' + poi.tags['facebook'] : undefined)) : ((poi.tags['contact:facebook'] != undefined) ? ((poi.tags['contact:facebook'].indexOf('/') > -1) ? poi.tags['contact:facebook'] : ((poi.tags['contact:facebook'] == -1) ? 'https://www.facebook.com/' + poi.tags['contact:facebook'] : 'NODISPLAY')) : 'NODISPLAY'))", "/images/facebook-logo.svg", true) }`, "symbol": "📧", "title": getText().PDV_TITLE_CONTACT, "active": true},
-		"opening_hours": {"content": `${ parseOpening_hours(poi.tags["opening_hours"]) || "NODISPLAY" }`, "symbol": "🕰️", "title": getText().PDV_TITLE_OH, "active": true}
+		"opening_hours": {"content": `${ parseOpening_hours(poi.tags["opening_hours"]) || "NODISPLAY" }`},
+		"contact" : {"content": `${ contact_text(processContentDatabase(marker, poi, PDV_contact), PDV_contact)}`, "symbol": "🕰️", "title": getText().PDV_TITLE_OH, "active": true}
 		},
 	"playgroundPopup":
 		{"home": {"content": `<h1>${ ((poi.tags["name"] != undefined) ? poi.tags["name"] : marker.name) }</h1><h2>${ ((poi.tags["name"] == undefined) ? "" : marker.name) }</h2>${ processContentDatabase(marker, poi, PEP_data) }`, "symbol": "🏠", "title": getText().PDV_TITLE_HOME, "active": true, "default": true},
@@ -592,5 +630,9 @@ spinner(false);
 zoomLevel = String(map.getZoom());
 loadLang("", languageOfUser);
 
-getData("/markers/marker.svg", "text", "", undefined, function (data) {markerStyles["marker"] = {iconSize: [31, 48], popupAnchor: [4, -32], iconAnchor: [12, 45], className: "leaflet-marker-icon leaflet-zoom-animated leaflet-interactive", html: "<svg style='width:25px;height:41px;'>" + data + "</svg>"} /* Caches the marker for later altering (change of its colour for every single individual filter) */}); //Triggers the loading and caching of the marker icon at startup of Babykarte
-getData("/markers/dot.svg", "text", "", undefined, function (data) {markerStyles["dot"] = {iconSize: [20, 20], popupAnchor: [0, 0], iconAnchor: [10, 10], className: "leaflet-marker-icon leaflet-zoom-animated leaflet-interactive", html: "<svg style='width:20px;height:20px;'>" + data + "</svg>"}; /* Caches the marker for later altering (change of its colour for every single individual filter) */}); //Triggers the loading and caching of the marker icon at startup of Babykarte
+getData("markers/marker.svg", "text", "", undefined, function (data) {markerStyles["marker"] = {iconSize: [31, 48], popupAnchor: [4, -32], iconAnchor: [12, 45], className: "leaflet-marker-icon leaflet-zoom-animated leaflet-interactive", html: "<svg style='width:25px;height:41px;'>" + data + "</svg>"} /* Caches the marker for later altering (change of its colour for every single individual filter) */}); //Triggers the loading and caching of the marker icon at startup of Babykarte
+getData("markers/dot.svg", "text", "", undefined, function (data) {markerStyles["dot"] = {iconSize: [20, 20], popupAnchor: [0, 0], iconAnchor: [10, 10], className: "leaflet-marker-icon leaflet-zoom-animated leaflet-interactive", html: "<svg style='width:20px;height:20px;'>" + data + "</svg>"}; /* Caches the marker for later altering (change of its colour for every single individual filter) */}); //Triggers the loading and caching of the marker icon at startup of Babykarte
+getData("images/stroller.svg", "text", "", undefined, function (data) {symbols["stroller"] = {"html": data};});
+getData("images/ball.svg", "text", "", undefined, function (data) {symbols["ball"] = {"html": data};});
+getData("images/changingtable.svg", "text", "", undefined, function (data) {symbols["changingtable"] = {"html": data};});
+getData("images/highchair.svg", "text", "", undefined, function (data) {symbols["highchair"] = {"html": data};});

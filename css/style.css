@@ -78,14 +78,12 @@ section {
 	text-align:center;
 }
 .small-icon {
-	height:20px;
-	width:20px;
+	height:20px !important;
+	width:20px !important;
 	font-size:20px;
-	color:#006691ff;
 	margin-top:5px;
 	margin-left:5px;
 	margin-right:20px;
-	cursor:pointer;
 }
 .text-icon {
 	height:15px;
@@ -131,12 +129,18 @@ section {
 /*---------------------- COLOUR CODES FOR BABY FRIENDLINESS TAB -------------------------------- */
 .color-green {
 	color:#339933;
+	fill:#339933;
+	stroke:#339933;
 }
 .color-red {
 	color:#ff2526;
+	fill:#ff2526;
+	stroke:#ff2526;
 }
 .color-yellow {
 	color:#e6a400;
+	fill:#e6a400;
+	stroke:#e6a400;
 }
 .color-grey {
 	color:#858585;
@@ -216,6 +220,8 @@ section {
 	position:absolute;
 	height:50px;
 	width:200px;
+	font-size:12px;
+	text-align:justify;
 	display:none;
 }
 .tooltip-content-active {
