@@ -426,12 +426,17 @@ section {
 	top:45px;
 	width:100%;
 }
-#poimenu {
+.tabcontent {
+	display:none;
+}
+.tab-visible {
+	display:block;
+}
+#poimenu, #poidetails {
 	top:initial !important;
 	bottom:0px;
-	left:10px;
-	height:200px !important;
-	width:calc(100% - 10px) !important;
+	overflow:hidden;
+	width:100%;
 }
 #infoPopup {
 	width:200px;
