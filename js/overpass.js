@@ -506,26 +506,29 @@ function getRightPopup(marker, usePopup) {
 function createDialog(marker, poi, details_data) {
 	var popupContent = "";
 	var popupContent_header = "";
+	document.getElementById("infotext-swipe").innerHTML = "&nbsp;";
 	for (var entry in details_data) {
 		var tabContent = "";
-		var classList = ""
+		var classList = "";
+		var result = "";
 		var content = details_data[entry].content;
 		content = content.split("\n");
-		if (details_data[entry].default == true) {
-			classList = "tab-visible";
-		}
-		tabContent = "<div class='tabcontent " + classList + "' id='" + poi.classId + entry + "'>";
 		for (var i in content) {
-			var result = "";
-			result += content[i];
-			if (result.indexOf("NODISPLAY") > -1) {result = "";}
-				tabContent += result;
+			if (content[i].indexOf("NODISPLAY") == -1) {
+				result += content[i];
 			}
-		if (result == "") {
-			details_data[entry].active = false;
-		} else {
-			popupContent += tabContent + "</div>";
 		}
+		if (result != "") {
+			if (details_data[entry].default == true) {
+				classList = "tab-visible";
+			} else {
+				console.log("available but not active as default: ", entry);
+				document.getElementById("infotext-swipe").innerHTML = getText().SWIPE_INFO;
+				details_data[entry].active = false;
+			}
+			tabContent = "<div class='tabcontent " + classList + "' id='" + poi.classId + entry + "'>" + result + "</div>";
+		}
+		popupContent += tabContent + "</div>";
 	}
 	marker.popupContent = "<div>" + popupContent_header + popupContent/*+ "</div> <a target=\"_blank\" href=\"https://www.openstreetmap.org/note/new#map=17/" + poi.lat + "/" + poi.lon + "&layers=N\">" + getText().LNK_OSM_REPORT + "</a>"*/;
 	$("#poidetails").html(marker.popupContent);
