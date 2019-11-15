@@ -253,20 +253,23 @@ section {
 	top:0px;
 	box-sizing:border-box;
 }
-#autocomplete ul {
-	list-style-type:none;
-	margin:0px;
-	padding:0px;
-	color:#142a52;
+#autocomplete .entry {
+	background-color:#f9e9d2;
+	border-bottom:5px solid white;
+	padding:5px;
 }
-#autocomplete li {
-	list-style-type:none;
-	padding-top:5px;
-	padding-bottom:5px;
-}
-#autocomplete li:hover {
+#autocomplete .entry:hover {
 	cursor:pointer;
 	background-color:rgb(255, 64, 0, 0.6);
+}
+#autocomplete span {
+	margin:0px;
+	padding:0px;
+	color:#ff541aff;
+}
+#autocomplete address {
+	padding-top:5px;
+	padding-bottom:5px;
 }
 #poidetails {
 	font-family:"Palatino Linotype", "Book Antiqua", Palatino, serif;
@@ -411,7 +414,8 @@ section {
 	display:block;
 }
 .leftbar {
-	display:flex;
+	display:grid;
+	grid-template-columns:auto auto auto auto auto auto;
 	width:100%;
 	height:45px;
 }

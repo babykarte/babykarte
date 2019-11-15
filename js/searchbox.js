@@ -1,6 +1,7 @@
 var saved_lat = 54.32308131652028;
 var saved_lon = 10.139915941399524;
 var message;
+var timeoutTyping;
 var touchSupport = false;
 var swipeData = [];
 document.body.ontouchstart = function(event) {
@@ -90,37 +91,43 @@ function jumpto(elem, lat, lon) { // Function which fires when user clicks on a 
 			resetFilter(id);
 		}
 		map.on("moveend", onMapMove); //Activate the dynamic loading of content
-		setTimeout(function() {onMapMove();}, 500); //After 5sec trigger the dynamic loading of content manually without user action.
+		setTimeout(function() {onMapMove();}, 300); //After 5sec trigger the dynamic loading of content manually without user action.
 		showGlobalPopup(elem.innerHTML); //Show the message displaying the location is user is viewing
 	}
 }
-function geocode() { // Function which powers the search suggestion list
+function geocode_intern() { // Function which powers the search suggestion list
 	var searchword = $("#searchfield").val();
 	if (searchword.length == 0) {
 		$("#autocomplete").hide();
 	}
 	if(searchword.length > 3) { //Request and show search suggestions after the third char has been typed in by user
+		spinner(true);
 		$.getJSON("https://photon.komoot.de/api/", { //Sends user input to search suggestion provider komoot
 			"q": searchword,
 			"limit": 5,
 			"lang": languageOfUser //Sends the determined language or the language set by user
 		}, function(data) {
 			var current_bounds = map.getBounds();
-			var autocomplete_content = "<ul>";
+			var autocomplete_content = "";
 
 			$.each(data.features, function(number, feature) {
 				var latlng = [feature.geometry.coordinates[1], feature.geometry.coordinates[0]]; //Get the coordinates of the search suggestion entry
-				autocomplete_content += "<li onclick='jumpto(this, " + latlng[0] + ", " + latlng[1] + ")'>" + feature.properties.name + ", " + feature.properties.country + "</li>"; //Adds a entry in the search suggestion popup (e.g. Berlin central station)
+				autocomplete_content += "<div class='entry' style='border-bottom:5px solid white;padding:5px;' onclick='jumpto(this, " + latlng[0] + ", " + latlng[1] + ")'><span>" + feature.properties.name + "</span><br/><address style='font-size:14px;'>" + feature.properties.country + "</address></div>"; //Adds a entry in the search suggestion popup (e.g. Berlin central station)
 			});
 			if (autocomplete) {
-				$("#autocomplete").html(autocomplete_content+"</ul>"); //Add them all to the search suggestion popup
+				$("#autocomplete").html(autocomplete_content); //Add them all to the search suggestion popup
 				$("#autocomplete").show(); //Display the suggestion popup to the user
 			}
+			spinner(false);
 		});
 	} else {
 		$("#autocomplete").hide();
 	}
 };
+function geocode() {
+	clearTimeout(timeoutTyping);
+	timeoutTyping = setTimeout(geocode_intern, 500);
+}
 // Makes the search happen directly after a char is typed in searchfield.
 $("#searchfield").keyup(function() {
 	geocode();
