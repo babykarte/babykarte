@@ -40,7 +40,7 @@ function loadLang(e, lang) {
 	}
 	if (lang in langRef[document.body.id] == false) {
 		var script = document.createElement("script");
-		script.setAttribute("src", "/js/" + String(lang) + ".js");
+		script.setAttribute("src", "js/" + String(lang) + ".js");
 		document.body.appendChild(script);
 	} else {
 		setLang(e, lang);
