@@ -2,12 +2,13 @@
 import psycopg2, os, json, sys, io
 #sys.stderr = sys.stdout
 # st_makeEnvelope(ymin, xmin,ymax, xmax)
-debug = "" #"""playground - 10.1207,54.3152,10.1593,54.3309"""
+debug = "" #"""cafe - 10.1207,54.3152,10.1593,54.3309"""
+verbose = False
 data = {}
 elem_count = 0
-dbconnstr="dbname=gis"
-sqls = {"normal": "SELECT to_json(tags), osm_id, 'Node' AS osm_type, St_asgeojson(St_centroid(geom)) ::json AS geometry FROM osm_poi_point WHERE geom && ST_makeEnvelope(%lat1, %lon1, %lat2, %lon2) and %condition UNION ALL SELECT to_json(tags), osm_id, 'Way' AS osm_type, st_asgeojson(St_centroid(geom)) ::json AS geometry FROM osm_poi_poly WHERE geom && ST_makeEnvelope(%lat1, %lon1, %lat2, %lon2) and %condition;",
-			"playground": "SELECT to_json(tags), osm_id, CASE WHEN equipment IS NOT NULL THEN 'Way' ELSE 'Node' END AS osm_type, St_asgeojson(St_centroid(geom)) ::json AS geometry, equipment from osm_poi_playgrounds where geom && ST_makeEnvelope(%lat1, %lon1, %lat2, %lon2) and %condition;"}
+dbconnstr="dbname=poi"
+sqls = {"normal": "SELECT to_json(tags), osm_id, 'Node' AS osm_type, St_asgeojson(St_centroid(geom)) ::json AS geometry FROM osm_poi_point WHERE geom && ST_makeEnvelope(%lat1, %lon1, %lat2, %lon2) and (%condition) UNION ALL SELECT to_json(tags), osm_id, 'Way' AS osm_type, st_asgeojson(St_centroid(geom)) ::json AS geometry FROM osm_poi_poly WHERE geom && ST_makeEnvelope(%lat1, %lon1, %lat2, %lon2) and (%condition);",
+			"playground": "SELECT to_json(tags), osm_id, osm_type, St_asgeojson(St_centroid(geom)) ::json AS geometry, equipment from osm_poi_playgrounds where geom && ST_makeEnvelope(%lat1, %lon1, %lat2, %lon2) and (%condition);"}
 queryLookUp = {"paediatrics": ("tags->'healthcare:speciality'='paediatrics'", "normal", "health"),
 				"midwife": ("tags->'healthcare'='midwife'", "normal", "health"),
 				"birthing_center": ("tags->'healthcare'='birthing_center'", "normal", "health"),
@@ -21,12 +22,20 @@ queryLookUp = {"paediatrics": ("tags->'healthcare:speciality'='paediatrics'", "n
 				"zoo": ("tags->'tourism'='zoo'", "normal", "activity"),
 				"changingtable": ("(tags->'diaper' IS NOT NULL AND tags->'diaper'!='no') OR (tags->'changing_table' IS NOT NULL AND tags->'changing_table'!='no')", "normal", "changingtable"),
 				"changingtable-men": ("tags->'diaper:male'='yes' OR tags->'diaper:unisex'='yes' OR tags->'diaper'='room' OR tags->'diaper:wheelchair'='yes' OR tags->'changing_table:location' NOT LIKE 'female_toilet'", "normal", "changingtable"),
-				"cafe": ("tags->'amenity'='cafe' AND (CASE WHEN tags->'min_age' IS NOT NULL THEN tags->'min_age'>='3' ELSE TRUE END)", "normal", "eat"),
+				"cafe": ("tags->'amenity'='cafe' AND (CASE WHEN tags->'min_age' IS NOT NULL THEN tags->'min_age'>='3' ELSE TRUE END) OR tags ? 'cafe' AND (CASE WHEN tags->'min_age' IS NOT NULL THEN tags->'min_age'>='3' ELSE TRUE END)", "normal", "eat"),
 				"restaurant": ("tags->'amenity'='restaurant' AND (CASE WHEN tags->'min_age' IS NOT NULL THEN tags->'min_age'>='3' ELSE TRUE END)", "normal", "eat"),
 				"fast_food": ("tags->'amenity'='fast_food'", "normal", "eat"),
 			}
-def errorCreation(text):
-	return {"notes": text}
+def errorCreation(name, text):
+	global data, elem_count
+	data[elem_count] = {}
+	data[elem_count]["notes"] = text
+	data[elem_count]["filter"] = name
+	elem_count += 1
+def errorLog(message):
+	global debug
+	if not debug == "":
+		print(message, file=sys.stderr)
 def convertToJSON(query, mode, name, category, source):
 	global data, elem_count
 	for row in query:
@@ -34,7 +43,7 @@ def convertToJSON(query, mode, name, category, source):
 		if mode == "playground":
 			data[elem_count]["tags"], data[elem_count]["osm_id"], data[elem_count]["type"], data[elem_count]["geometry"], data[elem_count]["equipment"] = row
 			if data[elem_count]["equipment"] != 'null':
-				for equip in data[elem_count]["equipment"].split(","):
+				for equip in data[elem_count]["equipment"]:
 					data[elem_count]["tags"]["playground:" + equip] = "yes"
 		else:
 			data[elem_count]["tags"], data[elem_count]["osm_id"], data[elem_count]["type"], data[elem_count]["geometry"] = row
@@ -60,6 +69,8 @@ def lookupQuery(name, bbox):
 			bbox[2] = 0
 			bbox[3] = 0
 		return sqls[mode].replace("%lon1", bbox[0]).replace("%lat1", bbox[1]).replace("%lon2", bbox[2]).replace("%lat2", bbox[3]).replace("%condition", condition), mode, name, category
+	else:
+		return "", "", name, "" 
 def getData():
 	if debug == "":
 		filebuffer = sys.stdin.read()
@@ -70,25 +81,29 @@ def getData():
 			continue
 		query, bbox = entry.split(" - ")
 		query, mode, name, category = lookupQuery(query.strip(), bbox.split(","))
-		if query.startswith("ERROR"):
-			return query
-		try:
-			conn = psycopg2.connect(dbconnstr)
-			cur = conn.cursor()
-			cur.execute(query)
-			result = cur.fetchall()
-		except Exception as e:
-			return errorCreation("ERROR 504" + str(e))
-		convertToJSON(result, mode, name, category, query);
+		if query == "":
+			errorCreation(name, "ERROR 404")
+		else:
+			try:
+				conn = psycopg2.connect(dbconnstr)
+				cur = conn.cursor()
+				cur.execute(query)
+				result = cur.fetchall()
+				convertToJSON(result, mode, name, category, query);
+			except Exception as e:
+				if not debug == "" or verbose:
+					errorCreation(name, "ERROR 503" + str(e))
+				else:
+					errorCreation(name, "ERROR 503")
+				errorLog("SQL Input: " + query)
 	stream = io.StringIO()
-	json.dump(data, stream, ensure_ascii=False)
+	json.dump(data, stream)
 	return stream.getvalue()
 def application(environ):
-	print("Content-Type:", "application/json;charset=utf-8\r\n", end="")
-	print("Access-Control-Allow-Origin: *\r\n\r\n", end="")
+	print("Content-Type:", "application/json;charset=utf-8\r\n\r\n", end="")
 	if "HTTP_COOKIE" in environ:
 		environ["HTTP_COOKIE"] = ""
-	print(getData(), end='')
+	print(getData())
 
 
 application(os.environ)
