@@ -164,6 +164,7 @@ section {
 .bar-icon {
 	height:25px;
 	width:25px;
+	transition: 300ms;
 }
 .bar-icon:hover {
 	cursor:pointer;
@@ -235,7 +236,8 @@ section {
 	display:block;
 }
 .item-active, .tooltip-active{ /* Style for clicked (active) tab labels (menus) */
-	
+	transition: 300ms;
+	background-color: #ffe6f7;
 }
 #filtersGround label {
 	display:block;
