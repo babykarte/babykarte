@@ -183,12 +183,12 @@ function formataddrdata(poi, address) {
 	var content = "";
 	if (address) {
 		var street = address["addr:street"] || address["road"] || address["pedestrian"] || address["street"] || address["footway"] || address["path"] || address["address26"] || getText().PDV_STREET_UNKNOWN;
-		var housenumber = address["addr:housenumber"] || address["housenumber"] || address["house_number"] || getText().PDV_HOUSENUMBER_UNKNOWN;
+		var housenumber = address["addr:housenumber"] || address["housenumber"] || address["house_number"] || "";
 		var postcode = address["addr:postcode"] || address["postcode"] || getText().PDV_ZIPCODE_UNKNOWN;
 		var city = address["addr:city"] || address["city"] || address["town"] || address["county"] || address["state"] || getText().PDV_COMMUNE_UNKNOWN;
-		content = street + " " + housenumber + ", " + postcode + " " + city;
+		housenumber = ((housenumber != "") ? " " + housenumber : "")
+		content = street + housenumber + ", " + postcode + " " + city;
 	} else {
-		//content = "<i><span style='color:red;'>" + getText().PDV_ADDRESS_UNKNOWN + "</span></i>";
 		content = `<i><a href='${ "geo:" + poi.lat + "," + poi.lon }'>${ getText().LNK_OPEN_WITH }</a></i>`;
 	}
 	return content;

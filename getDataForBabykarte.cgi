@@ -9,7 +9,7 @@ elem_count = 0
 dbconnstr="dbname=poi"
 sqls = {"normal": "SELECT to_json(tags), osm_id, 'Node' AS osm_type, St_asgeojson(St_centroid(geom)) ::json AS geometry FROM osm_poi_point WHERE geom && ST_makeEnvelope(%lat1, %lon1, %lat2, %lon2) and (%condition) UNION ALL SELECT to_json(tags), osm_id, 'Way' AS osm_type, st_asgeojson(St_centroid(geom)) ::json AS geometry FROM osm_poi_poly WHERE geom && ST_makeEnvelope(%lat1, %lon1, %lat2, %lon2) and (%condition);",
 			"playground": "SELECT to_json(tags), osm_id, osm_type, St_asgeojson(St_centroid(geom)) ::json AS geometry, equipment from osm_poi_playgrounds where geom && ST_makeEnvelope(%lat1, %lon1, %lat2, %lon2) and (%condition);"}
-queryLookUp = {"paediatrics": ("tags->'healthcare:speciality'='paediatrics'", "normal", "health"),
+queryLookUp = {"paediatrics": ("tags->'healthcare:speciality' LIKE 'paediatrics'", "normal", "health"),
 				"midwife": ("tags->'healthcare'='midwife'", "normal", "health"),
 				"birthing_center": ("tags->'healthcare'='birthing_center'", "normal", "health"),
 				"playground": ("tags->'leisure'='playground' AND (CASE WHEN tags->'min_age' IS NOT NULL THEN tags->'min_age'>='3' ELSE TRUE END) AND NOT (CASE WHEN tags->'access' IS NOT NULL THEN tags->'access'='private' ELSE FALSE END)", "playground", "activity"),
@@ -17,7 +17,7 @@ queryLookUp = {"paediatrics": ("tags->'healthcare:speciality'='paediatrics'", "n
 				"park": ("tags->'leisure'='park' AND tags->'name' IS NOT NULL AND (CASE WHEN tags->'min_age' IS NOT NULL THEN tags->'min_age'>='3' ELSE TRUE END) AND NOT (CASE WHEN tags->'access' IS NOT NULL THEN tags->'access'='private' ELSE FALSE END)", "normal", "rest"),
 				"shop-babygoods": ("tags->'shop'='baby_goods'", "normal", "shop"),
 				"shop-toys": ("tags->'shop'='toys'", "normal", "shop"),
-				"shop-clothes": ("tags->'shop'='clothes'", "normal", "shop"),
+				"shop-clothes": ("tags->'shop'='clothes' and (tags->'clothes' LIKE 'babies' or tags->'clothes' LIKE 'children')", "normal", "shop"),
 				"childcare": ("tags->'amenity'='kindergarten' OR tags->'amenity'='childcare'", "normal", "childcare"),
 				"zoo": ("tags->'tourism'='zoo'", "normal", "activity"),
 				"changingtable": ("(tags->'diaper' IS NOT NULL AND tags->'diaper'!='no') OR (tags->'changing_table' IS NOT NULL AND tags->'changing_table'!='no')", "normal", "changingtable"),
