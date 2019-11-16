@@ -49,9 +49,6 @@ section {
 }
 .tabcontent {
 	box-sizing:border-box;
-	/*border-bottom:10px solid #ff541aff;
-	border-left:5px solid #ff541aff;
-	border-right:5px solid #ff541aff;*/
 	border-bottom:10px solid white;
 	border-left:5px solid white;
 	border-right:5px solid white;

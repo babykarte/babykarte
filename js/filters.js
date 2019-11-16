@@ -1,5 +1,4 @@
 var activeFilter = {}; //Dictionary of the current selected filters
-var queue = []; //A list of tasks in queue
 var timerForFilter, markerCode, filtersSorted;
 var profiles = { //Colour profiles for the filters
 "defaultMarker": {code: "#004387"},
@@ -169,7 +168,7 @@ function hardReset() {
 		filter[fltr].active = false;
 	}
 }
-function osmExpression(poi, value) {
+/*function osmExpression(poi, value) {
 	var key, content, result;
 	var regExpression = "";
 	value = value.replace("\"", "").replace("\"", "").replace("[", "").replace("]", "").replace("\"", "").replace("\"", "")
@@ -199,27 +198,18 @@ function osmExpression(poi, value) {
 		}
 		return result;
 	}
-}
+}*/
 function getData(url, dataType, data,  fail, success, type) {
 	if (type == undefined) {type = "GET"}
 	if (fail == undefined) {fail = function() {showGlobalPopup(getText().LOADING_FAILURE);spinner(false);}}
-	request = function() {
-		$.ajax({
-			type: type,
-			url: String(url),
-			dataType: String(dataType),
-			data: data,
-			error: fail,
-			success: success,
-			complete: function(xhr, status) {queue.shift();
-				if (queue.length > 0) {
-					queue[0]();
-				}
-			}
-			});
-	}
-	queue.push(request);
-	if (queue.length == 1) {request();} 
+	$.ajax({
+		type: type,
+		url: String(url),
+		dataType: String(dataType),
+		data: data,
+		error: fail,
+		success: success,
+	});
 }
 function getSubtitle(poi) {
 	var json = getText().filtertranslations;

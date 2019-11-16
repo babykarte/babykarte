@@ -138,67 +138,16 @@ function locationError(e) {
 	spinner(false);
 }
 function createSQL(bbox, fltr) { return String(fltr) + " - " + String(bbox) + "\n"; }
-/*function roundIt(number) {
-	number = String(number)
-	console.log(Number(number.slice(0, 5)));
-	return Number(number.slice(0, 5))
-}*/
-function locateNewArea(fltr) {
-	return createSQL(map.getBounds().getSouth() + "," + map.getBounds().getWest() + "," + map.getBounds().getNorth() + "," +  map.getBounds().getEast(), fltr);
-}
-/*function locateNewAreaold(fltr) {
-	//Complex algorithm. It calculates the coordinates when the user moves the map. Then the coordinates will be used to fetch just more POIs without overwriting/overlaying the existing ones.
-	//NORTH: Number increases when moving to the top (North)
-	//SOUTH: Number decreases when moving to the bottom (South)
-	//WEST: Number decreases when moving to the left (West)
-	//EAST: Number increases when moving to the right (East)
-	//LB: little box
-	var result = "";
-	var north_new = Number(map.getBounds().getNorth());
-	var east_new = Number(map.getBounds().getEast());
-	var south_new = Number(map.getBounds().getSouth());
-	var west_new = Number(map.getBounds().getWest());
-	south_new = roundIt(south_new); //Number(south_new.toFixed(2));
-	west_new = roundIt(west_new); //Number(west_new.toFixed(2));
-	east_new = roundIt(east_new); //Number(east_new.toFixed(2));
-	north_new = roundIt(north_new); //Number(north_new.toFixed(2));
-	var size = Number(0.02);
-	var LBs_vertical = roundIt(Number(north_new - south_new)/size ) //Number(Number((north_new - south_new) / size).toFixed());
-	var LBs_horizontal = roundIt(Number(east_new - west_new)/size ) //Number(Number((east_new - west_new) / size).toFixed());
-	console.log(south_new)
-	for (var i = 0;i <= LBs_vertical;i++) {
-		console.log(south_new);
-		for (var u = 0;u < LBs_horizontal;u++) {
-			console.log("  ", west_new);
-			if (!filter[fltr].littleboxes[String(south_new) + "+" + String(west_new)]) {
-				//var result2 = createSQL(south_new + "," + west_new + "," +  Number(Number(south_new + size).toFixed(2)) + "," +  Number(Number(west_new + size).toFixed(2)), fltr);
-				var result2 = createSQL(south_new + "," + west_new + "," + Number(south_new + size) + "," +  Number(west_new + size), fltr);
-				result += "\n" + result2;
-				filter[fltr].littleboxes[String(south_new) + "+" + String(west_new)] = true;
-			}
-			west_new += size;
-			west_new = Number(west_new); //Number(Number(west_new).toFixed(2));
-		}
-	south_new += size;
-	south_new = Number(south_new); //Number(Number(south_new).toFixed(2));
-	}
-	if (result) {
-		return result;
-	} else {
-		return false;
-	}
-}*/
 function locateNewAreaBasedOnFilter() {
 	//Wrapper around locateNewArea().
 	//Adds filter compactibility to locateNewArea() function.
 	var url = "";
 	var result = "";
 	for (var fltr in activeFilter) {
-		result = locateNewArea(fltr);
+		result = createSQL(map.getBounds().getSouth() + "," + map.getBounds().getWest() + "," + map.getBounds().getNorth() + "," +  map.getBounds().getEast(), fltr);
 		if (result) {
 			url += result
 		}
-		url = url.replace(");(", "") //Removes the delimiter between Overpass union syntax, because we want to have just one 'union' tag. Combines two (or more 'union's (we're in a loop)) into one.
 		fltr++;
 	}
 	return url
@@ -230,7 +179,7 @@ function parseOpening_hours(value) {
 	}
    	return value
 }
-function formataddrdata(address) {
+function formataddrdata(poi, address) {
 	var content = "";
 	if (address) {
 		var street = address["addr:street"] || address["road"] || address["pedestrian"] || address["street"] || address["footway"] || address["path"] || address["address26"] || getText().PDV_STREET_UNKNOWN;
@@ -247,13 +196,12 @@ function formataddrdata(address) {
 function addrTrigger_intern(poi, marker) {
 	if (marker.popupContent.indexOf(getText().PDV_ADDRESS_LOADING) > -1) {
 		$.get("https://nominatim.openstreetmap.org/reverse?accept-language=" + languageOfUser + "&format=json&osm_type=" + String(poi.type)[0].toUpperCase() + "&osm_id=" + String(poi.osm_id), function(data, status, xhr, trash) {
-			$("#address").html(formataddrdata(data["address"]));
+			$("#address").html(formataddrdata(poi, data["address"]));
 		});
 	}
 }
 function addrTrigger(poi, marker, mode) {
-	var tmp = formataddrdata(poi.tags);
-	console.log(tmp);
+	var tmp = formataddrdata(poi, poi.tags);
 	if (tmp.indexOf(getText().PDV_STREET_UNKNOWN) > -1) {
 		var timeout = setTimeout(addrTrigger_intern, 500, poi, marker);
 		return getText().PDV_ADDRESS_LOADING;
@@ -480,7 +428,6 @@ function addMarkerIcon(poi, marker) {
 	filter[marker.fltr].layers.push(marker); //Adds the POI to the filter's layers list.
 	return marker;
 }
-//ToDo: PEP_data
 function getRightPopup(marker, usePopup) {
 	marker = marker.target;
 	var poi = marker.data;
@@ -588,9 +535,6 @@ function loadPOIS(e, post) {
 			marker.on("click", function(event) {getRightPopup(event, filter[event.target.fltr].popup)});
 			//Add marker to map
 			map.addLayer(marker);
-			/*if (poi.lat == saved_lat && poi.lon == saved_lon) {
-				addrTrigger_intern(poi, marker);
-			}*/
 		}
 		spinner(false);
 	}, "POST");
