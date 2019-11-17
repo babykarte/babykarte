@@ -429,6 +429,7 @@ function addMarkerIcon(poi, marker) {
 	return marker;
 }
 function getRightPopup(marker, usePopup) {
+	console.log(marker)
 	marker = marker.target;
 	var poi = marker.data;
 	if (activeMarker && activeMarker._icon != null && marker._icon != null) { //Expression which prevents a JS error from ocurring when user loads a new filter or moves the map because both actions clean and refresh the map. That means some objects will be deleted and this expression can handle such cases by validating the object itself. See https://github.com/babykarte/babykarte/issues/17
@@ -585,3 +586,10 @@ getData("images/stroller.svg", "text", "", undefined, function (data) {symbols["
 getData("images/ball.svg", "text", "", undefined, function (data) {symbols["ball"] = {"html": data};});
 getData("images/changingtable.svg", "text", "", undefined, function (data) {symbols["changingtable"] = {"html": data};});
 getData("images/highchair.svg", "text", "", undefined, function (data) {symbols["highchair"] = {"html": data};});
+map.on("click", function () {
+	console.log(1000);
+	if (activeMarker && activeMarker._icon != null) {
+		activeMarker._icon.children[0].getElementById("layer1").classList.remove("marker-active") || false;
+	}
+	hideAll(["item-active", "dropdown-active"]);
+})

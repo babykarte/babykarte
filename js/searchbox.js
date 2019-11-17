@@ -29,12 +29,12 @@ function hideAll(classes) {
 	for (var dropdown of document.getElementsByClassName("dropdown-menu")) {
 		dropdown.classList.remove(classes[1]);
 	}
-	for (var menuitem of document.getElementsByClassName("menuitem")) {
+	for (var menuitem of document.getElementsByClassName("bar-icon")) {
 		menuitem.classList.remove(classes[0]);
 	}
 }
 function intern_toggle(elem, mode, classes) {
-	mode = mode || "all"
+	mode = mode || "all";
 	var parent = elem.parentElement;
 	var menu = elem.nextElementSibling;
 	var active = menu.classList.contains(classes[1]);
