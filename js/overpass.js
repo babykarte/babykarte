@@ -16,7 +16,7 @@ var PEP_data = {// PEP = Playground Equipment Popup
 				"material": {"nameInherit": true, "applyfor": {"activity": true}, "values": ["wood", "metal", "steel", "plastic", "rope", undefined], "children": {}},
 				"capacity": {"nameInherit": true, "applyfor": {"activity": true}, "values": [undefined, "*"],
 					"children":
-						{"disabled": {"values": ["yes", "no", undefined, "*"]}}
+						{"disabled": {"values": ["yes", "no", undefined]}}
 						},
 				"baby": {"nameInherit": true, "applyfor": {"activity": true}, "values": ["yes", "no", "only", undefined], "children": {}},
 				"surface": {"nameInherit": true, "applyfor": {"activity": true}, "values": ["sand", "grass", "woodchips", "rubbercrumb", "tartan", "gravel", "paving_stones", "wood", "asphalt", undefined], "children": {}},
@@ -32,7 +32,7 @@ var PDV_contact = { //PDV = POI Details View
 				"facebook": {"nameInherit": false, "values": [undefined, "*"],  "applyfor": {"shop": true, "eat": true, "health": true}, "symbol": "images/facebook-logo.svg"},
 				"phone": {"nameInherit": false, "values": [undefined, "*"],  "applyfor": {"shop": true, "eat": true, "health": true}, "symbol": "☎️"},
 }
-var PDV_babyTab = { //PDV = POI Details View
+var PDV_baby = { //PDV = POI Details View
 				"leisure": {"nameInherit": false, "applyfor": {"activity": true}, "values": ["playground", undefined], "triggers": function(data, local) {if (Object.keys(local.children).length == 0) {delete data["leisure"];} return data}, "symbol": "ball",
 					"children": 
 						{"playground:slide": {"values": ["yes", undefined]},
@@ -92,7 +92,7 @@ var PDV_babyTab = { //PDV = POI Details View
 						"fee": {"values": ["yes", "no", undefined]}				//		kids_area:fee=yes|no|undefined
 						}
 				},
-				"baby_feeding": {"nameInherit": true, "applyfor": {"eat": true, "shop": true, "changingtable": true}, "values": ["yes", "no", "room", undefined],							// baby_feeding=yes|no|room|undefined
+				"baby_feeding": {"nameInherit": true, "applyfor": {"eat": true, "shop": true, "changingtable": true}, "symbol": "&#129329;", "values": ["yes", "no", "room", undefined],							// baby_feeding=yes|no|room|undefined
 					"children":
 						{"female" : {"values": ["yes", "no", undefined]},		//		baby_feeding:female=yes|no|undefined
 						"male" : {"values": ["yes", "no", undefined]}			//		baby_feeding:male=yes|no|undefined
@@ -298,7 +298,7 @@ function processContentDatabase(marker, poi, database) {
 	}
 	return data;
 }
-function babyfriendliness_text(data, database) {
+function babyfriendliness_text(marker, data, database) {
 	var output = "";
 	for (var tag in data) {
 		if (Object.keys(data[tag].children).length == 0 || Object.keys(data[tag]).length == 0) {
@@ -325,25 +325,37 @@ function babyfriendliness_text(data, database) {
 	}
 	return output;
 }
-function babyfriendliness_symbol(data, database) {
+function babyfriendliness_symbol(marker, data, database) {
 	var output = "";
-	for (var tag in data) {
-		if (database[tag].symbol.indexOf("/") > -1) {
-			output += "\n<img src='" + database[tag].symbol + "' class='small-icon' />\n";
-		} else {
-			output += "\n<svg class='small-icon'>" + symbols[database[tag].symbol].html.replace(new RegExp("rating-color", "g"), data[tag].color) + "</svg>\n"
+	var changingTable = false;
+	for (var tag in database) {
+		if (!database[tag].applyfor[marker.category.split(" ")[0]]) {
+			continue;
+		}
+		if (data["changing_table"] && !data["diaper"] && tag == "diaper" || !data["changing_table"] && !data["diaper"] && tag == "diaper" || data["leisure"] && !data["kids_area"] && tag == "kids_area" || !data["leisure"] && !data["kids_area"] && tag == "kids_area" || !data["leisure"] && data["kids_area"] && tag == "leisure") {} else {
+			if (!data[tag]) {
+				data[tag] = {}
+				data[tag].color = colorcode.undefined;
+			}
+			if (database[tag].symbol.indexOf("/") > -1) {
+				output += "\n<img src='" + database[tag].symbol + "' class='small-icon' />\n";
+			} else if (database[tag].symbol.startsWith("&") == false) {
+				output += "\n<svg class='small-icon'>" + symbols[database[tag].symbol].html.replace(new RegExp("rating-color", "g"), data[tag].color) + "</svg>\n"
+			} else {
+				output += "\n<svg class='small-icon " + data[tag].color + "'>" + database[tag].symbol + "</svg>\n"
+			}
 		}
 	}
-	var result = output.split("\n");
+	/*var result = output.split("\n");
 	output = ""
 	for (var i in result) {
 		if (result[i].indexOf("NODISPLAY") == -1) {
 			output += result[i];
 		}
-	}
+	}*/
 	return output;
 }
-function contact_text(data, database) {
+function contact_text(marker, data, database) {
 	var output = "";
 	for (var tag in data) {
 		var url = ((tag.endsWith("phone")) ? "tel:" + data[tag].title : ((tag.endsWith("email")) ? "mailto:" + data[tag].title : ((tag.endsWith("facebook") && !data[tag].title.startsWith("http:")) ? "https://facebook.com/" + data[tag].title : data[tag].title)));
@@ -358,7 +370,7 @@ function contact_text(data, database) {
 	}
 	return output;
 }
-function contact_symbol(data, database) {
+function contact_symbol(marker, data, database) {
 	var output = "";
 	for (var tag in data) {
 		var url = ((tag.endsWith("phone")) ? "tel:" + data[tag].title : ((tag.endsWith("email")) ? "mailto:" + data[tag].title : ((tag.endsWith("facebook") && !data[tag].title.startsWith("http:")) ? "https://facebook.com/" + data[tag].title : data[tag].title)));
@@ -429,7 +441,6 @@ function addMarkerIcon(poi, marker) {
 	return marker;
 }
 function getRightPopup(marker, usePopup) {
-	console.log(marker)
 	marker = marker.target;
 	var poi = marker.data;
 	if (activeMarker && activeMarker._icon != null && marker._icon != null) { //Expression which prevents a JS error from ocurring when user loads a new filter or moves the map because both actions clean and refresh the map. That means some objects will be deleted and this expression can handle such cases by validating the object itself. See https://github.com/babykarte/babykarte/issues/17
@@ -442,14 +453,14 @@ function getRightPopup(marker, usePopup) {
 	var name = getSubtitle(poi);
 	marker.name = name || getText().filtername[marker.fltr]; //Sets the subtitle which appears under the POI's name as text in grey
 	var popup = {"POIpopup": 
-		{"home": {"content": `<h1 style='display:flex;width:100%;'><div style='padding-top:4px;padding-bottom:4px;padding-right:3px;width:100%;'>${ ((poi.tags["name"] == undefined) ? ((poi.tags["amenity"] == "toilets") ? getText().TOILET : getText().PDV_UNNAME) : poi.tags["name"]) }</div> <a class='nounderlinestyle small-icon' target=\"_blank\" href=\"https://www.openstreetmap.org/edit?` + String(poi.type.toLowerCase()) + "=" + String(poi.osm_id) + `\">✏️</a><div class='tooltip'><img class='small-icon' src='images/share.svg' onclick='toggleTooltip(this)' /><div class='tooltip-content'><a target='_blank' href='${ "https://www.openstreetmap.org/" + String(poi.type).toLowerCase() + "/" + String(poi.osm_id) }'>${ getText().LNK_OSM_VIEW }</a><br/>\n<a href='${ "geo:" + poi.lat + "," + poi.lon }'>${ getText().LNK_OPEN_WITH }</a></div></div></h1>\n<div class='subtitle'><span>${ String(marker.name) }</span>&nbsp;&#8231;&nbsp;<span id='address'>${ addrTrigger(poi, marker) }</span>\n</div>\n<div class='socialmenu'>${ babyfriendliness_symbol(processContentDatabase(marker, poi, PDV_babyTab), PDV_babyTab) } ${ ((marker.category.split(" ")[0] == "health" && poi.tags["min_age"] && poi.tags["max_age"]) ? "<span class='small-icon'>" + getText().AGE_RANGE + "</span>" : "") }</div>\n<div class='socialmenu'>${ contact_symbol(processContentDatabase(marker, poi, PDV_contact ), PDV_contact)}</div></div></div>`, "symbol": "🏠", "title": getText().PDV_TITLE_HOME, "active": true, "default": true},
-		"baby": {"content": `${ babyfriendliness_text(processContentDatabase(marker, poi, PDV_babyTab), PDV_babyTab) }`, "symbol": "👶", "title": getText().PDV_TITLE_BABY, "active": true},
+		{"home": {"content": `<h1 style='display:flex;width:100%;'><div style='padding-top:4px;padding-bottom:4px;padding-right:3px;width:100%;'>${ ((poi.tags["name"] == undefined) ? ((poi.tags["amenity"] == "toilets") ? getText().TOILET : getText().PDV_UNNAME) : poi.tags["name"]) }</div> <a class='nounderlinestyle small-icon' target=\"_blank\" href=\"https://www.openstreetmap.org/edit?` + String(poi.type.toLowerCase()) + "=" + String(poi.osm_id) + `\">✏️</a><div class='tooltip'><img class='small-icon' src='images/share.svg' onclick='toggleTooltip(this)' /><div class='tooltip-content'><a target='_blank' href='${ "https://www.openstreetmap.org/" + String(poi.type).toLowerCase() + "/" + String(poi.osm_id) }'>${ getText().LNK_OSM_VIEW }</a><br/>\n<a href='${ "geo:" + poi.lat + "," + poi.lon }'>${ getText().LNK_OPEN_WITH }</a></div></div></h1>\n<div class='subtitle'><span>${ String(marker.name) }</span>&nbsp;&#8231;&nbsp;<span id='address'>${ addrTrigger(poi, marker) }</span>\n</div>\n<div class='socialmenu'>${ babyfriendliness_symbol(marker, processContentDatabase(marker, poi, PDV_baby), PDV_baby) } ${ ((marker.category.split(" ")[0] == "health" && poi.tags["min_age"] && poi.tags["max_age"]) ? "<span class='small-icon'>" + getText().AGE_RANGE + "</span>" : "") }</div>\n<div class='socialmenu'>${ contact_symbol(marker, processContentDatabase(marker, poi, PDV_contact ), PDV_contact)}</div></div></div>`, "symbol": "🏠", "title": getText().PDV_TITLE_HOME, "active": true, "default": true},
+		"baby": {"content": `${ babyfriendliness_text(marker, processContentDatabase(marker, poi, PDV_baby), PDV_baby) }`, "symbol": "👶", "title": getText().PDV_TITLE_BABY, "active": true},
 		"opening_hours": {"content": `${ parseOpening_hours(poi.tags["opening_hours"]) || "NODISPLAY" }`},
-		"contact" : {"content": `${ contact_text(processContentDatabase(marker, poi, PDV_contact), PDV_contact)}`, "symbol": "🕰️", "title": getText().PDV_TITLE_OH, "active": true},
+		"contact" : {"content": `${ contact_text(marker, processContentDatabase(marker, poi, PDV_contact), PDV_contact)}`, "symbol": "🕰️", "title": getText().PDV_TITLE_OH, "active": true},
 		"moreinfo": {"content": `${ ((poi.tags["description"]) ? "<i>" + poi.tags["description"] + "</i><hr/>" : "") } ${ ((poi.tags["operator"]) ? poi.tags["operator"].replace(new RegExp(";", "g"), ", ") : "NODISPLAY") }`}
 		},
 	"playgroundPopup":
-		{"home": {"content": `<h1 style='display:flex;width:100%;'>	<div style='padding-top:4px;padding-bottom:4px;padding-right:3px;width:100%;'>${ ((poi.tags["name"] != undefined) ? poi.tags["name"] : marker.name) }</div><a class='nounderlinestyle small-icon' target=\"_blank\" href=\"https://www.openstreetmap.org/edit?` + String(poi.type.toLowerCase()) + "=" + String(poi.osm_id) + `\">✏️</a><div class='tooltip'><img class='small-icon' src='images/share.svg' onclick='toggleTooltip(this)' /><div class='tooltip-content'><a target='_blank' href='${ "https://www.openstreetmap.org/" + String(poi.type).toLowerCase() + "/" + String(poi.osm_id) }'>${ getText().LNK_OSM_VIEW }</a><br/>\n<a href='${ "geo:" + poi.lat + "," + poi.lon }'>${ getText().LNK_OPEN_WITH }</a></div></div></h1><div class='subtitle'><span>${ ((poi.tags["name"] != undefined) ? String(marker.name) + "&nbsp;&#8231;&nbsp;" : "") }</span><a href='${ "geo:" + poi.lat + "," + poi.lon }'>${ getText().LNK_OPEN_WITH }</a>\n</div>${ babyfriendliness_text(processContentDatabase(marker, poi, PEP_data), PEP_data) }`, "symbol": "🏠", "title": getText().PDV_TITLE_HOME, "active": true, "default": true},
+		{"home": {"content": `<h1 style='display:flex;width:100%;'>	<div style='padding-top:4px;padding-bottom:4px;padding-right:3px;width:100%;'>${ ((poi.tags["name"] != undefined) ? poi.tags["name"] : marker.name) }</div><a class='nounderlinestyle small-icon' target=\"_blank\" href=\"https://www.openstreetmap.org/edit?` + String(poi.type.toLowerCase()) + "=" + String(poi.osm_id) + `\">✏️</a><div class='tooltip'><img class='small-icon' src='images/share.svg' onclick='toggleTooltip(this)' /><div class='tooltip-content'><a target='_blank' href='${ "https://www.openstreetmap.org/" + String(poi.type).toLowerCase() + "/" + String(poi.osm_id) }'>${ getText().LNK_OSM_VIEW }</a><br/>\n<a href='${ "geo:" + poi.lat + "," + poi.lon }'>${ getText().LNK_OPEN_WITH }</a></div></div></h1><div class='subtitle'><span>${ ((poi.tags["name"] != undefined) ? String(marker.name) + "&nbsp;&#8231;&nbsp;" : "") }</span><a href='${ "geo:" + poi.lat + "," + poi.lon }'>${ getText().LNK_OPEN_WITH }</a>\n</div>${ babyfriendliness_text(marker, processContentDatabase(marker, poi, PEP_data), PEP_data) }`, "symbol": "🏠", "title": getText().PDV_TITLE_HOME, "active": true, "default": true},
 		}
 	};
 	createDialog(marker, poi, popup[usePopup]);
@@ -473,7 +484,7 @@ function createDialog(marker, poi, details_data) {
 			if (details_data[entry].default == true) {
 				classList = "tab-visible";
 			} else {
-				document.getElementById("infotext-swipe").innerHTML = getText().SWIPE_INFO;
+				document.getElementById("infotext-swipe").innerHTML = "&#9147; &nbsp;&#9147; &nbsp;&#9147;"
 				details_data[entry].active = false;
 			}
 			tabContent = "<div class='tabcontent " + classList + "' id='" + poi.classId + entry + "'>" + result + "</div>";
@@ -572,7 +583,7 @@ var Layergroup = new L.LayerGroup();
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
   maxZoom: 19,
   minZoom: 10,
-  attribution: '&copy; <a href="https://openstreetmap.org/copyright">OpenStreetMap</a> data under <a href="https://opendatacommons.org/licenses/odbl/">ODbL</a>, Tiles &copy; <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC BY-SA</a>'
+  attribution: '&copy; <a href="https://openstreetmap.org/copyright">OpenStreetMap</a> data under <a href="https://opendatacommons.org/licenses/odbl/">ODbL</a>, Tiles OSMF: <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC BY-SA</a>'
 }).addTo(map);
 
 spinner(false);
@@ -587,7 +598,6 @@ getData("images/ball.svg", "text", "", undefined, function (data) {symbols["ball
 getData("images/changingtable.svg", "text", "", undefined, function (data) {symbols["changingtable"] = {"html": data};});
 getData("images/highchair.svg", "text", "", undefined, function (data) {symbols["highchair"] = {"html": data};});
 map.on("click", function () {
-	console.log(1000);
 	if (activeMarker && activeMarker._icon != null) {
 		activeMarker._icon.children[0].getElementById("layer1").classList.remove("marker-active") || false;
 	}

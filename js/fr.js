@@ -6,7 +6,6 @@ var refFr = {"site-map": {
 	"ERROR404": "Backend does not support filter '<i>%s</i>' (EN)",
 	"ERROR503": "Error in requesting database for filter '<i>%s</i>' (EN)",
 	"ERROR": "An unknown error interrupts the party (EN)",
-	"SWIPE_INFO": "Swipe to top to see more (EN)",
 	"AGE_RANGE": "👶 %1 - %2",
 	"LNK_OSM_EDIT": "Modifier dans OSM",
 	"LNK_OSM_REPORT": "Signaler une information erronée",

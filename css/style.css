@@ -151,6 +151,8 @@ section {
 }
 .color-grey {
 	color:#858585;
+	fill:#858585;
+	stroke:#858585;
 }
 .nounderlinestyle {
 	text-decoration:none;
@@ -447,6 +449,8 @@ section {
 }
 #infotext-swipe {
 	display:block;
+	font-size:22px;
+	color:#ff542aff;
 }
 #poimenu, #poidetails {
 	top:initial !important;
