@@ -471,9 +471,11 @@ section {
 }
 .mobile-handle {
 	background-color: lightgrey;
- 	padding: 3px 25px;
+	padding: 2.5px 21px;
   	display: inline-block;
   	cursor: pointer;
   	border-radius: 50px;
+	margin-bottom:2px;
+	margin-top: 0px !important;
 }
 }
