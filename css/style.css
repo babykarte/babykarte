@@ -469,4 +469,11 @@ section {
 	margin-left:10%;
 	margin-right:10%;
 }
+.mobile-handle {
+	background-color: lightgrey;
+ 	padding: 3px 25px;
+  	display: inline-block;
+  	cursor: pointer;
+  	border-radius: 50px;
+}
 }
