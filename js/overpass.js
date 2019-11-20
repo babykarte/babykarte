@@ -488,7 +488,7 @@ function createDialog(marker, poi, details_data) {
 			if (details_data[entry].default == true) {
 				classList = "tab-visible";
 			} else {
-				document.getElementById("infotext-swipe").innerHTML = "&#9147; &nbsp;&#9147; &nbsp;&#9147;"
+				document.getElementById("infotext-swipe").innerHTML = "<i class="mobile-handle" />"
 				details_data[entry].active = false;
 			}
 			tabContent = "<div class='tabcontent " + classList + "' id='" + poi.classId + entry + "'>" + result + "</div>";
