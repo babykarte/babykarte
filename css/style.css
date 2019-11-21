@@ -469,7 +469,7 @@ section {
 	margin-left:10%;
 	margin-right:10%;
 }
-/*.mobile-handle {
+.mobile-handle {
 	background-color: lightgrey;
 	padding: 2.5px 21px;
   	display: inline-block;
@@ -477,5 +477,5 @@ section {
   	border-radius: 50px;
 	margin-bottom:2px;
 	margin-top: 0px !important;
-}*/
+}
 }
