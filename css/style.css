@@ -70,13 +70,13 @@ section {
 	margin:0px;
 	font-size:12px;
 }
-.pdv-icon {
+/*.pdv-icon {
 	box-sizing:border-box;
 	padding:2px;
 	font-size:25px;
 	cursor:pointer;
 	text-align:center;
-}
+}*/
 .small-icon {
 	height:20px !important;
 	width:20px !important;
@@ -85,7 +85,7 @@ section {
 	margin-left:5px;
 	margin-right:20px;
 }
-.text-icon {
+/*.text-icon {
 	height:15px;
 	width:18px;
 	vertical-align:text-bottom;
@@ -102,7 +102,7 @@ section {
 }
 .active[active] {
 	color:#b53085;
-}
+}*/
 .grid-container {
 	display:grid;
 	grid-template-columns:auto auto;
@@ -123,9 +123,9 @@ section {
 .marker-active { /* Style for the active marker, the marker the user has clicked on */
 	filter: brightness(300%);
 }
-.oneline-babyfriendliness {
+/*.oneline-babyfriendliness {
 	font-size:12px;
-}
+}*/
 #infotext-swipe {
 	color:grey;
 	background-color:white;
@@ -281,7 +281,7 @@ section {
 	height:auto !important;
 }
 /*------------------------- ON MAP MODALS -----------------*/
-.custom-leaflet-icon {
+/*.custom-leaflet-icon {
 	margin-top:6px !important;
 	margin:5px !important;
 }
@@ -295,7 +295,7 @@ section {
 	margin:0px !important;
 	background-color: rgb(255, 255, 255);
 	border-radius:5px;
-}
+}*/
 
 .info {
 	display:none;
@@ -325,10 +325,6 @@ section {
 	display:none;
 	background-color:rgba(0,0,0,0.7);
 }
-/*@media only screen and (min-width:800px) {
-	#map-overlay-notify {
-		display:none !important;}
-}*/
 #infoPopup {
 	margin:auto;
 	width:400px;

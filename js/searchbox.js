@@ -4,24 +4,32 @@ var message;
 var timeoutTyping;
 var touchSupport = false;
 var swipeData = [];
+var PDV_expanded = false;
 document.body.ontouchstart = function(event) {
 	touchSupport = true;
 	document.getElementById("infotext-swipe").style.display = "block";
 }
-document.getElementById("poimenu").ontouchstart = function(event) {swipeData.push(event.changedTouches[0].clientY);};
+document.getElementById("poimenu").ontouchstart = function(event) { swipeData.push(event.changedTouches[0].clientY) };
+function swipeUp() {
+	for (var elem of document.getElementsByClassName("tabcontent")) {
+			elem.classList.add("tab-visible");
+	}
+	PDV_expanded = true;
+}
+function swipeDown() {
+	for (var elem of document.getElementsByClassName("tabcontent")) {
+			elem.classList.remove("tab-visible");
+	}
+	document.getElementsByClassName("tabcontent")[0].classList.add("tab-visible");
+	PDV_expanded = false;
+}
+document.getElementById("infotext-swipe").onclick = function() { if (PDV_expanded) {swipeDown()} else {swipeUp()} }
 document.getElementById("poimenu").ontouchend = function(event) {
 	swipeData.push(event.changedTouches[0].clientY);
 	if (swipeData[0] - swipeData[1] > 55) {
-		//swipe up
-		for (var elem of document.getElementsByClassName("tabcontent")) {
-			elem.classList.add("tab-visible");
-		}
+		swipeUp(); //swipe up
 	} else if (swipeData[0] - swipeData[1] < -55){
-		//swipe down
-		for (var elem of document.getElementsByClassName("tabcontent")) {
-			elem.classList.remove("tab-visible");
-		}
-		document.getElementsByClassName("tabcontent")[0].classList.add("tab-visible");
+		swipeDown(); //swipe down
 	}
 	swipeData = [];
 };
