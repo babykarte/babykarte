@@ -362,7 +362,7 @@ function contact_text(marker, data, database) {
 	var output = "";
 	for (var tag in data) {
 		var url = ((tag.endsWith("phone")) ? "tel:" + data[tag].title : ((tag.endsWith("email")) ? "mailto:" + data[tag].title : ((tag.endsWith("facebook") && !data[tag].title.startsWith("http:")) ? "https://facebook.com/" + data[tag].title : data[tag].title)));
-		output += "\n<ul><li><a href='" + url + "' style='text-align:justify;' target='_blank'>" + data[tag].title + "</a></li></ul>\n"
+		output += "\n<ul><li><a href='" + url + "' rel='noopener' style='text-align:justify;' target='_blank'>" + data[tag].title + "</a></li></ul>\n"
 	}
 	var result = output.split("\n");
 	output = ""
@@ -378,9 +378,9 @@ function contact_symbol(marker, data, database) {
 	for (var tag in data) {
 		var url = ((tag.endsWith("phone")) ? "tel:" + data[tag].title : ((tag.endsWith("email")) ? "mailto:" + data[tag].title : ((tag.endsWith("facebook") && !data[tag].title.startsWith("http:")) ? "https://facebook.com/" + data[tag].title : data[tag].title)));
 		if (database[tag].symbol.indexOf("/") > -1) {
-			output += "\n<a class='nounderlinestyle' href='" + url + "' target='_blank'><img src='" + database[tag].symbol + "' class='small-icon' style='margin-top:0px;' /></a>\n";
+			output += "\n<a class='nounderlinestyle' rel='noopener' href='" + url + "' target='_blank'><img src='" + database[tag].symbol + "' class='small-icon' style='margin-top:0px;' /></a>\n";
 		} else {
-			output += "\n<a class='nounderlinestyle' href='" + url + "' target='_blank'><span class='small-icon'>" + database[tag].symbol + "</span></a>\n"
+			output += "\n<a class='nounderlinestyle' rel='noopener' href='" + url + "' target='_blank'><span class='small-icon'>" + database[tag].symbol + "</span></a>\n"
 		}
 	}
 	var result = output.split("\n");
