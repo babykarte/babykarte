@@ -20,7 +20,8 @@ var refDe = {"site-map": {
 		"PDV_ICON_EMAIL": "",
 		"PDV_ICON_FACEBOOK": "",*/
 		"PDV_ICON_PEN": "✏️&nbsp; In OpenStreetMap editieren (externe Webseite, Anmeldung erforderlich)",
-		"PDV_ICON_SHARE": "<img class='small-icon' src='images/share.svg' style='margin:0px;' /> POI teilen",
+		"PDV_ICON_SHARE": "<img class='small-icon' src='images/share.svg' style='margin:0px;' /> POI teilen"
+	},
 	"LOCATING_FAILURE": "Standort nicht ermittelbar",
 	"LOCATING_SUCCESS": "Dein Standort",
 	"LOADING_FAILURE": "Ein Fehler ist aufgetreten, bitte reinzoomen und erneut versuchen",
