@@ -33,7 +33,7 @@ var refDe = {"site-map": {
 	"LNK_OSM_REPORT": "Falschinformationen melden",
 	"LNK_OSM_VIEW": "POI in OpenStreetMap ansehen",
 	"LNK_OPEN_WITH": "Mit App öffnen",
-	"FLTR_NOTHINGSELECTED": "Bitte im Menü auf das <img class='bar-icon' src='images/checkmark.svg' /> Symbol klicken um Filter auszuwählen",
+	"FLTR_NOTHINGSELECTED": "Bitte im Menü auf das <img class='bar-icon' src='images/checkmark.svg' /> Symbol klicken um Filter auszuwählen oder <img class='bar-icon' src='images/info.svg.png' /> für eine Benutzungshilfe.",
 	"FLTR_SELECTALL": "Alle (de)aktivieren",
 	"PDV_UNNAME": "Kein Name",
 	"PDV_CONTACT_WEBSITE_*": "%s",

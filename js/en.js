@@ -34,7 +34,7 @@ var refEn = {"site-map": {
 	"LNK_OSM_REPORT": "Report wrong information",
 	"LNK_OSM_VIEW": "View POI in OpenStreetMap",
 	"LNK_OPEN_WITH": "Open with an app",
-	"FLTR_NOTHINGSELECTED": "Please touch the <img class='bar-icon' src='images/checkmark.svg' /> icon in the menu to select filters.",
+	"FLTR_NOTHINGSELECTED": "Please touch the <img class='bar-icon' src='images/checkmark.svg' /> icon in the menu to select filters or the <img class='bar-icon' src='images/info.svg.png' /> one to get help using Babykarte.",
 	"FLTR_SELECTALL": "(De)select all",
 	"PDV_UNNAME": "No Name",
 	"PDV_CONTACT_WEBSITE_*": "%s",
