@@ -1,4 +1,26 @@
 var refDe = {"site-map": {
+	"ABOUT": "Die Babykarte soll Erziehungsberechtigten die Suche nach Wickeltischen, nach Spielplätzen und vieles mehr erleichtern. Gleichzeitig wertet die Babykarte auch die Babyfreundlichkeit von Geschäften und Einrichtungen aus.",
+	"USAGE": "Im Menü <img class='small-icon' src='images/checkmark.svg' /> gibt es die Möglichkeit anzugeben für welche Art Geschäfte und Einrichtungen Daten heruntergeladen und angezeigt werden sollen. Die Babyfreundlichkeit wird nach dem Ampelprinzip als farbiger Punkt auf den Markierungen auf der Karte angezeigt.",
+	"MENUBUTTONS": {
+		"btn_info": "Informationen zur Babykarte, weiterführende Resourcen sowie diese Legende.",
+		"btn_lang": "Sprache auswählen",
+		"btn_search": "Einen Ort oder ein Geschäft/eine Einrichtung suchen.",
+		"btn_filtersbar": "Einrichtungen/Geschäfte auswählen, die auf der Karte angezeigt werden sollen.",
+		"btn_locating": "Deinen Standort ermitteln und diesen auf der Karte anzeigen (nutzt GPS oder andere Ortungsdienste)"
+	},
+	"MAP_MARKERDOTS_GENERAL": "Die Babyfreundlichkeit wird anhang von farbigen Punkten auf den Markierungen für Geschäfte/Einrichtungen nach dem Ampelsystem angezeigt.",
+	"MAP_MARKERDOTS": {
+		"rating-green": "Das Geschäft oder die Einrichtung ist babyfreundlich.",
+		"rating-yellow": "Das Geschäft oder die Einrichtung ist eingeschränkt babyfreundlich.",
+		"rating-red": "Das Geschäft oder die Einrichtung ist überhaupt nicht babyfreundlich.",
+	},
+	"PDV_ICONS_EXPLANATION": {
+		/*"PDV_ICON_GLOBE": "",
+		"PDV_ICON_PHONE": "",
+		"PDV_ICON_EMAIL": "",
+		"PDV_ICON_FACEBOOK": "",*/
+		"PDV_ICON_PEN": "✏️&nbsp; In OpenStreetMap editieren (externe Webseite, Anmeldung erforderlich)",
+		"PDV_ICON_SHARE": "<img class='small-icon' src='images/share.svg' style='margin:0px;' /> POI teilen",
 	"LOCATING_FAILURE": "Standort nicht ermittelbar",
 	"LOCATING_SUCCESS": "Dein Standort",
 	"LOADING_FAILURE": "Ein Fehler ist aufgetreten, bitte reinzoomen und erneut versuchen",

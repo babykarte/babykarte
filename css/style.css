@@ -392,17 +392,21 @@ section {
 /* ---------------------- POI RATING SYSTEM ------------------ */
 #rating-default {
 	fill:none;
+	color:black;
 }
 #rating-green {
 	fill:#01c401;
+	color:#01c401;
 	stroke:white;
 }
 #rating-yellow {
 	fill:#ffd900;
+	color:#ffd900;
 	stroke:white;
 }
 #rating-red {
 	fill:#bb0202;
+	color:#bb0202;
 	stroke:white;
 }
 /*------------------------ MOBILE VIEW ------------------------*/

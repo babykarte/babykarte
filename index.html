@@ -12,28 +12,33 @@
   <body id='site-map'>
   	<section>
   	<div class='leftbar'>
-  		<div class='menuitem dropdown'><img class='bar-icon' src='images/info.svg.png' onclick='toggleMenu(this)' />
+  		<div class='menuitem dropdown'><img class='bar-icon' id='btn_info' src='images/info.svg.png' onclick='toggleMenu(this)' />
   			<div class='dropdown-menu about' id='aboutus'>
   				<a href='https://github.com/babykarte/babykarte' target='_blank' id='linkToGitHub'>Auf Github</a>
         		<a href='https://wiki.openstreetmap.org/wiki/Baby-Karte' target='_blank' id='linkToOSMWiki'>OSM Wiki</a>
         		<a href='impressum.html#de' id='lnk-impress' target='_blank'>Impressum</a>
         		<a href='privacypolicy-de.html' id='linkToPP' target='_blank;'>Datenschutz (v.3)</a>
+        		<p id='about'></p>
+        		<p id='usage'></p>
+        		<p id='explanation-menubuttons'></p>
+        		<p id='explanation-markerdots'></p>
+        		<p id='explanation-pdvicons'></p>
   			</div>
   		</div>
-  		<div class='menuitem dropdown'><img class='bar-icon' src='images/www.svg' onclick='toggleMenu(this)' />
+  		<div class='menuitem dropdown'><img class='bar-icon' id='btn_lang' src='images/www.svg' onclick='toggleMenu(this)' />
   			<div class='dropdown-menu lang-select'>
   				<a href='#' class='nounderlinestyle' onclick='loadLang(this, "en");'><span class='small-icon'>EN</span></a>
   				<a href='#' class='nounderlinestyle' onclick='loadLang(this, "de");'><span class='small-icon'>DE</span></a>
   				<a href='#' class='nounderlinestyle' onclick='loadLang(this, "fr");'><span class='small-icon'>FR</span></a>
   			</div>
   		</div>
-  		<div class='menuitem dropdown'><img class='bar-icon' src='images/search.svg.png' onclick='toggleMenu(this)' />
+  		<div class='menuitem dropdown'><img class='bar-icon' id='btn_search' src='images/search.svg.png' onclick='toggleMenu(this)' />
   			<div class='dropdown-menu searchbar' id='searchgroup'>
      			<input type='text' onclick='geocode()' placeholder='Ort' id='searchfield'>
      			<div id='autocomplete'></div>
 			</div>
 		</div>
-  		<div class='menuitem dropdown filtersbar'><img class='bar-icon' src='images/checkmark.svg' onclick='toggleMenu(this)' />
+  		<div class='menuitem dropdown filtersbar'><img class='bar-icon' id='btn_filtersbar' src='images/checkmark.svg' onclick='toggleMenu(this)' />
   			<div class='dropdown-menu bigmenu' id='filtermenu'>
   				<div class='beautifulmenu'>
   					<div id='filtersGround'></div>
@@ -47,7 +52,7 @@
   				</div>
   			</div>
   		</div>
-  		<div class='menuitem' onclick='requestLocation()'><img class='bar-icon' src='images/locating.svg' />
+  		<div class='menuitem' onclick='requestLocation()'><img class='bar-icon' id='btn_locating' src='images/locating.svg' />
   		</div>
   	</div>
     <div id='map'>

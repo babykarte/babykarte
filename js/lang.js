@@ -65,7 +65,9 @@ function setLang(e, lang) {
 		11: ((document.getElementById("linkToGitHub") != null) ? document.getElementById("linkToGitHub").innerHTML = getText().LNK_GITHUB : ""),
 		12: ((document.getElementById("linkToOSMWiki") != null) ? document.getElementById("linkToOSMWiki").innerHTML = getText().LNK_OSMWIKI : ""),
 		13: ((document.getElementById("languageOfUser") != null) ? document.getElementById("languageOfUser").innerHTML = languageOfUser : ""),
-		14: ((document.getElementById("map-overlay-notify") != null) ? document.getElementById("map-overlay-notify").innerHTML = getText().FLTR_NOTHINGSELECTED : "")
+		14: ((document.getElementById("map-overlay-notify") != null) ? document.getElementById("map-overlay-notify").innerHTML = getText().FLTR_NOTHINGSELECTED : ""),
+		15: ((document.getElementById("about") != null) ? document.getElementById("about").innerHTML = getText().ABOUT : ""),
+		16: ((document.getElementById("usage") != null) ? document.getElementById("usage").innerHTML = getText().USAGE : "")
 		};
 		//Search for the names of playground equipment in the language reference
 		for (var json in getText()) {
@@ -74,6 +76,22 @@ function setLang(e, lang) {
 				getText().filtertranslations["playground=" + equipment.toLowerCase()] = getText()[json];
 			}
 		}
+		var output = "";
+		for (var json in getText().MENUBUTTONS) {
+			document.getElementById(json).setAttribute("title", getText().MENUBUTTONS[json]);
+			output += "<img class='small-icon' src='" + document.getElementById(json).getAttribute("src") + "' /> " + getText().MENUBUTTONS[json] + "<br/>";
+		}
+		document.getElementById("explanation-menubuttons").innerHTML = output;
+		output = "<p>" + getText().MAP_MARKERDOTS_GENERAL + "</p>";
+		for (var json in getText().MAP_MARKERDOTS) {
+			output += "<span id='" + json + "'>&#8226;</span> " + getText().MAP_MARKERDOTS[json] + "<br/>";
+		}
+		document.getElementById("explanation-markerdots").innerHTML = output;
+		output = "";
+		for (var json in getText().PDV_ICONS_EXPLANATION) {
+			output += getText().PDV_ICONS_EXPLANATION[json] + "<br/>";
+		}
+		document.getElementById("explanation-pdvicons").innerHTML = output;
 		hardReset();
 	} else {
 		alert("Language data couldn't be loaded.");
