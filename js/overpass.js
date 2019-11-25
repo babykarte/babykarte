@@ -335,7 +335,7 @@ function babyfriendliness_symbol(marker, data, database) {
 		if (!database[tag].applyfor[marker.category.split(" ")[0]]) {
 			continue;
 		}
-		if (data["changing_table"] && !data["diaper"] && tag == "diaper" || !data["changing_table"] && !data["diaper"] && tag == "diaper" || data["leisure"] && !data["kids_area"] && tag == "kids_area" || !data["leisure"] && !data["kids_area"] && tag == "kids_area" || !data["leisure"] && data["kids_area"] && tag == "leisure") {} else {
+		if (data["changing_table"] && !data["diaper"] && tag == "diaper" || !data["changing_table"] && !data["diaper"] && tag == "diaper" || data["leisure"] && !data["kids_area"] && tag == "kids_area" || !data["leisure"] && data["kids_area"] && tag == "leisure") {} else {
 			if (!data[tag]) {
 				data[tag] = {}
 				data[tag].color = colorcode.undefined;
