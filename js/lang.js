@@ -79,6 +79,7 @@ function setLang(e, lang) {
 		var output = "";
 		for (var json in getText().MENUBUTTONS) {
 			document.getElementById(json).setAttribute("title", getText().MENUBUTTONS[json]);
+			document.getElementById(json).setAttribute("alt", getText().MENUBUTTONS[json]);
 			output += "<img class='small-icon' src='" + document.getElementById(json).getAttribute("src") + "' /> " + getText().MENUBUTTONS[json] + "<br/>";
 		}
 		document.getElementById("explanation-menubuttons").innerHTML = output;

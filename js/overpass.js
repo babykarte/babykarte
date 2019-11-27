@@ -343,19 +343,12 @@ function babyfriendliness_symbol(marker, data, database) {
 			if (database[tag].symbol.indexOf("/") > -1) {
 				output += "\n<img src='" + database[tag].symbol + "' class='small-icon' />\n";
 			} else if (database[tag].symbol.startsWith("&") == false) {
-				output += "\n<svg class='small-icon'>" + symbols[database[tag].symbol].html.replace(new RegExp("rating-color", "g"), data[tag].color) + "</svg>\n"
+				output += "\n<svg class='small-icon' title='" + data[tag].title + "' alt='" + data[tag].title + "'>" + symbols[database[tag].symbol].html.replace(new RegExp("rating-color", "g"), data[tag].color) + "</svg>\n"
 			} else {
-				output += "\n<svg class='small-icon " + data[tag].color + "'>" + database[tag].symbol + "</svg>\n"
+				output += "\n<svg class='small-icon " + data[tag].color + "' title='" + data[tag].title + "' alt='" + data[tag].title + "'>" + database[tag].symbol + "</svg>\n"
 			}
 		}
 	}
-	/*var result = output.split("\n");
-	output = ""
-	for (var i in result) {
-		if (result[i].indexOf("NODISPLAY") == -1) {
-			output += result[i];
-		}
-	}*/
 	return output;
 }
 function contact_text(marker, data, database) {
@@ -378,9 +371,9 @@ function contact_symbol(marker, data, database) {
 	for (var tag in data) {
 		var url = ((tag.endsWith("phone")) ? "tel:" + data[tag].title : ((tag.endsWith("email")) ? "mailto:" + data[tag].title : ((tag.endsWith("facebook") && !data[tag].title.startsWith("http:")) ? "https://facebook.com/" + data[tag].title : data[tag].title)));
 		if (database[tag].symbol.indexOf("/") > -1) {
-			output += "\n<a class='nounderlinestyle' rel='noopener' href='" + url + "' target='_blank'><img src='" + database[tag].symbol + "' class='small-icon' style='margin-top:0px;' /></a>\n";
+			output += "\n<a class='nounderlinestyle' title='" + data[tag].title + "' alt='" + data[tag].title + "' rel='noopener' href='" + url + "' target='_blank'><img src='" + database[tag].symbol + "' class='small-icon' style='margin-top:0px;' /></a>\n";
 		} else {
-			output += "\n<a class='nounderlinestyle' rel='noopener' href='" + url + "' target='_blank'><span class='small-icon'>" + database[tag].symbol + "</span></a>\n"
+			output += "\n<a class='nounderlinestyle' title='" + data[tag].title + "' alt='" + data[tag].title + "' rel='noopener' href='" + url + "' target='_blank'><span class='small-icon'>" + database[tag].symbol + "</span></a>\n"
 		}
 	}
 	var result = output.split("\n");
@@ -547,7 +540,6 @@ function loadPOIS(e, post) {
 			marker = addMarkerIcon(poi, marker);
 			marker.data = poi;
 			marker.data.classId = String(poi.type)[0].toUpperCase() + String(poi.osm_id);
-			//marker.once("click", function(marker) {getRightPopup(marker, filter[marker.target.fltr].popup);});
 			marker.on("click", function(event) {getRightPopup(event, filter[event.target.fltr].popup)});
 			//Add marker to map
 			map.addLayer(marker);
