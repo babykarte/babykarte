@@ -87,7 +87,7 @@ function setLang(e, lang) {
 			output += "<span id='" + json + "'>&#8226;</span> " + getText().MAP_MARKERDOTS[json] + "<br/>";
 		}
 		document.getElementById("explanation-markerdots").innerHTML = output;
-		output = "";
+		output = "<p>" + getText().MAP_ICONS_EXPLANATION_GENERAL + "</p>";
 		for (var json in getText().PDV_ICONS_EXPLANATION) {
 			output += getText().PDV_ICONS_EXPLANATION[json] + "<br/>";
 		}

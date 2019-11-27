@@ -14,11 +14,13 @@ var refEn = {"site-map": {
 		"rating-yellow": "Das Geschäft oder die Einrichtung ist eingeschränkt babyfreundlich.",
 		"rating-red": "Das Geschäft oder die Einrichtung ist überhaupt nicht babyfreundlich.",
 	},
+	"PDV_ICONS_EXPLANATION_GENERAL": "Die Icons haben verschiedene Farben. (grün: vorhanden/möglich, gelb: beschränkt vorhanden, rot: nicht vorhanden/nicht möglich, grau: unbekannt)",
 	"PDV_ICONS_EXPLANATION": {
-		/*"PDV_ICON_GLOBE": "",
-		"PDV_ICON_PHONE": "",
-		"PDV_ICON_EMAIL": "",
-		"PDV_ICON_FACEBOOK": "",*/
+		"PDV_ICON_CHANGINGTABLE": "<img class='small-icon' src='images/changingtable.svg' style='margin:0px;' /> Status der Wickelmöglichkeit vor Ort",
+		"PDV_ICON_HIGHCHAIR": "<img class='small-icon' src='images/highchair.svg' style='margin:0px;' /> Status der Hochstühle vor Ort",
+		"PDV_ICON_STROLLER": "<img class='small-icon' src='images/stroller.svg' style='margin:0px;' /> Status der Kinderwagentauglichkeit vor Ort",
+		"PDV_ICON_BALL": "<img class='small-icon' src='images/ball.svg' style='margin:0px;' /> Status der Kinderspielmöglichkeit vor Ort",
+		"PDV_ICON_BREASTFEEDING": "<span class='small-icon'>&#129329;</span> Statement zur Brustfütterung",
 		"PDV_ICON_PEN": "✏️&nbsp; In OpenStreetMap editieren (externe Webseite, Anmeldung erforderlich)",
 		"PDV_ICON_SHARE": "<img class='small-icon' src='images/share.svg' style='margin:0px;' /> POI teilen"
 	},
