@@ -208,6 +208,7 @@ section {
 	display:none;
 	z-index:2;
 	position:absolute;
+	max-width:50%
 }
 .dropdown-menu a {
 	box-sizing:border-box;
@@ -413,6 +414,9 @@ section {
 @media only screen and (max-width:800px) {
 section {
 	display:block;
+}
+.dropdown-menu {
+	max-width:100%
 }
 .leftbar {
 	display:grid;
