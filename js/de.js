@@ -20,7 +20,7 @@ var refDe = {"site-map": {
 		"PDV_ICON_HIGHCHAIR": "<img class='small-icon' src='images/highchair.svg' style='margin:0px;' /> Status der Hochstühle vor Ort",
 		"PDV_ICON_STROLLER": "<img class='small-icon' src='images/stroller.svg' style='margin:0px;' /> Status der Kinderwagentauglichkeit vor Ort",
 		"PDV_ICON_BALL": "<img class='small-icon' src='images/ball.svg' style='margin:0px;' /> Status der Kinderspielmöglichkeit vor Ort",
-		"PDV_ICON_BREASTFEEDING": "<span class='small-icon'>&#129329;</span> Statement zur Brustfütterung",
+		"PDV_ICON_BREASTFEEDING": "<span class='small-icon' style='margin:0px;'>&#129329;</span> Statement zur Brustfütterung",
 		"PDV_ICON_PEN": "✏️&nbsp; In OpenStreetMap editieren (externe Webseite, Anmeldung erforderlich)",
 		"PDV_ICON_SHARE": "<img class='small-icon' src='images/share.svg' style='margin:0px;' /> POI teilen"
 	},

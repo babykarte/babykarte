@@ -44,9 +44,6 @@ section {
 	height:100%;
 }
 /*---------------------- POI DETAILS SETTINGS -------------------------------*/
-.grid-container {
-	display:grid;
-}
 .tabcontent {
 	box-sizing:border-box;
 	border-bottom:10px solid white;
@@ -103,11 +100,11 @@ section {
 .active[active] {
 	color:#b53085;
 }*/
-.grid-container {
+/*.grid-container {
 	display:grid;
-	grid-template-columns:auto auto;
+	grid-template-columns:auto auto auto auto;
 	justify-content:start;
-}
+}*/
 .subtitle {
 	display:flex;
 	color:#333333;
@@ -184,6 +181,7 @@ section {
 }
 .about {
 	font-family:"Palatino Linotype", "Book Antiqua", Palatino, serif;
+	text-align:justify;
 	top:0px;
 }
 .closebtn {
@@ -472,6 +470,9 @@ section {
 #spinner {
 	margin-left:10%;
 	margin-right:10%;
+}
+#searchfield {
+	width:100%;
 }
 .mobile-handle {
 	background-color: lightgrey;

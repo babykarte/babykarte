@@ -1,18 +1,18 @@
 var refEn = {"site-map": {
-	"ABOUT": "Die Babykarte soll Erziehungsberechtigten die Suche nach Wickeltischen, nach Spielplätzen und vieles mehr erleichtern. Gleichzeitig wertet die Babykarte auch die Babyfreundlichkeit von Geschäften und Einrichtungen aus.",
-	"USAGE": "Im Menü <img class='small-icon' src='images/checkmark.svg' /> gibt es die Möglichkeit anzugeben für welche Art Geschäfte und Einrichtungen Daten heruntergeladen und angezeigt werden sollen. Die Babyfreundlichkeit wird nach dem Ampelprinzip als farbiger Punkt auf den Markierungen auf der Karte angezeigt.",
+	"ABOUT": "Die Babykarte hilft Eltern von Babys und Kleinkindern bei der Suche nach Wickeltischen, Spielplätzen u.v.m. Gleichzeitig wertet die Babykarte die Babyfreundlichkeit von Restaurants und Cafés aus.",
+	"USAGE": "Symbole in der Detailansicht zu Geschäften und Einrichtungen:",
 	"MENUBUTTONS": {
-		"btn_info": "Informationen zur Babykarte, weiterführende Resourcen sowie diese Legende.",
+		"btn_info": "Diese Hilfe öffnen.",
 		"btn_lang": "Sprache auswählen",
-		"btn_search": "Einen Ort oder ein Geschäft/eine Einrichtung suchen.",
-		"btn_filtersbar": "Einrichtungen/Geschäfte auswählen, die auf der Karte angezeigt werden sollen.",
-		"btn_locating": "Deinen Standort ermitteln und diesen auf der Karte anzeigen (nutzt GPS oder andere Ortungsdienste)"
+		"btn_search": "Einen Ort suchen.",
+		"btn_filtersbar": "Anzuzeigende Einrichtungen auswählen",
+		"btn_locating": "Deinen Standort auf der Karte anzeigen"
 	},
-	"MAP_MARKERDOTS_GENERAL": "Die Babyfreundlichkeit wird anhang von farbigen Punkten auf den Markierungen für Geschäfte/Einrichtungen nach dem Ampelsystem angezeigt.",
+	"MAP_MARKERDOTS_GENERAL": "Ampelsystem zur Markierung der Babyfreundlichkeit von Restaurants und Cafés:",
 	"MAP_MARKERDOTS": {
-		"rating-green": "Das Geschäft oder die Einrichtung ist babyfreundlich.",
-		"rating-yellow": "Das Geschäft oder die Einrichtung ist eingeschränkt babyfreundlich.",
-		"rating-red": "Das Geschäft oder die Einrichtung ist überhaupt nicht babyfreundlich.",
+		"rating-green": "Der Ort ist babyfreundlich.",
+		"rating-yellow": "Der Ort ist eingeschränkt babyfreundlich.",
+		"rating-red": "Der Ort ist überhaupt nicht babyfreundlich.",
 	},
 	"PDV_ICONS_EXPLANATION_GENERAL": "Die Icons haben verschiedene Farben. (grün: vorhanden/möglich, gelb: beschränkt vorhanden, rot: nicht vorhanden/nicht möglich, grau: unbekannt)",
 	"PDV_ICONS_EXPLANATION": {
@@ -20,7 +20,7 @@ var refEn = {"site-map": {
 		"PDV_ICON_HIGHCHAIR": "<img class='small-icon' src='images/highchair.svg' style='margin:0px;' /> Status der Hochstühle vor Ort",
 		"PDV_ICON_STROLLER": "<img class='small-icon' src='images/stroller.svg' style='margin:0px;' /> Status der Kinderwagentauglichkeit vor Ort",
 		"PDV_ICON_BALL": "<img class='small-icon' src='images/ball.svg' style='margin:0px;' /> Status der Kinderspielmöglichkeit vor Ort",
-		"PDV_ICON_BREASTFEEDING": "<span class='small-icon'>&#129329;</span> Statement zur Brustfütterung",
+		"PDV_ICON_BREASTFEEDING": "<span class='small-icon' style='margin:0px;'>&#129329;</span> Statement zur Brustfütterung",
 		"PDV_ICON_PEN": "✏️&nbsp; In OpenStreetMap editieren (externe Webseite, Anmeldung erforderlich)",
 		"PDV_ICON_SHARE": "<img class='small-icon' src='images/share.svg' style='margin:0px;' /> POI teilen"
 	},
