@@ -1,28 +1,28 @@
 var refFr = {"site-map": {
-	"ABOUT": "Die Babykarte hilft Eltern von Babys und Kleinkindern bei der Suche nach Wickeltischen, Spielplätzen u.v.m. Gleichzeitig wertet die Babykarte die Babyfreundlichkeit von Restaurants und Cafés aus.",
-	"USAGE": "Symbole in der Detailansicht zu Geschäften und Einrichtungen:",
+	"ABOUT": "Babykarte helps parents of infants and toddlers to search for changing tables, playgrounds etc. It also shows the baby friendliness of cafes and restaurants. (EN)",
+	"USAGE": "Icons in the details view for POI's: (EN)",
 	"MENUBUTTONS": {
-		"btn_info": "Diese Hilfe öffnen.",
-		"btn_lang": "Sprache auswählen",
-		"btn_search": "Einen Ort suchen.",
-		"btn_filtersbar": "Anzuzeigende Einrichtungen auswählen",
-		"btn_locating": "Deinen Standort auf der Karte anzeigen"
+		"btn_info": "Open this help (EN)",
+		"btn_lang": "Select language (EN)",
+		"btn_search": "Search a place (EN)",
+		"btn_filtersbar": "Select POI's to show (EN)",
+		"btn_locating": "Shows your location (EN)"
 	},
-	"MAP_MARKERDOTS_GENERAL": "Ampelsystem zur Markierung der Babyfreundlichkeit von Restaurants und Cafés:",
+	"MAP_MARKERDOTS_GENERAL": "Traffic light system for indication of baby friendliness of restaurants und cafes: (EN)",
 	"MAP_MARKERDOTS": {
-		"rating-green": "Der Ort ist babyfreundlich.",
-		"rating-yellow": "Der Ort ist eingeschränkt babyfreundlich.",
-		"rating-red": "Der Ort ist überhaupt nicht babyfreundlich.",
+		"rating-green": "This place is baby friendly (EN)",
+		"rating-yellow": "This place is provisory baby friendly (EN)",
+		"rating-red": "This place isn't baby friendly (EN)",
 	},
-	"PDV_ICONS_EXPLANATION_GENERAL": "Die Icons haben verschiedene Farben. (grün: vorhanden/möglich, gelb: beschränkt vorhanden, rot: nicht vorhanden/nicht möglich, grau: unbekannt)",
+	"PDV_ICONS_EXPLANATION_GENERAL": "The Icons have different colours (green: available/possible, yellow: Availability limited, red: not available/not possible, grey: unknown) (EN)",
 	"PDV_ICONS_EXPLANATION": {
-		"PDV_ICON_CHANGINGTABLE": "<img class='small-icon' src='images/changingtable.svg' style='margin:0px;' /> Status der Wickelmöglichkeit vor Ort",
-		"PDV_ICON_HIGHCHAIR": "<img class='small-icon' src='images/highchair.svg' style='margin:0px;' /> Status der Hochstühle vor Ort",
-		"PDV_ICON_STROLLER": "<img class='small-icon' src='images/stroller.svg' style='margin:0px;' /> Status der Kinderwagentauglichkeit vor Ort",
-		"PDV_ICON_BALL": "<img class='small-icon' src='images/ball.svg' style='margin:0px;' /> Status der Kinderspielmöglichkeit vor Ort",
-		"PDV_ICON_BREASTFEEDING": "<span class='small-icon' style='margin:0px;'>&#129329;</span> Statement zur Brustfütterung",
-		"PDV_ICON_PEN": "✏️&nbsp; In OpenStreetMap editieren (externe Webseite, Anmeldung erforderlich)",
-		"PDV_ICON_SHARE": "<img class='small-icon' src='images/share.svg' style='margin:0px;' /> POI teilen"
+		"PDV_ICON_CHANGINGTABLE": "<img class='small-icon' src='images/changingtable.svg' style='margin:0px;' /> Status of changing table facilities (EN)",
+		"PDV_ICON_HIGHCHAIR": "<img class='small-icon' src='images/highchair.svg' style='margin:0px;' /> Status of highchairs (EN)",
+		"PDV_ICON_STROLLER": "<img class='small-icon' src='images/stroller.svg' style='margin:0px;' /> Status of stroller friendliness (EN)",
+		"PDV_ICON_BALL": "<img class='small-icon' src='images/ball.svg' style='margin:0px;' /> Status of the kids area (EN)",
+		"PDV_ICON_BREASTFEEDING": "<span class='small-icon' style='margin:0px;'>&#129329;</span> Breastfeeding permitted/forbidden (EN)",
+		"PDV_ICON_PEN": "✏️&nbsp; Edit in OpenStreetMap (external website, registration necessary) (EN)",
+		"PDV_ICON_SHARE": "<img class='small-icon' src='images/share.svg' style='margin:0px;' /> Share POI (EN)"
 	},
 	"LOCATING_FAILURE": "N'a pas trouvé votre lieu",
 	"LOCATING_SUCCESS": "Votre lieu",
