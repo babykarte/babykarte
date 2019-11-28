@@ -67,13 +67,6 @@ section {
 	margin:0px;
 	font-size:12px;
 }
-/*.pdv-icon {
-	box-sizing:border-box;
-	padding:2px;
-	font-size:25px;
-	cursor:pointer;
-	text-align:center;
-}*/
 .small-icon {
 	height:20px !important;
 	width:20px !important;
@@ -82,29 +75,6 @@ section {
 	margin-left:5px;
 	margin-right:20px;
 }
-/*.text-icon {
-	height:15px;
-	width:18px;
-	vertical-align:text-bottom;
-}
-.list-style-none {
-	list-style-type:none;
-	margin-left:-10px;
-}
-.inactive {
-	opacity:0.4;
-}
-.active:hover {
-	color:#b53085;
-}
-.active[active] {
-	color:#b53085;
-}*/
-/*.grid-container {
-	display:grid;
-	grid-template-columns:auto auto auto auto;
-	justify-content:start;
-}*/
 .subtitle {
 	display:flex;
 	color:#333333;
@@ -120,9 +90,6 @@ section {
 .marker-active { /* Style for the active marker, the marker the user has clicked on */
 	filter: brightness(300%);
 }
-/*.oneline-babyfriendliness {
-	font-size:12px;
-}*/
 #infotext-swipe {
 	color:grey;
 	background-color:white;
@@ -281,22 +248,6 @@ section {
 	height:auto !important;
 }
 /*------------------------- ON MAP MODALS -----------------*/
-/*.custom-leaflet-icon {
-	margin-top:6px !important;
-	margin:5px !important;
-}
-.own-control-style {
-	margin:5px;
-	border-radius:10px;
-	padding:5px;
-	background-color: rgba(0, 0, 0, 0.7);
-}
-.leaflet-bar {
-	margin:0px !important;
-	background-color: rgb(255, 255, 255);
-	border-radius:5px;
-}*/
-
 .info {
 	display:none;
 	font-size:22px;
