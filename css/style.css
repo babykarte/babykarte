@@ -182,6 +182,7 @@ section {
 .about {
 	font-family:"Palatino Linotype", "Book Antiqua", Palatino, serif;
 	text-align:justify;
+	padding:5px;
 	top:0px;
 }
 .closebtn {
@@ -206,7 +207,7 @@ section {
 	display:none;
 	z-index:2;
 	position:absolute;
-	max-width:50%
+	max-width:50%;
 }
 .dropdown-menu a {
 	box-sizing:border-box;
@@ -414,7 +415,8 @@ section {
 	display:block;
 }
 .dropdown-menu {
-	max-width:100%
+	box-sizing:border-box;
+	max-width:100%;
 }
 .leftbar {
 	display:grid;
