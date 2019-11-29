@@ -168,37 +168,6 @@ function hardReset() {
 		filter[fltr].active = false;
 	}
 }
-/*function osmExpression(poi, value) {
-	var key, content, result;
-	var regExpression = "";
-	value = value.replace("\"", "").replace("\"", "").replace("[", "").replace("]", "").replace("\"", "").replace("\"", "")
-	if (value.indexOf("=") > -1) {
-		value = value.split("=");
-		regExpression = "==";
-	} else if (value.indexOf("~") > -1) {
-		value = value.split("~");
-		regExpression = "~";
-	} else {
-		return ((poi.tags[value]) ? true : false);
-	}
-	if (value[0].endsWith("!")) {
-		regExpression = "!" + regExpression.replace("=", "");
-		value[0] = value[0].replace("!", "");
-	}
-	key = poi.tags[value[0]];
-	if (!key) {return false}
-	content = value[1];
-	if (regExpression.indexOf("~") == -1) {
-		result = eval("((\"" + key + "\" " + regExpression + " \"" + content + "\") ? true : false)");
-		return result;
-	} else {
-		result = ((key.match(new RegExp(content)) != null) ? true : false);
-		if (regExpression.indexOf("!") > -1) {
-			if (result) {result = false} else {result = true}
-		}
-		return result;
-	}
-}*/
 function getData(url, dataType, data,  fail, success, type) {
 	if (type == undefined) {type = "GET"}
 	if (fail == undefined) {fail = function() {showGlobalPopup(getText().LOADING_FAILURE);spinner(false);}}

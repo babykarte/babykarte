@@ -94,6 +94,7 @@ function setLang(e, lang) {
 		}
 		document.getElementById("explanation-pdvicons").innerHTML = output;
 		hardReset();
+		initFilters();
 	} else {
 		alert("Language data couldn't be loaded.");
 	}
