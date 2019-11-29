@@ -36,7 +36,7 @@ var refFr = {"site-map": {
 	"LNK_OSM_REPORT": "Signaler une information erronée",
 	"LNK_OSM_VIEW": "Voir le Point d'intérêt dans OpenStreetMap",
 	"LNK_OPEN_WITH": "Ouvrir avec une appli",
-	"FLTR_NOTHINGSELECTED": "Veuillez toucher l'icône <img class='bar-icon' src='images/checkmark.svg' /> dans le menu pour sélectinner les filtres ou cet icône <img class='bar-icon' src='images/info.svg.png' /> pour obtenir de l'aide sur Babykarte.",
+	"FLTR_NOTHINGSELECTED": "Veuillez toucher l'icône <img class='bar-icon' src='images/checkmark.svg' /> dans le menu pour sélectionner les filtres ou cet icône <img class='bar-icon' src='images/info.svg.png' /> pour obtenir de l'aide sur Babykarte.",
 	"FLTR_SELECTALL": "(De)sélectionnez tout",
 	"PDV_UNNAME": "Sans Nom",
 	"PDV_CONTACT_WEBSITE_*": "%s",
