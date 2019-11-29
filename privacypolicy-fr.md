@@ -2,56 +2,56 @@
 
 ## Prologue
 
-We are Michael Brandtner and Sören Reinecke and develop the Baby Map for you. We respect your privacy and commit ourselves voluntarily to data economy. Data economy means to collect as little personal data as possible. To improve our web app, we do not resort to inscrutable technologies such as cookies, profiling and fingerprinting. Instead, we rely on direct, unobtrusive communication with the users of our web app. We expect users to contact us if they have any wishes or problems. Currently, they can do this through GitHub.
+Nous sommes Michael Brandtner et Sören Reinecke et développons le Babykarte pour vous. Nous respectons votre vie privée et nous nous engageons volontairement à l'économie des données. L'économie de données signifie recueillir le moins de données personnelles possible. Pour améliorer notre application web, nous n'avons pas recours à des technologies insondables telles que les cookies, le profilage et les empreintes digitales. Nous comptons plutôt sur une communication directe et discrète avec les utilisateurs de notre application Web. Nous nous attendons à ce que les utilisateurs nous contactent s'ils ont des souhaits ou des problèmes. Actuellement, ils peuvent le faire via GitHub.
 
-## Definitions
+## Définitions
 
 - Application
-  - For the purposes of this privacy policy, “application” and “applications” mean all different forms of computer code execution. These do include (not exclusively) web apps, websites, apps, software programs and scripts.
-- Data
-  - Any form of information that can be represented logically and structured in computer language.
-- “Server logs” or “Logs”
-  - The logs contain the date and time of an incoming connection, which resource was requested, and the anonymous version of the IP address from which the request came. But it also records how long it took the server to respond. This data in itself cannot be traced back to individual users. They only have an analytical purpose. They help us to recognize whether the server is used at all, but also in what intensity.
-- Data economy
-  - Data economy is the idea of avoiding the accumulation of personal and other data.
-- Usage data
-  - Data representing the collective usage behaviour of users.
-- Individual usage data
-  - Data that represent the usage behaviour of a single user.
-- Personal data
-  - Data that describes you or your behaviour in computer language.
-- Server
-  - A fixed installation of a mostly very powerful digital device with connection to the Internet. It provides services on the Internet.
-- “IP” or “IP address”
-  - The address where your device can be reached on the Internet.
-- Cache server
-  - A cache server provides resources that are often requested by users' browsers. This shortens the loading time of a website in your browser. These resources are provided manually by the developers of the cache servers. These servers could also keep server logs.
-- Operating system
-  - Software codes that ensure the basic functionality of your working environment on your computer.
-- Router
-  - A device on your network that acts as a firewall between the connected devices and the Internet.
-- “We”, “us”
-  - By “we” and “us” we mean the natural persons Michael Brandtner and Sören Reinecke.
-- “You”, “user”
-  - We really mean you, the user of the Baby Map.
+  - Aux termes de la présente politique de confidentialité, "application" et "applications" désignent toutes les différentes formes d'exécution de code informatique. Il s'agit notamment (pas exclusivement) d'applications Web, de sites Web, d'applications, de programmes logiciels et de scripts.
+- Données
+  - Toute forme d'information pouvant être représentée de façon logique et structurée en langage informatique.
+- “Logs serveur” ou “Logs”
+  - Les logs contiennent la date et l'heure d'une connexion entrante, la ressource demandée et la version anonyme de l'adresse IP d'où provient la requête. Mais ils enregistrent également le temps qu'il a fallu au serveur pour répondre. Ces données en elles-mêmes ne peuvent pas permettre de remonter  jusqu'aux utilisateurs individuels. Elles n'ont qu'un but analytique. Elles nous aident à reconnaître si le serveur est utilisé, mais aussi à quelle intensité.
+- Economie de données
+  - L'économie de données est l'idée d'éviter l'accumulation de données personnelles et autres.
+- Données d'utilisation
+  - Données représentant le comportement d'utilisation collective des utilisateurs.
+- Données d'utilisation individuelle
+  - Données qui représentent le comportement d'utilisation d'un seul utilisateur.
+- Données personnelles
+  - Les données qui vous décrivent, vous ou votre comportement, en langage informatique.
+- Serveur
+  - Une installation fixe, la plupart du temps un appareil numérique très puissant avec connexion à Internet. Il fournit des services sur Internet.
+- “IP” ou “adresse IP”
+  - L'adresse à laquelle votre appareil peut être joint sur Internet.
+- Serveur de cache
+  - Un serveur de cache fournit des ressources qui sont souvent demandées par les navigateurs des utilisateurs. Cela raccourcit le temps de chargement d'un site Web dans votre navigateur. Ces ressources sont fournies manuellement par les développeurs des serveurs de cache. Ces serveurs pourraient également tenir des logs serveur.
+- Système d'exploitation
+  - Codes logiciels qui assurent la fonctionnalité de base de votre environnement de travail sur votre ordinateur.
+- Routeur
+  - Un dispositif sur votre réseau qui agit comme un pare-feu entre les dispositifs connectés et Internet.
+- “Nous”
+  - Par "nous", nous entendons les personnes physiques Michael Brandtner et Sören Reinecke.
+- “Vous”, “utilisateur”
+  - Nous voulons vraiment dire vous, l'utilisateur de Babykarte
 
-## What kind of data is collected and where does it go?
+## Quels types de données sont recueillis et où vont-elles ?
 
-When using the search, your search entries are sent to Komoot's geo search engine Photon. This search engine is independent from Komoot's other services and no individual usage data should be collected by Komoot. Only server logs are kept.
+Lorsque vous utilisez la recherche, vos entrées de recherche sont envoyées au moteur de recherche géo de Komoot, Photon. Ce moteur de recherche est indépendant des autres services de Komoot et aucune donnée d'utilisation individuelle ne doit être collectée par Komoot. Seuls les logs du serveur sont conservés.
 
-When you visit the Baby Map, your browser asks for various files from cache servers in order to reduce loading time. These are from two different providers. The first is Google and [their privacy policy can be viewed here](https://policies.google.com/privacy#infocollect).The second is called DigitalOcean and also has its own [Privacy Policy](https://www.digitalocean.com/legal/privacy-policy/). Your browser sends data to their servers, the baby card cannot influence this process.
+Lorsque vous visitez Babykarte, votre navigateur vous demande différents fichiers à partir des serveurs de cache afin de réduire le temps de chargement. Ils proviennent de deux fournisseurs différents. Le premier est Google et [leur politique de confidentialité peut être consultée ici](https://policies.google.com/privacy#infocollect). Le second s'appelle DigitalOcean et a également sa propre [Politique de confidentialité](https://www.digitalocean.com/legal/privacy-policy/). Votre navigateur envoie des données à leurs serveurs, la Babykarte ne peut pas influencer ce processus.
 
-For displaying the map and other information (such as addresses, opening hours, names of points of interest) Baby Map uses data of the OpenStreetMap community. The data is stored on our own server. However, the map tiles and the addresses of the POIs are stored on the servers of the OpenStreetMap Foundation (St John's Innovation Centre, Cowley Road, Cambridge, CB4 0WS, United Kingdom) (OSMF). How they handle the usage data collected through the use of their services can be found in their [Privacy Statement](https://wiki.osmfoundation.org/wiki/Privacy_Policy).
+Pour afficher la carte et d'autres informations (comme les adresses, les heures d'ouverture, les noms des points d'intérêt), Babykarte utilise les données de la communauté OpenStreetMap. Les données sont stockées sur notre propre serveur. Cependant, les cartes et les adresses des Points d'Intérêt (POI en anglais abrégé) sont stockées sur les serveurs de l'OpenStreetMap Foundation (St John's Innovation Centre, Cowley Road, Cambridge, CB4 0WS, Royaume-Uni) (OSMF). La façon dont ils traitent les données d'utilisation recueillies lors de l'utilisation de leurs services se trouve dans leur [Politique de confidentialité](https://wiki.osmfoundation.org/wiki/Privacy_Policy).
 
-With other interactions with the Baby Map (loading the web app, moving the map, clicking on interactive elements), data is sent to our server [everest.openstreetmap.de](https://everest.openstreetmap.de) or [babykarte.openstreetmap.de](https://babykarte.openstreetmap.de). These data are necessary for the operation of the Baby Map and will not be stored. The server is operated by FOSSGIS e.V., [whose privacy policy you can find here](https://www.fossgis.de/datenschutzerklaerung). The server keeps logs of incoming connections, but these do not allow conclusions to be drawn about the behaviour of individual users. This means that we cannot give you any information about data that your browser has sent to us. We would already fail trying to find you in the data stream.
+Avec d'autres interactions avec Babykarte (chargement de l'application web, déplacement de la carte, clic sur des éléments interactifs), les données sont envoyées à notre serveur [everest.openstreetmap.de](https://everest.openstreetmap.de) ou [babykarte.openstreetmap.de](https://babykarte.openstreetmap.de). Ces données sont nécessaires au fonctionnement de Babykarte et ne seront pas stockées. Le serveur est exploité par FOSSGIS e.V., [dont vous trouverez la politique de confidentialité ici](https://www.fossgis.de/datenschutzerklaerung). Le serveur tient des logs des connexions entrantes, mais ceux-ci ne permettent pas de tirer des conclusions sur le comportement des utilisateurs individuels. Cela signifie que nous ne pouvons pas vous donner d'informations sur les données que votre navigateur nous a envoyées. Nous aurions déjà échoué en essayant de vous trouver dans le flux de données.
 
-## How your browser contacts servers
+## Comment votre navigateur contacte les serveurs
 
-If your browser contacts a server at the request of an application, the browser also transmits its own data in addition to the data that the application would like to have sent. In this way it tells the server its name, version and the name of the operating system including version number. Your router then adds the IP address assigned by your Internet provider. The IP address is shortened so that your full IP address is not in the logs. Servers might use also other methods of anonymizing your IP address.
+Si votre navigateur contacte un serveur à la demande d'une application, le navigateur transmet également ses propres données en plus des données que l'application souhaite recevoir. De cette façon, il indique au serveur son nom, sa version et le nom du système d'exploitation, y compris le numéro de version. Votre routeur ajoute ensuite l'adresse IP attribuée par votre fournisseur Internet. L'adresse IP est raccourcie pour que votre adresse IP complète ne figure pas dans les logs. Les serveurs peuvent également utiliser d'autres méthodes d'anonymisation de votre adresse IP.
 
-## Contact us
+## Nous contacter
 
-If you contact us through the various channels such as mail, phone, email and GitHub, your information will only be used to improve the Baby Map. When using E-Mail or GitHub, third-party providers are used who handle data differently than we do. Please consult their privacy policy if you have any questions about the processing of your data on their platforms.
+Si vous nous contactez par les différents canaux tels que le courrier, le téléphone, le courrier électronique et GitHub, vos informations ne seront utilisées que pour améliorer Babykarte. Lors de l'utilisation d'E-Mail ou de GitHub, il est fait appel à des fournisseurs tiers qui traitent les données différemment de nous. Veuillez consulter leur politique de confidentialité si vous avez des questions concernant le traitement de vos données sur leurs plateformes.
 
 ## Entité responsable
 
