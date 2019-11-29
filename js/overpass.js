@@ -202,7 +202,7 @@ function addrTrigger_intern(poi, marker) {
 }
 function addrTrigger(poi, marker, mode) {
 	var tmp = formataddrdata(poi, poi.tags);
-	if (tmp.indexOf(getText().PDV_STREET_UNKNOWN) > -1) {
+	if (tmp.indexOf(getText().PDV_STREET_UNKNOWN) > -1 || tmp.indexOf(getText().PDV_COMMUNE_UNKNOWN) > -1 || tmp.indexOf(getText().PDV_ZIPCODE_UNKNOWN)) {
 		var timeout = setTimeout(addrTrigger_intern, 500, poi, marker);
 		return getText().PDV_ADDRESS_LOADING;
 	}
