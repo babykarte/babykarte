@@ -1,4 +1,4 @@
-# Politique de confidentialité (v.3)
+# Privacy Policy (v.3)
 
 ## Prologue
 
@@ -43,7 +43,7 @@ When you visit the Baby Map, your browser asks for various files from cache serv
 
 For displaying the map and other information (such as addresses, opening hours, names of points of interest) Baby Map uses data of the OpenStreetMap community. The data is stored on our own server. However, the map tiles and the addresses of the POIs are stored on the servers of the OpenStreetMap Foundation (St John's Innovation Centre, Cowley Road, Cambridge, CB4 0WS, United Kingdom) (OSMF). How they handle the usage data collected through the use of their services can be found in their [Privacy Statement](https://wiki.osmfoundation.org/wiki/Privacy_Policy).
 
-With other interactions with the Baby Map (loading the web app, moving the map, clicking on interactive elements), data is sent to our server [everest.openstreetmap.de](https://everest.openstreetmap.de) or [babykarte.openstreetmap.de](https://babykarte.openstreetmap.de). These data are necessary for the operation of the Baby Map and will not be stored. The server is operated by FOSSGIS e.V., [whose privacy policy you can find here](https://www.fossgis.de/datenschutzerklaerung). The server keeps logs of incoming connections, but these do not allow conclusions to be drawn about the behaviour of individual users. This means that we cannot give you any information about data that your browser has sent to us. We would already fail trying to find you in the data stream.
+With other interactions with the Baby Map (loading the web app, moving the map, clicking on interactive elements), data is sent to our server [everest.openstreetmap.de](https://everest.openstreetmap.de) or [babykarte.openstreetmap.de](https://babykarte.openstreetmap.de). These data are necessary for the operation of the Baby Map and will not be stored. The server is operated by FOSSGIS e.V., [whose privacy policy you can find here](https://www.fossgis.de/datenschutzerklaerung). The server keeps logs of incoming connections, but these do not allow conclusions to be drawn about the behaviour of individual users. This means that we cannot give you any information about data that your browser has sent to us. We would already fail trying to find you in the  data stream.
 
 ## How your browser contacts servers
 
@@ -53,24 +53,24 @@ If your browser contacts a server at the request of an application, the browser 
 
 If you contact us through the various channels such as mail, phone, email and GitHub, your information will only be used to improve the Baby Map. When using E-Mail or GitHub, third-party providers are used who handle data differently than we do. Please consult their privacy policy if you have any questions about the processing of your data on their platforms.
 
-## Entité responsable
+## Responsible entity
 
-Responsable du traitement des données sur ce site web:  
+Responsible for data processing on this website: 
 
 Michael Brandtner  
 Weißenburgstraße 3  
-24116 Kiel  
-Germany  
+24116 Kiel 
+Germany 
 
-Phone: +49 431 64367480  
-E-mail: brandtner_michael@yahoo.de  
+Phone: +49431 64367480  
+E-Mail: [brandtner_michael@yahoo.de](mailto:brandtner_michael@yahoo.de)
 
-L'entité responsable est la personne physique ou morale qui, seule ou de concert avec d'autres, décide des finalités et des moyens du traitement des données à caractère personnel (telles que les noms, adresses électroniques, etc.).
+Responsible entity is the natural or legal person who, alone or in concert with others, decides on the purposes and means of processing personal data (such as names, e-mail addresses, etc.).
 
-## Droit de recours auprès de l'organe de surveillance compétent
+## Right to appeal at the appropriate supervisory body
 
-En cas de violation du RGPD, les personnes concernées disposent d'un droit de recours auprès d'une autorité de contrôle, notamment dans l'État membre de leur résidence habituelle, de leur lieu de travail ou du lieu de l'infraction alléguée. Le droit de recours est sans préjudice de tout autre recours administratif ou judiciaire.
+In the case of violations against the GDPR, the persons concerned have a right of appeal to a supervisory authority, in particular in the member state of their habitual residence, their place of work or the place of the alleged infringement. The right of appeal is without prejudice to any other administrative or judicial remedies.
 
-## Mises à jour de cette politique de confidentialité
+## Updating this privacy policy
 
-Un numéro de version sur l'hyperlien vers cette politique de confidentialité indique un changement à cette politique. Vous êtes responsable de vérifier les changements en votre propre nom.
+A version number on the hyperlink to this privacy policy indicates a change to this policy. You're responsible to look up the changes on your own behalf.

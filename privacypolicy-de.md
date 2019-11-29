@@ -1,4 +1,4 @@
-# Datenschutzerklärung
+# Datenschutzerklärung (v.3)
 
 ## Prolog
 
