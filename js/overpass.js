@@ -239,7 +239,7 @@ function processContentDatabase_intern(marker, poi, database, tag, values, data,
 			if (values[i] == undefined) {
 				langcode += "_UNKNOWN";
 			} else {
-				langcode += "_" + values[i].replace("_", "").replace(":", "_");;
+				langcode += "_" + values[i].replace("_", "").replace(":", "_").replace("*", "YES");
 			}
 			if (database[parent].applyfor[marker.category.split(" ")[0]]) {
 				title = getText("PDV_" + langcode.toUpperCase()) || undefined;

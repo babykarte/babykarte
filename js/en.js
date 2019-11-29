@@ -151,7 +151,7 @@ var refEn = {"site-map": {
 	"TOILET": "Toilet",
 	"LNK_IMPRESS": "About",
 	"LNK_IMPRESS_URL": "impressum.html#en",
-	"LNK_PP_SITE": "Privacy (v.2)",
+	"LNK_PP_SITE": "Privacy (v.3)",
 	"LNK_PP_SITE_URL": "privacypolicy-en.html",
 	"LNK_GITHUB": "On Github",
 	"LNK_OSMWIKI": "OSM Wiki",

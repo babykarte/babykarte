@@ -176,11 +176,11 @@ section {
 	position:absolute;
 	max-width:50%;
 }
-.dropdown-menu a {
+/*.dropdown-menu a {
 	box-sizing:border-box;
 	display:inline-block;
 	text-align:center;
-}
+}*/
 .dropdown-menu a:hover {
 	color:#b53085;
 }
