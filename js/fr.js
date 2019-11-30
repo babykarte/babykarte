@@ -16,13 +16,13 @@ var refFr = {"site-map": {
 	},
 	"PDV_ICONS_EXPLANATION_GENERAL": "Les icônes ici en gris sont coloriées selon un système de feu tricolore décrit ci-dessus",
 	"PDV_ICONS_EXPLANATION": {
-		"PDV_ICON_CHANGINGTABLE": "<img class='small-icon' src='images/changingtable.svg' style='margin:0px;' /> Table à langer",
-		"PDV_ICON_HIGHCHAIR": "<img class='small-icon' src='images/highchair.svg' style='margin:0px;' /> Chaises hautes",
-		"PDV_ICON_STROLLER": "<img class='small-icon' src='images/stroller.svg' style='margin:0px;' /> Adaptabilité aux poussettes",
-		"PDV_ICON_BALL": "<img class='small-icon' src='images/ball.svg' style='margin:0px;' /> Espace enfant",
-		"PDV_ICON_BREASTFEEDING": "<span class='small-icon' style='margin:0px;'>&#129329;</span> Équipements d'alimentation",
-		"PDV_ICON_PEN": "✏️&nbsp; Modifier dans OpenStreetMap (site Web externe, inscription nécessaire)",
-		"PDV_ICON_SHARE": "<img class='small-icon' src='images/share.svg' style='margin:0px;' /> Partager Point d'Intérêt"
+		"PDV_ICON_CHANGINGTABLE": "<img class='small-icon' src='images/changingtable.svg' /> Table à langer",
+		"PDV_ICON_HIGHCHAIR": "<img class='small-icon' src='images/highchair.svg' /> Chaises hautes",
+		"PDV_ICON_STROLLER": "<img class='small-icon' src='images/stroller.svg' /> Adaptabilité aux poussettes",
+		"PDV_ICON_BALL": "<img class='small-icon' src='images/ball.svg' /> Espace enfant",
+		"PDV_ICON_BREASTFEEDING": "<span class='small-icon'>&#129329;</span> Équipements d'alimentation",
+		"PDV_ICON_PEN": "<span class='small-icon'>✏️</span> Modifier dans OpenStreetMap (site Web externe, inscription nécessaire)",
+		"PDV_ICON_SHARE": "<img class='small-icon' src='images/share.svg' /> Partager Point d'Intérêt"
 	},
 	"LOCATING_FAILURE": "N'a pas trouvé votre lieu",
 	"LOCATING_SUCCESS": "Votre lieu",

@@ -16,13 +16,13 @@ var refDe = {"site-map": {
 	},
 	"PDV_ICONS_EXPLANATION_GENERAL": "Die hier grau gezeigten Icons haben verschiedene Farben, entsprechend dem oben beschriebenen Ampelsystem",
 	"PDV_ICONS_EXPLANATION": {
-		"PDV_ICON_CHANGINGTABLE": "<img class='small-icon' src='images/changingtable.svg' style='margin:0px;' /> Wickeltisch",
-		"PDV_ICON_HIGHCHAIR": "<img class='small-icon' src='images/highchair.svg' style='margin:0px;' /> Hochstühle",
-		"PDV_ICON_STROLLER": "<img class='small-icon' src='images/stroller.svg' style='margin:0px;' /> Kinderwagentauglichkeit",
-		"PDV_ICON_BALL": "<img class='small-icon' src='images/ball.svg' style='margin:0px;' /> Spielecke",
-		"PDV_ICON_BREASTFEEDING": "<span class='small-icon' style='margin:0px;'>&#129329;</span> Einrichtung zum Füttern <br>",
-		"PDV_ICON_PEN": "✏️&nbsp; In OpenStreetMap editieren (externe Webseite, Anmeldung erforderlich)",
-		"PDV_ICON_SHARE": "<img class='small-icon' src='images/share.svg' style='margin:0px;' /> Ort teilen"
+		"PDV_ICON_CHANGINGTABLE": "<img class='small-icon' src='images/changingtable.svg' /> Wickeltisch",
+		"PDV_ICON_HIGHCHAIR": "<img class='small-icon' src='images/highchair.svg' /> Hochstühle",
+		"PDV_ICON_STROLLER": "<img class='small-icon' src='images/stroller.svg' /> Kinderwagentauglichkeit",
+		"PDV_ICON_BALL": "<img class='small-icon' src='images/ball.svg' /> Spielecke",
+		"PDV_ICON_BREASTFEEDING": "<span class='small-icon'>&#129329;</span> Einrichtung zum Füttern <br>",
+		"PDV_ICON_PEN": "<span class='small-icon'>✏️</span> In OpenStreetMap editieren (externe Webseite, Anmeldung erforderlich)",
+		"PDV_ICON_SHARE": "<img class='small-icon' src='images/share.svg' /> Ort teilen"
 	},
 	"LOCATING_FAILURE": "Standort nicht ermittelbar",
 	"LOCATING_SUCCESS": "Dein Standort",

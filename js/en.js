@@ -16,13 +16,13 @@ var refEn = {"site-map": {
 	},
 	"PDV_ICONS_EXPLANATION_GENERAL": "The Icons shown in grey here are colored according to the traffic light system described above.",
 	"PDV_ICONS_EXPLANATION": {
-		"PDV_ICON_CHANGINGTABLE": "<img class='small-icon' src='images/changingtable.svg' style='margin:0px;' /> Changing table",
-		"PDV_ICON_HIGHCHAIR": "<img class='small-icon' src='images/highchair.svg' style='margin:0px;' /> Highchairs",
-		"PDV_ICON_STROLLER": "<img class='small-icon' src='images/stroller.svg' style='margin:0px;' /> Suitability for strollers",
-		"PDV_ICON_BALL": "<img class='small-icon' src='images/ball.svg' style='margin:0px;' /> Kids area",
-		"PDV_ICON_BREASTFEEDING": "<span class='small-icon' style='margin:0px;'>&#129329;</span> Feeding facilities <br>",
-		"PDV_ICON_PEN": "✏️&nbsp; Edit in OpenStreetMap (external website, registration necessary)",
-		"PDV_ICON_SHARE": "<img class='small-icon' src='images/share.svg' style='margin:0px;' /> Share POI"
+		"PDV_ICON_CHANGINGTABLE": "<img class='small-icon' src='images/changingtable.svg' /> Changing table",
+		"PDV_ICON_HIGHCHAIR": "<img class='small-icon' src='images/highchair.svg' /> Highchairs",
+		"PDV_ICON_STROLLER": "<img class='small-icon' src='images/stroller.svg' /> Suitability for strollers",
+		"PDV_ICON_BALL": "<img class='small-icon' src='images/ball.svg' /> Kids area",
+		"PDV_ICON_BREASTFEEDING": "<span class='small-icon'>&#129329;</span> Feeding facilities <br>",
+		"PDV_ICON_PEN": "<span class='small-icon'>✏️</span> Edit in OpenStreetMap (external website, registration necessary)",
+		"PDV_ICON_SHARE": "<img class='small-icon' src='images/share.svg' /> Share POI"
 	},
 	"LOCATING_FAILURE": "Did not find your location",
 	"LOCATING_SUCCESS": "Your location",
