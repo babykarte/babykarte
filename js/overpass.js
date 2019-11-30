@@ -33,7 +33,7 @@ var PDV_contact = { //PDV = POI Details View
 				"phone": {"nameInherit": false, "values": [undefined, "*"],  "applyfor": {"shop": true, "eat": true, "health": true}, "symbol": "☎️"},
 }
 var PDV_baby = { //PDV = POI Details View
-				"leisure": {"nameInherit": false, "applyfor": {"activity": true}, "values": ["playground", undefined], "triggers": function(data, local) {if (Object.keys(local.children).length == 0) {delete data["leisure"];} return data}, "symbol": "ball",
+				"leisure": {"nameInherit": false, "applyfor": {"activity": true}, "values": ["playground", undefined], "triggers": function(data, local) {if (Object.keys(local.children).length == 0) {delete data["leisure"];} return data}, "symbol": "&nbsp;",
 					"children": 
 						{"playground:slide": {"values": ["yes", undefined]},
 						"playground:swing": {"values": ["yes", undefined]},
@@ -234,15 +234,15 @@ function processContentDatabase_intern(marker, poi, database, tag, values, data,
 	if (!parent) {parent = tag;}
 	for (var i in values) {
 		var title;
-		if (values[i] == "*" || poi.tags[tag] == values[i] || poi.tags[tag] && poi.tags[tag].indexOf(values[i]) > -1) {
+		if (values[i] == "*" && poi.tags[tag] || poi.tags[tag] == values[i] || poi.tags[tag] && poi.tags[tag].indexOf(values[i]) > -1) {
 			var langcode = tag.replace("_", "").replace(":", "_");
 			if (values[i] == undefined) {
 				langcode += "_UNKNOWN";
 			} else {
-				langcode += "_" + values[i].replace("_", "").replace(":", "_").replace("*", "YES");
+				langcode += "_" + values[i].replace("_", "").replace(":", "_")
 			}
 			if (database[parent].applyfor[marker.category.split(" ")[0]]) {
-				title = getText("PDV_" + langcode.toUpperCase()) || undefined;
+				title = getText("PDV_" + langcode.toUpperCase().replace("*", "YES")) || undefined;
 				if (title != undefined && title.indexOf("%s") > -1 && poi.tags[tag]) {
 					title = title.replace("%s", poi.tags[tag]);
 				} else if (title != undefined && title.indexOf("%s") > -1) {
