@@ -235,7 +235,6 @@ function processContentDatabase_intern(marker, poi, database, tag, values, data,
 	for (var i in values) {
 		var title;
 		if (values[i] == "*" && poi.tags[tag] || poi.tags[tag] == values[i] || poi.tags[tag] && poi.tags[tag].indexOf(values[i]) > -1) {
-			console.log(poi.tags[tag]);
 			var langcode = tag.replace("_", "").replace(":", "_");
 			if (values[i] == undefined) {
 				langcode += "_UNKNOWN";
