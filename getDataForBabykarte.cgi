@@ -49,6 +49,8 @@ def convertToJSON(query, mode, name, category, source):
 			data[elem_count]["tags"], data[elem_count]["osm_id"], data[elem_count]["type"], data[elem_count]["geometry"] = row
 		data[elem_count]["category"] = category
 		data[elem_count]["filter"] = name
+		if -1e+17 >= data[elem_count]["osm_id"]: # True when way is a relation
+			data[elem_count]["type"] = "Relation"
 		data[elem_count]["osm_id"] = int(str(data[elem_count]["osm_id"]).replace("-", ""))
 		elem_count += 1
 	if len(data) == 0:
