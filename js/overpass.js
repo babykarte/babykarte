@@ -235,6 +235,7 @@ function processContentDatabase_intern(marker, poi, database, tag, values, data,
 	for (var i in values) {
 		var title;
 		if (values[i] == "*" && poi.tags[tag] || poi.tags[tag] == values[i] || poi.tags[tag] && poi.tags[tag].indexOf(values[i]) > -1) {
+			console.log(poi.tags[tag]);
 			var langcode = tag.replace("_", "").replace(":", "_");
 			if (values[i] == undefined) {
 				langcode += "_UNKNOWN";
@@ -242,7 +243,7 @@ function processContentDatabase_intern(marker, poi, database, tag, values, data,
 				langcode += "_" + values[i].replace("_", "").replace(":", "_")
 			}
 			if (database[parent].applyfor[marker.category.split(" ")[0]]) {
-				title = getText("PDV_" + langcode.toUpperCase().replace("*", "YES")) || undefined;
+				title = getText("PDV_" + langcode.toUpperCase()) || undefined;
 				if (title != undefined && title.indexOf("%s") > -1 && poi.tags[tag]) {
 					title = title.replace("%s", poi.tags[tag]);
 				} else if (title != undefined && title.indexOf("%s") > -1) {
@@ -259,6 +260,7 @@ function processContentDatabase_intern(marker, poi, database, tag, values, data,
 					break;
 				} else {
 					data.title = "NODISPLAY";
+					break;
 				}
 			}
 		} else {
@@ -369,6 +371,7 @@ function contact_text(marker, data, database) {
 function contact_symbol(marker, data, database) {
 	var output = "";
 	for (var tag in data) {
+		console.log(data[tag]);
 		var url = ((tag.endsWith("phone")) ? "tel:" + data[tag].title : ((tag.endsWith("email")) ? "mailto:" + data[tag].title : ((tag.endsWith("facebook") && !data[tag].title.startsWith("http:")) ? "https://facebook.com/" + data[tag].title : data[tag].title)));
 		if (database[tag].symbol.indexOf("/") > -1) {
 			output += "\n<a class='nounderlinestyle' title='" + data[tag].title + "' alt='" + data[tag].title + "' rel='noopener' href='" + url + "' target='_blank'><img src='" + database[tag].symbol + "' class='small-icon' style='margin-top:0px;' /></a>\n";
