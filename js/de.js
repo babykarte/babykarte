@@ -2,7 +2,7 @@ var refDe = {"site-map": {
 	"ABOUT": "Die Babykarte hilft Eltern von Babys und Kleinkindern bei der Suche nach Wickeltischen, Spielplätzen u.v.m. Gleichzeitig wertet die Babykarte die Babyfreundlichkeit von Restaurants und Cafés aus.",
 	"USAGE": "Symbole in der Detailansicht zu Geschäften und Einrichtungen:",
 	"MENUBUTTONS": {
-		"btn_info": "Diese Hilfe öffnen.",
+		"btn_info": "Hilfe öffnen.",
 		"btn_lang": "Sprache auswählen",
 		"btn_search": "Einen Ort suchen.",
 		"btn_filtersbar": "Anzuzeigende Einrichtungen auswählen",
@@ -14,15 +14,15 @@ var refDe = {"site-map": {
 		"rating-yellow": "Der Ort ist eingeschränkt babyfreundlich.",
 		"rating-red": "Der Ort ist überhaupt nicht babyfreundlich.",
 	},
-	"PDV_ICONS_EXPLANATION_GENERAL": "Die Icons haben verschiedene Farben. (grün: vorhanden/möglich, gelb: beschränkt vorhanden, rot: nicht vorhanden/nicht möglich, grau: unbekannt)",
+	"PDV_ICONS_EXPLANATION_GENERAL": "Die hier grau gezeigten Icons haben verschiedene Farben, entsprechend dem oben beschriebenen Ampelsystem",
 	"PDV_ICONS_EXPLANATION": {
-		"PDV_ICON_CHANGINGTABLE": "<img class='small-icon' src='images/changingtable.svg' style='margin:0px;' /> Status der Wickelmöglichkeit vor Ort",
-		"PDV_ICON_HIGHCHAIR": "<img class='small-icon' src='images/highchair.svg' style='margin:0px;' /> Status der Hochstühle vor Ort",
-		"PDV_ICON_STROLLER": "<img class='small-icon' src='images/stroller.svg' style='margin:0px;' /> Status der Kinderwagentauglichkeit vor Ort",
-		"PDV_ICON_BALL": "<img class='small-icon' src='images/ball.svg' style='margin:0px;' /> Status der Kinderspielmöglichkeit vor Ort",
-		"PDV_ICON_BREASTFEEDING": "<span class='small-icon' style='margin:0px;'>&#129329;</span> Statement zur Brustfütterung",
+		"PDV_ICON_CHANGINGTABLE": "<img class='small-icon' src='images/changingtable.svg' style='margin:0px;' /> Wickeltisch",
+		"PDV_ICON_HIGHCHAIR": "<img class='small-icon' src='images/highchair.svg' style='margin:0px;' /> Hochstühle",
+		"PDV_ICON_STROLLER": "<img class='small-icon' src='images/stroller.svg' style='margin:0px;' /> Kinderwagentauglichkeit",
+		"PDV_ICON_BALL": "<img class='small-icon' src='images/ball.svg' style='margin:0px;' /> Spielecke",
+		"PDV_ICON_BREASTFEEDING": "<span class='small-icon' style='margin:0px;'>&#129329;</span> Einrichtung zum Füttern <br>",
 		"PDV_ICON_PEN": "✏️&nbsp; In OpenStreetMap editieren (externe Webseite, Anmeldung erforderlich)",
-		"PDV_ICON_SHARE": "<img class='small-icon' src='images/share.svg' style='margin:0px;' /> POI teilen"
+		"PDV_ICON_SHARE": "<img class='small-icon' src='images/share.svg' style='margin:0px;' /> Ort teilen"
 	},
 	"LOCATING_FAILURE": "Standort nicht ermittelbar",
 	"LOCATING_SUCCESS": "Dein Standort",
