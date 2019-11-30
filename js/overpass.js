@@ -5,7 +5,7 @@ var area = {};
 var freezeMapMoveEvent = false;
 var zoomLevel = "";
 var url = "https://babykarte.openstreetmap.de/getDataForBabykarte.cgi";
-var colorcode = {"yes": "color-green", "no": "color-red", "room": "color-green", "bench": "color-green", undefined: "color-grey", "limited": "color-yellow", "playground": "color-green"};
+var colorcode = {"yes": "color-green", "no": "color-red", "room": "color-green", "bench": "color-green", undefined: "color-grey", "limited": "color-yellow", "playground": "color-green", "*": "color-green"};
 // 'undefined' is equal to 'tag does not exist'. In JS, 'undefined' is also a value
 // '*' is a placeholder for notes from mappers and any other value (even 'undefined')
 var PEP_data = {// PEP = Playground Equipment Popup

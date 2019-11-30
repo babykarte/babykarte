@@ -79,7 +79,7 @@ var refFr = {"site-map": {
 	"PDV_CHANGINGTABLE_FEE_YES": "Payant",
 	"PDV_CHANGINGTABLE_FEE_NO": "Gratuit",
 	"PDV_HIGHCHAIR_YES": "Chaise haute",
-	"PDV_HIGHCHAIR_*": "chaises hautes",
+	"PDV_HIGHCHAIR_*": "Chaises hautes",
 	"PDV_KIDSAREA_YES": "Espace enfant",
 	"PDV_KIDSAREA_INDOOR_YES": "Intérieur",
 	"PDV_KIDSAREA_OUTDOOR_YES": "Extérieur",
