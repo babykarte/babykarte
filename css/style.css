@@ -1,3 +1,4 @@
+/*-------------- GLOBAL SETTINGS ---------------------*/
 body {
 	padding: 0;
 	margin: 0;
@@ -14,7 +15,6 @@ details summary {
 	font-weight:bold;
 	cursor:pointer;
 	font-weight:bold;
-	cursor: pointer;
 }
 h1, h2, h3 {
 	display:block;
@@ -28,57 +28,31 @@ h2 {
 	font-size:14px;
 	color:grey;
 }
-#autocomplete ul {
-	list-style-type:none;
-	margin:0px;
-	padding:0px;
-	color:#142a52;
-}
-#autocomplete li {
-	list-style-type:none;
-	padding-top:5px;
-	padding-bottom:5px;
-}
-#autocomplete li:hover {
-	cursor:pointer;
-	background-color:#c6ebc6;
-}
 input[type=button] {
 	margin:10px;
 }
 input[type=checkbox] {
 	margin-top:5px;
 }
+input[type=text] {
+	border:none;
+	border-bottom:1px solid #ff531a;
+}
 section {
 	display:flex;
 	width:100%;
 	height:100%;
 }
-label {
-	display:block;
-	margin-top:5px;
-}
-.custom-leaflet-icon {
-	margin-top:6px !important;
-	margin:5px !important;
-}
-.own-control-style {
-	margin:5px;
-	border-radius:10px;
-	padding:5px;
-	background-color: rgba(0, 0, 0, 0.7);
-}
-.leaflet-bar {
-	margin:0px !important;
-	background-color: rgb(255, 255, 255);
-	border-radius:5px;
-}
+/*---------------------- POI DETAILS SETTINGS -------------------------------*/
 .tabcontent {
-	box-shadow: -10px 0px 5px -2px grey;
-	padding:2px;
-	overflow:auto;
-	display:none;
-	height:100px;
+	box-sizing:border-box;
+	border-bottom:10px solid white;
+	border-left:5px solid white;
+	border-right:5px solid white;
+	padding:5px;
+	word-wrap:break-word;
+	display:block;
+	background-color:#f9e9d2;
 }
 .tabcontent ul {
 	margin:0px;
@@ -93,126 +67,197 @@ label {
 	margin:0px;
 	font-size:12px;
 }
-.tabcontent details summary {
-	font-size:12px;
-}
-.layermenu {
-	z-index:1;
-	width:33.34%;
-	height:100%;
-	overflow:hidden;
-	padding-left:5px;
-	padding-right:4px;
-	box-sizing:border-box;
-}
-.info {
-	display:none;
-	font-size:22px;
-	bottom:0px;
-	position:fixed;
-	text-align:center;
-	z-index:3;
-	width:100%;
-}
-.pdv-icon {
-	box-sizing:border-box;
-	height:25px;
-	width:25px;
-	margin:10px;
-	font-size:25px;
-	cursor:pointer;
-	text-align:center;
-}
 .small-icon {
-	height:20px;
-	width:20px;
+	height:20px !important;
+	width:20px !important;
 	font-size:20px;
-	color:#006691ff;
 	margin-top:5px;
 	margin-left:5px;
-	margin-right:10px;
+	margin-right:20px;
 }
-.text-icon {
-	height:15px;
-	width:18px;
-	vertical-align:text-bottom;
+.subtitle {
+	display:flex;
+	color:#333333;
+	font-size:12px;
 }
-.list-style-none {
-	list-style-type:none;
-	margin-left:-10px;
+.openinghours {
+	color:black;
 }
-.inactive {
-	opacity:0.4;
+.socialmenu {
+	display:flex;
+	padding:3px;
 }
-.active:hover {
-	border-top:3px solid #d6e0f5;
+.marker-active { /* Style for the active marker, the marker the user has clicked on */
+	filter: brightness(300%);
 }
-.active[active] {
-	border-top:3px solid #52a0c9;
+#infotext-swipe {
+	color:grey;
+	background-color:white;
+	padding:5px;
+	text-align:center;
+	display:none;
 }
-.lang-select {
-	margin-right:5px;
-	padding-left:0px;
-}
-.grid-container {
-	display:grid;
-	grid-template-columns:auto auto;
-	justify-content:start;
-}
+/*---------------------- COLOUR CODES FOR BABY FRIENDLINESS TAB -------------------------------- */
 .color-green {
 	color:#339933;
+	fill:#339933;
+	stroke:#339933;
 }
 .color-red {
 	color:#ff2526;
+	fill:#ff2526;
+	stroke:#ff2526;
 }
 .color-yellow {
 	color:#e6a400;
+	fill:#e6a400;
+	stroke:#e6a400;
 }
 .color-grey {
 	color:#858585;
+	fill:#858585;
+	stroke:#858585;
 }
 .nounderlinestyle {
 	text-decoration:none;
 }
-.dropdown {
+/*-------------------- LEFT BAR SETTINGS ----------------------------*/
+.leftbar {
+	width:45px;
+	font-family:"Courier New", Courier, monospace;
+	background-color:white;
+}
+.bar-icon {
+	height:25px;
+	width:25px;
+	transition: 300ms;
+}
+.bar-icon:hover {
+	cursor:pointer;
+}
+.menuitem {
+	padding:10px;
+}
+.lang-select {
+	font-family:"Palatino Linotype", "Book Antiqua", Palatino, serif;
+	top:45px;
+}
+.searchbar {
+	font-family:"Palatino Linotype", "Book Antiqua", Palatino, serif;
+	top:90px;
+}
+.about {
+	font-family:"Palatino Linotype", "Book Antiqua", Palatino, serif;
 	padding:5px;
-	padding-left:0px;
-	display:inline-block;
+	top:0px;
+}
+.closebtn {
+	float:right;
+	padding:5px;
+	font-size:24px;
+	color:white;
+}
+.beautifulmenu {
+	width:450px;
+}
+.bigmenu {
+	padding:0px !important;
+	top:0px;
+	height:100% !important;
+	width:450px;
 }
 .dropdown-menu {
 	background-color:white;
-	padding:5px;
+	left:45px;
+	padding:10px;
 	display:none;
-	height:20px;
-	width:100px;
 	z-index:2;
 	position:absolute;
+	max-width:50%;
 }
-.dropdown-menu:hover {
-	display:flex;
-}
-.dropdown-menu a {
+/*.dropdown-menu a {
 	box-sizing:border-box;
 	display:inline-block;
 	text-align:center;
-}
+}*/
 .dropdown-menu a:hover {
-	border-top:3px solid #d6e0f5;
+	color:#b53085;
 }
-.dropdown:hover ~ .dropdown-menu {
-	display:flex;
+.dropdown-active { /* Style for opened dropdowns/tooltips (tab, sub menus, tips, more information, translated information) */
+	display:block;
 }
-.locatingBtn {
-	z-index:402;
+.tooltip {
+	position:relative;
 }
-#menubutton {
+.tooltip-content {
+	margin:5px;
+	padding:5px;
+	background-color:white;
+	position:absolute;
+	height:50px;
+	width:200px;
+	font-size:12px;
+	text-align:justify;
 	display:none;
-	font-size:24px;
-	margin-top:8px;
-	margin-left:10px;
-	margin-right:-10px;
-	width:50px;
-	opacity:0.7;
+}
+.tooltip-content-active {
+	display:block;
+}
+.item-active, .tooltip-active{ /* Style for clicked (active) tab labels (menus) */
+	transition: 300ms;
+	background-color: #ffe6f7;
+}
+#filtersGround label {
+	display:block;
+	margin-top:5px;
+	cursor:pointer;
+}
+#autocomplete {
+	background-color:white;
+	display:none;
+	padding:5px;
+	z-index:5;
+	top:0px;
+	box-sizing:border-box;
+}
+#autocomplete .entry {
+	background-color:#f9e9d2;
+	border-bottom:5px solid white;
+	padding:5px;
+}
+#autocomplete .entry:hover {
+	cursor:pointer;
+	background-color:rgb(255, 64, 0, 0.6);
+}
+#autocomplete span {
+	margin:0px;
+	padding:0px;
+	color:#ff541aff;
+}
+#autocomplete address {
+	padding-top:5px;
+	padding-bottom:5px;
+}
+#poidetails {
+	font-family:"Palatino Linotype", "Book Antiqua", Palatino, serif;
+	font-size:14px;
+	width:450px;
+}
+#poimenu {
+	height:auto !important;
+}
+/*------------------------- ON MAP MODALS -----------------*/
+.info {
+	display:none;
+	font-size:22px;
+	top:0px;
+	position:absolute;
+	text-align:center;
+	margin-left:auto;
+	margin-right:auto;
+	margin-top:5px;
+	z-index:403;
+	width:100%;
 }
 #map{
 	z-index:1;
@@ -223,39 +268,12 @@ label {
 	position:absolute;
 	width:100%;
 	height:100%;
-	padding-top:30%;
-	padding-bottom:30%;
+	padding-top:20%;
 	font-size:26px;
 	text-align:center;
 	color:white;
 	display:none;
 	background-color:rgba(0,0,0,0.7);
-}
-@media only screen and (min-width:800px) {
-	#map-overlay-notify {
-		display:none !important;}
-}
-#searchfield {
-	padding-top:10px;
-	padding-bottom:10px;
-	padding-left:5px;
-	margin-top:5px;
-	margin-bottom:5px;
-	margin-left:4px;
-	width:95%;
-	-webkit-appearance: none;
-}
-#autocomplete {
-	display:none;
-	padding:5px;
-	z-index:5;
-	position:relative;
-	top:0px;
-	background-color:#ecf2f9;
-	box-sizing:border-box;
-}
-#filtersGround {
-	margin-bottom: 25px;
 }
 #infoPopup {
 	margin:auto;
@@ -263,78 +281,161 @@ label {
 	margin-bottom:10px;
 	padding:5px;
 	border-radius:15px;
-	background-color:/*rgba(0, 40, 77, 0.6)*/rgba(51, 153, 255, 0.6);
+	background-color:rgba(204, 51, 0, 0.6);
 }
-#progressbar {
-	display:none;
+/* ---------------------- SPINNER ---------------------------- */
+#spinner {
+	display:flex;
+	height:50px;
 	width:100%;
-	height:5px;
-	z-index:8;
-	position:fixed;
-	background-color:rgba(51, 153, 102, 0.7);
+	position:absolute;
+	z-index:402;
+	margin-left:40%;
+	margin-right:40%;
+	margin-top:10px;
 }
-#lnk-impress, #linkToPP {
-	float:right;
-	margin-top:5px;
-	font-size: 14px;
+#spinner .circle {
+	width:50px;
+	height:50px;
+	border-radius:50px;
+	margin-right:5px;
+	background-color:white;
 }
-#linkToPP {
-	margin-right: 10px;
+#spinner #circle1 {
+	animation-name:load1;
+	animation-duration:1s;
+	animation-delay:0s;
+	animation-iteration-count:infinite;
 }
+#spinner #circle2 {
+	animation-name:load2;
+	animation-duration:1s;
+	animation-delay:0s;
+	animation-iteration-count:infinite;
+}
+#spinner #circle3 {
+	animation-name:load3;
+	animation-duration:1s;
+	animation-delay:0s;
+	animation-iteration-count:infinite;
+}
+@keyframes load1 {
+	0% {background-color:white;}
+	50% {background-color:#ff531aff;}
+	100% {background-color:white;}
+}
+@keyframes load2 {
+	0% {background-color:white;}
+	20% {background-color:white;}
+	40% {background-color:white;}
+	60% {background-color:#ff531aff;}
+	100% {background-color:white;}
+}
+@keyframes load3 {
+	0% {background-color:white;}
+	20% {background-color:white;}
+	40% {background-color:white;}
+	60% {background-color:white;}
+	80% {background-color:#ff531aff;}
+	100% {background-color:white;}
+}
+/* ---------------------- POI RATING SYSTEM ------------------ */
 #rating-default {
 	fill:none;
+	color:black;
 }
 #rating-green {
 	fill:#01c401;
+	color:#01c401;
 	stroke:white;
 }
 #rating-yellow {
 	fill:#ffd900;
+	color:#ffd900;
 	stroke:white;
 }
 #rating-red {
 	fill:#bb0202;
+	color:#bb0202;
 	stroke:white;
 }
+/*------------------------ MOBILE VIEW ------------------------*/
 @media only screen and (max-width:800px) {
 section {
 	display:block;
 }
-.layermenu {
-	height:80px;
+.dropdown-menu {
+	box-sizing:border-box;
+	max-width:100%;
+}
+.leftbar {
+	display:grid;
+	grid-template-columns:auto auto auto auto auto auto;
+	width:100%;
+	height:45px;
+}
+#map {
+	position:absolute !important;
+	width:100% !important;
+	height:calc(100% - 45px) !important;
+}
+.beautifulmenu {
 	width:100%;
 }
-.lang-select {
-	font-size:16px;
+.lang-select, .searchbar, .about, .bigmenu, .beautifulmenu {
+	top:45px;
+	left:0px;
+	width:100%;
 }
-#menubutton {
+.searchbar {
+	top:45px;
+	width:100%;
+}
+.about {
+	top:45px;
+	width:100%;
+}
+.tabcontent {
+	display:none;
+}
+.tab-visible {
 	display:block;
 }
-#autocomplete {
-	background-color:white;
-	border-left:5px solid #4080bf;
+#infotext-swipe {
+	display:block;
+	font-size:22px;
+	color:#ff542aff;
+}
+#poimenu, #poidetails {
+	top:initial !important;
+	bottom:0px;
+	overflow:hidden;
+	width:100%;
 }
 #infoPopup {
 	width:200px;
 }
-#map {
+#info {
 	width:100%;
-	height:calc(100% - 75px);
+	border-radius:5px;
+}
+#spinner {
+	margin-left:10%;
+	margin-right:10%;
 }
 #searchfield {
-	margin-right:4px;
-	max-height:10px;
+	width:100%;
 }
+.mobile-handle {
+	background-color: lightgrey;
+	padding: 2.5px 21px;
+  	display: inline-block;
+  	cursor: pointer;
+  	border-radius: 50px;
+	margin-bottom:2px;
+	margin-top: 0px !important;
 }
-@media only screen and (min-width:800px) and (max-width:990px) {
-	#lnk-impress, #linkToPP {
-	margin-top:7px;
-	font-size: 11px;
-	}
-	}
-@media only screen and (max-width:330px) {	
-	#lnk-impress, #linkToPP {
-	margin-top:7px;
-	font-size: 11px;
-	}
+.tooltip-content {
+	right:0%;
+}
 }

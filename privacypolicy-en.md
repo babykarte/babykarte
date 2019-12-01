@@ -1,4 +1,4 @@
-# Privacy Policy
+# Privacy Policy (v.3)
 
 ## Prologue
 

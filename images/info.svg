@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="106mm"
+   height="106mm"
+   viewBox="0 0 106 106"
+   version="1.1"
+   id="svg8"
+   inkscape:version="0.92.4 5da689c313, 2019-01-14"
+   sodipodi:docname="info.svg"
+   inkscape:export-filename="/home/soren/Documents/Projekte/Babykarte/devel/images/info.svg.png"
+   inkscape:export-xdpi="96"
+   inkscape:export-ydpi="96">
+  <defs
+     id="defs2" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="1.7073113"
+     inkscape:cx="429.78036"
+     inkscape:cy="179.52495"
+     inkscape:document-units="mm"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     inkscape:window-width="1280"
+     inkscape:window-height="960"
+     inkscape:window-x="0"
+     inkscape:window-y="27"
+     inkscape:window-maximized="1" />
+  <metadata
+     id="metadata5">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(0,-191)">
+    <flowRoot
+       xml:space="preserve"
+       id="flowRoot814"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:40px;line-height:1.25;font-family:Cantarell;-inkscape-font-specification:Cantarell;letter-spacing:0px;word-spacing:0px;fill:#ffffff;fill-opacity:1;stroke:none"
+       transform="matrix(0.75476973,0,0,0.75476973,-113.04949,44.118556)"><flowRegion
+         id="flowRegion816"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Cantarell;-inkscape-font-specification:Cantarell;fill:#ffffff;fill-opacity:1"><rect
+           id="rect818"
+           width="226.08649"
+           height="290.51526"
+           x="185.67206"
+           y="151.70052"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Cantarell;-inkscape-font-specification:Cantarell;fill:#ffffff;fill-opacity:1" /></flowRegion><flowPara
+         id="flowPara820"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:192px;font-family:'URW Chancery L';-inkscape-font-specification:'URW Chancery L';fill:#ffffff;fill-opacity:1">i</flowPara></flowRoot>    <flowRoot
+       xml:space="preserve"
+       id="flowRoot817"
+       style="font-style:normal;font-weight:normal;font-size:40px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:black;fill-opacity:1;stroke:none"
+       transform="matrix(0.26458333,0,0,0.26458333,0,191)"><flowRegion
+         id="flowRegion819"><rect
+           id="rect821"
+           width="202.07211"
+           height="264.74374"
+           x="119.48612"
+           y="103.67178" /></flowRegion><flowPara
+         id="flowPara823"
+         style="-inkscape-font-specification:'URW Chancery L';font-family:'URW Chancery L';font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal">i</flowPara></flowRoot>    <flowRoot
+       xml:space="preserve"
+       id="flowRoot825"
+       style="font-style:normal;font-weight:normal;font-size:40px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#ff542a;fill-opacity:1;stroke:none;"
+       transform="matrix(6.9728084,0,0,3.0358774,-563.75031,-101.07325)"><flowRegion
+         id="flowRegion827"
+         style="fill:#ff542a;fill-opacity:1;"><rect
+           id="rect829"
+           width="205.58641"
+           height="329.75827"
+           x="83.757423"
+           y="90.200302"
+           style="fill:#ff542a;fill-opacity:1;" /></flowRegion><flowPara
+         id="flowPara831"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Quicksand Medium';-inkscape-font-specification:'Quicksand Medium, ';fill:#ff542a;fill-opacity:1;">i</flowPara></flowRoot>  </g>
+</svg>
