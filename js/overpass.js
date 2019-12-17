@@ -571,6 +571,7 @@ function requestLocation() {map.locate({setView: true, zoom: zoomLevel});}
 
 //init map
 var map = L.map('map');
+map.zoomControl.setPosition("topright");
 map.setView([saved_lat, saved_lon], 15);
 getStateFromHash();
 map.on("locationfound", locationFound);
