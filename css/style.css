@@ -90,8 +90,16 @@ section {
 .marker-active { /* Style for the active marker, the marker the user has clicked on */
 	filter: brightness(300%);
 }
+#osm-attribution {
+	color:grey;
+	font-size:16px;
+	background-color:white;
+	padding:5px;
+	text-align:center;
+}
 #infotext-swipe {
 	color:grey;
+	font-size:22px;
 	background-color:white;
 	padding:5px;
 	text-align:center;
@@ -403,8 +411,6 @@ section {
 }
 #infotext-swipe {
 	display:block;
-	font-size:22px;
-	color:#ff542aff;
 }
 #poimenu, #poidetails {
 	top:initial !important;

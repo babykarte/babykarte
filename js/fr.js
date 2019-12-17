@@ -157,6 +157,7 @@ var refFr = {"site-map": {
 	"LNK_PP_SITE_URL": "privacypolicy-fr.html",
 	"LNK_GITHUB": "Sur Github",
 	"LNK_OSMWIKI": "Wiki OSM",
+	"OSM_ATTRIBUTION": "Proudly collected by <a rel='noopener' target='_blank' href='http://www.openstreetmap.fr/contribuer/'>OpenStreetMap</a> (EN)",
 	"TB_SEARCHFIELD": "Rechercher",
 	"opening_hours": {"Mo" : "Lundi", "Tu" : "Mardi", "We" : "Mercredi", "Th" : "Jeudi", "Fr" : "Vendredi", "Sa" : "Samedi", "Su" : "Dimanche", "off" : "fermé", "Jan" : "Janvier", "Feb" : "Février", "Mar" : "Mars", "Apr" : "Avril", "May" : "Mai", "Jun" : "Juin", "Jul" : "Juillet", "Aug" : "Août", "Sep" : "Septembre", "Oct" : "Octobre", "Nov" : "Novembre", "Dec" : "Décembre", "PH" : "vacances"},
 	"filtername": {
