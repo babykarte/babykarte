@@ -567,7 +567,9 @@ function getStateFromHash() {
 	}
 }
 function requestLocation() {map.locate({setView: true, zoom: zoomLevel});}
-
+function hashCoords(e) {
+location.hash = String(map.getZoom()) + "&" + String(e.latlng.lat).split(".")[0] + "." + String(e.latlng.lat).split(".")[1].slice(0, 4) + "&" + String(e.latlng.lng).split(".")[0] + "." + String(e.latlng.lng).split(".")[1].slice(0, 4);
+}
 
 //init map
 var map = L.map('map');
@@ -576,7 +578,7 @@ map.setView([saved_lat, saved_lon], 15);
 getStateFromHash();
 map.on("locationfound", locationFound);
 map.on("locationerror", locationError);
-map.on("click", function(e) {location.hash = String(map.getZoom()) + "&" + String(e.latlng.lat) + "&" + String(e.latlng.lng);})
+map.on("click", hashCoords);
 map.on("moveend", onMapMove);
 var Layergroup = new L.LayerGroup();
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
