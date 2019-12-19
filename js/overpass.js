@@ -525,7 +525,7 @@ function loadPOIS(e, post) {
 		//Go throw all elements (ways, relations, nodes) sent by Overpass
 		for (var fltr in activeFilter) {
 			for (var layer of filter[fltr].layers) {
-				map.removeLayer(layer);
+				cluster.removeLayer(layer);
 			}
 		}
 		for (var poi in elements) {
@@ -544,7 +544,7 @@ function loadPOIS(e, post) {
 			marker.data.classId = String(poi.type)[0].toUpperCase() + String(poi.osm_id);
 			marker.on("click", function(event) {getRightPopup(event, filter[event.target.fltr].popup)});
 			//Add marker to map
-			map.addLayer(marker);
+			cluster.addLayer(marker);
 		}
 		spinner(false);
 	}, "POST");
@@ -583,10 +583,11 @@ map.on("moveend", onMapMove);
 var Layergroup = new L.LayerGroup();
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
   maxZoom: 19,
-  minZoom: 10,
+  minZoom: 9,
   attribution: '&copy; <a href="https://openstreetmap.org/copyright">OpenStreetMap</a> data under <a href="https://opendatacommons.org/licenses/odbl/">ODbL</a>, Tiles OSMF: <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC BY-SA</a>'
 }).addTo(map);
-
+var cluster = L.markerClusterGroup();
+map.addLayer(cluster);
 spinner(false);
 
 zoomLevel = String(map.getZoom());
