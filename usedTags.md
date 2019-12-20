@@ -68,12 +68,12 @@ Playground (**right** tagging):
     
 Playground equipment: seesaw (**right** tagging):
     
-    playground:seesaw=yes
+    playground=seesaw
     ...
 
 Playground equipment: sandpit (**right** tagging):
     
-    playground:sandpit=yes
+    playground=sandpit
     ...
 
 ## Healthcare
