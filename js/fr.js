@@ -180,6 +180,12 @@ var refFr = {"site-map": {
 	}
 },
 "site-impress" : {
+	"LNK_IMPRESS": "A propos",
+	"LNK_IMPRESS_URL": "impressum.html#fr",
+	"LNK_PP_SITE": "Politique de confidentialité (v.3)",
+	"LNK_PP_SITE_URL": "privacypolicy-fr.html",
+	"LNK_GITHUB": "Sur Github",
+	"LNK_OSMWIKI": "Wiki OSM",
 	"IMPRESS_TITLE": "A propos",
 	"IMPRESS_SUBTITLE": "Responsable du site Web",
 	"IMPRESS_COUNTRY": "Allemagne",

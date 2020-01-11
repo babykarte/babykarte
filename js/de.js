@@ -179,6 +179,12 @@ var refDe = {"site-map": {
 	}
 },
 "site-impress" : {
+	"LNK_IMPRESS": "Impressum",
+	"LNK_IMPRESS_URL": "impressum.html#de",
+	"LNK_PP_SITE": "Datenschutz (v.3)",
+	"LNK_PP_SITE_URL": "privacypolicy-de.html",
+	"LNK_GITHUB": "Auf Github",
+	"LNK_OSMWIKI": "OSM Wiki",
 	"IMPRESS_TITLE": "Impressum",
 	"IMPRESS_SUBTITLE": "Angaben gemäß § 5 TMG:",
 	"IMPRESS_COUNTRY": "Deutschland",

@@ -179,6 +179,12 @@ var refEn = {"site-map": {
 	}
 },
 "site-impress" : {
+	"LNK_IMPRESS": "About",
+	"LNK_IMPRESS_URL": "impressum.html#en",
+	"LNK_PP_SITE": "Privacy (v.3)",
+	"LNK_PP_SITE_URL": "privacypolicy-en.html",
+	"LNK_GITHUB": "On Github",
+	"LNK_OSMWIKI": "OSM Wiki",
 	"IMPRESS_TITLE": "About",
 	"IMPRESS_SUBTITLE": "Responsible for this website",
 	"IMPRESS_COUNTRY": "Germany",

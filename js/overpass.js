@@ -586,7 +586,7 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
   minZoom: 9,
   attribution: '&copy; <a href="https://openstreetmap.org/copyright">OpenStreetMap</a> data under <a href="https://opendatacommons.org/licenses/odbl/">ODbL</a>, Tiles OSMF: <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC BY-SA</a>'
 }).addTo(map);
-var cluster = L.markerClusterGroup();
+var cluster = L.markerClusterGroup({"disableClusteringAtZoom": 17});
 map.addLayer(cluster);
 spinner(false);
 
