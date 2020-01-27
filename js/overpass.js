@@ -208,7 +208,7 @@ function addrTrigger(poi, marker, mode) {
 	}
 	return tmp;
 }
-function toggleTab(bla, id) {
+/*function toggleTab(bla, id) {
 	var tab = document.getElementById(id);
 	var icon = document.getElementById("icon" + id);
 	if (icon.classList.contains("inactive") == true) {
@@ -229,7 +229,7 @@ function toggleTab(bla, id) {
 		}
 	}
 	tab.style.display = "block";
-}
+}*/
 function processContentDatabase_intern(marker, poi, database, tag, values, data, parent) {
 	if (!parent) {parent = tag;}
 	for (var i in values) {
@@ -522,12 +522,13 @@ function loadPOIS(e, post) {
 	}
 	//Connect to OSM server
 	getData(url, "json", post, undefined, function (elements) {
-		//Go throw all elements (ways, relations, nodes) sent by Overpass
+		//Go through all elements (ways, relations, nodes) sent by Overpass and delete them all from map
 		for (var fltr in activeFilter) {
 			for (var layer of filter[fltr].layers) {
-				cluster.removeLayer(layer);
+				map.removeLayer(layer);
 			}
 		}
+		cluster.clearLayers();
 		for (var poi in elements) {
 			var marker;
 			poi = elements[poi];

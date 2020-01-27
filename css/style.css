@@ -183,16 +183,11 @@ section {
 	position:absolute;
 	max-width:50%;
 }
-/*.dropdown-menu a {
-	box-sizing:border-box;
-	display:inline-block;
-	text-align:center;
-}*/
 .dropdown-menu a:hover {
 	color:#b53085;
 }
-.dropdown-active { /* Style for opened dropdowns/tooltips (tab, sub menus, tips, more information, translated information) */
-	display:block;
+.dropdown-active, .tab-content-active, .tooltip-content-active { /* Style for opened dropdowns/tooltips (tab, sub menus, tips, more information, translated information) */
+	display:block !important;
 }
 .tooltip {
 	position:relative;
@@ -208,8 +203,8 @@ section {
 	text-align:justify;
 	display:none;
 }
-.tooltip-content-active {
-	display:block;
+.tab-content {
+	display:none;
 }
 .item-active, .tooltip-active{ /* Style for clicked (active) tab labels (menus) */
 	transition: 300ms;

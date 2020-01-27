@@ -41,10 +41,10 @@ function hideAll(classes) {
 		menuitem.classList.remove(classes[0]);
 	}
 }
-function intern_toggle(elem, mode, classes) {
+function intern_toggle(elem, mode, classes, menu=undefined) {
 	mode = mode || "all";
+	menu = ((menu == undefined) ? elem.nextElementSibling : document.getElementById(menu));
 	var parent = elem.parentElement;
-	var menu = elem.nextElementSibling;
 	var active = menu.classList.contains(classes[1]);
 	if (mode == "all") {
 		hideAll(classes);
@@ -65,6 +65,9 @@ function toggleMenu(elem, mode) {
 }
 function toggleTooltip(elem) {
 	intern_toggle(elem, "all", ["tooltip-active", "tooltip-content-active"]);
+}
+function toggleTab(elem, menu) {
+	intern_toggle(elem, "all", ["tab-active", "tab-content-active"], menu);
 }
 function spinner(value) { //Show/hide spinner
 	var elem = document.getElementById("spinner");
