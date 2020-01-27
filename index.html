@@ -20,11 +20,18 @@
         		<a href='https://wiki.openstreetmap.org/wiki/Baby-Karte' target='_blank' id='linkToOSMWiki'>OSM Wiki</a>
         		<a href='impressum.html#de' id='lnk-impress' target='_blank'>Impressum</a>
         		<a href='privacypolicy-de.html' id='linkToPP' target='_blank;'>Datenschutz (v.3)</a>
-        		<p id='about'></p>
-				<p id='explanation-menubuttons'></p>
-				<p id='explanation-markerdots'></p>
-				<p id='usage'></p>
-        		<p id='explanation-pdvicons'></p>
+        		<div style='padding-top:10px;box-sizing:border-box;'>
+        			<a id='lnk_about' onclick='toggleTab(this, "about")'></a>,
+        			<a id='lnk_explanation-menubuttons' onclick='toggleTab(this, "explanation-menubuttons")'></a>,
+        			<a id='lnk_explanation-markerdots' onclick='toggleTab(this, "explanation-markerdots")'></a>,
+        			<a id='lnk_usage' onclick='toggleTab(this, "usage")'></a>
+        		</div>
+        		<a id='lnk_explanation-pdvicons' onclick='toggleTab(this, "explanation-pdvicons")'></a>
+        		<div id='about' class='tab-content'></div>
+				<div id='explanation-menubuttons' class='tab-content'></div>
+				<div id='explanation-markerdots' class='tab-content'></div>
+				<div id='usage' class='tab-content'></div>
+        		<div id='explanation-pdvicons' class='tab-content'></div>
   			</div>
   		</div>
   		<div class='menuitem dropdown'><img class='bar-icon' id='btn_lang' src='images/www.svg' onclick='toggleMenu(this)' />
