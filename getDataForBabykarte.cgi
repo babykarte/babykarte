@@ -7,7 +7,7 @@ verbose = False
 data = {}
 elem_count = 0
 dbconnstr="dbname=poi"
-sqls = {"normal": "SELECT to_json(tags), osm_id, 'Node' AS osm_type, St_asgeojson(St_centroid(geom)) ::json AS geometry FROM osm_poi_point WHERE geom && ST_makeEnvelope(%lat1, %lon1, %lat2, %lon2) and (%condition) UNION ALL SELECT to_json(tags), osm_id, 'Way' AS osm_type, st_asgeojson(St_centroid(geom)) ::json AS geometry FROM osm_poi_poly WHERE geom && ST_makeEnvelope(%lat1, %lon1, %lat2, %lon2) and (%condition);",
+sqls = {"normal": "SELECT to_json(tags), osm_id, St_asgeojson(St_centroid(geom)) ::json AS geometry FROM osm_poi_all WHERE geom && ST_makeEnvelope(%lat1, %lon1, %lat2, %lon2) and (%condition);",
 			"playground": "SELECT to_json(tags), osm_id, osm_type, St_asgeojson(St_centroid(geom)) ::json AS geometry, equipment from osm_poi_playgrounds where geom && ST_makeEnvelope(%lat1, %lon1, %lat2, %lon2) and (%condition);"}
 queryLookUp = {"paediatrics": ("tags->'healthcare:speciality' LIKE 'paediatrics'", "normal", "health"),
 				"midwife": ("tags->'healthcare'='midwife'", "normal", "health"),
@@ -40,18 +40,24 @@ def convertToJSON(query, mode, name, category, source):
 	global data, elem_count
 	for row in query:
 		data[elem_count] = {}
+		data[elem_count]["type"] = ""
 		if mode == "playground":
 			data[elem_count]["tags"], data[elem_count]["osm_id"], data[elem_count]["type"], data[elem_count]["geometry"], data[elem_count]["equipment"] = row
 			if data[elem_count]["equipment"] != 'null':
 				for equip in data[elem_count]["equipment"]:
 					data[elem_count]["tags"]["playground:" + equip] = "yes"
 		else:
-			data[elem_count]["tags"], data[elem_count]["osm_id"], data[elem_count]["type"], data[elem_count]["geometry"] = row
+			data[elem_count]["tags"], data[elem_count]["osm_id"], data[elem_count]["geometry"] = row
+			if -1e+17 >= int(data[elem_count]["osm_id"]): # True when object is a relation
+				data[elem_count]["type"] = "Relation"
+			if -1 >= int(data[elem_count]["osm_id"]): #True when object is a way
+				data[elem_count]["type"] = "Way"
+			if int(data[elem_count]["osm_id"]) >= 1: ##True when object is a node
+				data[elem_count]["type"] = "Node"
 		data[elem_count]["category"] = category
 		data[elem_count]["filter"] = name
-		if -1e+17 >= data[elem_count]["osm_id"]: # True when way is a relation
-			data[elem_count]["type"] = "Relation"
 		data[elem_count]["osm_id"] = int(str(data[elem_count]["osm_id"]).replace("-", ""))
+		#data[elem_count]["osm_id"] = int(data[elem_count]["osm_id"])
 		elem_count += 1
 	if len(data) == 0:
 		data[elem_count] = {}
