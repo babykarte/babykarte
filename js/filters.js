@@ -168,18 +168,6 @@ function hardReset() {
 		filter[fltr].active = false;
 	}
 }
-function getData(url, dataType, data,  fail, success, type) {
-	if (type == undefined) {type = "GET"}
-	if (fail == undefined) {fail = function() {showGlobalPopup(getText().LOADING_FAILURE);spinner(false);}}
-	$.ajax({
-		type: type,
-		url: String(url),
-		dataType: String(dataType),
-		data: data,
-		error: fail,
-		success: success,
-	});
-}
 function getSubtitle(poi) {
 	var json = getText().filtertranslations;
 	for (var i in json) {

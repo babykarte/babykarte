@@ -1,5 +1,3 @@
-var saved_lat = 54.32308131652028;
-var saved_lon = 10.139915941399524;
 var message;
 var timeoutTyping;
 var touchSupport = false;
@@ -152,5 +150,3 @@ function getLastUpdate() {
 		return String(parseInt(time[0])-1) + ":15";
 	}	
 }
-console.log(langRef["site-map"]);
-//document.getElementById("lastupdate").innerHTML = getText().LASTUPDATE//.replace("%s", getLastUpdate());
