@@ -161,6 +161,7 @@ var refDe = {"site-map": {
 	"LNK_EXPLANATIONMARKERDOTS": "Ampelsystem erklärt",
 	"LNK_EXPLANATIONUSAGE": "Babykarte erklärt",
 	"LNK_EXPLANATIONPDVICONS": "Icons erklärt",
+	"LASTUPDATE": "Letztes Update der Daten: %s",
 	"OSM_ATTRIBUTION": "Mit stolz zusammengestellt von <a rel='noopener' target='_blank' href='https://www.openstreetmap.de/faq.html#was_ist_osm'>OpenStreetMap</a>",
 	"TB_SEARCHFIELD": "Suche",
 	"opening_hours": {"Mo" : "Montag", "Tu" : "Dienstag", "We" : "Mittwoch", "Th" : "Donnerstag", "Fr" : "Freitag", "Sa" : "Samstag", "Su" : "Sonntag", "off" : "geschlossen", "Jan" : "Januar", "Feb" : "Februar", "Mar" : "März", "Apr" : "April", "May" : "Mai", "Jun" : "Juni", "Jul" : "Juli", "Aug" : "August", "Sep" : "September", "Oct" : "Oktober", "Nov" : "November", "Dec" : "Dezember", "PH" : "Feiertag"},

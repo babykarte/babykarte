@@ -143,3 +143,14 @@ function geocode() {
 $("#searchfield").keyup(function() {
 	geocode();
 });
+function getLastUpdate() {
+	var d = new Date().toString().split(" ");
+	var time = d[4].split(":");
+	if (time[1] > 15) {
+		return time[0] + ":15";
+	} else {
+		return String(parseInt(time[0])-1) + ":15";
+	}	
+}
+console.log(langRef["site-map"]);
+//document.getElementById("lastupdate").innerHTML = getText().LASTUPDATE//.replace("%s", getLastUpdate());

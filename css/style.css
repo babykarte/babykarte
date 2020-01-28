@@ -7,6 +7,10 @@ html, body{
 	height: 100%;
 	width: 100%;
 }
+p {
+	margin-top:5px;
+	font-size:14px;
+}
 a {
 	color:#0078a8;
 }

@@ -161,6 +161,7 @@ var refEn = {"site-map": {
 	"LNK_EXPLANATIONMARKERDOTS": "Traffic light system explained",
 	"LNK_EXPLANATIONUSAGE": "Babykarte explained",
 	"LNK_EXPLANATIONPDVICONS": "Icons explained",
+	"LASTUPDATE": "Last update of map data: %s",
 	"OSM_ATTRIBUTION": "Proudly collected by <a rel='noopener' target='_blank' href='https://welcome.openstreetmap.org/what-is-openstreetmap/'>OpenStreetMap</a>",
 	"TB_SEARCHFIELD": "Search",
 	"opening_hours": {"Mo" : "Monday", "Tu" : "Tuesday", "We" : "Wednesday", "Th" : "Thursday", "Fr" : "Friday", "Sa" : "Saturday", "Su" : "Sunday", "off" : "closed", "Jan" : "January", "Feb" : "February", "Mar" : "March", "Apr" : "April", "May" : "May", "Jun" : "June", "Jul" : "July", "Aug" : "August", "Sep" : "September", "Oct" : "October", "Nov" : "November", "Dec" : "December", "PH" : "holiday"},

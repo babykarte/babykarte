@@ -73,7 +73,8 @@ function setLang(e, lang) {
 		19: ((document.getElementById("lnk_explanation-menubuttons") != null) ? document.getElementById("lnk_explanation-menubuttons").innerHTML = getText().LNK_EXPLANATIONMENUBUTTONS : ""),
 		20: ((document.getElementById("lnk_explanation-markerdots") != null) ? document.getElementById("lnk_explanation-markerdots").innerHTML = getText().LNK_EXPLANATIONMARKERDOTS : ""),
 		21: ((document.getElementById("lnk_explanation-usage") != null) ? document.getElementById("lnk_explanation-usage").innerHTML = getText().LNK_EXPLANATIONUSAGE : ""),
-		22: ((document.getElementById("lnk_explanation-pdvicons") != null) ? document.getElementById("lnk_explanation-pdvicons").innerHTML = getText().LNK_EXPLANATIONPDVICONS : "")
+		22: ((document.getElementById("lnk_explanation-pdvicons") != null) ? document.getElementById("lnk_explanation-pdvicons").innerHTML = getText().LNK_EXPLANATIONPDVICONS : ""),
+		23: ((document.getElementById("lastupdate") != null) ? document.getElementById("lastupdate").innerHTML = getText().LASTUPDATE.replace("%s", getLastUpdate()) : "")
 		};
 		//Search for the names of playground equipment in the language reference
 		for (var json in getText()) {
