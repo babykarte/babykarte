@@ -174,7 +174,7 @@ function getSubtitle(poi) {
 		var key = i.split("=");
 		if (!poi.tags[key[0]]) {continue;}
 		if (poi.tags[key[0]] && poi.tags[key[0]] == key[1]) {
-			return getText().filtertranslations[i];
+			return getText().filtertranslations[i][0];
 		}
 	}
 	return undefined;

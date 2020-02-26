@@ -123,10 +123,8 @@ function geocode_intern() { // Function which powers the search suggestion list
 				var latlng = [feature.geometry.coordinates[1], feature.geometry.coordinates[0]]; //Get the coordinates of the search suggestion entry
 				var poitype = "";
 				var keyvalue = feature.properties.osm_key + "=" + feature.properties.osm_value;
-				console.log(keyvalue);
 				if (getText().filtertranslations[keyvalue]) {
-					console.log(1);
-					poitype = getText().filtertranslations[keyvalue] + ", ";
+					poitype = getText().filtertranslations[keyvalue][0] + ", ";
 					console.log(poitype);
 				}
 				autocomplete_content += "<div class='entry' style='border-bottom:5px solid white;padding:5px;' onclick='jumpto(this, " + latlng[0] + ", " + latlng[1] + ")'><span>" + feature.properties.name + "</span><br/><address style='font-size:14px;'>" + poitype + feature.properties.country + "</address></div>"; //Adds a entry in the search suggestion popup (e.g. Berlin central station)
