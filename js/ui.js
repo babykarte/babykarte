@@ -165,7 +165,6 @@ function getLastUpdate() {
 	}	
 }
 function searchwhentyping(e) {
-	console.log("start");
 	var searchfield = document.getElementById("searchfield");
 	var btn_search = document.getElementById("btn_search");
 	if (searchfield) {
@@ -189,7 +188,7 @@ function escapeFromFunc(e) {
 		var len = escapeFrom.length;
 		var lastItem = len -1;
 		escapeFrom[lastItem]();
-		delete escapeFrom[lastItem];
+		escapeFrom.pop(lastItem);
 		e.preventDefault();
 	}
 }
