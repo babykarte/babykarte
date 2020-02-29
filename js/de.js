@@ -199,33 +199,13 @@ var refDe = {"site-map": {
 	}
 };
 refDe["site-map"].filtertranslations = {
-	"healthcare=doctor": "Kinderarzt",
-	"healthcare=hospital": "Krankenhaus",
-	"healthcare=midwife": "Hebamme",
-	"healthcare=birthing_center": "Geburtshaus",
-	"amenity=toilets": "Toilette",
-	"amenity=cafe": "Café",
-	"amenity=restaurant": "Restaurant",
-	"amenity=fast_food": "Fast Food",
-	"amenity=kindergarten" : "Kindertagesstätte",
-	"amenity=childcare" : "Kindertagesstätte",
-	"leisure=playground": "Spielplatz",
-	"leisure=park": "Park",
-	"tourism=zoo": "Zoo/Tierpark",
-	"shop=baby_goods": "Babybedarf",
-	"shop=toys": "Spielwarenladen",
-	"shop=clothes": "Bekleidung",
-	"shop=chemist": "Drogerie",
-	"shop=supermarket": "Supermarkt"
-};
-var filterMergeDe = {
 	"healthcare=doctor": ["Kinderarzt", "paediatrics"],
 	"healthcare=hospital": ["Krankenhaus", ""],
 	"healthcare=midwife": ["Hebamme", "midwife"],
 	"healthcare=birthing_center": ["Geburtshaus", "birthing_center"],
 	"amenity=toilets": ["Toilette", ""],
 	"amenity=cafe": ["Café", "cafe"],
-	"amenity=restaurant": "Restaurant",
+	"amenity=restaurant": ["Restaurant", "restaurants"],
 	"amenity=fast_food": "Fast Food",
 	"amenity=kindergarten" : "Kindertagesstätte",
 	"amenity=childcare" : "Kindertagesstätte",
