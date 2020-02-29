@@ -1,5 +1,6 @@
 var message;
 var timeoutTyping;
+var escapeFrom = [];
 var touchSupport = false;
 var swipeData = [];
 var PDV_expanded = false;
@@ -51,11 +52,15 @@ function intern_toggle(elem, mode, classes, menu=undefined) {
 		active = false;	
 	}
 	if (!active) {
-		elem.classList.add(classes[0]);
-		menu.classList.add(classes[1]);
+		elem.classList.add(classes[0]); //Element the user clicked becomes active
+		menu.classList.add(classes[1]); //The underlying menu of the element the user clicked becomes active
+		escapeFrom.push(function() {
+			elem.classList.remove(classes[0]);
+			menu.classList.remove(classes[1]);
+		});
 	} else {
-		elem.classList.remove(classes[0]);
-		menu.classList.remove(classes[1]);
+		elem.classList.remove(classes[0]); //The active element becomes inactive
+		menu.classList.remove(classes[1]); //The underlying menu of the active element becomes inactive
 	}
 }
 function toggleMenu(elem, mode) {
@@ -75,7 +80,7 @@ function spinner(value) { //Show/hide spinner
 		elem.style.display = "none";
 	}
 }
-function showGlobalPopup(m) { // Triggers the blue rounded message popup
+function showGlobalPopup(m) { // Triggers the orange rounded message popup
 	message = m
 	setTimeout(function() {
 		document.getElementById("infoPopup").innerHTML = message;
@@ -102,6 +107,10 @@ function jumpto(elem, lat, lon) { // Function which fires when user clicks on a 
 		map.on("moveend", onMapMove); //Activate the dynamic loading of content
 		setTimeout(function() {onMapMove();}, 300); //After 5sec trigger the dynamic loading of content manually without user action.
 		showGlobalPopup(elem.innerHTML); //Show the message displaying the location is user is viewing
+		var crack = Object()
+		crack.key = "Escape";
+		crack.preventDefault = function() {return 1;}
+		escapeFromFunc(crack);
 	}
 }
 function geocode_intern() { // Function which powers the search suggestion list
@@ -125,7 +134,6 @@ function geocode_intern() { // Function which powers the search suggestion list
 				var keyvalue = feature.properties.osm_key + "=" + feature.properties.osm_value;
 				if (getText().filtertranslations[keyvalue]) {
 					poitype = getText().filtertranslations[keyvalue][0] + ", ";
-					console.log(poitype);
 				}
 				autocomplete_content += "<div class='entry' style='border-bottom:5px solid white;padding:5px;' onclick='jumpto(this, " + latlng[0] + ", " + latlng[1] + ")'><span>" + feature.properties.name + "</span><br/><address style='font-size:14px;'>" + poitype + feature.properties.country + "</address></div>"; //Adds a entry in the search suggestion popup (e.g. Berlin central station)
 			});
@@ -156,3 +164,36 @@ function getLastUpdate() {
 		return String(parseInt(time[0])-1) + ":15";
 	}	
 }
+function searchwhentyping(e) {
+	console.log("start");
+	var searchfield = document.getElementById("searchfield");
+	var btn_search = document.getElementById("btn_search");
+	if (searchfield) {
+		if (e.which != undefined) {
+			if (btn_search) {
+				btn_search.click();
+				escapeFrom.push(function() {
+					searchfield.blur();
+					btn_search.click();
+				});
+			} else {
+				searchfield.style.display = "block";
+				setTimeout(function() {document.getElementById("searchfield").style = ""}, 1000);
+			}
+			searchfield.value = e.key;
+		}
+	}
+}
+function escapeFromFunc(e) {
+	if (e.key == "Escape") {
+		var len = escapeFrom.length;
+		var lastItem = len -1;
+		escapeFrom[lastItem]();
+		delete escapeFrom[lastItem];
+		e.preventDefault();
+	}
+}
+document.body.addEventListener("keypress", searchwhentyping);
+document.body.addEventListener("keyup", escapeFromFunc);
+document.getElementById("searchfield").addEventListener("focus", function() {document.body.removeEventListener("keypress", searchwhentyping);})
+document.getElementById("searchfield").addEventListener("focusout", function() {document.body.addEventListener("keypress", searchwhentyping);})

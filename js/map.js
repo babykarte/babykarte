@@ -170,6 +170,7 @@ var map = L.map('map');
 map.zoomControl.setPosition("topright");
 map.setView([saved_lat, saved_lon], 15);
 getStateFromHash();
+map.on("zoom", function() {zoomLevel = String(map.getZoom());})
 map.on("locationfound", locationFound);
 map.on("locationerror", locationError);
 map.on("click", hashCoords);
