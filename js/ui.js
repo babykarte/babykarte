@@ -135,7 +135,7 @@ function geocode_intern() { // Function which powers the search suggestion list
 				if (getText().filtertranslations[keyvalue]) {
 					poitype = getText().filtertranslations[keyvalue][0] + ", ";
 				}
-				autocomplete_content += "<div class='entry' style='border-bottom:5px solid white;padding:5px;' onclick='jumpto(this, " + latlng[0] + ", " + latlng[1] + ")'><span>" + feature.properties.name + "</span><br/><address style='font-size:14px;'>" + poitype + feature.properties.country + "</address></div>"; //Adds a entry in the search suggestion popup (e.g. Berlin central station)
+				autocomplete_content += "<div class='entry' tabindex=0 style='border-bottom:5px solid white;padding:5px;' onclick='jumpto(this, " + latlng[0] + ", " + latlng[1] + ")'><span>" + feature.properties.name + "</span><br/><address style='font-size:14px;'>" + poitype + feature.properties.country + "</address></div>"; //Adds a entry in the search suggestion popup (e.g. Berlin central station)
 			});
 			if (autocomplete) {
 				$("#autocomplete").html(autocomplete_content); //Add them all to the search suggestion popup
@@ -185,6 +185,7 @@ function searchwhentyping(e) {
 }
 function escapeFromFunc(e) {
 	if (e.key == "Escape") {
+		console.log(0);
 		var len = escapeFrom.length;
 		var lastItem = len -1;
 		escapeFrom[lastItem]();
@@ -194,5 +195,5 @@ function escapeFromFunc(e) {
 }
 document.body.addEventListener("keypress", searchwhentyping);
 document.body.addEventListener("keyup", escapeFromFunc);
-document.getElementById("searchfield").addEventListener("focus", function() {document.body.removeEventListener("keypress", searchwhentyping);})
-document.getElementById("searchfield").addEventListener("focusout", function() {document.body.addEventListener("keypress", searchwhentyping);})
+document.getElementById("searchfield").addEventListener("focus", function() {document.body.removeEventListener("keypress", searchwhentyping);});
+document.getElementById("searchfield").addEventListener("focusout", function() {document.body.addEventListener("keypress", searchwhentyping);});

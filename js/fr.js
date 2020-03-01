@@ -59,6 +59,7 @@ var refFr = {"site-map": {
 	"PDV_TITLE_CONTACT": "Contact",
 	"PDV_TITLE_MI": "Plus d'informations",
 	"PDV_DIAPER_YES": "Table à langer",
+	"PDV_DIAPER_NO": "No Table à langer (EN)
 	"PDV_DIAPER_*": "Table à langer",
 	"PDV_DIAPER_LIMITED": "Table à langer limitée",
 	"PDV_DIAPER_ROOM": "Pièce dédiée à une table à langer",
@@ -68,6 +69,7 @@ var refFr = {"site-map": {
 	"PDV_DIAPER_FEE_YES": "Payant",
 	"PDV_DIAPER_FEE_NO": "Gratuit",
 	"PDV_CHANGINGTABLE_YES": "Table à langer",
+	"PDV_CHANGINGTABLE_NO": "No Table à langer (EN)",
 	"PDV_CHANGINGTABLE_LIMITED": "Table à langer limitée",
 	"PDV_CHANGINGTABLE_LOCATION_ROOM": "Pièce dédiée à de multiples choses",
 	"PDV_CHANGINGTABLE_LOCATION_DEDICATEDROOM": "Pièce dédiée à une table à langer",
