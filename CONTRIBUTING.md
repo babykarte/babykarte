@@ -11,9 +11,9 @@ Mappers can help by adding data to OpenStreetMap, the basement for all the POI d
 ### Issues
 
 - If you'd like to report a bug, please give us as little information as possible about
-  - what browser and OS are you using?
-  - does the bug just appear on a specified POI? Link to that POI? Or it is appearing across Babykarte?
-  - What are the steps to reproduce the problem?
+  - what browser and OS are you using
+  - does the bug just appear on a specified POI? Or it is appearing across Babykarte? _Link to that POI_
+  - the steps to reproduce the problem
 - If you'd like to suggest a feature, please keep in mind that this map is mainly aimed at parents of babies and toddlers. New filters should contain POIs that are relevant for that age group. So e.g. no schools or youth centres.
 
 ## Developers
@@ -61,8 +61,6 @@ The POIs behind the links tend to have the best dataset to test, if changes to t
 - [local](http://localhost:8080/#19&47.62184500528181&-122.10279844701292), [live](http://babykarte.github.io/#19&47.62184500528181&-122.10279844701292) &nbsp; A playground with equipment mapped seperate in Seattle, USA.
 - [local](http://localhost:8080/#15&54.3235354&9.6885383), [live](http://babykarte.github.io/#15&54.3235354&9.6885383) &nbsp; A playground with equipment mapped (not seperate).
 - [local](http://localhost:8080/#19&54.32228820781011&10.126189291477205), [live](https://babykarte.openstreetmap.de/#19&54.32228820781011&10.126189291477205) &nbsp; A cafe with `changing_table=limit
-
-
 
 ## Join the development team
 
