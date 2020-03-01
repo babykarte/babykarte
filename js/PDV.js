@@ -82,7 +82,8 @@ var PDV_baby = { //PDV = POI Details View
 						{"indoor" :  {"values": ["yes", "no", undefined]},		//		kids_area:indoor=yes|no|undefined
 						"outdoor": {"values": ["yes", "no", undefined]},		//		kids_area:outdoor=yes|no|undefined
 						"supervised": {"values": ["yes", "no", undefined]},		//		kids_area:supervised=yes|no|undefined
-						"fee": {"values": ["yes", "no", undefined]}				//		kids_area:fee=yes|no|undefined
+						"fee": {"values": ["yes", "no", undefined]},			//		kids_area:fee=yes|no|undefined
+						"description": {"values" : [undefined, "*"]}			//		kids_area:description=*
 						}
 				},
 				"baby_feeding": {"nameInherit": true, "applyfor": {"eat": true, "shop": true, "changingtable": true}, "symbol": "&#129329;", "values": ["yes", "no", "room", undefined],							// baby_feeding=yes|no|room|undefined

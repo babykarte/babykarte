@@ -1,4 +1,5 @@
 var activeMarker;
+var curLocationMarker;
 var symbols = {};
 var markerStyles = {};
 var area = {};
@@ -9,13 +10,22 @@ var zoomLevel = "";
 var url = "https://babykarte.openstreetmap.de/getDataForBabykarte.cgi";
 function locationFound(e) {
 	//Fires the notification that Babykarte shows the location of the user.
+	/*if (curLocationMarker) {
+		curLocationMarker.remove();
+	}*/
 	showGlobalPopup(getText().LOCATING_SUCCESS);
 	spinner(false);
+	/*var iconObject = JSON.parse(JSON.stringify(markerStyles["dot"]));
+	iconObject.html = iconObject.html.replace("#004387", "#3366ff");
+	iconObject = L.divIcon(iconObject) //Creates the colourized marker icon
+	curLocationMarker = L.marker(e.latlng, {icon: iconObject}); //Set the right coordinates
+	curLocationMarker.addTo(map);*/
 }
 function locationError(e) {
 	//Fires the notification that Babykarte shows NOT the location of the user, because it has no permission to do so.
 	showGlobalPopup(getText().LOCATING_FAILURE);
 	spinner(false);
+	/*curLocationMarker.remove()*/
 }
 function locateNewAreaBasedOnFilter() {
 	//Wrapper around locateNewArea().
