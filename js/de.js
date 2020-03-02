@@ -165,8 +165,8 @@ var refDe = {"site-map": {
 	"LNK_EXPLANATIONPDVICONS": "Icons erklärt",
 	"LASTUPDATE": "Letztes Update der Daten: %s",
 	"OSM_ATTRIBUTION": "Mit Stolz zusammengestellt von <a rel='noopener' target='_blank' href='https://www.openstreetmap.de/faq.html#was_ist_osm'>OpenStreetMap</a>",
+	"opening_hours": {"Mo" : "Montag", "Tu" : "Dienstag", "We" : "Mittwoch", "Th" : "Donnerstag", "Fr" : "Freitag", "Sa" : "Samstag", "Su" : "Sonntag", "off" : "geschlossen", "closed": "geschlossen", "open": "geöffnet", "Jan" : "Januar", "Feb" : "Februar", "Mar" : "März", "Apr" : "April", "May" : "Mai", "Jun" : "Juni", "Jul" : "Juli", "Aug" : "August", "Sep" : "September", "Oct" : "Oktober", "Nov" : "November", "Dec" : "Dezember", "PH" : "Feiertags", "SH": "Schulferien" },
 	"TB_SEARCHFIELD": "Suche",
-	"opening_hours": {"Mo" : "Montag", "Tu" : "Dienstag", "We" : "Mittwoch", "Th" : "Donnerstag", "Fr" : "Freitag", "Sa" : "Samstag", "Su" : "Sonntag", "off" : "geschlossen", "closed": "geschlossen", "Jan" : "Januar", "Feb" : "Februar", "Mar" : "März", "Apr" : "April", "May" : "Mai", "Jun" : "Juni", "Jul" : "Juli", "Aug" : "August", "Sep" : "September", "Oct" : "Oktober", "Nov" : "November", "Dec" : "Dezember", "PH" : "Feiertags" },
 	"filtername": {
 		"paediatrics": "Kinderärzte/Kinderstationen",
 		"midwife": "Hebammen",
@@ -208,17 +208,17 @@ refDe["site-map"].filtertranslations = {
 	"amenity=toilets": ["Toilette", ""],
 	"amenity=cafe": ["Café", "cafe"],
 	"amenity=restaurant": ["Restaurant", "restaurants"],
-	"amenity=fast_food": "Fast Food",
-	"amenity=kindergarten" : "Kindertagesstätte",
-	"amenity=childcare" : "Kindertagesstätte",
-	"leisure=playground": "Spielplatz",
-	"leisure=park": "Park",
-	"tourism=zoo": "Zoo/Tierpark",
-	"shop=baby_goods": "Babybedarf",
-	"shop=toys": "Spielwarenladen",
-	"shop=clothes": "Bekleidung",
-	"shop=chemist": "Drogerie",
-	"shop=supermarket": "Supermarkt"
+	"amenity=fast_food": ["Fast Food", "fast_food"],
+	"amenity=kindergarten": ["Kindergarten", ""],
+	"amenity=childcare": ["Kindertagesstätte", "childcare"],
+	"leisure=playground": ["Spielplatz", "playground"],
+	"leisure=park": ["Park", "park"],
+	"tourism=zoo": ["Zoo/Tierpark", "zoo"],
+	"shop=baby_goods": ["Babybedarf", "shop-babygoods"],
+	"shop=toys": ["Spielwarenladen", "shop-toys"],
+	"shop=clothes": ["Bekleidungsgeschäft", "shop-clothes"],
+	"shop=chemist": ["Drogerie", ""],
+	"shop=supermarket": ["Supermarkt", ""]
 };
 registerLang("de", refDe);
 setLang("", "de");
