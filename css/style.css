@@ -287,8 +287,8 @@ section {
 	width:400px;
 	margin-bottom:10px;
 	padding:5px;
-	border-radius:15px;
-	background-color:rgba(204, 51, 0, 0.6);
+	border-radius:5px;
+	background-color:rgba(255, 179, 153, 0.6);
 }
 /* ---------------------- SPINNER ---------------------------- */
 #spinner {
@@ -328,14 +328,14 @@ section {
 }
 @keyframes load1 {
 	0% {background-color:white;}
-	50% {background-color:#ff531aff;}
+	50% {background-color:#ffb399;}
 	100% {background-color:white;}
 }
 @keyframes load2 {
 	0% {background-color:white;}
 	20% {background-color:white;}
 	40% {background-color:white;}
-	60% {background-color:#ff531aff;}
+	60% {background-color:#ff794d;}
 	100% {background-color:white;}
 }
 @keyframes load3 {
@@ -343,7 +343,7 @@ section {
 	20% {background-color:white;}
 	40% {background-color:white;}
 	60% {background-color:white;}
-	80% {background-color:#ff531aff;}
+	80% {background-color:#ff531a;}
 	100% {background-color:white;}
 }
 /* ---------------------- POI RATING SYSTEM ------------------ */
