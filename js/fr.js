@@ -84,6 +84,7 @@ var refFr = {
 		"PDV_HIGHCHAIR_YES": "Chaise haute",
 		"PDV_HIGHCHAIR_*": "Chaises hautes",
 		"PDV_KIDSAREA_YES": "Espace enfant",
+		"PDV_KIDSAREA_NO": "No area for kids (en)",
 		"PDV_KIDSAREA_INDOOR_YES": "Intérieur",
 		"PDV_KIDSAREA_OUTDOOR_YES": "Extérieur",
 		"PDV_KIDSAREA_SUPERVISED_YES": "Surveillé",

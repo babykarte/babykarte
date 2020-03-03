@@ -84,6 +84,7 @@ var refEn = {
 		"PDV_HIGHCHAIR_YES": "Highchair",
 		"PDV_HIGHCHAIR_*": "Highchairs",
 		"PDV_KIDSAREA_YES": "Kids area",
+		"PDV_KIDSAREA_NO": "No area for kids",
 		"PDV_KIDSAREA_INDOOR_YES": "Inside",
 		"PDV_KIDSAREA_OUTDOOR_YES": "Outside",
 		"PDV_KIDSAREA_SUPERVISED_YES": "Supervised",

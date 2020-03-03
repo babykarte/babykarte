@@ -84,6 +84,7 @@ var refDe = {
 		"PDV_HIGHCHAIR_YES": "Babystuhl",
 		"PDV_HIGHCHAIR_*": "Babystühle",
 		"PDV_KIDSAREA_YES": "Spielecke",
+		"PDV_KIDSAREA_NO": "Keine Spielecke",
 		"PDV_KIDSAREA_INDOOR_YES": "drinnen",
 		"PDV_KIDSAREA_OUTDOOR_YES": "draußen",
 		"PDV_KIDSAREA_SUPERVISED_YES": "beaufsichtigt",
