@@ -16,4 +16,4 @@ Just close the terminal or press `Ctrl+Alt+C` in the terminal to end the server.
 
 ## Like to contribute
 
-You're a (hobby) designer, (hobby) developer, (hobby) translator or something else and want to contribute to Babykarte? Great idea! There are various ways of doing it. It is enough to open an issue but you can also do it yourself by following the [contribution guide](https://github.com/babykarte/babykarte.github.io/blob/master/CONTRIBUTING.md). The guide makes the process of reviewing, discussing and validating easier for us and speeds it up so your contributions hopefully show up in a short period of time.
+You're a (hobby) designer, (hobby) developer, (hobby) translator or something else and want to contribute to Babykarte? Great idea! There are various ways of doing it. It is enough to open an issue but you can also do it yourself by following the [contribution guide](https://github.com/babykarte/babykarte/blob/master/CONTRIBUTING.md). The guide makes the process of reviewing, discussing and validating easier for us and speeds it up so your contributions hopefully show up in a short period of time.
