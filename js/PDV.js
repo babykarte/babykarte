@@ -1,6 +1,26 @@
 var colorcode = {"yes": "color-green", "no": "color-red", "room": "color-green", "bench": "color-green", undefined: "color-grey", "limited": "color-yellow", "playground": "color-green", "*": "color-green"};
 // 'undefined' is equal to 'tag does not exist'. In JS, 'undefined' is also a value
 // '*' is a placeholder for notes from mappers and any other value (even 'undefined')
+var tocategory = {
+	"healthcare=doctor": "health",
+	"healthcare=hospital": "health",
+	"healthcare=midwife": "health",
+	"healthcare=birthing_center": "health",
+	"amenity=toilets": "childcare",
+	"amenity=cafe": "eat",
+	"amenity=restaurant": "eat",
+	"amenity=fast_food": "eat",
+	"amenity=kindergarten": "eat",
+	"amenity=childcare": "childcare",
+	"leisure=playground": "activity",
+	"leisure=park": "activity",
+	"tourism=zoo": "activity",
+	"shop=baby_goods": "shop",
+	"shop=toys": "shop",
+	"shop=clothes": "shop",
+	"shop=chemist": "shop",
+	"shop=supermarket": "shop"
+}
 var PEP_data = {// PEP = Playground Equipment Popup
 				"wheelchair": {"nameInherit": true, "applyfor": {"activity": true}, "values": ["yes", "limited", "no", "designated", undefined], "children": {}},
 				"description": {"nameInherit": true, "applyfor": {"activity": true}, "values": [undefined, "*"], "children": {}},

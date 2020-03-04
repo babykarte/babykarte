@@ -251,5 +251,12 @@ refDe["site-map"].filtertranslations = {
 	"shop=chemist": ["Drogerie", ""],
 	"shop=supermarket": ["Supermarkt", ""]
 };
+refEn["site-map"].categories {
+	"health": [["Health"], ["Hospital", "doctor", "paediatrics", "dentist"]],
+	"activity": [["Activity"], ["Zoo", "Playground", "Park"]],
+	"childcare": [["Childcare"], ["Kindergarten", "Childcare", "Nappy", "Diaper", "Changing table"]],
+	"shop": [["Shop"], ["Goods", "Clothes", "Toys"]],
+	"eat": [["Food&Drink"], ["Food", "Drink", "Cafe", "Restaurant"]]
+};
 registerLang("de", refDe);
 setLang("", "de");
