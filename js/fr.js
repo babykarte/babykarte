@@ -197,24 +197,6 @@ var refFr = {
 			"sunset": "sunset (EN)",
 			"dawn": "dawn (EN)",
 			"dusk": "dusk (EN)"
-		},
-		"filtername": {
-			"paediatrics": "Pédiatres / services de pédiatrie",
-			"midwife": "Sages-femmes",
-			"birthing_center": "Natalités",
-			"playground": "Aires de jeux",
-			"play-equipment": "Équipement d'aires de jeu",
-			"park": "Parcs",
-			"shop-babygoods": "Magasins d'articles pour bébés",
-			"shop-toys": "Magasins de jouets",
-			"shop-clothes": "Magasins de chaussures",
-			"childcare": "Jardins d'enfants et garderies",
-			"zoo": "Zoos",
-			"changingtable": "Tables à langer",
-			"changingtable-men": "Uniquement les tables à langer accessibles aux hommes",
-			"cafe": "Cafés",
-			"restaurant": "Restaurants",
-			"fast_food": "Fast-Food"
 		}
 	},
 	"site-impress": {
@@ -251,12 +233,30 @@ refFr["site-map"].filtertranslations = {
 	"shop=chemist": ["Pharmacie", ""],
 	"shop=supermarket": ["Supermarché", ""]
 };
-refEn["site-map"].categories {
+refFr["site-map"].categories {
 	"health": [["Health"], ["Hospital", "doctor", "paediatrics", "dentist"]],
 	"activity": [["Activity"], ["Zoo", "Playground", "Park"]],
 	"childcare": [["Childcare"], ["Kindergarten", "Childcare", "Nappy", "Diaper", "Changing table"]],
 	"shop": [["Shop"], ["Goods", "Clothes", "Toys"]],
 	"eat": [["Food&Drink"], ["Food", "Drink", "Cafe", "Restaurant"]]
 };
+refFr["site-map"].subcategories = {
+	"paediatrics": [["Pédiatres / services de pédiatrie"], []],
+	"midwife": [["Sages-femmes"], []],
+	"birthing_center": [["Natalités"], []],
+	"playground": [["Aires de jeux"], []],
+	"play-equipment": [["Équipement d'aires de jeu"], []],
+	"park": [["Parcs"], []],
+	"shop-babygoods": [["Magasins d'articles pour bébés"], []],
+	"shop-toys": [["Magasins de jouets"], []],
+	"shop-clothes": [["Magasins de chaussures"], []],
+	"childcare": [["Jardins d'enfants et garderies"], []],
+	"zoo": [["Zoos"], []],
+	"changingtable": [["Tables à langer"], []],
+	"changingtable-men": [["Uniquement les tables à langer accessibles aux hommes"], []],
+	"cafe": [["Cafés"], []],
+	"restaurant": [["Restaurants"], []],
+	"fast_food": [["Fast Food"], []], 
+}
 registerLang("fr", refFr);
 setLang("", "fr");

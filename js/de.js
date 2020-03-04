@@ -167,6 +167,7 @@ var refDe = {
 		"LNK_EXPLANATIONPDVICONS": "Icons erklärt",
 		"LASTUPDATE": "Letztes Update der Daten: %s",
 		"OSM_ATTRIBUTION": "Mit Stolz zusammengestellt von <a rel='noopener' target='_blank' href='https://www.openstreetmap.de/faq.html#was_ist_osm'>OpenStreetMap</a>",
+		"TB_SEARCHFIELD": "Suche",
 		"opening_hours": {
 			"Mo": "Montag",
 			"Tu": "Dienstag",
@@ -196,25 +197,6 @@ var refDe = {
 			"sunset": "Sonnenuntergang",
 			"dawn": "Morgendämmerung",
 			"dusk": "Abenddämmerung"
-		},
-		"TB_SEARCHFIELD": "Suche",
-		"filtername": {
-			"paediatrics": "Kinderärzte/Kinderstationen",
-			"midwife": "Hebammen",
-			"birthing_center": "Geburtshäuser",
-			"playground": "Spielplätze",
-			"play-equipment": "Spielgeräte",
-			"park": "Parks",
-			"shop-babygoods": "Geschäfte für Babybedarf",
-			"shop-toys": "Spielwarenläden",
-			"shop-clothes": "Bekleidungsgeschäfte",
-			"childcare": "Kindertagesbetreuung",
-			"zoo": "Zoo/Tierpark",
-			"changingtable": "Wickeltische",
-			"changingtable-men": "Für Männer erreichbare Wickeltische",
-			"cafe": "Cafés",
-			"restaurant": "Restaurants",
-			"fast_food": "Fast Food"
 		}
 	},
 	"site-impress": {
@@ -251,12 +233,29 @@ refDe["site-map"].filtertranslations = {
 	"shop=chemist": ["Drogerie", ""],
 	"shop=supermarket": ["Supermarkt", ""]
 };
-refEn["site-map"].categories {
+refDe["site-map"].categories = {
 	"health": [["Health"], ["Hospital", "doctor", "paediatrics", "dentist"]],
 	"activity": [["Activity"], ["Zoo", "Playground", "Park"]],
 	"childcare": [["Childcare"], ["Kindergarten", "Childcare", "Nappy", "Diaper", "Changing table"]],
 	"shop": [["Shop"], ["Goods", "Clothes", "Toys"]],
 	"eat": [["Food&Drink"], ["Food", "Drink", "Cafe", "Restaurant"]]
 };
+refDe["site-map"].subcategories = {
+	"paediatrics": [["Kinderärzte/Kinderstationen"], []],
+	"midwife": [["Hebammen"], []],
+	"birthing_center": [["Geburtshäuser"], []],
+	"playground": [["Spielplätze"], []],
+	"play-equipment": [["Spielgeräte"], []],
+	"park": [["Parks"], []],
+	"shop-babygoods": [["Geschäfte für Babybedarf"], []],
+	"shop-toys": [["Spielwarenläden"], []],
+	"shop-clothes": [["Bekleidungsgeschäfte"], []],
+	"childcare": [["Kindertagesbetreuung"], []],
+	"zoo": [["Zoo/Tierpark"], []],
+	"changingtable": [["Wickeltische"], []],
+	"changingtable-men": [["Für Männer erreichbare Wickeltische"], []],
+	"cafe": [["Cafés"], []],
+	"restaurant": [["Restaurants"], []],
+	"fast_food": [["Fast Food"], []]
 registerLang("de", refDe);
 setLang("", "de");
