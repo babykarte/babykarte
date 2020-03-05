@@ -39,6 +39,7 @@ var refFr = {
 		"LNK_OPEN_WITH": "Ouvrir avec une appli",
 		"FLTR_NOTHINGSELECTED": "Veuillez toucher l'icône <img class='bar-icon' src='images/checkmark.svg' /> dans le menu pour sélectionner les filtres ou cet icône <img class='bar-icon' src='images/info.svg.png' /> pour obtenir de l'aide sur Babykarte.",
 		"FLTR_SELECTALL": "(De)sélectionnez tout",
+		"SEARCHRESULT_FLTR": "Show them all in the current map view (en)",
 		"PDV_UNNAME": "Sans Nom",
 		"PDV_CONTACT_WEBSITE_*": "%s",
 		"PDV_CONTACT_EMAIL_*": "%s",
@@ -256,7 +257,8 @@ refFr["site-map"].subcategories = {
 	"changingtable-men": [["Uniquement les tables à langer accessibles aux hommes"], []],
 	"cafe": [["Cafés"], []],
 	"restaurant": [["Restaurants"], []],
-	"fast_food": [["Fast Food"], []], 
+	"fast_food": [["Fast Food"], []]
+	}
 }
 registerLang("fr", refFr);
 setLang("", "fr");

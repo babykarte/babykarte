@@ -39,6 +39,7 @@ var refEn = {
 		"LNK_OPEN_WITH": "Open with an app",
 		"FLTR_NOTHINGSELECTED": "Please touch the <img class='bar-icon' src='images/checkmark.svg' /> icon in the menu to select filters or the <img class='bar-icon' src='images/info.svg.png' /> one to get help using Babykarte.",
 		"FLTR_SELECTALL": "(De)select all",
+		"SEARCHRESULT_FLTR": "Show them all in the current map view",
 		"PDV_UNNAME": "No Name",
 		"PDV_CONTACT_WEBSITE_*": "%s",
 		"PDV_CONTACT_EMAIL_*": "%s",
@@ -248,9 +249,9 @@ refEn["site-map"].subcategories = { //Lower case or upper case does not matter f
 	"zoo": [["Zoos"], ["Zoo", "activity"]],
 	"changingtable": [["Changing tables"], ["Nappy", "Diaper", "Changing table", "babycare", "care"]],
 	"changingtable-men": [["Only changing tables accessible for men"], ["Nappy", "Diaper", "Changing table", "babycare", "care"]],
-	"cafe": [["Cafés"], ["eat", "food", "Café", "drink", "livestyle", "highchair", "highchairs"]],
+	"cafe": [["Cafés"], ["eat", "food", "Café", "cafe", "drink", "livestyle", "highchair", "highchairs"]],
 	"restaurant": [["Restaurants"], ["eat", "food", "Restaurant", "drink", "livestyle", "highchair", "highchairs"]],
 	"fast_food": [["Fast Food"], ["eat", "food", "Fast Food", "drink", "livestyle", "highchair", "highchairs"]]
-	
+	}
 registerLang("en", refEn);
 setLang("", "en");

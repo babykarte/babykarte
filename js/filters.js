@@ -146,7 +146,7 @@ function initFilters() {
 		priorizeList[filter[id].priorize].push(id);
 		var fltr = filter[id];
 		if (filter[id].beforeFilter) {beforeFilter = filter[id].beforeFilter}
-		output += "<label>" + beforeFilter + "<input id='filter" + String(id) + "' onclick='setFilter(\"" + String(id) + "\")' type='checkbox'><span style='color:" + fltr.color.code + ";font-weight:bold;font-size:16px;'>&#9632; </span><span>" + String(getText().filtername[id]) + "</span></label>";  //Adds the necessary HTML for checkbox element of every single filter
+		output += "<label>" + beforeFilter + "<input id='filter" + String(id) + "' onclick='setFilter(\"" + String(id) + "\")' type='checkbox'><span style='color:" + fltr.color.code + ";font-weight:bold;font-size:16px;'>&#9632; </span><span>" + String(getText().subcategories[id][0]) + "</span></label>";  //Adds the necessary HTML for checkbox element of every single filter
 	}
 	filtersGround.innerHTML = output; //Add filters to the site (displaying them to user)
 	filtersSorted = getSortedListOfFilters(priorizeList);

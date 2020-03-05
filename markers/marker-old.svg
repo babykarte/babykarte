@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   width="20.440001"
+   height="40.639999"
+   viewBox="0 0 3.2704 6.9385364"
+   version="1.1"
+   id="svg8">
+  <defs
+     id="defs2">
+    <radialGradient
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(1,0,0,2.0016736,0,-294.22541)"
+       r="1.955163"
+       fy="293.73383"
+       fx="1.7396395"
+       cy="293.73383"
+       cx="1.7396395"
+       id="radialGradient12741" />
+  </defs>
+  <metadata
+     id="metadata5">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     style="stroke:url(#radialGradient12741);stroke-width:0.4194878;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+     id="layer1"
+     transform="translate(-0.106303,-290.02453)">
+    <path
+       transform="matrix(0.26458333,0,0,0.26458333,0,290)"
+       style="opacity:1;fill:#004387;fill-opacity:1;fill-rule:nonzero;stroke:url(#radialGradient12741);stroke-width:1.58546579;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="M 6.5859375,0.11328125 A 6.5858432,5.1836473 0 0 0 0,5.296875 6.5858432,5.1836473 0 0 0 0.28710938,6.7949219 H 0.26953125 L 6.4824219,26.322266 12.824219,6.9414062 A 6.5858432,5.1836473 0 0 0 13.171875,5.296875 6.5858432,5.1836473 0 0 0 6.5859375,0.11328125 Z"
+       id="marker-body" class="" />
+  </g>
+  <path
+     d="M 3.3524588,2.2165043 2.2226635,1.3583975 1.430292,3.3197672 1.8972741,1.9800984 -0.2129557,1.8326048 1.2054506,1.8627508 0.69362831,-0.18977459 1.1032695,1.1685251 2.8971757,0.04748833 1.7319416,0.85681797 Z"
+     id="path9576"
+     style="opacity:1;fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.20487805;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+  <ellipse
+     ry="0.68915957"
+     rx="0.69450188"
+     cy="5.4234719"
+     cx="1.5854261"
+     id="rating-default"
+     style="fill-rule:nonzero;stroke-width:0.20487806;stroke-miterlimit:4;stroke-dasharray:none" />
+</svg>

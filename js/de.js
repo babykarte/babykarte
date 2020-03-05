@@ -39,6 +39,7 @@ var refDe = {
 		"LNK_OPEN_WITH": "Mit App öffnen",
 		"FLTR_NOTHINGSELECTED": "Bitte im Menü auf das <img class='bar-icon' src='images/checkmark.svg' /> Symbol klicken um Filter auszuwählen oder <img class='bar-icon' src='images/info.svg.png' /> für eine Benutzungshilfe.",
 		"FLTR_SELECTALL": "Alle (de)aktivieren",
+		"SEARCHRESULT_FLTR": "Alle in der Map darstellen",
 		"PDV_UNNAME": "Kein Name",
 		"PDV_CONTACT_WEBSITE_*": "%s",
 		"PDV_CONTACT_EMAIL_*": "%s",
@@ -257,5 +258,6 @@ refDe["site-map"].subcategories = {
 	"cafe": [["Cafés"], []],
 	"restaurant": [["Restaurants"], []],
 	"fast_food": [["Fast Food"], []]
+	}
 registerLang("de", refDe);
 setLang("", "de");
