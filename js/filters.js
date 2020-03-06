@@ -33,6 +33,10 @@ function getSubtitle(poi) {
 function activateSubcategory(i) {
 	activeSubcategory = i;
 	loadPOIS("");
+	var crack = Object()
+	crack.key = "Escape";
+	crack.preventDefault = function() {return 1;}
+	escapeFromFunc(crack);
 }
 function initMarkerObject(poi) {
 	marker = new Object();

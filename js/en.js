@@ -6,7 +6,6 @@ var refEn = {
 			"btn_info": "Show help",
 			"btn_lang": "Select language",
 			"btn_search": "Search for a place",
-			"btn_filtersbar": "Select POI's to show",
 			"btn_locating": "Shows your location"
 		},
 		"MAP_MARKERDOTS_GENERAL": "Traffic light system for indication of baby friendliness of restaurants und cafes:",
@@ -228,12 +227,12 @@ refEn["site-map"].filtertranslations = {
 	"shop=chemist": ["Chemist", ""],
 	"shop=supermarket": ["Supermarket", ""]
 }
-refEn["site-map"].categories = { //Lower case or upper case does not matter for the search
-	"health": [["Health"], ["Hospital", "doctor", "paediatrics", "dentist"]],
-	"activity": [["Activity"], ["Zoo", "Playground", "Park"]],
-	"childcare": [["Childcare"], ["Kindergarten", "Childcare", "Nappy", "Diaper", "Changing table"]],
-	"shop": [["Shop"], ["Goods", "Clothes", "Toys"]],
-	"eat": [["Food&Drink"], ["Food", "Drink", "Cafe", "Restaurant"]]
+refEn["site-map"].categories = { //Needed for displaying the category the POI belongs in.
+	"health": "Health",
+	"activity": "Activity",
+	"childcare": "Childcare",
+	"shop": "Shop",
+	"eat": "Food & Drink"
 };
 refEn["site-map"].subcategories = { //Lower case or upper case does not matter for the search
 	"paediatrics": [["Paediatricians / children's wards"], ["Paediatrician", "Dentist", "wards", "doctor"]],

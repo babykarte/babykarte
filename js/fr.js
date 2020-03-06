@@ -6,7 +6,6 @@ var refFr = {
 			"btn_info": "Montrer l'aide",
 			"btn_lang": "Choisir la langue",
 			"btn_search": "Chercher un lieu",
-			"btn_filtersbar": "Sélectionner un Point d'Intérêt à montrer",
 			"btn_locating": "Montrer votre géolocalisation"
 		},
 		"MAP_MARKERDOTS_GENERAL": "Système de feux de signalisation pour l'affichage de l'adaptation aux bébés des restaurants et cafés :",

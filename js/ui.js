@@ -127,12 +127,16 @@ function geocode_intern() { // Function which powers the search suggestion list
 			"lang": languageOfUser //Sends the determined language or the language set by user
 		}, function(data) {
 			var autocomplete_content = "";
+			var intellij = {};
 			for (var i in getText().subcategories) {
 				for (var u of getText().subcategories[i][1]) {
 					if (searchword.toLowerCase().indexOf(u.toLowerCase()) > -1) {
-						autocomplete_content += "<div class='entry' tabindex=0 style='border-bottom:5px solid white;padding:5px;' onclick='activateSubcategory(\"" + i + "\")'><span>" + getText().subcategories[i][0] + "</span><br/><address style='font-size:14px;'>" + getText().SEARCHRESULT_FLTR + "</address></div>";
+						intellij[i] = true;
 					}
 				}
+			}
+			for (var i in intellij) {
+				autocomplete_content += "<div class='entry' tabindex=0 style='border-bottom:5px solid white;padding:5px;' onclick='activateSubcategory(\"" + i + "\")'><span>" + getText().subcategories[i][0] + "</span><br/><address style='font-size:14px;'>" + getText().SEARCHRESULT_FLTR + "</address></div>";
 			}
 			
 			$.each(data.features, function(number, feature) {
@@ -141,7 +145,7 @@ function geocode_intern() { // Function which powers the search suggestion list
 				var poitype = "";
 				var keyvalue = feature.properties.osm_key + "=" + feature.properties.osm_value;
 				if (tocategory[keyvalue]) {
-					poitype = getText().categories[tocategory[keyvalue][0]][0] + ", ";
+					poitype = getText().categories[tocategory[keyvalue][0]] + ", ";
 				}
 				autocomplete_content += "<div class='entry' tabindex=0 style='border-bottom:5px solid white;padding:5px;' onclick='jumpto(this, " + latlng[0] + ", " + latlng[1] + ",\"" + poiid + "\")'><span>" + feature.properties.name + "</span><br/><address style='font-size:14px;'>" + poitype + feature.properties.city + ", " + feature.properties.country + "</address></div>"; //Adds a entry in the search suggestion popup (e.g. Berlin central station)
 			});

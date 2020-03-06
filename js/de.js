@@ -6,7 +6,6 @@ var refDe = {
 			"btn_info": "Hilfe öffnen.",
 			"btn_lang": "Sprache auswählen",
 			"btn_search": "Einen Ort suchen.",
-			"btn_filtersbar": "Anzuzeigende Einrichtungen auswählen",
 			"btn_locating": "Deinen Standort auf der Karte anzeigen"
 		},
 		"MAP_MARKERDOTS_GENERAL": "Ampelsystem zur Markierung der Babyfreundlichkeit von Restaurants und Cafés:",

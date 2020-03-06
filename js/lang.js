@@ -85,7 +85,6 @@ function setLang(e, lang) {
 		}
 		var output = "";
 		for (var json in getText().MENUBUTTONS) {
-			document.getElementById(json).setAttribute("title", getText().MENUBUTTONS[json]);
 			document.getElementById(json).setAttribute("alt", getText().MENUBUTTONS[json]);
 			output += "<img class='small-icon' src='" + document.getElementById(json).getAttribute("src") + "' /> " + getText().MENUBUTTONS[json] + "<br/>";
 		}
@@ -100,8 +99,6 @@ function setLang(e, lang) {
 			output += getText().PDV_ICONS_EXPLANATION[json] + "<br/>";
 		}
 		document.getElementById("explanation-pdvicons").innerHTML = output;
-		hardReset();
-		initFilters();
 	} else {
 		alert("Language data couldn't be loaded.");
 	}
