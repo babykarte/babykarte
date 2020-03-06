@@ -1,4 +1,4 @@
-function createSQL(bbox, fltr) { return String(fltr) + " - " + String(bbox) + "\n"; }
+function createSQL(bbox, subcategory) { return String(subcategory) + " - " + String(bbox) + "\n"; }
 function getData(url, dataType, data,  fail, success, type) {
 	if (type == undefined) {type = "GET"}
 	if (fail == undefined) {fail = function() {showGlobalPopup(getText().LOADING_FAILURE);spinner(false);}}

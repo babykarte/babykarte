@@ -105,7 +105,7 @@ function jumpto(elem, lat, lon, poiid) { // Function which fires when user click
 			resetFilter(id);
 		}
 		map.on("moveend", onMapMove); //Activate the dynamic loading of content
-		setTimeout(function() {onMapMove();}, 300); //After 5sec trigger the dynamic loading of content manually without user action.
+		setTimeout(function() {onMapMove();}, 300); //After 0.3sec trigger the dynamic loading of content manually without user action.
 		showGlobalPopup(elem.innerHTML); //Show the message displaying the location is user is viewing
 		setTimeout(function() {loadPOIS("", "id=" + poiid)}, 500);
 		var crack = Object()
@@ -130,7 +130,7 @@ function geocode_intern() { // Function which powers the search suggestion list
 			for (var i in getText().subcategories) {
 				for (var u of getText().subcategories[i][1]) {
 					if (searchword.toLowerCase().indexOf(u.toLowerCase()) > -1) {
-						autocomplete_content += "<div class='entry' tabindex=0 style='border-bottom:5px solid white;padding:5px;' onclick='setFilter(\"" + i + "\")'><span>" + getText().subcategories[i][0] + "</span><br/><address style='font-size:14px;'>" + getText().SEARCHRESULT_FLTR + "</address></div>";
+						autocomplete_content += "<div class='entry' tabindex=0 style='border-bottom:5px solid white;padding:5px;' onclick='activateSubcategory(\"" + i + "\")'><span>" + getText().subcategories[i][0] + "</span><br/><address style='font-size:14px;'>" + getText().SEARCHRESULT_FLTR + "</address></div>";
 					}
 				}
 			}
@@ -141,9 +141,9 @@ function geocode_intern() { // Function which powers the search suggestion list
 				var poitype = "";
 				var keyvalue = feature.properties.osm_key + "=" + feature.properties.osm_value;
 				if (tocategory[keyvalue]) {
-					poitype = getText().categories[tocategory[keyvalue]][0][0] + ", ";
+					poitype = getText().categories[tocategory[keyvalue][0]][0] + ", ";
 				}
-				autocomplete_content += "<div class='entry' tabindex=0 style='border-bottom:5px solid white;padding:5px;' onclick='jumpto(this, " + latlng[0] + ", " + latlng[1] + ",\"" + poiid + "\")'><span>" + feature.properties.name + "</span><br/><address style='font-size:14px;'>" + poitype + feature.properties.city + "," + feature.properties.country + "</address></div>"; //Adds a entry in the search suggestion popup (e.g. Berlin central station)
+				autocomplete_content += "<div class='entry' tabindex=0 style='border-bottom:5px solid white;padding:5px;' onclick='jumpto(this, " + latlng[0] + ", " + latlng[1] + ",\"" + poiid + "\")'><span>" + feature.properties.name + "</span><br/><address style='font-size:14px;'>" + poitype + feature.properties.city + ", " + feature.properties.country + "</address></div>"; //Adds a entry in the search suggestion popup (e.g. Berlin central station)
 			});
 			if (autocomplete) {
 				$("#autocomplete").html(autocomplete_content); //Add them all to the search suggestion popup
@@ -193,7 +193,6 @@ function searchwhentyping(e) {
 }
 function escapeFromFunc(e) {
 	if (e.key == "Escape") {
-		console.log(0);
 		var len = escapeFrom.length;
 		var lastItem = len -1;
 		escapeFrom[lastItem]();

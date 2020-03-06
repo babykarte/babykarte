@@ -2,24 +2,24 @@ var colorcode = {"yes": "color-green", "no": "color-red", "room": "color-green",
 // 'undefined' is equal to 'tag does not exist'. In JS, 'undefined' is also a value
 // '*' is a placeholder for notes from mappers and any other value (even 'undefined')
 var tocategory = {
-	"healthcare=doctor": "health",
-	"healthcare=hospital": "health",
-	"healthcare=midwife": "health",
-	"healthcare=birthing_center": "health",
-	"amenity=toilets": "childcare",
-	"amenity=cafe": "eat",
-	"amenity=restaurant": "eat",
-	"amenity=fast_food": "eat",
-	"amenity=kindergarten": "eat",
-	"amenity=childcare": "childcare",
-	"leisure=playground": "activity",
-	"leisure=park": "activity",
-	"tourism=zoo": "activity",
-	"shop=baby_goods": "shop",
-	"shop=toys": "shop",
-	"shop=clothes": "shop",
-	"shop=chemist": "shop",
-	"shop=supermarket": "shop"
+	"healthcare=doctor": ["health", "POIpopup"],
+	"healthcare=hospital": ["health", "POIpopup"],
+	"healthcare=midwife": ["health", "POIpopup"],
+	"healthcare=birthing_center": ["health", "POIpopup"],
+	"amenity=toilets": ["childcare", "POIpopup"],
+	"amenity=cafe": ["eat", "POIpopup"],
+	"amenity=restaurant": ["eat", "POIpopup"],
+	"amenity=fast_food": ["eat", "POIpopup"],
+	"amenity=kindergarten": ["eat", "POIpopup"],
+	"amenity=childcare": ["childcare", "POIpopup"],
+	"leisure=playground": ["activity", "playgroundPopup"],
+	"leisure=park": ["activity", "POIpopup"],
+	"tourism=zoo": ["activity", "POIpopup"],
+	"shop=baby_goods": ["shop", "POIpopup"],
+	"shop=toys": ["shop", "POIpopup"],
+	"shop=clothes": ["shop", "POIpopup"],
+	"shop=chemist": ["shop", "POIpopup"],
+	"shop=supermarket": ["shop", "POIpopup"]
 }
 var PEP_data = {// PEP = Playground Equipment Popup
 				"wheelchair": {"nameInherit": true, "applyfor": {"activity": true}, "values": ["yes", "limited", "no", "designated", undefined], "children": {}},
@@ -224,7 +224,7 @@ function processContentDatabase_intern(marker, poi, database, tag, values, data,
 			} else {
 				langcode += "_" + values[i].replace("_", "").replace(":", "_")
 			}
-			if (database[parent].applyfor[marker.category.split(" ")[0]]) {
+			if (database[parent].applyfor[marker.category]) {
 				title = getText("PDV_" + langcode.toUpperCase()) || undefined;
 				if (title != undefined && title.indexOf("%s") > -1 && poi.tags[tag]) {
 					title = title.replace("%s", poi.tags[tag]);
@@ -316,7 +316,7 @@ function babyfriendliness_symbol(marker, data, database) {
 	var output = "";
 	var changingTable = false;
 	for (var tag in database) {
-		if (!database[tag].applyfor[marker.category.split(" ")[0]]) {
+		if (!database[tag].applyfor[marker.category]) {
 			continue;
 		}
 		if (data["changing_table"] && !data["diaper"] && tag == "diaper" || !data["changing_table"] && data["diaper"] && tag == "changing_table" || data["leisure"] && !data["kids_area"] && tag == "kids_area" || !data["leisure"] && data["kids_area"] && tag == "leisure") {} else {
@@ -372,7 +372,7 @@ function contact_symbol(marker, data, database) {
 	return output;
 }
 function getRightPopup(marker, usePopup) {
-	marker = marker.target;
+	marker = marker.target || marker;
 	var poi = marker.data;
 	if (activeMarker && activeMarker._icon != null && marker._icon != null) { //Expression which prevents a JS error from ocurring when user loads a new filter or moves the map because both actions clean and refresh the map. That means some objects will be deleted and this expression can handle such cases by validating the object itself. See https://github.com/babykarte/babykarte/issues/17
 		activeMarker._icon.children[0].children[0].children[2].classList.remove("marker-active") || false
@@ -383,8 +383,8 @@ function getRightPopup(marker, usePopup) {
 	activeMarker = marker;
 	var name = getSubtitle(poi);
 	marker.name = name || getText().filtername[marker.fltr]; //Sets the subtitle which appears under the POI's name as text in grey
-	var popup = {"POIpopup": 
-		{"home": {"content": `<h1 style='display:flex;width:100%;'><div style='padding-top:4px;padding-bottom:4px;padding-right:3px;width:100%;'>${ ((poi.tags["name"] == undefined) ? ((poi.tags["amenity"] == "toilets") ? getText().TOILET : getText().PDV_UNNAME) : poi.tags["name"]) }</div> <a class='nounderlinestyle small-icon' target=\"_blank\" href=\"https://www.openstreetmap.org/edit?` + String(poi.type.toLowerCase()) + "=" + String(poi.osm_id) + `\">✏️</a><div class='tooltip'><img class='small-icon' src='images/share.svg' onclick='toggleTooltip(this)' /><div class='tooltip-content'><a target='_blank' href='${ "https://www.openstreetmap.org/" + String(poi.type).toLowerCase() + "/" + String(poi.osm_id) }'>${ getText().LNK_OSM_VIEW }</a><br/>\n<a href='${ "geo:" + poi.lat + "," + poi.lon }'>${ getText().LNK_OPEN_WITH }</a></div></div></h1>\n<div class='subtitle'><span>${ String(marker.name) }</span>&nbsp;&#8231;&nbsp;<span id='address'>${ addrTrigger(poi, marker) }</span>\n</div>\n<div class='socialmenu'>${ babyfriendliness_symbol(marker, processContentDatabase(marker, poi, PDV_baby), PDV_baby) } ${ ((marker.category.split(" ")[0] == "health" && poi.tags["min_age"] && poi.tags["max_age"]) ? "<span class='small-icon'>" + getText().AGE_RANGE + "</span>" : "") }</div>\n<hr/><div class='socialmenu'>${ contact_symbol(marker, processContentDatabase(marker, poi, PDV_contact ), PDV_contact)}</div>\n</div></div>`, "symbol": "🏠", "title": getText().PDV_TITLE_HOME, "active": true, "default": true},
+	var popup = {"POIpopup":
+		{"home": {"content": `<h1 style='display:flex;width:100%;'><div style='padding-top:4px;padding-bottom:4px;padding-right:3px;width:100%;'>${ ((poi.tags["name"] == undefined) ? ((poi.tags["amenity"] == "toilets") ? getText().TOILET : getText().PDV_UNNAME) : poi.tags["name"]) }</div> <a class='nounderlinestyle small-icon' target=\"_blank\" href=\"https://www.openstreetmap.org/edit?` + String(poi.type.toLowerCase()) + "=" + String(poi.osm_id) + `\">✏️</a><div class='tooltip'><img class='small-icon' src='images/share.svg' onclick='toggleTooltip(this)' /><div class='tooltip-content'><a target='_blank' href='${ "https://www.openstreetmap.org/" + String(poi.type).toLowerCase() + "/" + String(poi.osm_id) }'>${ getText().LNK_OSM_VIEW }</a><br/>\n<a href='${ "geo:" + poi.lat + "," + poi.lon }'>${ getText().LNK_OPEN_WITH }</a></div></div></h1>\n<div class='subtitle'><span>${ String(marker.name) }</span>&nbsp;&#8231;&nbsp;<span id='address'>${ addrTrigger(poi, marker) }</span>\n</div>\n<div class='socialmenu'>${ babyfriendliness_symbol(marker, processContentDatabase(marker, poi, PDV_baby), PDV_baby) } ${ ((marker.category == "health" && poi.tags["min_age"] && poi.tags["max_age"]) ? "<span class='small-icon'>" + getText().AGE_RANGE + "</span>" : "") }</div>\n<hr/><div class='socialmenu'>${ contact_symbol(marker, processContentDatabase(marker, poi, PDV_contact ), PDV_contact)}</div>\n</div></div>`, "symbol": "🏠", "title": getText().PDV_TITLE_HOME, "active": true, "default": true},
 		"baby": {"content": `${ babyfriendliness_text(marker, processContentDatabase(marker, poi, PDV_baby), PDV_baby) }`, "symbol": "👶", "title": getText().PDV_TITLE_BABY, "active": true},
 		"opening_hours": {"content": `${ parseOpening_hours(poi.tags["opening_hours"]) || "NODISPLAY" }`},
 		"contact" : {"content": `${ contact_text(marker, processContentDatabase(marker, poi, PDV_contact), PDV_contact)}`, "symbol": "🕰️", "title": getText().PDV_TITLE_OH, "active": true},

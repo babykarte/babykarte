@@ -1,6 +1,6 @@
 var activeMarker;
-//var curLocationMarker;
 var symbols = {};
+var mapobjects = [];
 var markerStyles = {};
 var area = {};
 var saved_lat = 54.32308131652028;
@@ -9,48 +9,29 @@ var freezeMapMoveEvent = false;
 var zoomLevel = "";
 var url = "https://babykarte.openstreetmap.de/getDataForBabykarte.cgi";
 function locationFound(e) {
-	//Fires the notification that Babykarte shows the location of the user.
-	/*if (curLocationMarker) {
-		curLocationMarker.remove();
-	}*/
 	showGlobalPopup(getText().LOCATING_SUCCESS);
 	spinner(false);
-	/*var iconObject = JSON.parse(JSON.stringify(markerStyles["dot"]));
-	iconObject.html = iconObject.html.replace("#004387", "#3366ff");
-	iconObject = L.divIcon(iconObject) //Creates the colourized marker icon
-	curLocationMarker = L.marker(e.latlng, {icon: iconObject}); //Set the right coordinates
-	curLocationMarker.addTo(map);*/
 }
 function locationError(e) {
 	//Fires the notification that Babykarte shows NOT the location of the user, because it has no permission to do so.
 	showGlobalPopup(getText().LOCATING_FAILURE);
 	spinner(false);
-	/*curLocationMarker.remove()*/
 }
-function locateNewAreaBasedOnFilter() {
-	//Wrapper around locateNewArea().
-	//Adds filter compactibility to locateNewArea() function.
-	var url = "";
+function locateNewAreaBasedOnSubcategory() {
 	var result = "";
-	for (var fltr in activeFilter) {
-		result = createSQL(map.getBounds().getSouth() + "," + map.getBounds().getWest() + "," + map.getBounds().getNorth() + "," +  map.getBounds().getEast(), fltr);
-		if (result) {
-			url += result
-		}
-		fltr++;
-	}
-	return url
+	result = createSQL(map.getBounds().getSouth() + "," + map.getBounds().getWest() + "," + map.getBounds().getNorth() + "," +  map.getBounds().getEast(), activeSubcategory);
+	return result;
 }
 function onMapMove() {
 	if (freezeMapMoveEvent != true) {
-		loadPOIS("", locateNewAreaBasedOnFilter());
+		loadPOIS("", locateNewAreaBasedOnSubcategory());
 	}
 	freezeMapMoveEvent = false;
 }
 function ratePOI(marker, poi) {
 	var i;
 	if (!poi.rating) {poi.rating = {};poi.rating.green = 0;poi.rating.red = 0;}
-	if (!filter[marker.fltr].category.startsWith("eat")) {return poi;}
+	if (!marker.category.startsWith("eat")) {return poi;}
 	for (i in ratingData) {
 		var value = poi.tags[i];
 		if (value == undefined) {
@@ -65,17 +46,13 @@ function ratePOI(marker, poi) {
 	return poi;
 }
 function addMarkerIcon(poi, marker) {
-	//var iconObject = JSON.parse(JSON.stringify(markerStyles[filter[marker.fltr].markerStyle]));
 	var iconObject = JSON.parse(JSON.stringify(markerStyles["dot"]));
 	var result = determineRateColor(poi);
-	/*if (marker.color != "default") {
-		iconObject.html = iconObject.html.replace("#004387", marker.color);
-	}*/
 	if (result) {iconObject.html = iconObject.html.replace("rating-default", result)}
 	iconObject = L.divIcon(iconObject) //Creates the colourized marker icon
 	var markerObject = L.marker([poi.lat, poi.lon], {icon: iconObject}); //Set the right coordinates
 	marker = $.extend(true, markerObject, marker); //Adds the colourized marker icon
-	filter[marker.fltr].layers.push(marker); //Adds the POI to the filter's layers list.
+	mapobjects.push(marker); //Adds the POI to the list of objects on the map.
 	return marker;
 }
 function errorHandler(poi) {
@@ -90,30 +67,39 @@ function errorHandler(poi) {
 		showGlobalPopup(getText().ERROR.replace("%s", getText().filtername[poi.filter]));spinner(false);
 	}
 }
-function createPOIobject(poi) {
+function createPOIobject(poi, mode) {
 	var marker;
 	if (poi.notes) {errorHandler(poi);return false;}
 	if (!poi.tags) {poi.tags = {};}
 	poi.lat = poi.geometry.coordinates[1];
 	poi.lon = poi.geometry.coordinates[0];
-	//creates a new Marker() Object, put data in it, determine the right filter and do the rating (add yellow, green or a red dot on the icon).
+	//creates a new Marker() Object, put data in it, determine the right category and do the rating (add yellow, green or a red dot on the icon).
 	marker = initMarkerObject(poi);
 			
 	poi = ratePOI(marker, poi);
 	marker = addMarkerIcon(poi, marker);
 	marker.data = poi;
 	marker.data.classId = String(poi.type)[0].toUpperCase() + String(poi.osm_id);
-	marker.on("click", function(event) {getRightPopup(event, filter[event.target.fltr].popup)});
+	marker.on("click", function(event) {getRightPopup(event, marker.usePopup)});
 	//Add marker to map
 	cluster.addLayer(marker);
+	if (mode == "singlepoi") {
+		getRightPopup(marker, marker.usePopup);
+	}
+	if (mapobjects.length > 0) {
+		document.getElementById("map-overlay-notify").style.display = "none";
+	} else {
+		document.getElementById("map-overlay-notify").style.display = "block";
+	}
 }
 function loadPOIS(e, post) {
+	console.log(arguments.callee.caller.name);
 	spinner(true);
 	//Main function of POI loading.
 	//Handles connection to OSM Overpass server and parses the response into beautiful looking details views for each POI
 	if (!post) {
-		//No data to send was specified, because none of the filter functions called it.
-		post = locateNewAreaBasedOnFilter();
+		//No data to send was specified, so we fetch activated subcategory
+		post = locateNewAreaBasedOnSubcategory();
 		if (!post) {
 			spinner(false);
 			return 0;
@@ -122,14 +108,17 @@ function loadPOIS(e, post) {
 	//Connect to OSM server
 	getData(url, "json", post, undefined, function (elements) {
 		//Go through all elements (ways, relations, nodes) sent by Overpass and delete them all from map
-		for (var fltr in activeFilter) {
-			for (var layer of filter[fltr].layers) {
-				map.removeLayer(layer);
-			}
+		for (var i in mapobjects) {
+			map.removeLayer(mapobjects[i]);
 		}
+		mapobjects = [];
 		cluster.clearLayers();
 		for (var poi in elements) {
-			createPOIobject(elements[poi]);
+			if (Object.keys(elements).length == 1) {
+				createPOIobject(elements[poi], "singlepoi")
+			} else {
+				createPOIobject(elements[poi]);
+			}
 		}
 		spinner(false);
 	}, "POST");
@@ -179,8 +168,7 @@ spinner(false);
 zoomLevel = String(map.getZoom());
 loadLang("", languageOfUser);
 
-//getData("markers/marker.svg", "text", "", undefined, function (data) {markerStyles["marker"] = {iconSize: [20, 41], popupAnchor: [0, 0], iconAnchor: [12, 45], className: "leaflet-marker-icon leaflet-zoom-animated leaflet-interactive", html: "<svg style='width:25px;height:41px;'>" + data + "</svg>"} /* Caches the marker for later altering (change of its colour for every single individual filter) */}); //Triggers the loading and caching of the marker icon at startup of Babykarte
-getData("markers/marker.svg", "text", "", undefined, function (data) {markerStyles["dot"] = {iconSize: [20, 20], popupAnchor: [0, 0], iconAnchor: [10, 10], className: "leaflet-marker-icon leaflet-zoom-animated leaflet-interactive", html: "<svg style='width:20px;height:20px;'>" + data + "</svg>"}; /* Caches the marker for later altering (change of its colour for every single individual filter) */}); //Triggers the loading and caching of the marker icon at startup of Babykarte
+getData("markers/marker.svg", "text", "", undefined, function (data) {markerStyles["dot"] = {iconSize: [20, 20], popupAnchor: [0, 0], iconAnchor: [10, 10], className: "leaflet-marker-icon leaflet-zoom-animated leaflet-interactive", html: "<svg style='width:20px;height:20px;'>" + data + "</svg>"}; /* Caches the marker for later altering*/}); //Triggers the loading and caching of the marker icon at startup of Babykarte
 getData("images/stroller.svg", "text", "", undefined, function (data) {symbols["stroller"] = {"html": data};});
 getData("images/ball.svg", "text", "", undefined, function (data) {symbols["ball"] = {"html": data};});
 getData("images/changingtable.svg", "text", "", undefined, function (data) {symbols["changingtable"] = {"html": data};});
