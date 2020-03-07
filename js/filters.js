@@ -32,6 +32,7 @@ function getSubtitle(poi) {
 }
 function activateSubcategory(i) {
 	activeSubcategory = i;
+	createQueryFunctionCall = function() {return createSQL(map.getBounds().getSouth() + "," + map.getBounds().getWest() + "," + map.getBounds().getNorth() + "," +  map.getBounds().getEast(), i)};
 	loadPOIS("");
 	var crack = Object()
 	crack.key = "Escape";
@@ -43,7 +44,7 @@ function initMarkerObject(poi) {
 	marker.category = poi.category;
 	for (var i in tocategory) {
 		i = i.split("=");
-		if (poi.tags[i[0]] == i[1]) {
+		if (poi.tags[i[0]] == i[1] || poi.tags[i[0]] && i[1] == "*") {
 			i = i.join("=");
 			marker.usePopup = tocategory[i][1];
 			marker.category = tocategory[i][0];

@@ -2,7 +2,6 @@ var activeMarker;
 var symbols = {};
 var mapobjects = [];
 var markerStyles = {};
-var area = {};
 var saved_lat = 54.32308131652028;
 var saved_lon = 10.139915941399524;
 var freezeMapMoveEvent = false;
@@ -18,9 +17,9 @@ function locationError(e) {
 	spinner(false);
 }
 function locateNewAreaBasedOnSubcategory() {
-	var result = "";
-	result = createSQL(map.getBounds().getSouth() + "," + map.getBounds().getWest() + "," + map.getBounds().getNorth() + "," +  map.getBounds().getEast(), activeSubcategory);
-	return result;
+	if (createQueryFunctionCall) {
+		return createQueryFunctionCall();
+	}
 }
 function onMapMove() {
 	if (freezeMapMoveEvent != true) {
@@ -58,14 +57,15 @@ function addMarkerIcon(poi, marker) {
 function errorHandler(poi) {
 	var notes = poi.notes || undefined;
 	if (notes == "No Data") {
-		showGlobalPopup(getText().NODATA.replace("%s", getText().filtername[poi.filter]));spinner(false);
+		showGlobalPopup(getText().NODATA);
 	} else if (notes == "ERROR 404") {
-		showGlobalPopup(getText().ERROR404.replace("%s", getText().filtername[poi.filter]));spinner(false);
+		showGlobalPopup(getText().ERROR404);
 	} else if (notes.startsWith("ERROR 503")) {
-		showGlobalPopup(getText().ERROR503.replace("%s", getText().filtername[poi.filter]));spinner(false);
+		showGlobalPopup(getText().ERROR503);
 	} else {
-		showGlobalPopup(getText().ERROR.replace("%s", getText().filtername[poi.filter]));spinner(false);
+		showGlobalPopup(getText().ERROR);
 	}
+	spinner(false);
 }
 function createPOIobject(poi, mode) {
 	var marker;
@@ -93,7 +93,6 @@ function createPOIobject(poi, mode) {
 	}
 }
 function loadPOIS(e, post) {
-	console.log(arguments.callee.caller.name);
 	spinner(true);
 	//Main function of POI loading.
 	//Handles connection to OSM Overpass server and parses the response into beautiful looking details views for each POI

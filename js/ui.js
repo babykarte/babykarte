@@ -100,14 +100,10 @@ function jumpto(elem, lat, lon, poiid) { // Function which fires when user click
 		location.hash = String(map.getZoom()) + "&" + String(lat) + "&" + String(lon); //Set the url
 		saved_lat = lat;
 		saved_lon = lon;
-		for (var id in activeFilter) {
-			//Resets all filters
-			resetFilter(id);
-		}
 		map.on("moveend", onMapMove); //Activate the dynamic loading of content
 		setTimeout(function() {onMapMove();}, 300); //After 0.3sec trigger the dynamic loading of content manually without user action.
 		showGlobalPopup(elem.innerHTML); //Show the message displaying the location is user is viewing
-		setTimeout(function() {loadPOIS("", "id=" + poiid)}, 500);
+		setTimeout(function() {requestSinglePOI(poiid)}, 500);
 		var crack = Object()
 		crack.key = "Escape";
 		crack.preventDefault = function() {return 1;}

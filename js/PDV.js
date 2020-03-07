@@ -13,6 +13,7 @@ var tocategory = {
 	"amenity=kindergarten": ["eat", "POIpopup"],
 	"amenity=childcare": ["childcare", "POIpopup"],
 	"leisure=playground": ["activity", "playgroundPopup"],
+	"playground=*": ["playground-equipment", "playgroundPopup"],
 	"leisure=park": ["activity", "POIpopup"],
 	"tourism=zoo": ["activity", "POIpopup"],
 	"shop=baby_goods": ["shop", "POIpopup"],
