@@ -12,7 +12,7 @@ var tocategory = {
 	"amenity=fast_food": ["eat", "POIpopup"],
 	"amenity=kindergarten": ["eat", "POIpopup"],
 	"amenity=childcare": ["childcare", "POIpopup"],
-	"leisure=playground": ["activity", "playgroundPopup"],
+	"leisure=playground": ["activity", "POIpopup"],
 	"playground=*": ["playground-equipment", "playgroundPopup"],
 	"leisure=park": ["activity", "POIpopup"],
 	"tourism=zoo": ["activity", "POIpopup"],
@@ -375,15 +375,15 @@ function contact_symbol(marker, data, database) {
 function getRightPopup(marker, usePopup) {
 	marker = marker.target || marker;
 	var poi = marker.data;
-	if (activeMarker && activeMarker._icon != null && marker._icon != null) { //Expression which prevents a JS error from ocurring when user loads a new filter or moves the map because both actions clean and refresh the map. That means some objects will be deleted and this expression can handle such cases by validating the object itself. See https://github.com/babykarte/babykarte/issues/17
-		activeMarker._icon.children[0].children[0].children[2].classList.remove("marker-active") || false
+	if (activeMarker && activeMarker._icon != null && marker._icon != null) { //Expression which prevents a JS error from ocurring when user loads a new map object or moves the map because both actions clean and refresh the map. That means some objects will be deleted and this expression can handle such cases by validating the object itself. See https://github.com/babykarte/babykarte/issues/17
+		activeMarker._icon.children[0].children[0].children[2].classList.remove("marker-active") || false;
 	}
 	if (marker._icon != null) {
 		marker._icon.children[0].children[0].children[2].classList.add("marker-active") || false
 	}
 	activeMarker = marker;
-	var name = getSubtitle(poi);
-	marker.name = name || getText().filtername[marker.fltr]; //Sets the subtitle which appears under the POI's name as text in grey
+	console.log(marker);
+	marker.name = getSubtitle(poi); //Sets the subtitle which appears under the POI's name as text in grey
 	var popup = {"POIpopup":
 		{"home": {"content": `<h1 style='display:flex;width:100%;'><div style='padding-top:4px;padding-bottom:4px;padding-right:3px;width:100%;'>${ ((poi.tags["name"] == undefined) ? ((poi.tags["amenity"] == "toilets") ? getText().TOILET : getText().PDV_UNNAME) : poi.tags["name"]) }</div> <a class='nounderlinestyle small-icon' target=\"_blank\" href=\"https://www.openstreetmap.org/edit?` + String(poi.type.toLowerCase()) + "=" + String(poi.osm_id) + `\">✏️</a><div class='tooltip'><img class='small-icon' src='images/share.svg' onclick='toggleTooltip(this)' /><div class='tooltip-content'><a target='_blank' href='${ "https://www.openstreetmap.org/" + String(poi.type).toLowerCase() + "/" + String(poi.osm_id) }'>${ getText().LNK_OSM_VIEW }</a><br/>\n<a href='${ "geo:" + poi.lat + "," + poi.lon }'>${ getText().LNK_OPEN_WITH }</a></div></div></h1>\n<div class='subtitle'><span>${ String(marker.name) }</span>&nbsp;&#8231;&nbsp;<span id='address'>${ addrTrigger(poi, marker) }</span>\n</div>\n<div class='socialmenu'>${ babyfriendliness_symbol(marker, processContentDatabase(marker, poi, PDV_baby), PDV_baby) } ${ ((marker.category == "health" && poi.tags["min_age"] && poi.tags["max_age"]) ? "<span class='small-icon'>" + getText().AGE_RANGE + "</span>" : "") }</div>\n<hr/><div class='socialmenu'>${ contact_symbol(marker, processContentDatabase(marker, poi, PDV_contact ), PDV_contact)}</div>\n</div></div>`, "symbol": "🏠", "title": getText().PDV_TITLE_HOME, "active": true, "default": true},
 		"baby": {"content": `${ babyfriendliness_text(marker, processContentDatabase(marker, poi, PDV_baby), PDV_baby) }`, "symbol": "👶", "title": getText().PDV_TITLE_BABY, "active": true},

@@ -213,7 +213,7 @@ var refDe = {
 		"IMPRESS_NOTE": "Alle Daten auf dieser Website stammen aus dem Projekt OpenStreetMap. Die Babykarte wertet diese Daten lediglich aus.<br/>Für die Richtigkeit der Angaben kann keine Garantie übernommen werden. Anmerkungen zu falschen oder fehlenden Daten<br/>übermitteln Sie bitte direkt an OpenStreetMap über die bereitgestellten Links. Darüber hinaus gibt es die Möglichkeit durch Einrichtung eines OpenStreetMap-Accounts falsche- oder fehlende Daten zu berichtigen bzw. hinzuzufügen."
 	}
 };
-refDe["site-map"].filtertranslations = {
+refDe["site-map"].maintagtranslations = {
 	"healthcare=doctor": ["Kinderarzt", "paediatrics"],
 	"healthcare=hospital": ["Krankenhaus", ""],
 	"healthcare=midwife": ["Hebamme", "midwife"],
@@ -233,12 +233,13 @@ refDe["site-map"].filtertranslations = {
 	"shop=chemist": ["Drogerie", ""],
 	"shop=supermarket": ["Supermarkt", ""]
 };
-refDe["site-map"].categories = {
-	"health": [["Health"], ["Hospital", "doctor", "paediatrics", "dentist"]],
-	"activity": [["Activity"], ["Zoo", "Playground", "Park"]],
-	"childcare": [["Childcare"], ["Kindergarten", "Childcare", "Nappy", "Diaper", "Changing table"]],
-	"shop": [["Shop"], ["Goods", "Clothes", "Toys"]],
-	"eat": [["Food&Drink"], ["Food", "Drink", "Cafe", "Restaurant"]]
+refDe["site-map"].categories = { //Needed for displaying the category the POI belongs in.
+	"health": "Gesundheit",
+	"activity": "Aktivität",
+	"childcare": "Kinderpflege",
+	"shop": "Shop",
+	"eat": "Essen & Trinken",
+	"playground-equipment": "Spielplatzausrüstung"
 };
 refDe["site-map"].subcategories = {
 	"paediatrics": [["Kinderärzte/Kinderstationen"], []],

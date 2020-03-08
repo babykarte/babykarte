@@ -207,7 +207,7 @@ var refEn = {
 		"IMPRESS_NOTE": "All data available on this website is coming from OpenStreetMap. Babykarte just uses the data. We do not guarantee for the correctness of it. Through the provided links you can convey annotations to wrong or missing data to OpenStreetMap. You can also correct wrong ones or add further information by yourself."
 	}
 };
-refEn["site-map"].filtertranslations = {
+refEn["site-map"].maintagtranslations = {
 	"healthcare=doctor": ["Pediatrician", "paediatrics"],
 	"healthcare=hospital": ["Hospital", ""],
 	"healthcare=midwife": ["Midwife", "midwife"],
@@ -232,7 +232,8 @@ refEn["site-map"].categories = { //Needed for displaying the category the POI be
 	"activity": "Activity",
 	"childcare": "Childcare",
 	"shop": "Shop",
-	"eat": "Food & Drink"
+	"eat": "Food & Drink",
+	"playground-equipment": "Playground equipment"
 };
 refEn["site-map"].subcategories = { //Lower case or upper case does not matter for the search
 	"paediatrics": [["Paediatricians / children's wards"], ["Paediatrician", "Dentist", "wards", "doctor"]],
@@ -240,17 +241,17 @@ refEn["site-map"].subcategories = { //Lower case or upper case does not matter f
 	"birthing_center": [["Birthing centers"], ["Birthing center", "birth", "pregnant"]],
 	"playground": [["Playgrounds"], ["Playground", "Play area"]],
 	"play-equipment": [["Playground equipment"], ["Playground equipment", "play equipment", "play", "play activity"]],
-	"park": [["Parks"], ["walking", "nature", "Park", "walking activity", "rest", "relax"]],
-	"shop-babygoods": [["Shops for baby goods"], ["shop", "baby goods", "goods", "baby"]],
-	"shop-toys": [["Shops for toys"], ["shop", "toys", "toy", "goods"]],
-	"shop-clothes": [["Shops for clothes"], ["shop", "clothes", "baby", "goods"]],
-	"childcare": [["Kindergartens and child care"], ["kindergarten", "childcare", "care"]],
+	"park": [["Parks"], ["Park", "walking", "nature", "Park", "walking activity", "rest", "relax"]],
+	"shop-babygoods": [["Shops for baby goods"], ["Shop", "baby goods", "goods", "baby"]],
+	"shop-toys": [["Shops for toys"], ["Shop", "toys", "toy", "goods"]],
+	"shop-clothes": [["Shops for clothes"], ["Shop", "clothes", "baby", "goods"]],
+	"childcare": [["Kindergartens and child care"], ["Kindergarten", "childcare", "care"]],
 	"zoo": [["Zoos"], ["Zoo", "activity"]],
 	"changingtable": [["Changing tables"], ["Nappy", "Diaper", "Changing table", "babycare", "care"]],
 	"changingtable-men": [["Only changing tables accessible for men"], ["Nappy", "Diaper", "Changing table", "babycare", "care"]],
-	"cafe": [["Cafés"], ["eat", "food", "Café", "cafe", "drink", "livestyle", "highchair", "highchairs"]],
-	"restaurant": [["Restaurants"], ["eat", "food", "Restaurant", "drink", "livestyle", "highchair", "highchairs"]],
-	"fast_food": [["Fast Food"], ["eat", "food", "Fast Food", "drink", "livestyle", "highchair", "highchairs"]]
+	"cafe": [["Cafés"], ["Café", "eat", "food", "cafe", "drink", "livestyle", "highchair", "highchairs"]],
+	"restaurant": [["Restaurants"], ["Restaurant" ,"eat", "food", "drink", "livestyle", "highchair", "highchairs"]],
+	"fast_food": [["Fast Food"], ["Fast Food", "eat", "food", "drink", "livestyle", "highchair", "highchairs"]]
 	}
 registerLang("en", refEn);
 setLang("", "en");

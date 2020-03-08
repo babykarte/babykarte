@@ -78,9 +78,9 @@ function setLang(e, lang) {
 		};
 		//Search for the names of playground equipment in the language reference
 		for (var json in getText()) {
-			if (json.startsWith("PDV_PLAYGROUND_") && json.endsWith("_YES")) { //Just add to the database 'filtertranslations' (needed by the 'filters.js/getSubtitle' function) what belongs to the playground equipment
+			if (json.startsWith("PDV_PLAYGROUND_") && json.endsWith("_YES")) { //Just add to the database 'maintagtranslations' (needed by the 'filters.js/getSubtitle' function) what belongs to the playground equipment
 				var equipment = json.replace("PDV_PLAYGROUND_", "").replace("_YES",""); //Generate key from scratch
-				getText().filtertranslations["playground=" + equipment.toLowerCase()] = [getText()[json], getText().PDV_LEISURE_PLAYGROUND];
+				getText().maintagtranslations["playground=" + equipment.toLowerCase()] = [getText()[json], getText().PDV_LEISURE_PLAYGROUND];
 			}
 		}
 		var output = "";

@@ -140,8 +140,8 @@ function geocode_intern() { // Function which powers the search suggestion list
 				var poiid = String(feature.properties.osm_type) + String(feature.properties.osm_id);
 				var poitype = "";
 				var keyvalue = feature.properties.osm_key + "=" + feature.properties.osm_value;
-				if (tocategory[keyvalue]) {
-					poitype = getText().categories[tocategory[keyvalue][0]] + ", ";
+				if (getText().maintagtranslations[keyvalue]) {
+					poitype = getText().maintagtranslations[keyvalue][0] + ", ";
 				}
 				autocomplete_content += "<div class='entry' tabindex=0 style='border-bottom:5px solid white;padding:5px;' onclick='jumpto(this, " + latlng[0] + ", " + latlng[1] + ",\"" + poiid + "\")'><span>" + feature.properties.name + "</span><br/><address style='font-size:14px;'>" + poitype + feature.properties.city + ", " + feature.properties.country + "</address></div>"; //Adds a entry in the search suggestion popup (e.g. Berlin central station)
 			});

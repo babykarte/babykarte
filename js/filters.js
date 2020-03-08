@@ -20,12 +20,12 @@ var subcategory = { //The filters, the query they trigger, their colour profile,
 "fast_food": {"category" : "eat fast_food"}
 };
 function getSubtitle(poi) {
-	var json = getText().filtertranslations;
+	var json = getText().maintagtranslations;
 	for (var i in json) {
 		var key = i.split("=");
 		if (!poi.tags[key[0]]) {continue;}
 		if (poi.tags[key[0]] && poi.tags[key[0]] == key[1]) {
-			return getText().filtertranslations[i][0];
+			return getText().maintagtranslations[i][0];
 		}
 	}
 	return undefined;
