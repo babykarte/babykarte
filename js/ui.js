@@ -119,6 +119,8 @@ function geocode_intern() { // Function which powers the search suggestion list
 		spinner(true);
 		$.getJSON("https://photon.komoot.de/api/", { //Sends user input to search suggestion provider komoot
 			"q": searchword,
+			"lat": map.getCenter()["lat"],
+			"lon": map.getCenter()["lng"],
 			"limit": 5,
 			"lang": languageOfUser //Sends the determined language or the language set by user
 		}, function(data) {
@@ -141,9 +143,9 @@ function geocode_intern() { // Function which powers the search suggestion list
 				var poitype = "";
 				var keyvalue = feature.properties.osm_key + "=" + feature.properties.osm_value;
 				if (getText().maintagtranslations[keyvalue]) {
-					poitype = getText().maintagtranslations[keyvalue][0] + ", ";
+					poitype = getText().maintagtranslations[keyvalue][0] + "&nbsp;&#8231;&nbsp;";
 				}
-				autocomplete_content += "<div class='entry' tabindex=0 style='border-bottom:5px solid white;padding:5px;' onclick='jumpto(this, " + latlng[0] + ", " + latlng[1] + ",\"" + poiid + "\")'><span>" + feature.properties.name + "</span><br/><address style='font-size:14px;'>" + poitype + feature.properties.city + ", " + feature.properties.country + "</address></div>"; //Adds a entry in the search suggestion popup (e.g. Berlin central station)
+				autocomplete_content += "<div class='entry' tabindex=0 style='border-bottom:5px solid white;padding:5px;' onclick='jumpto(this, " + latlng[0] + ", " + latlng[1] + ",\"" + poiid + "\")'><span>" + feature.properties.name + "</span><br/><address style='font-size:14px;'>" + poitype + ((feature.properties.street) ? feature.properties.street + ", " : "") + feature.properties.city + ", " + feature.properties.country + "</address></div>"; //Adds a entry in the search suggestion popup (e.g. Berlin central station)
 			});
 			if (autocomplete) {
 				$("#autocomplete").html(autocomplete_content); //Add them all to the search suggestion popup

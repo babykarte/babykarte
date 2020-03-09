@@ -354,7 +354,6 @@ function contact_text(marker, data, database) {
 function contact_symbol(marker, data, database) {
 	var output = "";
 	for (var tag in data) {
-		console.log(data[tag]);
 		var url = ((tag.endsWith("phone")) ? "tel:" + data[tag].title : ((tag.endsWith("email")) ? "mailto:" + data[tag].title : ((tag.endsWith("facebook") && !data[tag].title.startsWith("http:")) ? "https://facebook.com/" + data[tag].title : data[tag].title)));
 		if (database[tag].symbol.indexOf("/") > -1) {
 			output += "\n<a class='nounderlinestyle' title='" + data[tag].title + "' alt='" + data[tag].title + "' rel='noopener' href='" + url + "' target='_blank'><img src='" + database[tag].symbol + "' class='small-icon' style='margin-top:0px;' /></a>\n";
@@ -382,7 +381,6 @@ function getRightPopup(marker, usePopup) {
 		marker._icon.children[0].children[0].children[2].classList.add("marker-active") || false
 	}
 	activeMarker = marker;
-	console.log(marker);
 	marker.name = getSubtitle(poi); //Sets the subtitle which appears under the POI's name as text in grey
 	var popup = {"POIpopup":
 		{"home": {"content": `<h1 style='display:flex;width:100%;'><div style='padding-top:4px;padding-bottom:4px;padding-right:3px;width:100%;'>${ ((poi.tags["name"] == undefined) ? ((poi.tags["amenity"] == "toilets") ? getText().TOILET : getText().PDV_UNNAME) : poi.tags["name"]) }</div> <a class='nounderlinestyle small-icon' target=\"_blank\" href=\"https://www.openstreetmap.org/edit?` + String(poi.type.toLowerCase()) + "=" + String(poi.osm_id) + `\">✏️</a><div class='tooltip'><img class='small-icon' src='images/share.svg' onclick='toggleTooltip(this)' /><div class='tooltip-content'><a target='_blank' href='${ "https://www.openstreetmap.org/" + String(poi.type).toLowerCase() + "/" + String(poi.osm_id) }'>${ getText().LNK_OSM_VIEW }</a><br/>\n<a href='${ "geo:" + poi.lat + "," + poi.lon }'>${ getText().LNK_OPEN_WITH }</a></div></div></h1>\n<div class='subtitle'><span>${ String(marker.name) }</span>&nbsp;&#8231;&nbsp;<span id='address'>${ addrTrigger(poi, marker) }</span>\n</div>\n<div class='socialmenu'>${ babyfriendliness_symbol(marker, processContentDatabase(marker, poi, PDV_baby), PDV_baby) } ${ ((marker.category == "health" && poi.tags["min_age"] && poi.tags["max_age"]) ? "<span class='small-icon'>" + getText().AGE_RANGE + "</span>" : "") }</div>\n<hr/><div class='socialmenu'>${ contact_symbol(marker, processContentDatabase(marker, poi, PDV_contact ), PDV_contact)}</div>\n</div></div>`, "symbol": "🏠", "title": getText().PDV_TITLE_HOME, "active": true, "default": true},

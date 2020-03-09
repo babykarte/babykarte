@@ -2,22 +2,22 @@ var timerForFilter, markerCode;
 var activeSubcategory = "";
 var orderOfFilters = ["paediatrics", "midwife", "birthing_center", "playground", "play-equipment", "park", "shop-babygoods", "shop-toys", "shop-clothes", "childcare", "zoo", "changingtable", "changingtable-men", "cafe", "restaurant", "fast_food"]
 var subcategory = { //The filters, the query they trigger, their colour profile, their category and technical description as dictionary (JSON)
-"paediatrics": {"category" : "health paediatrics"},
-"midwife": {"category" : "health midwife"},
-"birthing_center": {"category" : "health birth"},
-"playground": {"category" : "activity playground"},
-"play-equipment": {"category" : "activity playground-equipment"},
-"park": {"category" : "rest park"},
-"shop-babygoods": {"category" : "shop baby_goods"},
-"shop-toys": {"category" : "shop toys"},
-"shop-clothes": {"category" : "shop clothes"},
-"childcare": {"category" : "childcare kindergarten"},
-"zoo": {"category" : "activity zoo"},
-"changingtable": {"category" : "changingtable diaper", "priorize": 3, "triggers": {}, "popup": "POIpopup", "markerStyle": "marker"},
-"changingtable-men": {"category" : "changingtable diaper"},
-"cafe": {"category" : "eat cafe"},
-"restaurant": {"category" : "eat restaurant"},
-"fast_food": {"category" : "eat fast_food"}
+"paediatrics": {"category" : "health"},
+"midwife": {"category" : "health"},
+"birthing_center": {"category" : "health"},
+"playground": {"category" : "activity"},
+"play-equipment": {"category" : "activity"},
+"park": {"category" : "rest"},
+"shop-babygoods": {"category" : "shop"},
+"shop-toys": {"category" : "shop"},
+"shop-clothes": {"category" : "shop"},
+"childcare": {"category" : "childcare"},
+"zoo": {"category" : "activity"},
+"changingtable": {"category" : "changingtable"},
+"changingtable-men": {"category" : "changingtable"},
+"cafe": {"category" : "eat"},
+"restaurant": {"category" : "eat"},
+"fast_food": {"category" : "eat"}
 };
 function getSubtitle(poi) {
 	var json = getText().maintagtranslations;
