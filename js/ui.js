@@ -129,8 +129,11 @@ function geocode_intern() { // Function which powers the search suggestion list
 			var intellij = {};
 			for (var i in getText().subcategories) {
 				for (var u of getText().subcategories[i][1]) {
-					if (searchword.toLowerCase().indexOf(u.toLowerCase()) > -1) {
+					if (searchword.toLowerCase().indexOf(u.toLowerCase() + " ") > -1 || searchword.toLowerCase().indexOf(" " + u.toLowerCase()) > -1) {
 						intellij[i] = true;
+					} else if (searchword.split(" ").length == 1 && searchword.toLowerCase() == u.toLowerCase()) {
+						intellij[i] = true
+						break;
 					}
 				}
 			}

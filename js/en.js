@@ -250,8 +250,8 @@ refEn["site-map"].subcategories = { //Lower case or upper case does not matter f
 	"changingtable": [["Changing tables"], ["Nappy", "Diaper", "Changing table", "babycare", "care"]],
 	"changingtable-men": [["Only changing tables accessible for men"], ["Nappy", "Diaper", "Changing table", "babycare", "care"]],
 	"cafe": [["Cafés"], ["Café", "eat", "food", "cafe", "drink", "livestyle", "highchair", "highchairs"]],
-	"restaurant": [["Restaurants"], ["Restaurant" ,"eat", "food", "drink", "livestyle", "highchair", "highchairs"]],
-	"fast_food": [["Fast Food"], ["Fast Food", "eat", "food", "drink", "livestyle", "highchair", "highchairs"]]
+	"restaurant": [["Restaurants"], ["Restaurant" ,"eat", "food", "drink", "lifestyle", "highchair", "highchairs"]],
+	"fast_food": [["Fast Food"], ["Fast Food", "eat", "food", "drink", "lifestyle", "highchair", "highchairs"]]
 	}
 registerLang("en", refEn);
 setLang("", "en");
