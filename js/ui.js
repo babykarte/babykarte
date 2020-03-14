@@ -121,7 +121,7 @@ function geocode_intern() { // Function which powers the search suggestion list
 			"q": searchword,
 			"lat": map.getCenter()["lat"],
 			"lon": map.getCenter()["lng"],
-			"location_bias_scale": 20,
+			"location_bias_scale": 10,
 			"limit": 5,
 			"lang": languageOfUser //Sends the determined language or the language set by user
 		}, function(data) {
