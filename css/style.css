@@ -196,7 +196,6 @@ section {
 .tooltip {
 	position:relative;
 	cursor: pointer;
-	margin-top: 5px;
 }
 .tooltip-content {
 	margin:5px;
@@ -350,8 +349,9 @@ section {
 }
 /* ---------------------- POI RATING SYSTEM ------------------ */
 #rating-default {
-	fill:none;
-	color:black;
+	fill:#004387;
+	color:#004387;
+	stroke:white;
 }
 #rating-green {
 	fill:#01c401;

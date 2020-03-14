@@ -7,6 +7,34 @@ var saved_lon = 10.139915941399524;
 var freezeMapMoveEvent = false;
 var zoomLevel = "";
 var url = "https://babykarte.openstreetmap.de/getDataForBabykarte.cgi";
+var ratingRules = {"red": {"default": 18, "color": "rating-red"}, "green": {"default": 12, "color": "rating-green"}};
+var ratingData = {"diaper": {"multiplicator": 4,	// diaper=* 4
+					"values" :
+						{"yes": 2,				//     yes 2
+						"no": 2}				//     no  2
+					},
+				"changing_table": {"multiplicator": 4,	// changing_table=* 4
+					"values" :
+						{"yes": 2,				//     yes 2
+						"no": 2}				//     no  2
+					},
+				"highchair": {"multiplicator": 4,	// highchair=* 4  (POIs where you can get meal or something simliar)
+					"values" :
+						{"yes": 2,				//     yes 2
+						"no": 2}				//     no  2
+					},
+				"kids_area": {"multiplicator": 2,	// kids_area=* 2
+					"values" :
+						{"yes": 2,				//     yes 2
+						"no": 2}				//     no  2
+					},
+				"stroller": {"multiplicator": 1,	// stroller=* 1
+					"values" :
+						{"yes": 2,				//     yes 3
+						"no": 2,				//     no  3
+						"limited": 1}			//     limited 1 (green)
+					}
+			};
 function locationFound(e) {
 	showGlobalPopup(getText().LOCATING_SUCCESS);
 	spinner(false);
@@ -43,6 +71,27 @@ function ratePOI(marker, poi) {
 		}
 	}
 	return poi;
+}
+function determineRateColor(poi) {
+	var exception = {"yellow": {"default": 6, "color": "rating-yellow"}};
+	var i, u;
+	var colours = [];
+	for (i in ratingRules) {
+		if (poi.rating[i]) {
+			if (poi.rating[i] >= ratingRules[i].default) {
+				colours.push(ratingRules[i]);
+			} else if (poi.rating[i] >= exception.yellow.default) {
+				colours.push(exception.yellow);
+			}
+		}
+	}
+	if (colours.length == 2) {
+		return exception.yellow.color;
+	} else if (colours.length == 0) {
+		return false;
+	} else {
+		return colours[0].color;
+	}
 }
 function addMarkerIcon(poi, marker) {
 	var iconObject = JSON.parse(JSON.stringify(markerStyles["dot"]));
