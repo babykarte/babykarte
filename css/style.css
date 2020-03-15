@@ -156,7 +156,7 @@ section {
 }
 .searchbar {
 	font-family:"Palatino Linotype", "Book Antiqua", Palatino, serif;
-	top:90px;
+	top:0px;
 }
 .about {
 	font-family:"Palatino Linotype", "Book Antiqua", Palatino, serif;
@@ -394,10 +394,6 @@ section {
 .lang-select, .searchbar, .about, .bigmenu, .beautifulmenu {
 	top:45px;
 	left:0px;
-	width:100%;
-}
-.searchbar {
-	top:45px;
 	width:100%;
 }
 .about {

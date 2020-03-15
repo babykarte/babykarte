@@ -206,6 +206,10 @@ function escapeFromFunc(e) {
 		e.preventDefault();
 	}
 }
+escapeFrom.push(function() {
+	searchfield.blur();
+	btn_search.click();
+});
 document.body.addEventListener("keypress", searchwhentyping);
 document.body.addEventListener("keyup", escapeFromFunc);
 document.getElementById("searchfield").addEventListener("focus", function() {document.body.removeEventListener("keypress", searchwhentyping);});

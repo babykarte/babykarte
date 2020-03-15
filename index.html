@@ -14,6 +14,12 @@
   <body id='site-map'>
   	<section>
   	<div class='leftbar'>
+  		<div class='menuitem dropdown'><img class='bar-icon item-active' id='btn_search' src='images/search.svg' onclick='toggleMenu(this);document.getElementById("searchfield").focus();' />
+  			<div class='dropdown-menu searchbar dropdown-active' id='searchgroup'>
+     			<input type='text' onclick='geocode()' placeholder='Ort' id='searchfield'>
+     			<div id='autocomplete'></div>
+			</div>
+		</div>
   		<div class='menuitem dropdown'><img class='bar-icon' id='btn_info' src='images/info.svg.png' onclick='toggleMenu(this)' />
   			<div class='dropdown-menu about' id='aboutus'>
   				<a href='https://github.com/babykarte/babykarte' target='_blank' id='linkToGitHub'>Auf Github</a>
@@ -42,12 +48,6 @@
   				<a href='#' class='nounderlinestyle' onclick='loadLang(this, "fr");'><span class='small-icon'>FR</span></a>
   			</div>
   		</div>
-  		<div class='menuitem dropdown'><img class='bar-icon' id='btn_search' src='images/search.svg' onclick='toggleMenu(this);document.getElementById("searchfield").focus();' />
-  			<div class='dropdown-menu searchbar' id='searchgroup'>
-     			<input type='text' onclick='geocode()' placeholder='Ort' id='searchfield'>
-     			<div id='autocomplete'></div>
-			</div>
-		</div>
   		<div class='dropdown'><div style='display:none;' class='bar-icon'><!-- Pseudo button ---></div>
   			<div class='dropdown-menu bigmenu' id='poimenu'>
   				<div id='infotext-swipe'></div>
