@@ -20,7 +20,7 @@ details summary {
 	cursor:pointer;
 	font-weight:bold;
 }
-h1, h2, h3 {
+h1, h2, h3, h4 {
 	display:block;
 	padding:0px;
 	margin:0px;
@@ -41,6 +41,10 @@ input[type=checkbox] {
 input[type=text] {
 	border:none;
 	border-bottom:1px solid #ff531a;
+}
+select {
+	margin-top:5px;
+	margin-bottom:5px;
 }
 section {
 	display:flex;
@@ -156,6 +160,7 @@ section {
 }
 .searchbar {
 	font-family:"Palatino Linotype", "Book Antiqua", Palatino, serif;
+	min-width:400px;
 	top:0px;
 }
 .about {
@@ -215,6 +220,9 @@ section {
 	transition: 300ms;
 	background-color: #ffe6f7;
 }
+#searchfield {
+	width:500px;
+}
 #filtersGround label {
 	display:block;
 	margin-top:5px;
@@ -254,6 +262,12 @@ section {
 #poimenu {
 	height:auto !important;
 }
+#advanced-search {
+	font-size:16px;
+	padding:5px;
+	margin:5px;
+	border:1px solid black;
+}
 /*------------------------- ON MAP MODALS -----------------*/
 .info {
 	display:none;
@@ -275,7 +289,7 @@ section {
 	z-index:401;
 	position:absolute;
 	width:100%;
-	height:100%;
+	height:100%;advanced-search
 	padding-top:20%;
 	font-size:26px;
 	text-align:center;
@@ -388,6 +402,9 @@ section {
 	width:100% !important;
 	height:calc(100% - 45px) !important;
 }
+#searchfield {
+	width:calc(100% - 30px);
+}
 .beautifulmenu {
 	width:100%;
 }
@@ -425,9 +442,6 @@ section {
 #spinner {
 	margin-left:10%;
 	margin-right:10%;
-}
-#searchfield {
-	width:100%;
 }
 .mobile-handle {
 	background-color: lightgrey;

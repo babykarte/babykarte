@@ -168,6 +168,11 @@ var refEn = {
 		"LASTUPDATE": "Last update of map data: %s",
 		"OSM_ATTRIBUTION": "Proudly collected by <a rel='noopener' target='_blank' href='https://welcome.openstreetmap.org/what-is-openstreetmap/'>OpenStreetMap</a>",
 		"TB_SEARCHFIELD": "Search",
+		"SELECT_DEFAULTALL": "Select POI category: All",
+		"LABEL_ADVANCEDSEARCH_BABYFRIENDLINESS": "Baby friendliness",
+		"LABEL_ADVANCEDSEARCH_TITLE": "Advanced Search:",
+		"TB_SEARCHBYNAME": "Name",
+		"BTN_ADVANCEDSEARCHSEND": "Find what I seek",
 		"opening_hours": {
 			"Mo": "Monday",
 			"Tu": "Tuesday",
@@ -234,6 +239,12 @@ refEn["site-map"].categories = { //Needed for displaying the category the POI be
 	"shop": "Shop",
 	"eat": "Food & Drink",
 	"playground-equipment": "Playground equipment"
+};
+refEn["site-map"].filters = {
+	"changingtable": "Changing table(s)",
+	"highchair": "Highchair(s)",
+	"stroller": "Stroller friendly",
+	"kidsarea": "Kids area"
 };
 refEn["site-map"].subcategories = { //Lower case or upper case does not matter for the search
 	"paediatrics": [["Paediatricians / children's wards"], ["Paediatrician", "Dentist", "wards", "doctor"]],

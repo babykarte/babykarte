@@ -168,6 +168,11 @@ var refDe = {
 		"LASTUPDATE": "Letztes Update der Daten: %s",
 		"OSM_ATTRIBUTION": "Mit Stolz zusammengestellt von <a rel='noopener' target='_blank' href='https://www.openstreetmap.de/faq.html#was_ist_osm'>OpenStreetMap</a>",
 		"TB_SEARCHFIELD": "Suche",
+		"SELECT_DEFAULTALL": "POI Kategorie: All",
+		"LABEL_ADVANCEDSEARCH_BABYFRIENDLINESS": "Babyfreundlichkeit",
+		"LABEL_ADVANCEDSEARCH_TITLE": "Erweiterte Suche",
+		"TB_SEARCHBYNAME": "Name",
+		"BTN_ADVANCEDSEARCHSEND": "Finde was ich suche",
 		"opening_hours": {
 			"Mo": "Montag",
 			"Tu": "Dienstag",
@@ -241,6 +246,12 @@ refDe["site-map"].categories = { //Needed for displaying the category the POI be
 	"eat": "Essen & Trinken",
 	"playground-equipment": "Spielplatzausrüstung"
 };
+refEn["site-map"].filters {
+	"changingtable": "Changing table(s)",
+	"highchair": "Highchair(s)",
+	"stroller": "Stroller friendly",
+	"kidsarea": "Kids area"
+}
 refDe["site-map"].subcategories = {
 	"paediatrics": [["Kinderärzte/Kinderstationen"], []],
 	"midwife": [["Hebammen"], []],

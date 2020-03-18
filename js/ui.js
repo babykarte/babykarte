@@ -110,6 +110,27 @@ function jumpto(elem, lat, lon, poiid) { // Function which fires when user click
 		escapeFromFunc(crack);
 	}
 }
+function sendAdvancedSearch() {
+	var fltrList = [];
+	var name = $("#searchbyname").val();
+	var subcategory = $("#subcategoryselect").val();
+	var filtersGround = document.getElementsByClassName("filter");
+	var output = name;
+	for (var i in getText().subcategories) {
+		if (subcategory == getText().subcategories[i][0]) {
+			subcategory = getText().subcategories[i][0];
+			break;
+		}
+	}
+	output += " | " + subcategory;
+	for (var elem of filtersGround) {
+		if (elem.checked) {
+			fltrList.push(elem.getAttribute("name"));
+		}
+	}
+	output += " | " + fltrList.join(",") + " | " + map.getBounds().getSouth() + "," + map.getBounds().getWest() + "," + map.getBounds().getNorth() + "," +  map.getBounds().getEast();
+	loadPOIS("", output);
+}
 function geocode_intern() { // Function which powers the search suggestion list
 	var searchword = $("#searchfield").val();
 	if (searchword.length == 0) {

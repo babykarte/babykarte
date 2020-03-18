@@ -74,7 +74,11 @@ function setLang(e, lang) {
 		20: ((document.getElementById("lnk_explanation-markerdots") != null) ? document.getElementById("lnk_explanation-markerdots").innerHTML = getText().LNK_EXPLANATIONMARKERDOTS : ""),
 		21: ((document.getElementById("lnk_explanation-usage") != null) ? document.getElementById("lnk_explanation-usage").innerHTML = getText().LNK_EXPLANATIONUSAGE : ""),
 		22: ((document.getElementById("lnk_explanation-pdvicons") != null) ? document.getElementById("lnk_explanation-pdvicons").innerHTML = getText().LNK_EXPLANATIONPDVICONS : ""),
-		23: ((document.getElementById("lastupdate") != null) ? document.getElementById("lastupdate").innerHTML = getText().LASTUPDATE.replace("%s", getLastUpdate()) : "")
+		23: ((document.getElementById("lastupdate") != null) ? document.getElementById("lastupdate").innerHTML = getText().LASTUPDATE.replace("%s", getLastUpdate()) : ""),
+		24: ((document.getElementById("advanced-search-babyfriendliness") != null) ? document.getElementById("advanced-search-babyfriendliness").innerHTML = getText().LABEL_ADVANCEDSEARCH_BABYFRIENDLINESS : ""),
+		25: ((document.getElementById("advanced-search_title") != null) ? document.getElementById("advanced-search_title").innerHTML = getText().LABEL_ADVANCEDSEARCH_TITLE : ""),
+		26: ((document.getElementById("searchbyname") != null) ? document.getElementById("searchbyname").innerHTML = getText().TB_SEARCHBYNAME : ""),
+		27: ((document.getElementById("advanced-search-btnSend") != null) ? document.getElementById("advanced-search-btnSend").innerHTML = getText().BTN_ADVANCEDSEARCHSEND : "")
 		};
 		//Search for the names of playground equipment in the language reference
 		for (var json in getText()) {
@@ -99,6 +103,20 @@ function setLang(e, lang) {
 			output += getText().PDV_ICONS_EXPLANATION[json] + "<br/>";
 		}
 		document.getElementById("explanation-pdvicons").innerHTML = output;
+		output = "<option value='all'>" + getText().SELECT_DEFAULTALL + "</option>";
+		for (var subcat in subcategories) {
+			var text = getText().subcategories[subcat][0];
+			output += "<option value='" + subcat + "'>" + text + "</option>";
+		}
+		document.getElementById("subcategoryselect").innerHTML = output;
+		output = ""
+		for (var fltr of filters) {
+			output += "<label>";
+			output += "<input type='checkbox' id='" + fltr + "' value='" + fltr + "' class='filter'>";
+			output += "<span>" + getText().filters[fltr] + "</span>";
+			output += "</label>";
+		}
+		document.getElementById("filtersGround").innerHTML = output;
 	} else {
 		alert("Language data couldn't be loaded.");
 	}

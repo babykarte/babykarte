@@ -169,6 +169,11 @@ var refFr = {
 		"LASTUPDATE": "Last update of map data: %s (EN)",
 		"OSM_ATTRIBUTION": "Proudly collected by <a rel='noopener' target='_blank' href='http://www.openstreetmap.fr/contribuer/'>OpenStreetMap</a> (EN)",
 		"TB_SEARCHFIELD": "Rechercher",
+		"SELECT_DEFAULTALL": "Select POI category: All (EN)",
+		"LABEL_ADVANCEDSEARCH_BABYFRIENDLINESS": "Baby friendliness (EN)",
+		"LABEL_ADVANCEDSEARCH_TITLE": "Advanced Search: (EN)",
+		"TB_SEARCHBYNAME": "Name (EN)",
+		"BTN_ADVANCEDSEARCHSEND": "Find what I seek (EN)",
 		"opening_hours": {
 			"Mo": "Lundi",
 			"Tu": "Mardi",
@@ -234,12 +239,18 @@ refFr["site-map"].maintagtranslations = {
 	"shop=supermarket": ["Supermarché", ""]
 };
 refEn["site-map"].categories = { //Needed for displaying the category the POI belongs in.
-	"health": "Health",
-	"activity": "Activity",
-	"childcare": "Childcare",
-	"shop": "Shop",
-	"eat": "Food & Drink",
-	"playground-equipment": "Playground equipment"
+	"health": "Health (EN)",
+	"activity": "Activity (EN)",
+	"childcare": "Childcare (EN)",
+	"shop": "Shop (EN)",
+	"eat": "Food & Drink (EN)",
+	"playground-equipment": "Playground equipment (EN)"
+};
+refEn["site-map"].filters = {
+	"changingtable": "Changing table(s) (EN)",
+	"highchair": "Highchair(s) (EN)",
+	"stroller": "Stroller friendly (EN)",
+	"kidsarea": "Kids area (EN)"
 };
 refFr["site-map"].subcategories = {
 	"paediatrics": [["Pédiatres / services de pédiatrie"], []],

@@ -1,7 +1,6 @@
 var timerForFilter, markerCode;
 var activeSubcategory = "";
-var orderOfFilters = ["paediatrics", "midwife", "birthing_center", "playground", "play-equipment", "park", "shop-babygoods", "shop-toys", "shop-clothes", "childcare", "zoo", "changingtable", "changingtable-men", "cafe", "restaurant", "fast_food"]
-var subcategory = { //The filters, the query they trigger, their colour profile, their category and technical description as dictionary (JSON)
+var subcategories = { //The subcategories and their category as dictionary (JSON)
 "paediatrics": {"category" : "health"},
 "midwife": {"category" : "health"},
 "birthing_center": {"category" : "health"},
@@ -14,11 +13,11 @@ var subcategory = { //The filters, the query they trigger, their colour profile,
 "childcare": {"category" : "childcare"},
 "zoo": {"category" : "activity"},
 "changingtable": {"category" : "changingtable"},
-"changingtable-men": {"category" : "changingtable"},
 "cafe": {"category" : "eat"},
 "restaurant": {"category" : "eat"},
 "fast_food": {"category" : "eat"}
 };
+var filters = ["changingtable", "highchair", "stroller", "kidsarea"]
 function getSubtitle(poi) {
 	var json = getText().maintagtranslations;
 	for (var i in json) {

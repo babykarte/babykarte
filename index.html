@@ -17,6 +17,15 @@
   		<div class='menuitem dropdown'><img class='bar-icon item-active' id='btn_search' src='images/search.svg' onclick='toggleMenu(this);document.getElementById("searchfield").focus();' />
   			<div class='dropdown-menu searchbar dropdown-active' id='searchgroup'>
      			<input type='text' onclick='geocode()' placeholder='Ort' id='searchfield'>
+     			<img src='images/settings.svg' class='small-icon' style='margin:0px;' onclick='toggleTab(this, "advanced-search")' />
+     				<div id='advanced-search' class='tab-content'>
+     					<h3 id='advanced-search_title'></h3>
+     					<input type='text' placeholder='Name' id='searchbyname' /><br/>
+     					<select id='subcategoryselect'></select>
+     					<h4 id='advanced-search-babyfriendliness'></h4>
+     					<div id='filtersGround'></div><br/>
+     					<button id='advanced-search-btnSend' onclick='sendAdvancedSearch()'></button>
+     				</div>
      			<div id='autocomplete'></div>
 			</div>
 		</div>
