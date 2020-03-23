@@ -233,5 +233,12 @@ escapeFrom.push(function() {
 });
 document.body.addEventListener("keypress", searchwhentyping);
 document.body.addEventListener("keyup", escapeFromFunc);
-document.getElementById("searchfield").addEventListener("focus", function() {document.body.removeEventListener("keypress", searchwhentyping);});
-document.getElementById("searchfield").addEventListener("focusout", function() {document.body.addEventListener("keypress", searchwhentyping);});
+for (elem of document.getElementsByTagName("input")) {
+	console.log(elem);
+	if (elem.getAttribute("type") == "text") {
+		elem.addEventListener("focus", function() {document.body.removeEventListener("keypress", searchwhentyping);});
+		elem.addEventListener("focusout", function() {document.body.addEventListener("keypress", searchwhentyping);});
+	}
+}
+/*document.getElementById("searchfield").addEventListener("focus", function() {document.body.removeEventListener("keypress", searchwhentyping);});
+document.getElementById("searchfield").addEventListener("focusout", function() {document.body.addEventListener("keypress", searchwhentyping);});*/
