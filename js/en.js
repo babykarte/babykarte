@@ -83,6 +83,7 @@ var refEn = {
 		"PDV_CHANGINGTABLE_FEE_NO": "no fees",
 		"PDV_HIGHCHAIR_YES": "Highchair",
 		"PDV_HIGHCHAIR_*": "Highchairs",
+		"PDV_HIGHCHAIR_NO": "No highcair",
 		"PDV_KIDSAREA_YES": "Kids area",
 		"PDV_KIDSAREA_NO": "No area for kids",
 		"PDV_KIDSAREA_INDOOR_YES": "Inside",

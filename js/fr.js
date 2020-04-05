@@ -83,6 +83,7 @@ var refFr = {
 		"PDV_CHANGINGTABLE_FEE_NO": "Gratuit",
 		"PDV_HIGHCHAIR_YES": "Chaise haute",
 		"PDV_HIGHCHAIR_*": "Chaises hautes",
+		"PDV_HIGHCHAIR_NO": "No highcair (en)",
 		"PDV_KIDSAREA_YES": "Espace enfant",
 		"PDV_KIDSAREA_NO": "No area for kids (en)",
 		"PDV_KIDSAREA_INDOOR_YES": "Intérieur",

@@ -83,6 +83,7 @@ var refDe = {
 		"PDV_CHANGINGTABLE_FEE_NO": "kostenlos",
 		"PDV_HIGHCHAIR_YES": "Babystuhl",
 		"PDV_HIGHCHAIR_*": "Babystühle",
+		"PDV_HIGHCHAIR_NO": "Kein Babystuhl",
 		"PDV_KIDSAREA_YES": "Spielecke",
 		"PDV_KIDSAREA_NO": "Keine Spielecke",
 		"PDV_KIDSAREA_INDOOR_YES": "drinnen",

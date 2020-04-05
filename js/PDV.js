@@ -78,7 +78,7 @@ var PDV_baby = { //PDV = POI Details View
 						"playground:Skate_equipment": {"values": ["yes", undefined]}
 						}
 				},
-				"diaper": {"nameInherit": true, "applyfor": {"health": true, "eat": true, "shop": true, "changingtable": true}, "symbol": "changingtable", "values": ["yes", "no", "room", "bench", undefined, "*"],											// diaper=yes|no|room|bench|undefined
+				"diaper": {"nameInherit": true, "applyfor": {"health": true, "eat": true, "shop": true}, "symbol": "changingtable", "values": ["yes", "no", "room", "bench", undefined, "*"],											// diaper=yes|no|room|bench|undefined
 					"children": 
 						{"female": {"values": ["yes", "no", undefined]},		//		diaper:female=yes|no|undefined
 						"male": {"values": ["yes", "no", undefined]},			//		diaper:male=yes|no|undefined
@@ -87,7 +87,7 @@ var PDV_baby = { //PDV = POI Details View
 						"description": {"values": [undefined, "*"]}*/				//		diaper:description=undefined|* (implicit specification)
 						}
 				},
-				"changing_table": {"nameInherit": true, "applyfor": {"health": true, "eat": true, "shop": true, "changingtable": true}, "triggers": function(data, local) {if (data.changing_table) {if (data.diaper) {delete data.diaper;}} return data;}, "symbol": "changingtable", "values": ["yes", "no", "limited", undefined, "*"],		//changing_table=yes|no|limited|undefined
+				"changing_table": {"nameInherit": true, "applyfor": {"health": true, "eat": true, "shop": true}, "triggers": function(data, local) {if (data.changing_table) {if (data.diaper) {delete data.diaper;}} return data;}, "symbol": "changingtable", "values": ["yes", "no", "limited", undefined, "*"],		//changing_table=yes|no|limited|undefined
 					"children":
 						{"fee": {"values": ["yes", "no", undefined]},	//changing_table:fee=yes|no|undefined
 						"location": {"values": ["wheelchair_toilet", "female_toilet", "male_toilet", "unisex_toilet", "dedicated_room", "room", "sales_area", undefined]}/*,	//changing_table:location=wheelchair_toilet|female_toilet|male_toilet|unisex_toilet|dedicated_room|room|sales_area|undefined
@@ -95,7 +95,7 @@ var PDV_baby = { //PDV = POI Details View
 						}
 				},
 				"highchair": {"nameInherit": true, "applyfor": {"eat": true}, "symbol": "highchair", "values": ["yes", "no", undefined, "*"]},					// highchair=yes|no|undefined|*
-				"stroller": {"nameInherit": true, "applyfor": {"eat": true, "shop": true, "health": true, "changingtable": true}, "symbol": "stroller", "values": ["yes", "limited", "no", undefined],									// stroller=yes|limited|no|undefined
+				"stroller": {"nameInherit": true, "applyfor": {"eat": true, "shop": true, "health": true}, "symbol": "stroller", "values": ["yes", "limited", "no", undefined],									// stroller=yes|limited|no|undefined
 					"children": {"description": {"values" : [undefined, "*"]}}			//		stroller:description=undefined|* (implicit specification) (implicit specification)
 				},
 				"kids_area": {"nameInherit": true, "applyfor": {"eat": true, "shop": true}, "symbol": "ball", "values": ["yes", "no", undefined],																// kids_area=yes|no|undefined
@@ -107,7 +107,7 @@ var PDV_baby = { //PDV = POI Details View
 						"description": {"values" : [undefined, "*"]}			//		kids_area:description=*
 						}
 				},
-				"baby_feeding": {"nameInherit": true, "applyfor": {"eat": true, "shop": true, "changingtable": true}, "symbol": "&#129329;", "values": ["yes", "no", "room", undefined],							// baby_feeding=yes|no|room|undefined
+				"baby_feeding": {"nameInherit": true, "applyfor": {"eat": true, "shop": true}, "symbol": "&#129329;", "values": ["yes", "no", "room", undefined],							// baby_feeding=yes|no|room|undefined
 					"children":
 						{"female" : {"values": ["yes", "no", undefined]},		//		baby_feeding:female=yes|no|undefined
 						"male" : {"values": ["yes", "no", undefined]}			//		baby_feeding:male=yes|no|undefined
@@ -175,6 +175,7 @@ function processContentDatabase_intern(marker, poi, database, tag, values, data,
 			} else {
 				langcode += "_" + values[i].replace("_", "").replace(":", "_")
 			}
+						if (tag == "highchair") {console.log(langcode)}
 			if (database[parent].applyfor[marker.category]) {
 				title = getText("PDV_" + langcode.toUpperCase()) || undefined;
 				if (title != undefined && title.indexOf("%s") > -1 && poi.tags[tag]) {
@@ -183,9 +184,9 @@ function processContentDatabase_intern(marker, poi, database, tag, values, data,
 					title = undefined;
 				}
 			}
+			data.color = colorcode[values[i]] || "";
 			if (title != undefined) {
 				data.title = title;
-				data.color = colorcode[values[i]] || "";
 				break;
 			} else {
 				if (tag.endsWith("description") && poi.tags[tag] != undefined) {

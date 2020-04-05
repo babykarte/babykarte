@@ -11,29 +11,29 @@ sqls = {"normal": "SELECT to_json(tags), osm_id, St_asgeojson(St_centroid(geom))
 		"playground": "SELECT to_json(tags), osm_id, osm_type, St_asgeojson(St_centroid(geom)) ::json AS geometry, equipment FROM osm_poi_playgrounds WHERE %s",
 		"singlenode": "SELECT to_json(tags), osm_id, ST_asgeojson(ST_centroid(geom)) ::json AS geometry FROM osm_poi_point WHERE osm_id=%id",
 		"singleway": "SELECT to_json(tags), osm_id, ST_asgeojson(ST_centroid(geom)) ::json AS geometry FROM osm_poi_poly WHERE osm_id=%id",
-		"advancedSearch": "SELECT to_json(tags), osm_id, St_asgeojson(St_centroid(geom)) ::json AS geometry FROM osm_poi_all WHERE %s"}
-queryLookUp = { "bbox": ("geom && ST_makeEnvelope(%lat1, %lon1, %lat2, %lon2)", "normal", ""),
-				"paediatrics": ("tags->'healthcare:speciality' LIKE 'paediatrics'", "normal", "health"),
-				"midwife": ("tags->'healthcare'='midwife'", "normal", "health"),
-				"birthing_center": ("tags->'healthcare'='birthing_center'", "normal", "health"),
-				"playground": ("tags->'leisure'='playground' AND (CASE WHEN tags->'min_age' IS NOT NULL THEN tags->'min_age'>='3' ELSE TRUE END) AND NOT (CASE WHEN tags->'access' IS NOT NULL THEN tags->'access'='private' ELSE FALSE END)", "playground", "activity"),
-				"play-equipment": ("tags->'playground' IS NOT NULL AND (CASE WHEN tags->'min_age' IS NOT NULL THEN tags->'min_age'>='3' ELSE TRUE END)", "normal", "activity"),
-				"park": ("tags->'leisure'='park' AND tags->'name' IS NOT NULL AND (CASE WHEN tags->'min_age' IS NOT NULL THEN tags->'min_age'>='3' ELSE TRUE END) AND NOT (CASE WHEN tags->'access' IS NOT NULL THEN tags->'access'='private' ELSE FALSE END)", "normal", "rest"),
-				"shop-babygoods": ("tags->'shop'='baby_goods'", "normal", "shop"),
-				"shop-toys": ("tags->'shop'='toys'", "normal", "shop"),
-				"shop-clothes": ("tags->'shop'='clothes' and (tags->'clothes' LIKE 'babies' or tags->'clothes' LIKE 'children')", "normal", "shop"),
-				"childcare": ("tags->'amenity'='kindergarten' OR tags->'amenity'='childcare'", "normal", "childcare"),
-				"zoo": ("tags->'tourism'='zoo'", "normal", "activity"),
-				"changingtable": ("(tags->'diaper' IS NOT NULL AND tags->'diaper'!='no') OR (tags->'changing_table' IS NOT NULL AND tags->'changing_table'!='no')", "normal", "changingtable"),
-				"changingtable-men": ("tags->'diaper:male'='yes' OR tags->'diaper:unisex'='yes' OR tags->'diaper'='room' OR tags->'diaper:wheelchair'='yes' OR tags->'changing_table:location' NOT LIKE 'female_toilet'", "normal", "changingtable"),
-				"highcair": ("tags->'highcair'='yes' OR tags->'highchair'>'0'", "normal", ""),
-				"stroller": ("tags->'stroller'='yes' OR tags->'stroller'='limited'", "normal", ""),
-				"kidsarea": ("tags->'kids_area'='yes'", "normal", ""),
-				"cafe": ("tags->'amenity'='cafe' AND (CASE WHEN tags->'min_age' IS NOT NULL THEN tags->'min_age'>='3' ELSE TRUE END) OR tags ? 'cafe' AND (CASE WHEN tags->'min_age' IS NOT NULL THEN tags->'min_age'>='3' ELSE TRUE END)", "normal", "eat"),
-				"restaurant": ("tags->'amenity'='restaurant' AND (CASE WHEN tags->'min_age' IS NOT NULL THEN tags->'min_age'>='3' ELSE TRUE END)", "normal", "eat"),
-				"fast_food": ("tags->'amenity'='fast_food'", "normal", "eat"),
-				"directname": ("tags->'name' IS LIKE '%s'"),
-				"singlepoi": ("osm_id=%s")
+		"advancedSearch": "SELECT to_json(tags), osm_id, St_asgeojson(St_centroid(geom)) ::json AS geometry FROM osm_poi_all WHERE "}
+queryLookUp = { "bbox": ("(geom && ST_makeEnvelope(%lat1, %lon1, %lat2, %lon2))", "normal", ""),
+				"paediatrics": ("(tags->'healthcare:speciality' LIKE 'paediatrics')", "normal", "health"),
+				"midwife": ("(tags->'healthcare'='midwife')", "normal", "health"),
+				"birthing_center": ("(tags->'healthcare'='birthing_center')", "normal", "health"),
+				"playground": ("(tags->'leisure'='playground' AND (CASE WHEN tags->'min_age' IS NOT NULL THEN tags->'min_age'>='3' ELSE TRUE END) AND NOT (CASE WHEN tags->'access' IS NOT NULL THEN tags->'access'='private' ELSE FALSE END))", "playground", "activity"),
+				"play-equipment": ("(tags->'playground' IS NOT NULL AND (CASE WHEN tags->'min_age' IS NOT NULL THEN tags->'min_age'>='3' ELSE TRUE END))", "normal", "activity"),
+				"park": ("(tags->'leisure'='park' AND tags->'name' IS NOT NULL AND (CASE WHEN tags->'min_age' IS NOT NULL THEN tags->'min_age'>='3' ELSE TRUE END) AND NOT (CASE WHEN tags->'access' IS NOT NULL THEN tags->'access'='private' ELSE FALSE END))", "normal", "rest"),
+				"shop-babygoods": ("(tags->'shop'='baby_goods')", "normal", "shop"),
+				"shop-toys": ("(tags->'shop'='toys')", "normal", "shop"),
+				"shop-clothes": ("(tags->'shop'='clothes' and (tags->'clothes' LIKE 'babies' or tags->'clothes' LIKE 'children'))", "normal", "shop"),
+				"childcare": ("(tags->'amenity'='kindergarten' OR tags->'amenity'='childcare')", "normal", "childcare"),
+				"zoo": ("(tags->'tourism'='zoo')", "normal", "activity"),
+				"changingtable": ("((tags->'diaper' IS NOT NULL AND tags->'diaper'!='no') OR (tags->'changing_table' IS NOT NULL AND tags->'changing_table'!='no'))", "normal", "changingtable"),
+				"changingtable-men": ("(tags->'diaper:male'='yes' OR tags->'diaper:unisex'='yes' OR tags->'diaper'='room' OR tags->'diaper:wheelchair'='yes' OR tags->'changing_table:location' NOT LIKE 'female_toilet')", "normal", "changingtable"),
+				"highcair": ("(tags->'highcair'='yes' OR tags->'highchair'>'0')", "normal", ""),
+				"stroller": ("(tags->'stroller'='yes' OR tags->'stroller'='limited')", "normal", ""),
+				"kidsarea": ("(tags->'kids_area'='yes')", "normal", ""),
+				"cafe": ("(tags->'amenity'='cafe' AND (CASE WHEN tags->'min_age' IS NOT NULL THEN tags->'min_age'>='3' ELSE TRUE END) OR tags ? 'cafe' AND (CASE WHEN tags->'min_age' IS NOT NULL THEN tags->'min_age'>='3' ELSE TRUE END))", "normal", "eat"),
+				"restaurant": ("(tags->'amenity'='restaurant' AND (CASE WHEN tags->'min_age' IS NOT NULL THEN tags->'min_age'>='3' ELSE TRUE END))", "normal", "eat"),
+				"fast_food": ("(tags->'amenity'='fast_food')", "normal", "eat"),
+				"directname": ("(tags->'name' LIKE '%s')"),
+				"singlepoi": ("(osm_id=%s)")
 			}
 
 def errorCreation(name, text):
@@ -80,10 +80,14 @@ def createBboxQuery(bbox):
 	bbox[2] = str(float(bbox[2]))
 	bbox[3] = str(float(bbox[3]))
 	return queryLookUp["bbox"][0].replace("%lon1", bbox[0]).replace("%lat1", bbox[1]).replace("%lon2", bbox[2]).replace("%lat2", bbox[3])
+def preventHack(inp):
+	for i in ["--", "/*", "*/", ";", "//"]:
+		inp = inp.replace(i, "")
+	return inp
 def createFltrQuery(fltrs):
 	output = []
 	for fltr in fltrs.split(","):
-		output.append(queryLookUp[fltr])
+		output.append(queryLookUp[fltr][0])
 	return " AND ".join(output)
 def anotherLookup(entry):
 	if entry.startswith("id="):
@@ -100,10 +104,13 @@ def anotherLookup(entry):
 	elif entry.find(" | ") > -1:
 		sql = sqls["advancedSearch"]
 		args = []
-		name, subcategory, fltr, bbox = entry.find(" | ")
+		name, subcategory, fltr, bbox = entry.split(" | ")
 		if name == "":
-			args.append(createBboxQuery(bbox))
-		args.append(queryLookUp[subcategory])
+			args.append(createBboxQuery(bbox.split(",")))
+		else:
+			args.append(queryLookUp["directname"][0].replace("%s", preventHack(name)))
+		if not subcategory == "all":
+			args.append(queryLookUp[subcategory][0])
 		if not fltr == "":
 			args.append(createFltrQuery(fltr))
 		sql = sql + " AND ".join(args)

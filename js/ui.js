@@ -130,6 +130,10 @@ function sendAdvancedSearch() {
 	}
 	output += " | " + fltrList.join(",") + " | " + map.getBounds().getSouth() + "," + map.getBounds().getWest() + "," + map.getBounds().getNorth() + "," +  map.getBounds().getEast();
 	loadPOIS("", output);
+	var crack = Object()
+	crack.key = "Escape";
+	crack.preventDefault = function() {return 1;}
+	escapeFromFunc(crack);
 }
 function geocode_intern() { // Function which powers the search suggestion list
 	var searchword = $("#searchfield").val();
@@ -234,7 +238,6 @@ escapeFrom.push(function() {
 document.body.addEventListener("keypress", searchwhentyping);
 document.body.addEventListener("keyup", escapeFromFunc);
 for (elem of document.getElementsByTagName("input")) {
-	console.log(elem);
 	if (elem.getAttribute("type") == "text") {
 		elem.addEventListener("focus", function() {document.body.removeEventListener("keypress", searchwhentyping);});
 		elem.addEventListener("focusout", function() {document.body.addEventListener("keypress", searchwhentyping);});
