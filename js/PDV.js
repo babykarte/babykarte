@@ -7,7 +7,8 @@ var popupforcategory = {
 	"eat": "POIpopup",
 	"activity": "POIpopup",
 	"playground-equipment": "playgroundPopup",
-	"shop": "POIpopup"
+	"shop": "POIpopup",
+	"general": "POIpopup"
 }
 var PEP_data = {// PEP = Playground Equipment Popup
 				"wheelchair": {"nameInherit": true, "applyfor": {"activity": true}, "values": ["yes", "limited", "no", "designated", undefined], "children": {}},

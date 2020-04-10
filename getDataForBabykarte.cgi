@@ -83,14 +83,14 @@ def convertToJSON(query, mode, name, subcategory, source):
 				data[elem_count]["type"] = "Way"
 			if int(data[elem_count]["osm_id"]) >= 1: ##True when object is a node
 				data[elem_count]["type"] = "Node"
-		for cat in tocategory:
-			key, value = cat.split("=")
-			if key in data[elem_count]["tags"] and data[elem_count]["tags"][key] == value:
-				data[elem_count]["category"] = tocategory[cat] #Delete this line when the new version of Babykarte gets released.
+		data[elem_count]["category"] = "general"
 		data[elem_count]["subcategory"] = subcategory
 		data[elem_count]["filter"] = name
 		data[elem_count]["osm_id"] = int(str(data[elem_count]["osm_id"]).replace("-", ""))
-		#data[elem_count]["osm_id"] = int(data[elem_count]["osm_id"])
+		for cat in tocategory:
+			key, value = cat.split("=")
+			if key in data[elem_count]["tags"] and data[elem_count]["tags"][key] == value:
+				data[elem_count]["category"] = tocategory[cat]
 		elem_count += 1
 	if len(data) == 0:
 		data[elem_count] = {}
