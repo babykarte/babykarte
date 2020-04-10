@@ -221,7 +221,7 @@ section {
 	background-color: #ffe6f7;
 }
 #searchfield {
-	width:500px;
+	width:600px;
 }
 #filtersGround label {
 	display:block;
@@ -265,7 +265,6 @@ section {
 #advanced-search {
 	font-size:16px;
 	padding:5px;
-	margin:5px;
 	border:1px solid black;
 }
 /*------------------------- ON MAP MODALS -----------------*/
