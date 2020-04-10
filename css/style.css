@@ -156,7 +156,7 @@ section {
 }
 .lang-select {
 	font-family:"Palatino Linotype", "Book Antiqua", Palatino, serif;
-	top:45px;
+	top:100px;
 }
 .searchbar {
 	font-family:"Palatino Linotype", "Book Antiqua", Palatino, serif;
@@ -289,12 +289,12 @@ section {
 	z-index:401;
 	position:absolute;
 	width:100%;
-	height:100%;advanced-search
+	height:100%;
 	padding-top:20%;
 	font-size:26px;
 	text-align:center;
 	color:white;
-	display:none;
+	display:block;
 	background-color:rgba(0,0,0,0.7);
 }
 #infoPopup {

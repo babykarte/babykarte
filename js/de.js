@@ -36,7 +36,7 @@ var refDe = {
 		"LNK_OSM_REPORT": "Falschinformationen melden",
 		"LNK_OSM_VIEW": "In OpenStreetMap ansehen",
 		"LNK_OPEN_WITH": "Mit App öffnen",
-		"FLTR_NOTHINGSELECTED": "Bitte im Menü auf das <img class='bar-icon' src='images/checkmark.svg' /> Symbol klicken um Filter auszuwählen oder <img class='bar-icon' src='images/info.svg.png' /> für eine Benutzungshilfe.",
+		"MAPEMPTY": "Suche <img class='bar-icon' src='images/search.svg' /> wonach Dein Herz begehrt oder ruf den Teufel <img class='bar-icon' src='images/info.svg.png' /> für eine Bedienungsanleitung an.",
 		"FLTR_SELECTALL": "Alle (de)aktivieren",
 		"SEARCHRESULT_FLTR": "Alle in der Map darstellen",
 		"PDV_UNNAME": "Kein Name",
@@ -247,7 +247,7 @@ refDe["site-map"].categories = { //Needed for displaying the category the POI be
 	"eat": "Essen & Trinken",
 	"playground-equipment": "Spielplatzausrüstung"
 };
-refEn["site-map"].filters {
+refEn["site-map"].filters =  {
 	"changingtable": "Changing table(s)",
 	"highchair": "Highchair(s)",
 	"stroller": "Stroller friendly",

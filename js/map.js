@@ -115,6 +115,7 @@ function errorHandler(poi) {
 		showGlobalPopup(getText().ERROR);
 	}
 	spinner(false);
+	document.getElementById("map-overlay-notify").style.display = "block";
 }
 function createPOIobject(poi, mode) {
 	var marker;
@@ -135,11 +136,7 @@ function createPOIobject(poi, mode) {
 	if (mode == "singlepoi") {
 		getRightPopup(marker, marker.usePopup);
 	}
-	if (mapobjects.length > 0) {
 		document.getElementById("map-overlay-notify").style.display = "none";
-	} else {
-		document.getElementById("map-overlay-notify").style.display = "block";
-	}
 }
 function loadPOIS(e, post) {
 	spinner(true);

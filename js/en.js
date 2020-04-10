@@ -36,7 +36,7 @@ var refEn = {
 		"LNK_OSM_REPORT": "Report wrong information",
 		"LNK_OSM_VIEW": "View POI in OpenStreetMap",
 		"LNK_OPEN_WITH": "Open with an app",
-		"FLTR_NOTHINGSELECTED": "Please touch the <img class='bar-icon' src='images/checkmark.svg' /> icon in the menu to select filters or the <img class='bar-icon' src='images/info.svg.png' /> one to get help using Babykarte.",
+		"MAPEMPTY": "Please utilize <img class='bar-icon' src='images/search.svg' /> to search for what you seek or <img class='bar-icon' src='images/info.svg.png' /> to get help using Babykarte.",
 		"FLTR_SELECTALL": "(De)select all",
 		"SEARCHRESULT_FLTR": "Show them all in the current map view",
 		"PDV_UNNAME": "No Name",

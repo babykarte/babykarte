@@ -65,7 +65,7 @@ function setLang(e, lang) {
 		11: ((document.getElementById("linkToGitHub") != null) ? document.getElementById("linkToGitHub").innerHTML = getText().LNK_GITHUB : ""),
 		12: ((document.getElementById("linkToOSMWiki") != null) ? document.getElementById("linkToOSMWiki").innerHTML = getText().LNK_OSMWIKI : ""),
 		13: ((document.getElementById("languageOfUser") != null) ? document.getElementById("languageOfUser").innerHTML = languageOfUser : ""),
-		14: ((document.getElementById("map-overlay-notify") != null) ? document.getElementById("map-overlay-notify").innerHTML = getText().FLTR_NOTHINGSELECTED : ""),
+		14: ((document.getElementById("map-overlay-notify") != null) ? document.getElementById("map-overlay-notify").innerHTML = getText().MAPEMPTY : ""),
 		15: ((document.getElementById("about") != null) ? document.getElementById("about").innerHTML = getText().ABOUT : ""),
 		16: ((document.getElementById("usage") != null) ? document.getElementById("usage").innerHTML = getText().USAGE : ""),
 		17: ((document.getElementById("osm-attribution") != null) ? document.getElementById("osm-attribution").innerHTML = getText().OSM_ATTRIBUTION : ""),
