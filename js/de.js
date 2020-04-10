@@ -247,7 +247,7 @@ refDe["site-map"].categories = { //Needed for displaying the category the POI be
 	"eat": "Essen & Trinken",
 	"playground-equipment": "Spielplatzausrüstung"
 };
-refEn["site-map"].filters =  {
+refDe["site-map"].filters =  {
 	"changingtable": "Changing table(s)",
 	"highchair": "Highchair(s)",
 	"stroller": "Stroller friendly",
