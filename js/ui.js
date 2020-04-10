@@ -125,15 +125,15 @@ function sendAdvancedSearch() {
 	output += " | " + subcategory;
 	for (var elem of filtersGround) {
 		if (elem.checked) {
-			fltrList.push(elem.getAttribute("name"));
+			fltrList.push(elem.getAttribute("value"));
 		}
 	}
 	output += " | " + fltrList.join(",") + " | " + map.getBounds().getSouth() + "," + map.getBounds().getWest() + "," + map.getBounds().getNorth() + "," +  map.getBounds().getEast();
-	loadPOIS("", output);
 	var crack = Object()
 	crack.key = "Escape";
 	crack.preventDefault = function() {return 1;}
 	escapeFromFunc(crack);
+	loadPOIS("", output);
 }
 function geocode_intern() { // Function which powers the search suggestion list
 	var searchword = $("#searchfield").val();

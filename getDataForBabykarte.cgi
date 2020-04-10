@@ -108,7 +108,7 @@ def anotherLookup(entry):
 		if name == "":
 			args.append(createBboxQuery(bbox.split(",")))
 		else:
-			args.append(queryLookUp["directname"][0].replace("%s", preventHack(name)))
+			args.append(queryLookUp["directname"].replace("%s", preventHack(name)))
 		if not subcategory == "all":
 			args.append(queryLookUp[subcategory][0])
 		if not fltr == "":
