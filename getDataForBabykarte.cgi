@@ -7,6 +7,25 @@ verbose = False
 data = {}
 elem_count = 0
 dbconnstr="dbname=poi"
+tocategory = {"healthcare=doctor": "health",
+	"healthcare=hospital": "health",
+	"healthcare=midwife": "health",
+	"healthcare=birthing_center": "health",
+	"amenity=toilets": "childcare",
+	"amenity=cafe": "eat",
+	"amenity=restaurant": "eat",
+	"amenity=fast_food": "eat",
+	"amenity=kindergarten": "eat",
+	"amenity=childcare": "childcare",
+	"leisure=playground": "activity",
+	"playground=*": "playground-equipment",
+	"leisure=park": "activity",
+	"tourism=zoo": "activity",
+	"shop=baby_goods": "shop",
+	"shop=toys": "shop",
+	"shop=clothes": "shop",
+	"shop=chemist": "shop",
+	"shop=supermarket": "shop"}
 sqls = {"normal": "SELECT to_json(tags), osm_id, St_asgeojson(St_centroid(geom)) ::json AS geometry FROM osm_poi_all WHERE %s",
 		"playground": "SELECT to_json(tags), osm_id, osm_type, St_asgeojson(St_centroid(geom)) ::json AS geometry, equipment FROM osm_poi_playgrounds WHERE %s",
 		"singlenode": "SELECT to_json(tags), osm_id, ST_asgeojson(ST_centroid(geom)) ::json AS geometry FROM osm_poi_point WHERE osm_id=%id",
@@ -64,7 +83,10 @@ def convertToJSON(query, mode, name, subcategory, source):
 				data[elem_count]["type"] = "Way"
 			if int(data[elem_count]["osm_id"]) >= 1: ##True when object is a node
 				data[elem_count]["type"] = "Node"
-		data[elem_count]["category"] = subcategory #Delete this line when the new version of Babykarte gets released.
+		for cat in tocategory:
+			key, value = cat.split("=")
+			if key in data[elem_count]["tags"] and data[elem_count]["tags"][key] == value:
+				data[elem_count]["category"] = tocategory[cat] #Delete this line when the new version of Babykarte gets released.
 		data[elem_count]["subcategory"] = subcategory
 		data[elem_count]["filter"] = name
 		data[elem_count]["osm_id"] = int(str(data[elem_count]["osm_id"]).replace("-", ""))

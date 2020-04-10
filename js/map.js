@@ -6,7 +6,7 @@ var saved_lat = 54.32308131652028;
 var saved_lon = 10.139915941399524;
 var freezeMapMoveEvent = false;
 var zoomLevel = "";
-var url = "https://babykarte.openstreetmap.de/getDataForBabykarte.cgi";
+var url = "https://babykarte.openstreetmap.de/devel/getDataForBabykarte.cgi";
 var ratingRules = {"red": {"default": 18, "color": "rating-red"}, "green": {"default": 12, "color": "rating-green"}};
 var ratingData = {"diaper": {"multiplicator": 4,	// diaper=* 4
 					"values" :

@@ -1,26 +1,13 @@
 var colorcode = {"yes": "color-green", "no": "color-red", "room": "color-green", "bench": "color-green", undefined: "color-grey", "limited": "color-yellow", "playground": "color-green", "*": "color-green"};
 // 'undefined' is equal to 'tag does not exist'. In JS, 'undefined' is also a value
 // '*' is a placeholder for notes from mappers and any other value (even 'undefined')
-var tocategory = {
-	"healthcare=doctor": ["health", "POIpopup"],
-	"healthcare=hospital": ["health", "POIpopup"],
-	"healthcare=midwife": ["health", "POIpopup"],
-	"healthcare=birthing_center": ["health", "POIpopup"],
-	"amenity=toilets": ["childcare", "POIpopup"],
-	"amenity=cafe": ["eat", "POIpopup"],
-	"amenity=restaurant": ["eat", "POIpopup"],
-	"amenity=fast_food": ["eat", "POIpopup"],
-	"amenity=kindergarten": ["eat", "POIpopup"],
-	"amenity=childcare": ["childcare", "POIpopup"],
-	"leisure=playground": ["activity", "POIpopup"],
-	"playground=*": ["playground-equipment", "playgroundPopup"],
-	"leisure=park": ["activity", "POIpopup"],
-	"tourism=zoo": ["activity", "POIpopup"],
-	"shop=baby_goods": ["shop", "POIpopup"],
-	"shop=toys": ["shop", "POIpopup"],
-	"shop=clothes": ["shop", "POIpopup"],
-	"shop=chemist": ["shop", "POIpopup"],
-	"shop=supermarket": ["shop", "POIpopup"]
+var popupforcategory = {
+	"health": "POIpopup",
+	"childcare": "POIpopup",
+	"eat": "POIpopup",
+	"activity": "POIpopup",
+	"playground-equipment": "playgroundPopup",
+	"shop": "POIpopup"
 }
 var PEP_data = {// PEP = Playground Equipment Popup
 				"wheelchair": {"nameInherit": true, "applyfor": {"activity": true}, "values": ["yes", "limited", "no", "designated", undefined], "children": {}},
@@ -175,7 +162,6 @@ function processContentDatabase_intern(marker, poi, database, tag, values, data,
 			} else {
 				langcode += "_" + values[i].replace("_", "").replace(":", "_")
 			}
-						if (tag == "highchair") {console.log(langcode)}
 			if (database[parent].applyfor[marker.category]) {
 				title = getText("PDV_" + langcode.toUpperCase()) || undefined;
 				if (title != undefined && title.indexOf("%s") > -1 && poi.tags[tag]) {

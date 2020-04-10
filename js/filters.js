@@ -41,14 +41,6 @@ function activateSubcategory(i) {
 function initMarkerObject(poi) {
 	marker = new Object();
 	marker.category = poi.category;
-	for (var i in tocategory) {
-		i = i.split("=");
-		if (poi.tags[i[0]] == i[1] || poi.tags[i[0]] && i[1] == "*") {
-			i = i.join("=");
-			marker.usePopup = tocategory[i][1];
-			marker.category = tocategory[i][0];
-			break;
-		}
-	}
+	marker.usePopup = popupforcategory[marker.category];
 	return marker
 }
