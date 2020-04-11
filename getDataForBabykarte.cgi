@@ -26,6 +26,33 @@ tocategory = {"healthcare=doctor": "health",
 	"shop=clothes": "shop",
 	"shop=chemist": "shop",
 	"shop=supermarket": "shop"}
+ratingData = {"diaper": {"multiplicator": 4,	# diaper=* 4
+				"values" :
+					{"yes": 2,				#     yes 2
+					"no": -2}				#     no  -2
+				},
+			"changing_table": {"multiplicator": 4,	# changing_table=* 4
+				"values" :
+					{"yes": 2,				#     yes 2
+					"no": -2}				#     no  -2
+				},
+			"highchair": {"multiplicator": 4,	# highchair=* 4  (POIs where you can get meal or something simliar)
+				"values" :
+					{"yes": 2,				#     yes 2
+					"no": -2}				#     no  -2
+				},
+			"kids_area": {"multiplicator": 2,	# kids_area=* 2
+				"values" :
+					{"yes": 2,				#     yes 2
+					"no": -2}				#     no  -2
+				},
+			"stroller": {"multiplicator": 1,	# stroller=* 1
+				"values" :
+					{"yes": 2,				#     yes 3
+					"no": -2,				#     no  -2
+					"limited": 1}			#     limited 1 (green)
+				}
+			};
 sqls = {"normal": "SELECT to_json(tags), osm_id, St_asgeojson(St_centroid(geom)) ::json AS geometry FROM osm_poi_all WHERE %s",
 		"playground": "SELECT to_json(tags), osm_id, osm_type, St_asgeojson(St_centroid(geom)) ::json AS geometry, equipment FROM osm_poi_playgrounds WHERE %s",
 		"singlenode": "SELECT to_json(tags), osm_id, ST_asgeojson(ST_centroid(geom)) ::json AS geometry FROM osm_poi_point WHERE osm_id=%id",
@@ -65,6 +92,23 @@ def errorLog(message):
 	global debug
 	if not debug == "":
 		print(message, file=sys.stderr)
+def rating(tags, category):
+	if category == "eat":
+		countabletags = 0
+		points = 0
+		for key in ratingData:
+			for value in ratingData[key]["values"]:
+				if key in tags and tags[key] == value:
+					countabletags += 1
+					points += ratingData[key]["multiplicator"] * ratingData[key]["values"][value]
+		if countabletags >= 2:
+			if 0 >= points:
+				return "red"
+			elif 8 >= points:
+				return "yellow"
+			elif points >= 9:
+				return "green"
+	return "norating"
 def convertToJSON(query, mode, name, subcategory, source):
 	global data, elem_count
 	for row in query:
@@ -91,6 +135,7 @@ def convertToJSON(query, mode, name, subcategory, source):
 			key, value = cat.split("=")
 			if key in data[elem_count]["tags"] and data[elem_count]["tags"][key] == value:
 				data[elem_count]["category"] = tocategory[cat]
+		data[elem_count]["rating"] = rating(data[elem_count]["tags"], data[elem_count]["category"])
 		elem_count += 1
 	if len(data) == 0:
 		data[elem_count] = {}

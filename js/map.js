@@ -7,34 +7,7 @@ var saved_lon = 10.139915941399524;
 var freezeMapMoveEvent = false;
 var zoomLevel = "";
 var url = "https://babykarte.openstreetmap.de/devel/getDataForBabykarte.cgi";
-var ratingRules = {"red": {"default": 18, "color": "rating-red"}, "green": {"default": 12, "color": "rating-green"}};
-var ratingData = {"diaper": {"multiplicator": 4,	// diaper=* 4
-					"values" :
-						{"yes": 2,				//     yes 2
-						"no": 2}				//     no  2
-					},
-				"changing_table": {"multiplicator": 4,	// changing_table=* 4
-					"values" :
-						{"yes": 2,				//     yes 2
-						"no": 2}				//     no  2
-					},
-				"highchair": {"multiplicator": 4,	// highchair=* 4  (POIs where you can get meal or something simliar)
-					"values" :
-						{"yes": 2,				//     yes 2
-						"no": 2}				//     no  2
-					},
-				"kids_area": {"multiplicator": 2,	// kids_area=* 2
-					"values" :
-						{"yes": 2,				//     yes 2
-						"no": 2}				//     no  2
-					},
-				"stroller": {"multiplicator": 1,	// stroller=* 1
-					"values" :
-						{"yes": 2,				//     yes 3
-						"no": 2,				//     no  3
-						"limited": 1}			//     limited 1 (green)
-					}
-			};
+var ratingColour = {"red": "rating-red", "green": "rating-green", "yellow": "rating-yellow"};
 function locationFound(e) {
 	showGlobalPopup(getText().LOCATING_SUCCESS);
 	spinner(false);
@@ -55,43 +28,11 @@ function onMapMove() {
 	}
 	freezeMapMoveEvent = false;
 }
-function ratePOI(marker, poi) {
-	var i;
-	if (!poi.rating) {poi.rating = {};poi.rating.green = 0;poi.rating.red = 0;}
-	if (!marker.category.startsWith("eat")) {return poi;}
-	for (i in ratingData) {
-		var value = poi.tags[i];
-		if (value == undefined) {
-			poi.rating.green += 0;
-			poi.rating.red += 0;
-		} else {
-			var points = ratingData[i].multiplicator * ratingData[i].values[value] || 0;
-			poi.rating.green += ((value == "yes" || value == "limited") ? points : 0);
-			poi.rating.red += ((value == "no" || value == "limited") ? points : 0);
-		}
-	}
-	return poi;
-}
 function determineRateColor(poi) {
-	var exception = {"yellow": {"default": 6, "color": "rating-yellow"}};
-	var i, u;
-	var colours = [];
-	for (i in ratingRules) {
-		if (poi.rating[i]) {
-			if (poi.rating[i] >= ratingRules[i].default) {
-				colours.push(ratingRules[i]);
-			} else if (poi.rating[i] >= exception.yellow.default) {
-				colours.push(exception.yellow);
-			}
-		}
+	if (poi.rating != "norating") {
+		return ratingColour[poi.rating]
 	}
-	if (colours.length == 2) {
-		return exception.yellow.color;
-	} else if (colours.length == 0) {
-		return false;
-	} else {
-		return colours[0].color;
-	}
+	return ""
 }
 function addMarkerIcon(poi, marker) {
 	var iconObject = JSON.parse(JSON.stringify(markerStyles["dot"]));
@@ -125,8 +66,6 @@ function createPOIobject(poi, mode) {
 	poi.lon = poi.geometry.coordinates[0];
 	//creates a new Marker() Object, put data in it, determine the right category and do the rating (add yellow, green or a red dot on the icon).
 	marker = initMarkerObject(poi);
-			
-	poi = ratePOI(marker, poi);
 	marker = addMarkerIcon(poi, marker);
 	marker.data = poi;
 	marker.data.classId = String(poi.type)[0].toUpperCase() + String(poi.osm_id);
