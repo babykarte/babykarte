@@ -122,9 +122,9 @@ content = """<!DOCTYPE html>
 </html>
 """
 def triggers(LRF):
-	d = time.asctime(time.localtime()).split(" ");
+	d = time.asctime(time.localtime()).split(" ")
 	time = d[3].split(":");
-	if time[1] > 15):
+	if time[1] > 15:
 		return content.format({"TRIG_LASTUPDATE": time[0] + ":15"})
 	else:
 		return content.format({"TRIG_LASTUPDATE": str(int(time[0])-1) + ":15"})	
