@@ -48,7 +48,6 @@ content = """<!DOCTYPE html>
         			<a id='lnk_about' class='tab-active' onclick='toggleTab(this, "about")'>{LNK_ABOUT}</a>,
         			<a id='lnk_explanation-menubuttons' onclick='toggleTab(this, "explanation-menubuttons")'>{LNK_EXPLANATIONMENUBUTTONS}</a>,
         			<a id='lnk_explanation-markerdots' onclick='toggleTab(this, "explanation-markerdots")'>{LNK_EXPLANATIONMARKERDOTS}</a>,
-        			<a id='lnk_usage' onclick='toggleTab(this, "usage")'>{LNK_EXPLANATIONUSAGE}</a>
         		</div>
         		<a id='lnk_explanation-pdvicons' onclick='toggleTab(this, "explanation-pdvicons")'>{LNK_EXPLANATIONPDVICONS}</a>
         		<div id='about' class='tab-content tab-content-active'>{ABOUT}</div>
@@ -66,6 +65,7 @@ content = """<!DOCTYPE html>
 				</div>
 				<div id='usage' class='tab-content'>{USAGE}</div>
         		<div id='explanation-pdvicons' class='tab-content'>
+        			<p>{USAGE}</ü>
         			<p>{PDV_ICONS_EXPLANATION_GENERAL}</p>
         			<img class='small-icon' src='images/changingtable.svg' /> {PDV_ICON_CHANGINGTABLE}<br/>
         			<img class='small-icon' src='images/highchair.svg' /> {PDV_ICON_HIGHCHAIR}<br/>
