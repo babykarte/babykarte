@@ -42,7 +42,7 @@ content = """<!DOCTYPE html>
   			<div class='dropdown-menu about' id='aboutus'>
   				<a href='https://github.com/babykarte/babykarte' target='_blank' id='linkToGitHub'>{LNK_GITHUB}</a>
         		<a href='https://wiki.openstreetmap.org/wiki/Baby-Karte' target='_blank' id='linkToOSMWiki'>{LNK_OSMWIKI}</a>
-        		<a href='impress' id='lnk-impress' target='_blank'>{LNK_IMPRESS}</a>
+        		<a href='impress?lang={languageOfUser}' id='lnk-impress' target='_blank'>{LNK_IMPRESS}</a>
         		<a href='privacypolicy/{languageOfUser}.html' id='linkToPP' target='_blank;'>{LNK_PP_SITE}</a>
         		<div style='padding-top:10px;box-sizing:border-box;'>
         			<a id='lnk_about' class='tab-active' onclick='toggleTab(this, "about")'>{LNK_ABOUT}</a>,
