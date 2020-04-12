@@ -48,8 +48,8 @@ content = """<!DOCTYPE html>
         			<a id='lnk_about' class='tab-active' onclick='toggleTab(this, "about")'>{LNK_ABOUT}</a>,
         			<a id='lnk_explanation-menubuttons' onclick='toggleTab(this, "explanation-menubuttons")'>{LNK_EXPLANATIONMENUBUTTONS}</a>,
         			<a id='lnk_explanation-markerdots' onclick='toggleTab(this, "explanation-markerdots")'>{LNK_EXPLANATIONMARKERDOTS}</a>,
+        			<a id='lnk_explanation-pdvicons' onclick='toggleTab(this, "explanation-pdvicons")'>{LNK_EXPLANATIONPDVICONS}</a>
         		</div>
-        		<a id='lnk_explanation-pdvicons' onclick='toggleTab(this, "explanation-pdvicons")'>{LNK_EXPLANATIONPDVICONS}</a>
         		<div id='about' class='tab-content tab-content-active'>{ABOUT}</div>
 				<div id='explanation-menubuttons' class='tab-content'>
 					<img class='small-icon' src='images/search.svg' />{btn_search}<br/>
