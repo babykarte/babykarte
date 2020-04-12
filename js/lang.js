@@ -1,35 +1,10 @@
-var languageOfUser;
-var lang_default = "de";
-/*Meaning of the abreviations used in 'langRef' JSON.
-PDV - POI Details view (The view displayed to the user when the user clicks on a POI marker).
-BTN - A 'button' element.
-LNK - A 'a' (hyperlink) element.
-TB - Textbox (or input type 'text') element.
-OH - Opening Hours
-MI - More Information
-*/
+var lang_default = "en";
 var langRef = {};
-//determine language of user
-languageOfUser = navigator.language.toLowerCase();
-if (languageOfUser.indexOf("-") > -1) {
-	languageOfUser = languageOfUser.split("-");
-	languageOfUser = languageOfUser[0];
-}
 function getText(address=undefined) {
 	if (!address) {
 		return langRef[document.body.id][languageOfUser]
 	}
 	return langRef[document.body.id][languageOfUser][address]
-}
-function getLangFromHash() {
-	var hash = location.hash;
-	if (hash != "") {
-		hash = hash.replace("#", "").split("&");
-		if (String(Number(hash[0])) == "NaN") {
-			languageOfUser = hash[0];
-			location.hash = location.hash.replace(hash[0] + "&", "").replace(hash[0], "");
-		}
-	}
 }
 function registerLang(lang, json) {
 	langRef[document.body.id][lang] = json[document.body.id];
@@ -51,35 +26,6 @@ function setLang(e, lang) {
 		languageOfUser = lang;
 	}
 	if (languageOfUser in langRef[document.body.id]) {
-		var data = {
-		1: ((document.getElementById("linkToPP") != null) ? document.getElementById("linkToPP").innerHTML = getText().LNK_PP_SITE : ""),
-		2: ((document.getElementById("linkToPP") != null) ? document.getElementById("linkToPP").href = getText().LNK_PP_SITE_URL : ""),
-		3: ((document.getElementById("searchfield") != null) ? document.getElementById("searchfield").placeholder = getText().TB_SEARCHFIELD : ""),
-		4: ((document.getElementById("lnk-impress") != null) ? document.getElementById("lnk-impress").innerHTML = getText().LNK_IMPRESS : ""),
-		5: ((document.getElementById("lnk-impress") != null) ? document.getElementById("lnk-impress").href = getText().LNK_IMPRESS_URL : ""),
-		6: ((document.getElementById("title") != null) ? document.getElementById("title").innerHTML = getText().IMPRESS_TITLE : ""),
-		7: ((document.getElementById("subtitle") != null) ? document.getElementById("subtitle").innerHTML = getText().IMPRESS_SUBTITLE : ""),
-		8: ((document.getElementById("country") != null) ? document.getElementById("country").innerHTML = getText().IMPRESS_COUNTRY : ""),
-		9: ((document.getElementById("contact") != null) ? document.getElementById("contact").innerHTML = getText().IMPRESS_CONTACT : ""),
-		10: ((document.getElementById("note") != null) ? document.getElementById("note").innerHTML = getText().IMPRESS_NOTE : ""),
-		11: ((document.getElementById("linkToGitHub") != null) ? document.getElementById("linkToGitHub").innerHTML = getText().LNK_GITHUB : ""),
-		12: ((document.getElementById("linkToOSMWiki") != null) ? document.getElementById("linkToOSMWiki").innerHTML = getText().LNK_OSMWIKI : ""),
-		13: ((document.getElementById("languageOfUser") != null) ? document.getElementById("languageOfUser").innerHTML = languageOfUser : ""),
-		14: ((document.getElementById("map-overlay-notify") != null) ? document.getElementById("map-overlay-notify").innerHTML = getText().MAPEMPTY : ""),
-		15: ((document.getElementById("about") != null) ? document.getElementById("about").innerHTML = getText().ABOUT : ""),
-		16: ((document.getElementById("usage") != null) ? document.getElementById("usage").innerHTML = getText().USAGE : ""),
-		17: ((document.getElementById("osm-attribution") != null) ? document.getElementById("osm-attribution").innerHTML = getText().OSM_ATTRIBUTION : ""),
-		18: ((document.getElementById("lnk_about") != null) ? document.getElementById("lnk_about").innerHTML = getText().LNK_ABOUT : ""),
-		19: ((document.getElementById("lnk_explanation-menubuttons") != null) ? document.getElementById("lnk_explanation-menubuttons").innerHTML = getText().LNK_EXPLANATIONMENUBUTTONS : ""),
-		20: ((document.getElementById("lnk_explanation-markerdots") != null) ? document.getElementById("lnk_explanation-markerdots").innerHTML = getText().LNK_EXPLANATIONMARKERDOTS : ""),
-		21: ((document.getElementById("lnk_explanation-usage") != null) ? document.getElementById("lnk_explanation-usage").innerHTML = getText().LNK_EXPLANATIONUSAGE : ""),
-		22: ((document.getElementById("lnk_explanation-pdvicons") != null) ? document.getElementById("lnk_explanation-pdvicons").innerHTML = getText().LNK_EXPLANATIONPDVICONS : ""),
-		23: ((document.getElementById("lastupdate") != null) ? document.getElementById("lastupdate").innerHTML = getText().LASTUPDATE.replace("%s", getLastUpdate()) : ""),
-		24: ((document.getElementById("advanced-search-babyfriendliness") != null) ? document.getElementById("advanced-search-babyfriendliness").innerHTML = getText().LABEL_ADVANCEDSEARCH_BABYFRIENDLINESS : ""),
-		25: ((document.getElementById("advanced-search_title") != null) ? document.getElementById("advanced-search_title").innerHTML = getText().LABEL_ADVANCEDSEARCH_TITLE : ""),
-		26: ((document.getElementById("searchbyname") != null) ? document.getElementById("searchbyname").innerHTML = getText().TB_SEARCHBYNAME : ""),
-		27: ((document.getElementById("advanced-search-btnSend") != null) ? document.getElementById("advanced-search-btnSend").innerHTML = getText().BTN_ADVANCEDSEARCHSEND : "")
-		};
 		//Search for the names of playground equipment in the language reference
 		for (var json in getText()) {
 			if (json.startsWith("PDV_PLAYGROUND_") && json.endsWith("_YES")) { //Just add to the database 'maintagtranslations' (needed by the 'filters.js/getSubtitle' function) what belongs to the playground equipment
@@ -88,21 +34,6 @@ function setLang(e, lang) {
 			}
 		}
 		var output = "";
-		for (var json in getText().MENUBUTTONS) {
-			document.getElementById(json).setAttribute("alt", getText().MENUBUTTONS[json]);
-			output += "<img class='small-icon' src='" + document.getElementById(json).getAttribute("src") + "' /> " + getText().MENUBUTTONS[json] + "<br/>";
-		}
-		document.getElementById("explanation-menubuttons").innerHTML = output;
-		output = "<p>" + getText().MAP_MARKERDOTS_GENERAL + "</p>";
-		for (var json in getText().MAP_MARKERDOTS) {
-			output += "<span id='" + json + "' class='small-icon'>&#8226;</span> " + getText().MAP_MARKERDOTS[json] + "<br/>";
-		}
-		document.getElementById("explanation-markerdots").innerHTML = output;
-		output = "<p>" + getText().PDV_ICONS_EXPLANATION_GENERAL + "</p>";
-		for (var json in getText().PDV_ICONS_EXPLANATION) {
-			output += getText().PDV_ICONS_EXPLANATION[json] + "<br/>";
-		}
-		document.getElementById("explanation-pdvicons").innerHTML = output;
 		output = "<option value='all'>" + getText().SELECT_DEFAULTALL + "</option>";
 		for (var subcat in subcategories) {
 			var text = getText().subcategories[subcat][0];
@@ -121,4 +52,3 @@ function setLang(e, lang) {
 		alert("Language data couldn't be loaded.");
 	}
 }
-getLangFromHash();

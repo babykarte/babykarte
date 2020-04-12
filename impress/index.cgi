@@ -1,7 +1,8 @@
 #!/usr/bin/python3
 import wsgiref.handlers
 import cgi
-import os, json
+import os, json, sys
+
 languageOfUser = "en"
 root = ""
 directory = "impress"
@@ -11,6 +12,7 @@ content = """<!DOCTYPE html>
   <head>
     <title>Babykarte - {IMPRESS_TITLE}</title>
     <meta charset='utf-8' />
+	<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no'>
     <link rel='stylesheet' href='../css/style.css' />
     <link rel='stylesheet' href='../css/specialsite.css' />
     <link rel='icon' href='../favicon.ico' type='image/x-icon' />
@@ -62,10 +64,10 @@ content = """<!DOCTYPE html>
 </html>
 """
 def index():
-	sfile = open(os.path.join(root, "lang", directory, languageOfUser + ".json"), "r")
+	sfile = open(os.path.join(root, "lang", directory, languageOfUser + ".json"), "r", encoding='utf8')
 	LRF = json.loads(sfile.read())
 	sfile.close()
-	sfile = open(os.path.join(root ,"lang", "general", languageOfUser + ".json"), "r")
+	sfile = open(os.path.join(root ,"lang", "general", languageOfUser + ".json"), "r", encoding='utf8')
 	LRF.update(json.loads(sfile.read()))
 	sfile.close()
 	LRF["languageOfUser"] = languageOfUser
@@ -82,7 +84,11 @@ def application(environ, start_response):
 		languageOfUser = query["lang"]
 	else:
 		languageOfUser = environ["HTTP_ACCEPT_LANGUAGE"].split(",")[0][0:2]
-	root = os.path.join(environ["DOCUMENT_ROOT"], os.path.dirname(environ["SCRIPT_URL"]).replace("/", ""))
+	root = os.path.dirname(environ["SCRIPT_FILENAME"])
+	while True:
+		if os.path.exists(os.path.join(os.path.dirname(root), "lang")):
+			root = os.path.dirname(root)
+			break
 	return([index().encode("utf-8")])
 
 

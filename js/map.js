@@ -111,16 +111,9 @@ function getStateFromHash() {
 	var hash = location.hash;
 	if (hash != "") {
 		hash = hash.replace("#", "").split("&");
-		if (String(Number(hash[0])) == "NaN") {
-			languageOfUser = hash[0];
-			zoomLevel = Number(hash[1]);
-			saved_lat = Number(hash[2]);
-			saved_lon = Number(hash[3]);
-		} else {
-			zoomLevel = Number(hash[0]);
-			saved_lat = Number(hash[1]);
-			saved_lon = Number(hash[2]);
-		}
+		zoomLevel = Number(hash[0]);
+		saved_lat = Number(hash[1]);
+		saved_lon = Number(hash[2]);
 		map.setView([saved_lat, saved_lon], zoomLevel);
 	}
 }

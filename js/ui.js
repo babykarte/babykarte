@@ -194,15 +194,6 @@ function geocode() {
 $("#searchfield").keyup(function() {
 	geocode();
 });
-function getLastUpdate() {
-	var d = new Date().toString().split(" ");
-	var time = d[4].split(":");
-	if (time[1] > 15) {
-		return time[0] + ":15";
-	} else {
-		return String(parseInt(time[0])-1) + ":15";
-	}	
-}
 function searchwhentyping(e) {
 	var searchfield = document.getElementById("searchfield");
 	var btn_search = document.getElementById("btn_search");

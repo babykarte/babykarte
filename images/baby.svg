@@ -27,16 +27,26 @@
      inkscape:window-height="960"
      id="namedview9"
      showgrid="false"
-     inkscape:zoom="0.27875744"
-     inkscape:cx="-317.0319"
-     inkscape:cy="408.9577"
+     inkscape:zoom="0.22804564"
+     inkscape:cx="672.53919"
+     inkscape:cy="831.36758"
      inkscape:window-x="0"
      inkscape:window-y="27"
      inkscape:window-maximized="1"
-     inkscape:current-layer="svg8"
+     inkscape:current-layer="layer1"
      inkscape:pagecheckerboard="true" />
   <defs
-     id="defs2" />
+     id="defs2">
+    <radialGradient
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(1,0,0,2.0016736,0,-294.22541)"
+       r="1.955163"
+       fy="293.73383"
+       fx="1.7396395"
+       cy="293.73383"
+       cx="1.7396395"
+       id="radialGradient12741" />
+  </defs>
   <metadata
      id="metadata5">
     <rdf:RDF>
@@ -45,14 +55,14 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
   <g
      transform="translate(0,-73)"
      id="layer1"
-     style="fill:none;fill-opacity:1;stroke:#f4cd9c;stroke-opacity:1">
+     style="fill:#ff541a;fill-opacity:1;stroke:white;stroke-opacity:1">
     <ellipse
        transform="matrix(-0.54992282,-0.83521548,0.86509756,-0.50160365,0,0)"
        ry="37.025257"
@@ -60,7 +70,7 @@
        cy="71.933678"
        cx="-187.1552"
        id="path4485"
-       style="opacity:1;fill:none;fill-opacity:1;fill-rule:nonzero;stroke:#f4cd9c;stroke-width:7.77127266;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+       style="opacity:1;fill:white;fill-opacity:1;fill-rule:nonzero;stroke:#ff541a;stroke-width:7.77126476;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
     <ellipse
        transform="matrix(0.7041846,-0.71001694,0.71318877,0.70097202,0,0)"
        ry="75.997749"
@@ -68,10 +78,10 @@
        cy="203.17346"
        cx="-33.106422"
        id="path4487"
-       style="opacity:1;fill:none;fill-opacity:1;fill-rule:nonzero;stroke:#f4cd9c;stroke-width:7.76503944;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+       style="opacity:1;fill:white;fill-opacity:1;fill-rule:nonzero;stroke:#ff541a;stroke-width:7.76503944;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
     <path
        id="path4495"
        d="m 104.52819,153.13367 c -17.031339,18.11632 -32.485438,20.18465 -56.121265,30.15396 a 50.849869,57.978892 36.525663 0 0 -29.132586,20.17919 50.849869,57.978892 36.525663 0 0 2.411677,77.60363 50.849869,57.978892 36.525663 0 0 75.599341,-12.2925 50.849869,57.978892 36.525663 0 0 8.200143,-12.89896 l 0.22873,0.26192 c 0.57573,-1.48155 1.13605,-3.06296 1.69146,-4.71526 a 50.849869,57.978892 36.525663 0 0 2.63204,-8.36812 c 5.27712,-17.48518 11.40639,-39.82105 26.30083,-55.10103 z"
-       style="opacity:1;fill:none;fill-opacity:1;fill-rule:nonzero;stroke:#f4cd9c;stroke-width:7.76499939;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+       style="opacity:1;fill:white;fill-opacity:1;fill-rule:nonzero;stroke:#ff541a;stroke-width:7.76499939;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
   </g>
 </svg>
