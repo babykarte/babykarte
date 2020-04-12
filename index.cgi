@@ -5,7 +5,7 @@ import os, json, sys
 
 languageOfUser = "en"
 root = ""
-directory = "impress"
+directory = "index"
 query = {}
 content = """<!DOCTYPE html>
 <html>
@@ -25,11 +25,11 @@ content = """<!DOCTYPE html>
   	<div class='leftbar'>
   		<div class='menuitem dropdown'><img class='bar-icon item-active' id='btn_search' alt='{btn_search}' src='images/search.svg' onclick='toggleMenu(this);document.getElementById("searchfield").focus();' />
   			<div class='dropdown-menu searchbar dropdown-active' id='searchgroup'>
-     			<input type='text' onclick='geocode()' placeholder='{BABYKARTE_SEARCH}' id='searchfield'>
+     			<input type='text' onclick='geocode()' placeholder='{TB_SEARCHFIELD}' id='searchfield'>
      			<img src='images/settings.svg' class='small-icon' style='margin:0px;' onclick='toggleTab(this, "advanced-search")' />
      				<div id='advanced-search' class='tab-content'>
      					<h3 id='advanced-search_title'>{LABEL_ADVANCEDSEARCH_TITLE}</h3>
-     					<input type='text' placeholder='{BABYKARTE_ADVSEARCH}' id='searchbyname' /><br/>
+     					<input type='text' placeholder='{TB_SEARCHBYNAME}' id='searchbyname' /><br/>
      					<select id='subcategoryselect'></select>
      					<h4 id='advanced-search-babyfriendliness'>{LABEL_ADVANCEDSEARCH_BABYFRIENDLINESS}</h4>
      					<div id='filtersGround'></div><br/>
@@ -80,9 +80,9 @@ content = """<!DOCTYPE html>
   		</div>
   		<div class='menuitem dropdown'><img class='bar-icon' id='btn_lang' alt='{btn_lang}' src='images/www.svg' onclick='toggleMenu(this)' />
   			<div class='dropdown-menu lang-select'>
-  				<a href='#' class='nounderlinestyle' onclick='loadLang(this, "en");'><span class='small-icon'>EN</span></a>
-  				<a href='#' class='nounderlinestyle' onclick='loadLang(this, "de");'><span class='small-icon'>DE</span></a>
-  				<a href='#' class='nounderlinestyle' onclick='loadLang(this, "fr");'><span class='small-icon'>FR</span></a>
+  				<a href='?lang=en' class='nounderlinestyle'><span class='small-icon'>EN</span></a>
+  				<a href='?lang=de' class='nounderlinestyle'><span class='small-icon'>DE</span></a>
+  				<a href='?lang=fr' class='nounderlinestyle'><span class='small-icon'>FR</span></a>
   			</div>
   		</div>
   		<div class='dropdown'><div style='display:none;' class='bar-icon'><!-- Pseudo button ---></div>
@@ -123,11 +123,12 @@ content = """<!DOCTYPE html>
 """
 def triggers(LRF):
 	d = time.asctime(time.localtime()).split(" ")
-	time = d[3].split(":");
-	if time[1] > 15:
-		return content.format({"TRIG_LASTUPDATE": time[0] + ":15"})
+	t = d[3].split(":");
+	if int(t[1]) > 15:
+		LRF["TRIG_LASTUPDATE"] = t[0] + ":15"
 	else:
-		return content.format({"TRIG_LASTUPDATE": str(int(time[0])-1) + ":15"})	
+		LRF["TRIG_LASTUPDATE"] = str(int(t[0])-1) + ":15"
+	return LRF	
 def index():
 	sfile = open(os.path.join(root, "lang", directory, languageOfUser + ".json"), "r", encoding='utf8')
 	LRF = json.loads(sfile.read())
@@ -136,7 +137,7 @@ def index():
 	LRF.update(json.loads(sfile.read()))
 	sfile.close() 
 	LRF["languageOfUser"] = languageOfUser
-	content = triggers(LRF)
+	LRF = triggers(LRF)
 
 	return content.format(**LRF)
 def application(environ, start_response):
@@ -152,9 +153,9 @@ def application(environ, start_response):
 		languageOfUser = environ["HTTP_ACCEPT_LANGUAGE"].split(",")[0][0:2]
 	root = os.path.dirname(environ["SCRIPT_FILENAME"])
 	while True:
-		if os.path.exists(os.path.join(os.path.dirname(root), "lang")):
-			root = os.path.dirname(root)
+		if os.path.exists(os.path.join(root, "lang")):
 			break
+		root = os.path.dirname(root)
 	return([index().encode("utf-8")])
 
 
