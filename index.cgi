@@ -23,7 +23,7 @@ content = """<!DOCTYPE html>
   <body id='site-map'>
   <section>
   	<div class='leftbar'>
-  		<div class='menuitem dropdown'><img class='bar-icon item-active' id='btn_search' alt='{btn_search}' src='images/search.svg' onclick='toggleMenu(this);document.getElementById("searchfield").focus();' />
+  		<div class='menuitem dropdown'><img class='bar-icon item-active' id='btn_search' alt='{btn_search}' title='{btn_search}' src='images/search.svg' onclick='toggleMenu(this);document.getElementById("searchfield").focus();' />
   			<div class='dropdown-menu searchbar dropdown-active' id='searchgroup'>
      			<input type='text' onclick='geocode()' placeholder='{TB_SEARCHFIELD}' id='searchfield'>
      			<img src='images/settings.svg' class='small-icon' style='margin:0px;' onclick='toggleTab(this, "advanced-search")' />
@@ -38,7 +38,7 @@ content = """<!DOCTYPE html>
      			<div id='autocomplete'></div>
 			</div>
 		</div>
-		<div class='menuitem dropdown'><img class='bar-icon' id='btn_info' alt='{btn_info}' src='images/info.svg.png' onclick='toggleMenu(this)' />
+		<div class='menuitem dropdown'><img class='bar-icon' id='btn_info' alt='{btn_info}' title='{btn_info}' src='images/info.svg.png' onclick='toggleMenu(this)' />
   			<div class='dropdown-menu about' id='aboutus'>
   				<a href='https://github.com/babykarte/babykarte' target='_blank' id='linkToGitHub'>{LNK_GITHUB}</a>
         		<a href='https://wiki.openstreetmap.org/wiki/Baby-Karte' target='_blank' id='linkToOSMWiki'>{LNK_OSMWIKI}</a>
@@ -78,7 +78,7 @@ content = """<!DOCTYPE html>
         		<p id='lastupdate'>{LASTUPDATE} {TRIG_LASTUPDATE}</p>
   			</div>
   		</div>
-  		<div class='menuitem dropdown'><img class='bar-icon' id='btn_lang' alt='{btn_lang}' src='images/www.svg' onclick='toggleMenu(this)' />
+  		<div class='menuitem dropdown'><img class='bar-icon' id='btn_lang' alt='{btn_lang}' title='{btn_lang}' src='images/www.svg' onclick='toggleMenu(this)' />
   			<div class='dropdown-menu lang-select'>
   				<a href='?lang=en' class='nounderlinestyle'><span class='small-icon'>EN</span></a>
   				<a href='?lang=de' class='nounderlinestyle'><span class='small-icon'>DE</span></a>
@@ -93,7 +93,7 @@ content = """<!DOCTYPE html>
   				<div id='osm-attribution'>{OSM_ATTRIBUTION}</div>
   			</div>
   		</div>
-  		<div class='menuitem' onclick='requestLocation()'><img class='bar-icon' id='btn_locating' alt='{btn_locating}' src='images/locating.svg' />
+  		<div class='menuitem' onclick='requestLocation()'><img class='bar-icon' id='btn_locating' alt='{btn_locating}' title='{btn_locating}' src='images/locating.svg' />
   		</div>
   	</div>
   	<div id='map'>
