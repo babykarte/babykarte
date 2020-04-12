@@ -1,29 +1,5 @@
 var refFr = {
 	"site-map": {
-		"ABOUT": "Babykarte aide les parents de nourrissons et de tout-petits à chercher des tables à langer, des aires de jeux, etc. Il montre également l'adaptation des cafés et des restaurants aux bébés.",
-		"USAGE": "Icônes dans la vue détaillée des Points d'Intérêt :",
-		"MENUBUTTONS": {
-			"btn_info": "Montrer l'aide",
-			"btn_lang": "Choisir la langue",
-			"btn_search": "Chercher un lieu",
-			"btn_locating": "Montrer votre géolocalisation"
-		},
-		"MAP_MARKERDOTS_GENERAL": "Système de feux de signalisation pour l'affichage de l'adaptation aux bébés des restaurants et cafés :",
-		"MAP_MARKERDOTS": {
-			"rating-green": "Ce lieu est adapté aux bébés",
-			"rating-yellow": "Ce lieu est partiellement adapté aux bébés. ",
-			"rating-red": "Ce lieu n'est pas adapté aux bébés. ",
-		},
-		"PDV_ICONS_EXPLANATION_GENERAL": "Les icônes ici en gris sont coloriées selon un système de feu tricolore décrit ci-dessus",
-		"PDV_ICONS_EXPLANATION": {
-			"PDV_ICON_CHANGINGTABLE": "<img class='small-icon' src='images/changingtable.svg' /> Table à langer",
-			"PDV_ICON_HIGHCHAIR": "<img class='small-icon' src='images/highchair.svg' /> Chaises hautes",
-			"PDV_ICON_STROLLER": "<img class='small-icon' src='images/stroller.svg' /> Adaptabilité aux poussettes",
-			"PDV_ICON_BALL": "<img class='small-icon' src='images/ball.svg' /> Espace enfant",
-			"PDV_ICON_BREASTFEEDING": "<span class='small-icon'>&#129329;</span> Équipements d'alimentation",
-			"PDV_ICON_PEN": "<span class='small-icon'>✏️</span> Modifier dans OpenStreetMap (site Web externe, inscription nécessaire)",
-			"PDV_ICON_SHARE": "<img class='small-icon' src='images/share.svg' /> Partager Point d'Intérêt"
-		},
 		"LOCATING_FAILURE": "N'a pas trouvé votre lieu",
 		"LOCATING_SUCCESS": "Votre lieu",
 		"LOADING_FAILURE": "Une erreur s'est produite, veuillez zoomer et réessayer",
@@ -36,8 +12,6 @@ var refFr = {
 		"LNK_OSM_REPORT": "Signaler une information erronée",
 		"LNK_OSM_VIEW": "Voir le Point d'intérêt dans OpenStreetMap",
 		"LNK_OPEN_WITH": "Ouvrir avec une appli",
-		"MAPEMPTY": "Please utilize <img class='bar-icon' src='images/search.svg' /> to search for what you seek or <img class='bar-icon' src='images/info.svg.png' /> to get help using Babykarte. (en)",
-		"FLTR_SELECTALL": "(De)sélectionnez tout",
 		"SEARCHRESULT_FLTR": "Show them all in the current map view (en)",
 		"PDV_UNNAME": "Sans Nom",
 		"PDV_CONTACT_WEBSITE_*": "%s",
@@ -156,25 +130,6 @@ var refFr = {
 		"PDV_OPERATOR": "Opérateur",
 		"PDV_DESCRIPTION": "Description",
 		"TOILET": "Toilettes",
-		"LNK_IMPRESS": "A propos",
-		"LNK_IMPRESS_URL": "impressum.html#fr",
-		"LNK_PP_SITE": "Politique de confidentialité (v.3)",
-		"LNK_PP_SITE_URL": "privacypolicy-fr.html",
-		"LNK_GITHUB": "Sur Github",
-		"LNK_OSMWIKI": "Wiki OSM",
-		"LNK_ABOUT": "About (EN)",
-		"LNK_EXPLANATIONMENUBUTTONS": "Bar explained (EN)",
-		"LNK_EXPLANATIONMARKERDOTS": "Traffic light system explained (EN)",
-		"LNK_EXPLANATIONUSAGE": "Babykarte explained (EN)",
-		"LNK_EXPLANATIONPDVICONS": "Icons explained (EN)",
-		"LASTUPDATE": "Last update of map data: %s (EN)",
-		"OSM_ATTRIBUTION": "Proudly collected by <a rel='noopener' target='_blank' href='http://www.openstreetmap.fr/contribuer/'>OpenStreetMap</a> (EN)",
-		"TB_SEARCHFIELD": "Rechercher",
-		"SELECT_DEFAULTALL": "Select POI category: All (EN)",
-		"LABEL_ADVANCEDSEARCH_BABYFRIENDLINESS": "Baby friendliness (EN)",
-		"LABEL_ADVANCEDSEARCH_TITLE": "Advanced Search: (EN)",
-		"TB_SEARCHBYNAME": "Name (EN)",
-		"BTN_ADVANCEDSEARCHSEND": "Find what I seek (EN)",
 		"opening_hours": {
 			"Mo": "Lundi",
 			"Tu": "Mardi",
@@ -204,19 +159,6 @@ var refFr = {
 			"dawn": "dawn (EN)",
 			"dusk": "dusk (EN)"
 		}
-	},
-	"site-impress": {
-		"LNK_IMPRESS": "A propos",
-		"LNK_IMPRESS_URL": "impressum.html#fr",
-		"LNK_PP_SITE": "Politique de confidentialité (v.3)",
-		"LNK_PP_SITE_URL": "privacypolicy-fr.html",
-		"LNK_GITHUB": "Sur Github",
-		"LNK_OSMWIKI": "Wiki OSM",
-		"IMPRESS_TITLE": "A propos",
-		"IMPRESS_SUBTITLE": "Responsable du site Web",
-		"IMPRESS_COUNTRY": "Allemagne",
-		"IMPRESS_CONTACT": "Contact",
-		"IMPRESS_NOTE": "Toutes les données disponibles sur ce site proviennent d'OpenStreetMap. Babykarte n'utilise que les données. Nous ne garantissons pas l'exactitude de ces informations. Grâce aux liens fournis, vous pouvez signaler des données erronées ou manquantes à OpenStreetMap. Vous pouvez également corriger les erreurs ou ajouter d'autres informations par vous-même."
 	}
 };
 refFr["site-map"].maintagtranslations = {

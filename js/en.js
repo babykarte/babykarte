@@ -1,29 +1,5 @@
 var refEn = {
 	"site-map": {
-		"ABOUT": "Babykarte helps parents of infants and toddlers to search for changing tables, playgrounds etc. It also shows the baby friendliness of cafes and restaurants.",
-		"USAGE": "Icons in the details view for POI's:",
-		"MENUBUTTONS": {
-			"btn_info": "Show help",
-			"btn_lang": "Select language",
-			"btn_search": "Search for a place",
-			"btn_locating": "Shows your location"
-		},
-		"MAP_MARKERDOTS_GENERAL": "Traffic light system for indication of baby friendliness of restaurants und cafes:",
-		"MAP_MARKERDOTS": {
-			"rating-green": "This place is baby friendly",
-			"rating-yellow": "Baby friendliness is limited",
-			"rating-red": "This place isn't baby friendly",
-		},
-		"PDV_ICONS_EXPLANATION_GENERAL": "The Icons shown in grey here are colored according to the traffic light system described above.",
-		"PDV_ICONS_EXPLANATION": {
-			"PDV_ICON_CHANGINGTABLE": "<img class='small-icon' src='images/changingtable.svg' /> Changing table",
-			"PDV_ICON_HIGHCHAIR": "<img class='small-icon' src='images/highchair.svg' /> Highchairs",
-			"PDV_ICON_STROLLER": "<img class='small-icon' src='images/stroller.svg' /> Suitability for strollers",
-			"PDV_ICON_BALL": "<img class='small-icon' src='images/ball.svg' /> Kids area",
-			"PDV_ICON_BREASTFEEDING": "<span class='small-icon'>&#129329;</span> Feeding facilities <br>",
-			"PDV_ICON_PEN": "<span class='small-icon'>✏️</span> Edit in OpenStreetMap (external website, registration necessary)",
-			"PDV_ICON_SHARE": "<img class='small-icon' src='images/share.svg' /> Share POI"
-		},
 		"LOCATING_FAILURE": "Did not find your location",
 		"LOCATING_SUCCESS": "Your location",
 		"LOADING_FAILURE": "An error occurred, zoom in and try again please",
@@ -36,8 +12,6 @@ var refEn = {
 		"LNK_OSM_REPORT": "Report wrong information",
 		"LNK_OSM_VIEW": "View POI in OpenStreetMap",
 		"LNK_OPEN_WITH": "Open with an app",
-		"MAPEMPTY": "Please utilize <img class='bar-icon' src='images/search.svg' /> to search for what you seek or <img class='bar-icon' src='images/info.svg.png' /> to get help using Babykarte.",
-		"FLTR_SELECTALL": "(De)select all",
 		"SEARCHRESULT_FLTR": "Show them all in the current map view",
 		"PDV_UNNAME": "No Name",
 		"PDV_CONTACT_WEBSITE_*": "%s",
@@ -155,25 +129,6 @@ var refEn = {
 		"PDV_OPERATOR": "Operator",
 		"PDV_DESCRIPTION": "Description",
 		"TOILET": "Toilet",
-		"LNK_IMPRESS": "About",
-		"LNK_IMPRESS_URL": "impressum.html#en",
-		"LNK_PP_SITE": "Privacy (v.3)",
-		"LNK_PP_SITE_URL": "privacypolicy-en.html",
-		"LNK_GITHUB": "On Github",
-		"LNK_OSMWIKI": "OSM Wiki",
-		"LNK_ABOUT": "About",
-		"LNK_EXPLANATIONMENUBUTTONS": "Bar explained",
-		"LNK_EXPLANATIONMARKERDOTS": "Traffic light system explained",
-		"LNK_EXPLANATIONUSAGE": "Babykarte explained",
-		"LNK_EXPLANATIONPDVICONS": "Icons explained",
-		"LASTUPDATE": "Last update of map data: %s",
-		"OSM_ATTRIBUTION": "Proudly collected by <a rel='noopener' target='_blank' href='https://welcome.openstreetmap.org/what-is-openstreetmap/'>OpenStreetMap</a>",
-		"TB_SEARCHFIELD": "Search",
-		"SELECT_DEFAULTALL": "Select POI category: All",
-		"LABEL_ADVANCEDSEARCH_BABYFRIENDLINESS": "Baby friendliness",
-		"LABEL_ADVANCEDSEARCH_TITLE": "Advanced Search:",
-		"TB_SEARCHBYNAME": "Name",
-		"BTN_ADVANCEDSEARCHSEND": "Find what I seek",
 		"opening_hours": {
 			"Mo": "Monday",
 			"Tu": "Tuesday",
@@ -198,19 +153,6 @@ var refEn = {
 			"PH": "holidays",
 			"SH": "school holidays"
 		}
-	},
-	"site-impress": {
-		"LNK_IMPRESS": "About",
-		"LNK_IMPRESS_URL": "impressum.html#en",
-		"LNK_PP_SITE": "Privacy (v.3)",
-		"LNK_PP_SITE_URL": "privacypolicy-en.html",
-		"LNK_GITHUB": "On Github",
-		"LNK_OSMWIKI": "OSM Wiki",
-		"IMPRESS_TITLE": "About",
-		"IMPRESS_SUBTITLE": "Responsible for this website",
-		"IMPRESS_COUNTRY": "Germany",
-		"IMPRESS_CONTACT": "Contact",
-		"IMPRESS_NOTE": "All data available on this website is coming from OpenStreetMap. Babykarte just uses the data. We do not guarantee for the correctness of it. Through the provided links you can convey annotations to wrong or missing data to OpenStreetMap. You can also correct wrong ones or add further information by yourself."
 	}
 };
 refEn["site-map"].maintagtranslations = {

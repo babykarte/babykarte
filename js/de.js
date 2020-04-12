@@ -1,29 +1,5 @@
 var refDe = {
 	"site-map": {
-		"ABOUT": "Die Babykarte hilft Eltern von Babys und Kleinkindern bei der Suche nach Wickeltischen, Spielplätzen u.v.m. Gleichzeitig wertet die Babykarte die Babyfreundlichkeit von Restaurants und Cafés aus.",
-		"USAGE": "Symbole in der Detailansicht zu Geschäften und Einrichtungen:",
-		"MENUBUTTONS": {
-			"btn_info": "Hilfe öffnen.",
-			"btn_lang": "Sprache auswählen",
-			"btn_search": "Einen Ort suchen.",
-			"btn_locating": "Deinen Standort auf der Karte anzeigen"
-		},
-		"MAP_MARKERDOTS_GENERAL": "Ampelsystem zur Markierung der Babyfreundlichkeit von Restaurants und Cafés:",
-		"MAP_MARKERDOTS": {
-			"rating-green": "Der Ort ist babyfreundlich.",
-			"rating-yellow": "Der Ort ist eingeschränkt babyfreundlich.",
-			"rating-red": "Der Ort ist überhaupt nicht babyfreundlich.",
-		},
-		"PDV_ICONS_EXPLANATION_GENERAL": "Die hier grau gezeigten Icons haben verschiedene Farben, entsprechend dem oben beschriebenen Ampelsystem",
-		"PDV_ICONS_EXPLANATION": {
-			"PDV_ICON_CHANGINGTABLE": "<img class='small-icon' src='images/changingtable.svg' /> Wickeltisch",
-			"PDV_ICON_HIGHCHAIR": "<img class='small-icon' src='images/highchair.svg' /> Hochstühle",
-			"PDV_ICON_STROLLER": "<img class='small-icon' src='images/stroller.svg' /> Kinderwagentauglichkeit",
-			"PDV_ICON_BALL": "<img class='small-icon' src='images/ball.svg' /> Spielecke",
-			"PDV_ICON_BREASTFEEDING": "<span class='small-icon'>&#129329;</span> Einrichtung zum Füttern <br>",
-			"PDV_ICON_PEN": "<span class='small-icon'>✏️</span> In OpenStreetMap editieren (externe Webseite, Anmeldung erforderlich)",
-			"PDV_ICON_SHARE": "<img class='small-icon' src='images/share.svg' /> Ort teilen"
-		},
 		"LOCATING_FAILURE": "Standort nicht ermittelbar",
 		"LOCATING_SUCCESS": "Dein Standort",
 		"LOADING_FAILURE": "Ein Fehler ist aufgetreten, bitte reinzoomen und erneut versuchen",
@@ -36,8 +12,6 @@ var refDe = {
 		"LNK_OSM_REPORT": "Falschinformationen melden",
 		"LNK_OSM_VIEW": "In OpenStreetMap ansehen",
 		"LNK_OPEN_WITH": "Mit App öffnen",
-		"MAPEMPTY": "Suche <img class='bar-icon' src='images/search.svg' /> wonach Dein Herz begehrt oder ruf den Teufel <img class='bar-icon' src='images/info.svg.png' /> für eine Bedienungsanleitung an.",
-		"FLTR_SELECTALL": "Alle (de)aktivieren",
 		"SEARCHRESULT_FLTR": "Alle in der Map darstellen",
 		"PDV_UNNAME": "Kein Name",
 		"PDV_CONTACT_WEBSITE_*": "%s",
@@ -155,25 +129,6 @@ var refDe = {
 		"PDV_OPERATOR": "Betreiber",
 		"PDV_DESCRIPTION": "Beschreibung",
 		"TOILET": "WC",
-		"LNK_IMPRESS": "Impressum",
-		"LNK_IMPRESS_URL": "impressum.html#de",
-		"LNK_PP_SITE": "Datenschutz (v.3)",
-		"LNK_PP_SITE_URL": "privacypolicy-de.html",
-		"LNK_GITHUB": "Auf Github",
-		"LNK_OSMWIKI": "OSM Wiki",
-		"LNK_ABOUT": "Über",
-		"LNK_EXPLANATIONMENUBUTTONS": "Bar erklärt",
-		"LNK_EXPLANATIONMARKERDOTS": "Ampelsystem erklärt",
-		"LNK_EXPLANATIONUSAGE": "Babykarte erklärt",
-		"LNK_EXPLANATIONPDVICONS": "Icons erklärt",
-		"LASTUPDATE": "Letztes Update der Daten: %s",
-		"OSM_ATTRIBUTION": "Mit Stolz zusammengestellt von <a rel='noopener' target='_blank' href='https://www.openstreetmap.de/faq.html#was_ist_osm'>OpenStreetMap</a>",
-		"TB_SEARCHFIELD": "Suche",
-		"SELECT_DEFAULTALL": "POI Kategorie: All",
-		"LABEL_ADVANCEDSEARCH_BABYFRIENDLINESS": "Babyfreundlichkeit",
-		"LABEL_ADVANCEDSEARCH_TITLE": "Erweiterte Suche",
-		"TB_SEARCHBYNAME": "Name",
-		"BTN_ADVANCEDSEARCHSEND": "Finde was ich suche",
 		"opening_hours": {
 			"Mo": "Montag",
 			"Tu": "Dienstag",
@@ -204,19 +159,6 @@ var refDe = {
 			"dawn": "Morgendämmerung",
 			"dusk": "Abenddämmerung"
 		}
-	},
-	"site-impress": {
-		"LNK_IMPRESS": "Impressum",
-		"LNK_IMPRESS_URL": "impressum.html#de",
-		"LNK_PP_SITE": "Datenschutz (v.3)",
-		"LNK_PP_SITE_URL": "privacypolicy-de.html",
-		"LNK_GITHUB": "Auf Github",
-		"LNK_OSMWIKI": "OSM Wiki",
-		"IMPRESS_TITLE": "Impressum",
-		"IMPRESS_SUBTITLE": "Angaben gemäß § 5 TMG:",
-		"IMPRESS_COUNTRY": "Deutschland",
-		"IMPRESS_CONTACT": "Kontakt",
-		"IMPRESS_NOTE": "Alle Daten auf dieser Website stammen aus dem Projekt OpenStreetMap. Die Babykarte wertet diese Daten lediglich aus.<br/>Für die Richtigkeit der Angaben kann keine Garantie übernommen werden. Anmerkungen zu falschen oder fehlenden Daten<br/>übermitteln Sie bitte direkt an OpenStreetMap über die bereitgestellten Links. Darüber hinaus gibt es die Möglichkeit durch Einrichtung eines OpenStreetMap-Accounts falsche- oder fehlende Daten zu berichtigen bzw. hinzuzufügen."
 	}
 };
 refDe["site-map"].maintagtranslations = {
