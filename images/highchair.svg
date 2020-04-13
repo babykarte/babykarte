@@ -77,17 +77,17 @@
        id="rect14"
        ry="10.703848"
        y="194.69818"
-       x="71.966423"
+       x="20.649641"
        height="21.407696"
-       width="100.27539"
+       width="151.59218"
        class="rating-color"
-       style="opacity:1;fill-opacity:1;stroke:none;stroke-width:4.12003422;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+       style="opacity:1;fill-opacity:1;stroke:none;stroke-width:5.06572962;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
     <rect
        id="rect16"
        ry="5.9824052"
        transform="matrix(0.98649583,-0.16378637,0.19631575,0.98054073,0,0)"
-       y="111.24525"
-       x="30.323406"
+       y="98.413429"
+       x="-20.119667"
        height="115.58219"
        width="25.2869"
        class="rating-color"
