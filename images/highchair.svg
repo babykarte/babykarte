@@ -27,9 +27,9 @@
      inkscape:window-height="960"
      id="namedview22"
      showgrid="false"
-     inkscape:zoom="2.2369668"
-     inkscape:cx="102.21983"
-     inkscape:cy="159.01692"
+     inkscape:zoom="6.3270976"
+     inkscape:cx="101.7377"
+     inkscape:cy="137.13769"
      inkscape:window-x="0"
      inkscape:window-y="27"
      inkscape:window-maximized="1"
@@ -146,22 +146,22 @@
     <ellipse
        style="opacity:1;fill-opacity:1;stroke:none;stroke-width:0.2195733;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        class="rating-color"
-       cx="111.62361"
-       cy="104.33124"
+       cx="95.083359"
+       cy="103.88421"
        rx="16.582623"
        ry="11.342288"
        id="ellipse30" />
     <path
        id="rect24"
-       d="m 125.95337,126.10289 c -1.82954,17.29607 -6.43369,34.95629 0.25357,51.13463 l -28.933158,0.10142 c -6.8124,-24.32929 -0.77293,-34.74359 -0.25357,-51.13463 z"
+       d="m 109.41311,125.65585 c -1.82954,17.29607 -6.43369,34.95629 0.25357,51.13463 l -28.933152,0.10142 c -6.8124,-24.32929 -0.77293,-34.74359 -0.25357,-51.13463 z"
        class="rating-color"
        style="opacity:1;fill-opacity:1;stroke:none;stroke-width:0.4831489;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        inkscape:connector-curvature="0" />
     <path
        id="rect24-3"
-       d="m 97.232743,176.70661 c 58.090257,0.67763 75.626567,0.51269 84.144337,0.63165 l -0.34034,19.98345 -75.87111,-0.63152 c -5.993314,-0.32992 -10.167531,-12.11094 -7.932887,-19.98345 z"
+       d="m 80.811788,176.70661 c 69.426702,0.67763 90.385262,0.51269 100.565292,0.63165 l -0.40676,19.98345 -90.677524,-0.63152 c -7.162923,-0.32992 -12.151748,-12.11094 -9.481008,-19.98345 z"
        class="rating-color"
-       style="opacity:1;fill-opacity:1;stroke:none;stroke-width:0.50071102;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       style="opacity:1;fill-opacity:1;stroke:none;stroke-width:0.54739243;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        inkscape:connector-curvature="0" />
     <rect
        transform="matrix(8.0089039e-4,0.99999968,-0.99997281,0.00737454,0,0)"
@@ -175,16 +175,16 @@
     <ellipse
        ry="5.4761653"
        rx="14.507146"
-       cy="126.5412"
-       cx="111.4548"
+       cy="126.09417"
+       cx="94.914551"
        id="path873"
        class="rating-color"
        style="opacity:1;fill-opacity:1;stroke:none;stroke-width:12.34157562;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
     <rect
        transform="matrix(0.98383278,0.17908953,-0.05725562,0.99835955,0,0)"
        ry="4.3166914"
-       y="102.20381"
-       x="130.34627"
+       y="104.74532"
+       x="113.68211"
        height="9.3694153"
        width="37.023056"
        id="rect877"
