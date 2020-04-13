@@ -402,7 +402,7 @@ section {
 	height:calc(100% - 45px) !important;
 }
 #searchfield {
-	width:calc(100% - 30px);
+	width:calc(100% / 3);
 }
 .beautifulmenu {
 	width:100%;
