@@ -142,7 +142,7 @@ def index():
 	return content.format(**LRF)
 def application(environ, start_response):
 	global languageOfUser, root, directory, query
-	start_response('200 OK', [("Content-Type:", "text/html;charset=utf-8")])
+	start_response('200 OK', [("Content-Type", "text/html;charset=utf-8")])
 	if "QUERY_STRING" in environ and not environ["QUERY_STRING"] == "":
 		for q in environ["QUERY_STRING"].split("&"):
 			key, value = q.split("=")
