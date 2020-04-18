@@ -223,6 +223,7 @@ def getData():
 	json.dump(data, stream)
 	return stream.getvalue()
 def application(environ):
+	os.environ["LANG"] = "en_US.UTF-8"
 	print("Content-Type:", "application/json;charset=utf-8\r\n\r\n", end="")
 	if "HTTP_COOKIE" in environ:
 		environ["HTTP_COOKIE"] = ""

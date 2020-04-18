@@ -134,6 +134,7 @@ function sendAdvancedSearch() {
 	crack.preventDefault = function() {return 1;}
 	escapeFromFunc(crack);
 	loadPOIS("", output);
+	createQueryFunctionCall = function () {return output}
 }
 function geocode_intern() { // Function which powers the search suggestion list
 	var searchword = $("#searchfield").val();
