@@ -23,14 +23,6 @@ content = """<!DOCTYPE html>
   <body id='site-map'>
   <section>
   	<div class='leftbar'>
-  		<div class='spinner-collection'>
-  		<div id='spinner'>
-    		<div class='circle' id='circle1'></div>
-    		<div class='circle' id='circle2'></div>
-    		<div class='circle' id='circle3'></div>
-    	</div>
-    	</div>
-  		<div class='menuitem-collection'>
   		<div class='menuitem dropdown'><img class='bar-icon item-active' id='btn_search' alt='{btn_search}' title='{btn_search}' src='images/search.svg' onclick='toggleMenu(this);document.getElementById("searchfield").focus();' />
   			<div class='dropdown-menu searchbar dropdown-active' id='searchgroup'>
      			<input type='text' onclick='geocode()' placeholder='{TB_SEARCHFIELD}' id='searchfield'>
@@ -93,6 +85,8 @@ content = """<!DOCTYPE html>
   				<a href='?lang=fr' class='nounderlinestyle'><span class='small-icon'>FR</span></a>
   			</div>
   		</div>
+  		<div class='menuitem' onclick='requestLocation()'><img class='bar-icon' id='btn_locating' alt='{btn_locating}' title='{btn_locating}' src='images/locating.svg' />
+  		</div>
   		<div class='dropdown'><div style='display:none;' class='bar-icon'><!-- Pseudo button ---></div>
   			<div class='dropdown-menu bigmenu' id='poimenu'>
   				<div id='infotext-swipe'></div>
@@ -101,11 +95,13 @@ content = """<!DOCTYPE html>
   				<div id='osm-attribution'>{OSM_ATTRIBUTION}</div>
   			</div>
   		</div>
-  		<div class='menuitem' onclick='requestLocation()'><img class='bar-icon' id='btn_locating' alt='{btn_locating}' title='{btn_locating}' src='images/locating.svg' />
-  		</div>
-  		</div>
   	</div>
   	<div id='map'>
+  		<div id='spinner'>
+    		<div class='circle' id='circle1'></div>
+    		<div class='circle' id='circle2'></div>
+    		<div class='circle' id='circle3'></div>
+    	</div>
     	<div class='info'><div id='infoPopup'></div></div>
     	<div id='map-overlay-notify' contenteditable>{MAPEMPTY}</div>
     </div>

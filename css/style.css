@@ -139,9 +139,7 @@ section {
 }
 /*-------------------- LEFT BAR SETTINGS ----------------------------*/
 .leftbar {
-	display:grid;
-	grid-template-columns:auto auto;
-	width:50px;
+	width:45px;
 	font-family:"Courier New", Courier, monospace;
 	background-color:white;
 }
@@ -307,23 +305,20 @@ section {
 	background-color:rgba(255, 179, 153, 0.6);
 }
 /* ---------------------- SPINNER ---------------------------- */
-.spinner-collection {
-	display:flex;
-	width:5px;
-	height:100%;
-}
 #spinner {
-	height:100%;
+	z-index:401;
+	position:fixed;
+	height:10px;
 	width:100%;
 }
 #spinner .circle {
-	width:100%;
-	height:calc(100% /3);
+	width:calc(100% /3);
+	height:100%;
 	background-color:white;
 }
 #spinner #circle1 {
 	animation-name:load1;
-	animation-duration:1s;
+	animation-duration:1.5s;
 	animation-delay:0s;
 	animation-iteration-count:infinite;
 }
@@ -335,29 +330,29 @@ section {
 }
 #spinner #circle3 {
 	animation-name:load3;
-	animation-duration:1s;
+	animation-duration:1.5s;
 	animation-delay:0s;
 	animation-iteration-count:infinite;
 }
 @keyframes load1 {
-	0% {background-color:white;}
+	/*0% {background-color:white;}*/
 	50% {background-color:#ffb399;}
-	100% {background-color:white;}
+	/*100% {background-color:white;}*/
 }
 @keyframes load2 {
-	0% {background-color:white;}
+	/*0% {background-color:white;}
 	20% {background-color:white;}
-	40% {background-color:white;}
-	60% {background-color:#ff794d;}
-	100% {background-color:white;}
+	40% {background-color:white;}*/
+	50% {background-color:#ff794d;}
+	/*100% {background-color:white;}*/
 }
 @keyframes load3 {
-	0% {background-color:white;}
+	/*0% {background-color:white;}
 	20% {background-color:white;}
 	40% {background-color:white;}
-	60% {background-color:white;}
-	80% {background-color:#ff531a;}
-	100% {background-color:white;}
+	60% {background-color:white;}*/
+	50% {background-color:#ffb399;}
+	/*100% {background-color:white;}*/
 }
 /* ---------------------- POI RATING SYSTEM ------------------ */
 #rating-default {
@@ -394,20 +389,9 @@ section {
 	box-sizing:border-box;
 	max-width:100%;
 }
-.spinner-collection {
-	grid-row:1;
-	display:flex;
-	width:100%;
-	height:5px;
-}
-.menuitem-collection {
-	display:grid;
-	grid-row:2;
-	grid-template-columns:auto auto auto auto auto auto;
-}
 .leftbar {
-	grid-template-rows:auto auto;
-	grid-template-columns:auto;
+	display:grid;
+	grid-template-columns:auto auto auto auto;
 	width:100%;
 	height:45px;
 }
@@ -418,11 +402,6 @@ section {
 }
 #searchfield {
 	width:calc(100% - 30px);
-}
-#spinner .circle {
-	width:calc(100% /3);
-	height:100%;
-	background-color:white;
 }
 .beautifulmenu {
 	width:100%;
@@ -457,10 +436,6 @@ section {
 #info {
 	width:100%;
 	border-radius:5px;
-}
-#spinner {
-	margin-left:10%;
-	margin-right:10%;
 }
 .mobile-handle {
 	background-color: lightgrey;

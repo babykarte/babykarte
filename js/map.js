@@ -140,7 +140,6 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 }).addTo(map);
 var cluster = L.markerClusterGroup({"disableClusteringAtZoom": 17});
 map.addLayer(cluster);
-spinner(false);
 
 zoomLevel = String(map.getZoom());
 loadLang("", languageOfUser);
@@ -156,3 +155,4 @@ map.on("click", function () {
 	}
 	hideAll(["item-active", "dropdown-active"]);
 })
+spinner(false);
