@@ -128,13 +128,13 @@ function sendAdvancedSearch() {
 			fltrList.push(elem.getAttribute("value"));
 		}
 	}
-	output += " | " + fltrList.join(",") + " | " + map.getBounds().getSouth() + "," + map.getBounds().getWest() + "," + map.getBounds().getNorth() + "," +  map.getBounds().getEast();
+	output += " | " + fltrList.join(",")
 	var crack = Object()
 	crack.key = "Escape";
 	crack.preventDefault = function() {return 1;}
 	escapeFromFunc(crack);
-	loadPOIS("", output);
-	createQueryFunctionCall = function () {return output}
+	loadPOIS("", output + " | " + getBbox());
+	createQueryFunctionCall = function () {return output + " | " + getBbox()}
 }
 function geocode_intern() { // Function which powers the search suggestion list
 	var searchword = $("#searchfield").val();

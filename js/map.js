@@ -22,6 +22,9 @@ function locateNewAreaBasedOnSubcategory() {
 		return createQueryFunctionCall();
 	}
 }
+function getBbox() {
+	return map.getBounds().getSouth() + "," + map.getBounds().getWest() + "," + map.getBounds().getNorth() + "," +  map.getBounds().getEast()
+}
 function onMapMove() {
 	if (freezeMapMoveEvent != true) {
 		loadPOIS("", locateNewAreaBasedOnSubcategory());

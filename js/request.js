@@ -1,6 +1,6 @@
 var createQueryFunctionCall;
 function createSQL(bbox, subcategory) {
-	createQueryFunctionCall = function() {return createSQL(map.getBounds().getSouth() + "," + map.getBounds().getWest() + "," + map.getBounds().getNorth() + "," +  map.getBounds().getEast(), subcategory)};
+	createQueryFunctionCall = function() {return createSQL(getBbox(), subcategory)};
 	return String(subcategory) + " - " + String(bbox) + "\n";
 }
 function requestSinglePOI(address) {
