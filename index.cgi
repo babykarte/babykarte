@@ -122,12 +122,13 @@ content = """<!DOCTYPE html>
 </html>
 """
 def triggers(LRF):
-	d = time.asctime(time.localtime()).split(" ")
-	t = d[3].split(":");
-	if int(t[1]) > 15:
-		LRF["TRIG_LASTUPDATE"] = t[0] + ":15"
+	t = time.localtime()
+	h = t.tm_hour
+	m = t.tm_min
+	if int(m) > 15:
+		LRF["TRIG_LASTUPDATE"] = str(h) + ":15"
 	else:
-		LRF["TRIG_LASTUPDATE"] = str(int(t[0])-1) + ":15"
+		LRF["TRIG_LASTUPDATE"] = str(h-1) + ":15"
 	return LRF	
 def index():
 	sfile = open(os.path.join(root, "lang", directory, languageOfUser + ".json"), "r", encoding='utf8')
