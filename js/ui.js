@@ -164,7 +164,7 @@ function geocode_intern() { // Function which powers the search suggestion list
 				}
 			}
 			for (var i in intellij) {
-				autocomplete_content += "<div class='entry' tabindex=0 style='border-bottom:5px solid white;padding:5px;' onclick='activateSubcategory(\"" + i + "\")'><span>" + getText().subcategories[i][0] + "</span><br/><address style='font-size:14px;'>" + getText().SEARCHRESULT_FLTR + "</address></div>";
+				autocomplete_content += "<div class='entry subcategories' tabindex=0 onclick='activateSubcategory(\"" + i + "\")'><span>" + getText().subcategories[i][0] + "</span><br/><address style='font-size:14px;'>" + getText().SEARCHRESULT_FLTR + "</address></div>";
 			}
 			
 			$.each(data.features, function(number, feature) {
@@ -175,7 +175,7 @@ function geocode_intern() { // Function which powers the search suggestion list
 				if (getText().maintagtranslations[keyvalue]) {
 					poitype = getText().maintagtranslations[keyvalue][0] + "&nbsp;&#8231;&nbsp;";
 				}
-				autocomplete_content += "<div class='entry' tabindex=0 style='border-bottom:5px solid white;padding:5px;' onclick='jumpto(this, " + latlng[0] + ", " + latlng[1] + ",\"" + poiid + "\")'><span>" + feature.properties.name + "</span><br/><address style='font-size:14px;'>" + poitype + ((feature.properties.street) ? feature.properties.street + ", " : "") + feature.properties.city + ", " + feature.properties.country + "</address></div>"; //Adds a entry in the search suggestion popup (e.g. Berlin central station)
+				autocomplete_content += "<div class='entry' tabindex=0 onclick='jumpto(this, " + latlng[0] + ", " + latlng[1] + ",\"" + poiid + "\")'><span>" + feature.properties.name + "</span><br/><address style='font-size:14px;'>" + poitype + ((feature.properties.street) ? feature.properties.street + ", " : "") + feature.properties.city + ", " + feature.properties.country + "</address></div>"; //Adds a entry in the search suggestion popup (e.g. Berlin central station)
 			});
 			if (autocomplete) {
 				$("#autocomplete").html(autocomplete_content); //Add them all to the search suggestion popup

@@ -239,11 +239,16 @@ section {
 #autocomplete .entry {
 	background-color:#f9e9d2;
 	border-bottom:5px solid white;
+	border-top:5px solid white;
 	padding:5px;
 }
 #autocomplete .entry:hover {
 	cursor:pointer;
 	background-color:rgb(255, 64, 0, 0.6);
+}
+#autocomplete .subcategories {
+	border-left:5px solid rgb(255, 64, 0, 0.6);
+	border-right:5px solid rgb(255, 64, 0, 0.6);
 }
 #autocomplete span {
 	margin:0px;
