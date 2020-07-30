@@ -136,6 +136,17 @@ function sendAdvancedSearch() {
 	loadPOIS("", output + " | " + getBbox());
 	createQueryFunctionCall = function () {return output + " | " + getBbox()}
 }
+function simulateAdvancedSearch(name, subcategory, filters) {
+	document.getElementById("searchbyname").value = name;
+	document.getElementById("subcategoryselect").value = subcategory;
+	
+	for (fltr of filters) {
+		console.log(fltr);
+		document.getElementById(fltr).checked = true;
+	}
+	console.log(1);
+	sendAdvancedSearch();
+}
 function geocode_intern() { // Function which powers the search suggestion list
 	var searchword = $("#searchfield").val();
 	if (searchword.length == 0) {
@@ -164,7 +175,23 @@ function geocode_intern() { // Function which powers the search suggestion list
 				}
 			}
 			for (var i in intellij) {
-				autocomplete_content += "<div class='entry subcategories' tabindex=0 onclick='activateSubcategory(\"" + i + "\")'><span>" + getText().subcategories[i][0] + "</span><br/><address style='font-size:14px;'>" + getText().SEARCHRESULT_FLTR + "</address></div>";
+				autocomplete_content += "<div class='entry subcategories' tabindex=0 onclick='activateSubcategory(\"" + i + "\")'><span>" + getText().subcategories[i][0] + "</span><br/><address style='font-size:14px;'>" + getText().SEARCHRESULT_SUBCATEGORY + "</address></div>";
+			}
+			
+			intellij = {}
+			for (var i in getText().filters) {
+				for (var u of getText().filters[i][1]) {
+					if (searchword.toLowerCase().indexOf(u.toLowerCase() + " ") > -1 || searchword.toLowerCase().indexOf(" " + u.toLowerCase()) > -1) {
+						intellij[i] = true;
+					} else if (searchword.split(" ").length == 1 && searchword.toLowerCase() == u.toLowerCase()) {
+						intellij[i] = true
+						break;
+					}
+				}
+			}
+			
+			for (var i in intellij) {
+				autocomplete_content += "<div class='entry subcategories filters' tabindex=0 onclick='simulateAdvancedSearch(\"\", \"all\", [\"" + i + "\"])'><span>" + getText().filters[i][0] + "</span><br/><address style='font-size:14px;'>" + getText().SEARCHRESULT_FLTR + "</address></div>";
 			}
 			
 			$.each(data.features, function(number, feature) {

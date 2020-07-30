@@ -12,7 +12,8 @@ var refEn = {
 		"LNK_OSM_REPORT": "Report wrong information",
 		"LNK_OSM_VIEW": "View POI in OpenStreetMap",
 		"LNK_OPEN_WITH": "Open with an app",
-		"SEARCHRESULT_FLTR": "Show them all in the current map view",
+		"SEARCHRESULT_SUBCATEGORY": "Show them all in the current map view",
+		"SEARCHRESULT_FLTR": "Show all POI's having this",
 		"PDV_UNNAME": "No Name",
 		"PDV_CONTACT_WEBSITE_*": "%s",
 		"PDV_CONTACT_EMAIL_*": "%s",
@@ -184,10 +185,10 @@ refEn["site-map"].categories = { //Needed for displaying the category the POI be
 	"playground-equipment": "Playground equipment"
 };
 refEn["site-map"].filters = {
-	"changingtable": "Changing table(s)",
-	"highchair": "Highchair(s)",
-	"stroller": "Stroller friendly",
-	"kidsarea": "Kids area"
+	"changingtable": [["Changing table(s)"], ["Changing Table", "change", "change", "nappy", "diaper"]],
+	"highchair": [["Highchair(s)"], ["Highcair", "chairs", "little", "toddler"]],
+	"stroller": [["Stroller friendly"], ["Stroller", "carriage", "chair", "buggy", "pram"]],
+	"kidsarea": [["Kids area"], ["Kids area", "play", "fun", "area"]]
 };
 refEn["site-map"].subcategories = { //Lower case or upper case does not matter for the search
 	"paediatrics": [["Paediatricians / children's wards"], ["Paediatrician", "Dentist", "wards", "doctor"]],

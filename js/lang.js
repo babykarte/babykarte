@@ -41,10 +41,10 @@ function setLang(e, lang) {
 		}
 		document.getElementById("subcategoryselect").innerHTML = output;
 		output = ""
-		for (var fltr of filters) {
+		for (var fltr in getText().filters) {
 			output += "<label>";
 			output += "<input type='checkbox' id='" + fltr + "' value='" + fltr + "' class='filter'>";
-			output += "<span>" + getText().filters[fltr] + "</span>";
+			output += "<span>" + getText().filters[fltr][0] + "</span>";
 			output += "</label>";
 		}
 		document.getElementById("filtersGround").innerHTML = output;
