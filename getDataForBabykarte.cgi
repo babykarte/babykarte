@@ -212,7 +212,7 @@ def getData():
 				cur = conn.cursor()
 				cur.execute(query)
 				result = cur.fetchall()
-				convertToJSON(result, mode, name, subcategory, query);
+				convertToJSON(result, mode, name, subcategory, query)
 			except Exception as e:
 				if not debug == "" or verbose:
 					errorCreation(name, "ERROR 503" + str(e))
