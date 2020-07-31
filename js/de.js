@@ -1,5 +1,6 @@
 var refDe = {
 	"site-map": {
+		"STR_WITH": "mit",
 		"LOCATING_FAILURE": "Standort nicht ermittelbar",
 		"LOCATING_SUCCESS": "Dein Standort",
 		"LOADING_FAILURE": "Ein Fehler ist aufgetreten, bitte reinzoomen und erneut versuchen",

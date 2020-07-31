@@ -1,5 +1,6 @@
 var refFr = {
 	"site-map": {
+		"STR_WITH": "with (en)",
 		"LOCATING_FAILURE": "N'a pas trouvé votre lieu",
 		"LOCATING_SUCCESS": "Votre lieu",
 		"LOADING_FAILURE": "Une erreur s'est produite, veuillez zoomer et réessayer",
@@ -64,7 +65,7 @@ var refFr = {
 		"PDV_KIDSAREA_INDOOR_YES": "Intérieur",
 		"PDV_KIDSAREA_OUTDOOR_YES": "Extérieur",
 		"PDV_KIDSAREA_SUPERVISED_YES": "Surveillé",
-		"PDV_KIDSAREA_FEE_YES": "Payant",
+		"PDV_KIDSAREA_FEE_YES": "Payant","STR_AND": "and",
 		"PDV_STROLLER_YES": "Adapté aux poussettes",
 		"PDV_STROLLER_LIMITED": "Partiellement adapté aux poussettes",
 		"PDV_STROLLER_NO": "Pas adapté aux poussettes",

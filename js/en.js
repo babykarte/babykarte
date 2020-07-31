@@ -1,5 +1,6 @@
 var refEn = {
 	"site-map": {
+		"STR_WITH": "with",
 		"LOCATING_FAILURE": "Did not find your location",
 		"LOCATING_SUCCESS": "Your location",
 		"LOADING_FAILURE": "An error occurred, zoom in and try again please",
