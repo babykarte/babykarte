@@ -165,7 +165,7 @@ var refEn = {"site-map": {
 		"playground": "Playgrounds",
 		"play-equipment": "Playground equipment",
 		"park": "Parks",
-		"shop-babygoods": "Shops for baby goods",
+		"shop-babygoods": "Baby goods shops",
 		"shop-toys": "Toy shops",
 		"shop-clothes": "Shops for clothes",
 		"childcare": "Kindergartens and child care",
