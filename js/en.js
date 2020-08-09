@@ -161,7 +161,7 @@ var refEn = {"site-map": {
 	"filtername": {
 		"paediatrics": "Paediatricians / children's wards",
 		"midwife": "Midwives",
-		"birthing_center": "Birthing centers",
+		"birthing_center": "Birth centers",
 		"playground": "Playgrounds",
 		"play-equipment": "Playground equipment",
 		"park": "Parks",
