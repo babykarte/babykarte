@@ -160,7 +160,7 @@ var refEn = {"site-map": {
 	"opening_hours": {"Mo" : "Monday", "Tu" : "Tuesday", "We" : "Wednesday", "Th" : "Thursday", "Fr" : "Friday", "Sa" : "Saturday", "Su" : "Sunday", "off" : "closed", "Jan" : "January", "Feb" : "February", "Mar" : "March", "Apr" : "April", "May" : "May", "Jun" : "June", "Jul" : "July", "Aug" : "August", "Sep" : "September", "Oct" : "October", "Nov" : "November", "Dec" : "December", "PH" : "holiday"},
 	"filtername": {
 		"paediatrics": "Paediatricians / children's wards",
-		"midwife": "Midwifes",
+		"midwife": "Midwives",
 		"birthing_center": "Birthing centers",
 		"playground": "Playgrounds",
 		"play-equipment": "Playground equipment",
