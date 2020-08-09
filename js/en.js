@@ -171,7 +171,7 @@ var refEn = {"site-map": {
 		"childcare": "Kindergartens and child care",
 		"zoo": "Zoos",
 		"changingtable": "Changing tables",
-		"changingtable-men": "Only changing tables accessible for men",
+		"changingtable-men": "Changing tables accessible to men",
 		"cafe": "Cafés",
 		"restaurant": "Restaurants",
 		"fast_food": "Fast Food"
