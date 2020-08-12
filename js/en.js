@@ -160,8 +160,8 @@ var refEn = {
 refEn["site-map"].maintagtranslations = {
 	"healthcare=doctor": ["Pediatrician", "paediatrics"],
 	"healthcare=hospital": ["Hospital", ""],
-	"healthcare=midwife": ["Midwife", "midwife"],
-	"healthcare=birthing_center": ["Birthing center", "birthing_center"],
+	"healthcare=midwife": ["Midwive", "midwife"],
+	"healthcare=birthing_center": ["Birth center", "birthing_center"],
 	"amenity=toilets": ["Toilets", ""],
 	"amenity=cafe": ["Cafe", "cafe"],
 	"amenity=restaurant": ["Restaurant", "restaurant"],
@@ -171,9 +171,9 @@ refEn["site-map"].maintagtranslations = {
 	"leisure=playground": ["Playground", "playground"],
 	"leisure=park": ["Park", "park"],
 	"tourism=zoo": ["Zoo", "zoo"],
-	"shop=baby_goods": ["Baby goods", "shop-babygoods"],
-	"shop=toys": ["Toy store", "shop-toys"],
-	"shop=clothes": ["Clothes", "shop-clothes"],
+	"shop=baby_goods": ["Baby goods shop", "shop-babygoods"],
+	"shop=toys": ["Toy shop", "shop-toys"],
+	"shop=clothes": ["Baby & Childrens' clothes shops", "shop-clothes"],
 	"shop=chemist": ["Chemist", ""],
 	"shop=supermarket": ["Supermarket", ""]
 }
@@ -193,18 +193,18 @@ refEn["site-map"].filters = {
 };
 refEn["site-map"].subcategories = { //Lower case or upper case does not matter for the search
 	"paediatrics": [["Paediatricians / children's wards"], ["Paediatrician", "Dentist", "wards", "doctor"]],
-	"midwife": [["Midwifes"], ["Midwife"]],
-	"birthing_center": [["Birthing centers"], ["Birthing center", "birth", "pregnant"]],
+	"midwife": [["Midwives"], ["Midwife"]],
+	"birthing_center": [["Birth centers"], ["birth", "pregnant"]],
 	"playground": [["Playgrounds"], ["Playground", "Play area"]],
 	"play-equipment": [["Playground equipment"], ["Playground equipment", "play equipment", "play", "play activity"]],
 	"park": [["Parks"], ["Park", "walking", "nature", "Park", "walking activity", "rest", "relax"]],
-	"shop-babygoods": [["Shops for baby goods"], ["Shop", "baby goods", "goods", "baby"]],
-	"shop-toys": [["Shops for toys"], ["Shop", "toys", "toy", "goods"]],
-	"shop-clothes": [["Shops for clothes"], ["Shop", "clothes", "baby", "goods"]],
+	"shop-babygoods": [["Baby goods shops"], ["Shop", "baby goods", "goods", "baby"]],
+	"shop-toys": [["Toy shops"], ["Shop", "toys", "toy", "goods"]],
+	"shop-clothes": [["Baby & Childrens' clothes shop"], ["Shop", "clothes", "baby", "goods"]],
 	"childcare": [["Kindergartens and child care"], ["Kindergarten", "childcare", "care"]],
 	"zoo": [["Zoos"], ["Zoo", "activity"]],
 	"changingtable": [["Changing tables"], ["Nappy", "Diaper", "Changing table", "babycare", "care"]],
-	"changingtable-men": [["Only changing tables accessible for men"], ["Nappy", "Diaper", "Changing table", "babycare", "care"]],
+	"changingtable-men": [["Changing tables accessible to men"], ["Nappy", "Diaper", "Changing table", "babycare", "care"]],
 	"cafe": [["Cafés"], ["Café", "eat", "food", "cafe", "drink", "livestyle", "highchair", "highchairs"]],
 	"restaurant": [["Restaurants"], ["Restaurant" ,"eat", "food", "drink", "lifestyle", "highchair", "highchairs"]],
 	"fast_food": [["Fast Food"], ["Fast Food", "eat", "food", "drink", "lifestyle", "highchair", "highchairs"]]
