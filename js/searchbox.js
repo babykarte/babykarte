@@ -110,7 +110,7 @@ function geocode_intern() { // Function which powers the search suggestion list
 	}
 	if(searchword.length > 3) { //Request and show search suggestions after the third char has been typed in by user
 		spinner(true);
-		$.getJSON("https://photon.komoot.de/api/", { //Sends user input to search suggestion provider komoot
+		$.getJSON("https://photon.komoot.io/api/", { //Sends user input to search suggestion provider komoot
 			"q": searchword,
 			"limit": 5,
 			"lang": languageOfUser //Sends the determined language or the language set by user
