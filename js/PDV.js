@@ -1,4 +1,4 @@
-var colorcode = {"yes": "color-green", "no": "color-red", "room": "color-green", "bench": "color-green", undefined: "color-grey", "limited": "color-yellow", "playground": "color-green", "*": "color-green"};
+var colorcode = {"yes": "color-green", "no": "color-red", undefined: "color-grey", "limited": "color-yellow", "playground": "color-green", "*": "color-green"};
 // 'undefined' is equal to 'tag does not exist'. In JS, 'undefined' is also a value
 // '*' is a placeholder for notes from mappers and any other value (even 'undefined')
 var popupforcategory = {
@@ -66,16 +66,7 @@ var PDV_baby = { //PDV = POI Details View
 						"playground:Skate_equipment": {"values": ["yes", undefined]}
 						}
 				},
-				"diaper": {"nameInherit": true, "applyfor": {"health": true, "eat": true, "shop": true}, "symbol": "changingtable", "values": ["yes", "no", "room", "bench", undefined, "*"],											// diaper=yes|no|room|bench|undefined
-					"children": 
-						{"female": {"values": ["yes", "no", undefined]},		//		diaper:female=yes|no|undefined
-						"male": {"values": ["yes", "no", undefined]},			//		diaper:male=yes|no|undefined
-						"unisex": {"values": ["yes", "no", undefined]},			//		diaper:unisex=yes|no|undefined
-						"fee": {"values": ["yes", "no", undefined]}/*,			//		diaper:fee=yes|no|undefined
-						"description": {"values": [undefined, "*"]}*/				//		diaper:description=undefined|* (implicit specification)
-						}
-				},
-				"changing_table": {"nameInherit": true, "applyfor": {"health": true, "eat": true, "shop": true}, "triggers": function(data, local) {if (data.changing_table) {if (data.diaper) {delete data.diaper;}} return data;}, "symbol": "changingtable", "values": ["yes", "no", "limited", undefined, "*"],		//changing_table=yes|no|limited|undefined
+				"changing_table": {"nameInherit": true, "applyfor": {"health": true, "eat": true, "shop": true}, "symbol": "changingtable", "values": ["yes", "no", "limited", undefined, "*"],		//changing_table=yes|no|limited|undefined
 					"children":
 						{"fee": {"values": ["yes", "no", undefined]},	//changing_table:fee=yes|no|undefined
 						"location": {"values": ["wheelchair_toilet", "female_toilet", "male_toilet", "unisex_toilet", "dedicated_room", "room", "sales_area", undefined]}/*,	//changing_table:location=wheelchair_toilet|female_toilet|male_toilet|unisex_toilet|dedicated_room|room|sales_area|undefined
@@ -258,18 +249,16 @@ function babyfriendliness_symbol(marker, data, database) {
 		if (!database[tag].applyfor[marker.category]) {
 			continue;
 		}
-		if (data["changing_table"] && !data["diaper"] && tag == "diaper" || !data["changing_table"] && data["diaper"] && tag == "changing_table" || data["leisure"] && !data["kids_area"] && tag == "kids_area" || !data["leisure"] && data["kids_area"] && tag == "leisure") {} else {
-			if (!data[tag]) {
-				data[tag] = {}
-				data[tag].color = colorcode.undefined;
-			}
-			if (database[tag].symbol.indexOf("/") > -1) {
-				output += "\n<img src='" + database[tag].symbol + "' class='small-icon' />\n";
-			} else if (database[tag].symbol.startsWith("&") == false) {
-				output += "\n<svg class='small-icon' title='" + data[tag].title + "' alt='" + data[tag].title + "'>" + symbols[database[tag].symbol].html.replace(new RegExp("rating-color", "g"), data[tag].color) + "</svg>\n"
-			} else {
-				output += "\n<svg class='small-icon " + data[tag].color + "' title='" + data[tag].title + "' alt='" + data[tag].title + "'>" + database[tag].symbol + "</svg>\n"
-			}
+        if (!data[tag]) {
+			data[tag] = {}
+			data[tag].color = colorcode.undefined;
+		}
+		if (database[tag].symbol.indexOf("/") > -1) {
+			output += "\n<img src='" + database[tag].symbol + "' class='small-icon' />\n";
+		} else if (database[tag].symbol.startsWith("&") == false) {
+			output += "\n<svg class='small-icon' title='" + data[tag].title + "' alt='" + data[tag].title + "'>" + symbols[database[tag].symbol].html.replace(new RegExp("rating-color", "g"), data[tag].color) + "</svg>\n"
+		} else {
+			output += "\n<svg class='small-icon " + data[tag].color + "' title='" + data[tag].title + "' alt='" + data[tag].title + "'>" + database[tag].symbol + "</svg>\n"
 		}
 	}
 	return output;
