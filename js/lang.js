@@ -22,7 +22,7 @@ function getText(address=undefined) {
 	return langRef[document.body.id][languageOfUser][address]
 }
 function getLangFromHash() {
-	var hash = location.hash;
+	let hash = location.hash;
 	if (hash != "") {
 		hash = hash.replace("#", "").split("&");
 		if (String(Number(hash[0])) == "NaN") {
@@ -39,7 +39,7 @@ function loadLang(e, lang) {
 		langRef[document.body.id] = {};
 	}
 	if (lang in langRef[document.body.id] == false) {
-		var script = document.createElement("script");
+		var let = document.createElement("script");
 		script.setAttribute("src", "js/" + String(lang) + ".js");
 		document.body.appendChild(script);
 	} else {
@@ -70,26 +70,26 @@ function setLang(e, lang) {
 		16: ((document.getElementById("usage") != null) ? document.getElementById("usage").innerHTML = getText().USAGE : "")
 		};
 		//Search for the names of playground equipment in the language reference
-		for (var json in getText()) {
+		for (let json in getText()) {
 			if (json.startsWith("PDV_PLAYGROUND_") && json.endsWith("_YES")) { //Just add to the database 'filtertranslations' (needed by the 'filters.js/getSubtitle' function) what belongs to the playground equipment
 				var equipment = json.replace("PDV_PLAYGROUND_", "").replace("_YES",""); //Generate key from scratch
 				getText().filtertranslations["playground=" + equipment.toLowerCase()] = getText()[json];
 			}
 		}
 		var output = "";
-		for (var json in getText().MENUBUTTONS) {
+		for (let json in getText().MENUBUTTONS) {
 			document.getElementById(json).setAttribute("title", getText().MENUBUTTONS[json]);
 			document.getElementById(json).setAttribute("alt", getText().MENUBUTTONS[json]);
 			output += "<img class='small-icon' src='" + document.getElementById(json).getAttribute("src") + "' /> " + getText().MENUBUTTONS[json] + "<br/>";
 		}
 		document.getElementById("explanation-menubuttons").innerHTML = output;
 		output = "<p>" + getText().MAP_MARKERDOTS_GENERAL + "</p>";
-		for (var json in getText().MAP_MARKERDOTS) {
+		for (let json in getText().MAP_MARKERDOTS) {
 			output += "<span id='" + json + "' class='small-icon'>&#8226;</span> " + getText().MAP_MARKERDOTS[json] + "<br/>";
 		}
 		document.getElementById("explanation-markerdots").innerHTML = output;
 		output = "<p>" + getText().PDV_ICONS_EXPLANATION_GENERAL + "</p>";
-		for (var json in getText().PDV_ICONS_EXPLANATION) {
+		for (let json in getText().PDV_ICONS_EXPLANATION) {
 			output += getText().PDV_ICONS_EXPLANATION[json] + "<br/>";
 		}
 		document.getElementById("explanation-pdvicons").innerHTML = output;

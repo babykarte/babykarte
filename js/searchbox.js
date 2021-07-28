@@ -11,13 +11,13 @@ document.body.ontouchstart = function(event) {
 }
 document.getElementById("poimenu").ontouchstart = function(event) { swipeData.push(event.changedTouches[0].clientY) };
 function swipeUp() {
-	for (var elem of document.getElementsByClassName("tabcontent")) {
+	for (let elem of document.getElementsByClassName("tabcontent")) {
 			elem.classList.add("tab-visible");
 	}
 	PDV_expanded = true;
 }
 function swipeDown() {
-	for (var elem of document.getElementsByClassName("tabcontent")) {
+	for (let elem of document.getElementsByClassName("tabcontent")) {
 			elem.classList.remove("tab-visible");
 	}
 	document.getElementsByClassName("tabcontent")[0].classList.add("tab-visible");
@@ -34,18 +34,18 @@ document.getElementById("poimenu").ontouchend = function(event) {
 	swipeData = [];
 };
 function hideAll(classes) {
-	for (var dropdown of document.getElementsByClassName("dropdown-menu")) {
+	for (let dropdown of document.getElementsByClassName("dropdown-menu")) {
 		dropdown.classList.remove(classes[1]);
 	}
-	for (var menuitem of document.getElementsByClassName("bar-icon")) {
+	for (let menuitem of document.getElementsByClassName("bar-icon")) {
 		menuitem.classList.remove(classes[0]);
 	}
 }
 function intern_toggle(elem, mode, classes) {
 	mode = mode || "all";
-	var parent = elem.parentElement;
-	var menu = elem.nextElementSibling;
-	var active = menu.classList.contains(classes[1]);
+	let parent = elem.parentElement;
+	let menu = elem.nextElementSibling;
+	let active = menu.classList.contains(classes[1]);
 	if (mode == "all") {
 		hideAll(classes);
 	}
@@ -67,7 +67,7 @@ function toggleTooltip(elem) {
 	intern_toggle(elem, "all", ["tooltip-active", "tooltip-content-active"]);
 }
 function spinner(value) { //Show/hide spinner
-	var elem = document.getElementById("spinner");
+	let elem = document.getElementById("spinner");
 	if (value) { //Show spinner
 		elem.style.display = "flex";
 	} else { //Hide spinner
@@ -94,7 +94,7 @@ function jumpto(elem, lat, lon) { // Function which fires when user clicks on a 
 		location.hash = String(map.getZoom()) + "&" + String(lat) + "&" + String(lon); //Set the url
 		saved_lat = lat;
 		saved_lon = lon;
-		for (var id in activeFilter) {
+		for (let id in activeFilter) {
 			//Resets all filters
 			resetFilter(id);
 		}
@@ -104,7 +104,7 @@ function jumpto(elem, lat, lon) { // Function which fires when user clicks on a 
 	}
 }
 function geocode_intern() { // Function which powers the search suggestion list
-	var searchword = $("#searchfield").val();
+	let searchword = $("#searchfield").val();
 	if (searchword.length == 0) {
 		$("#autocomplete").hide();
 	}
@@ -115,11 +115,11 @@ function geocode_intern() { // Function which powers the search suggestion list
 			"limit": 5,
 			"lang": languageOfUser //Sends the determined language or the language set by user
 		}, function(data) {
-			var current_bounds = map.getBounds();
-			var autocomplete_content = "";
+			let current_bounds = map.getBounds();
+			let autocomplete_content = "";
 
 			$.each(data.features, function(number, feature) {
-				var latlng = [feature.geometry.coordinates[1], feature.geometry.coordinates[0]]; //Get the coordinates of the search suggestion entry
+				let latlng = [feature.geometry.coordinates[1], feature.geometry.coordinates[0]]; //Get the coordinates of the search suggestion entry
 				autocomplete_content += "<div class='entry' style='border-bottom:5px solid white;padding:5px;' onclick='jumpto(this, " + latlng[0] + ", " + latlng[1] + ")'><span>" + feature.properties.name + "</span><br/><address style='font-size:14px;'>" + feature.properties.country + "</address></div>"; //Adds a entry in the search suggestion popup (e.g. Berlin central station)
 			});
 			if (autocomplete) {

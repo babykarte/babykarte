@@ -49,8 +49,8 @@ function compareFunction(a,b) {
 	return b-a;
 }
 function getSortedListOfFilters(priorizeList) {
-	var int, fltr;
-	var output = [];
+	let int, fltr;
+	let output = [];
 	for (int in priorizeList) {
 		for (fltr in priorizeList[int]) {
 			output.push(priorizeList[int][fltr]);
@@ -63,7 +63,7 @@ function toggleLayers(id, toggle) {
 	if (toggle == 0) {
 		//Removes the filter marker from the map. (e.g. red marker). Data remains in cache.
 		if (filter[id].layers.length > 0) {
-			for (var layer in filter[id].layers) {
+			for (let layer in filter[id].layers) {
 				//Removes every single marker that belongs to the filter.
 				filter[id].layers[layer].removeFrom(map);
 			}
@@ -71,7 +71,7 @@ function toggleLayers(id, toggle) {
 	} else {
 		//Readds a recently used filter marker to the map (e.g. red marker)
 		if (filter[id].layers.length > 0) {
-			for (var layer in filter[id].layers) {
+			for (let layer in filter[id].layers) {
 				//Adds every single POI that belongs to the filter.
 				filter[id].layers[layer].addTo(map);
 			}
@@ -79,7 +79,7 @@ function toggleLayers(id, toggle) {
 	}
 }
 function activateFilters() {
-	for (var fltr of filtersSorted) {
+	for (let fltr of filtersSorted) {
 		if (filter[fltr].active) {
 			activeFilter[fltr] = true;
 			toggleLayers(fltr, 1) //Adds the POIs belonging to the filter to the map.
@@ -114,16 +114,16 @@ function setFilter(id) {
 	triggerActivationOfFilters();
 }
 function setAllFilters() {
-	var checkbox = document.getElementById("setFilters"); //Gets the "(Un)check them all" checkbox
+	let checkbox = document.getElementById("setFilters"); //Gets the "(Un)check them all" checkbox
 	if (checkbox.checked) { //User checked it. Activate all filters
-		for (var i in filter) {
+		for (let i in filter) {
 			if (!filter[i].active) {
 				setFilter(i);
 				document.getElementById("filter" + i).checked = true; //Check all filters
 			}
 		}
 	} else { //Deactivate all filters
-		for (var i in filter) {
+		for (let i in filter) {
 			if (filter[i].active) {
 				setFilter(i);
 				document.getElementById("filter" + i).checked = false; //Uncheck all filters
@@ -133,18 +133,18 @@ function setAllFilters() {
 }
 function initFilters() {
 	//Initialize filters at startup of this webapp
-	var output = "";
-	var priorizeList = {}; //Dictionary used for priorizing filters like priorizing the 'restaurant' filter over the 'cafe' filter
-	var filtersGround = document.getElementById("filtersGround");
+	let output = "";
+	let priorizeList = {}; //Dictionary used for priorizing filters like priorizing the 'restaurant' filter over the 'cafe' filter
+	let filtersGround = document.getElementById("filtersGround");
 	output += "<label style='color:#3090b5ff'><input id='setFilters' onclick='setAllFilters()' type='checkbox'><span style='color:white;font-weight:bold;font-size:16px;'>&#9632; </span><span>" + String(getText().FLTR_SELECTALL) + "</span></label>"; //Adds the necessary HTML for checkbox element of '(Un)check them all'
-	for (var id of orderOfFilters) {
-		var beforeFilter = "";
+	for (let id of orderOfFilters) {
+		let beforeFilter = "";
 		if (filter[id].layers == undefined) {
 			filter[id] = $.extend(true, filter[id], filter_defaultValues); //Initialize the JSON variable 'filter'.
 		}
 		if (!priorizeList[filter[id].priorize]) {priorizeList[filter[id].priorize] = [];}
 		priorizeList[filter[id].priorize].push(id);
-		var fltr = filter[id];
+		let fltr = filter[id];
 		if (filter[id].beforeFilter) {beforeFilter = filter[id].beforeFilter}
 		output += "<label>" + beforeFilter + "<input id='filter" + String(id) + "' onclick='setFilter(\"" + String(id) + "\")' type='checkbox'><span style='color:" + fltr.color.code + ";font-weight:bold;font-size:16px;'>&#9632; </span><span>" + String(getText().filtername[id]) + "</span></label>";  //Adds the necessary HTML for checkbox element of every single filter
 	}
@@ -153,7 +153,7 @@ function initFilters() {
 	document.getElementById("map-overlay-notify").style.display = "block";
 }
 function resetFilter(fltr) {
-	var values = {"south": 0, "west": 0, "north": 0, "east": 0};
+	let values = {"south": 0, "west": 0, "north": 0, "east": 0};
 	toggleLayers(fltr, 0);
 	filter[fltr].usedBefore = true;
 	setCoordinatesOfFilter(fltr, values);
@@ -181,7 +181,7 @@ function getData(url, dataType, data,  fail, success, type) {
 	});
 }
 function getSubtitle(poi) {
-	var json = getText().filtertranslations;
+	let json = getText().filtertranslations;
 	for (var i in json) {
 		var key = i.split("=");
 		if (!poi.tags[key[0]]) {continue;}
