@@ -63,7 +63,7 @@ Weißenburgstraße 3
 Germany  
 
 Phone: +49 431 64367480  
-E-mail: brandtner_michael@yahoo.de  
+E-mail: babykarte@posteo.de 
 
 L'entité responsable est la personne physique ou morale qui, seule ou de concert avec d'autres, décide des finalités et des moyens du traitement des données à caractère personnel (telles que les noms, adresses électroniques, etc.).
 
