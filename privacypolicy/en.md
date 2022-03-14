@@ -63,7 +63,7 @@ Weißenburgstraße 3
 Germany 
 
 Phone: +49431 64367480  
-E-Mail: [brandtner_michael@yahoo.de](mailto:brandtner_michael@yahoo.de)
+E-Mail: [babykarte@posteo.de](mailto:babykarte@posteo.de)
 
 Responsible entity is the natural or legal person who, alone or in concert with others, decides on the purposes and means of processing personal data (such as names, e-mail addresses, etc.).
 
