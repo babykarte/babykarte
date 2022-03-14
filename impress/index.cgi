@@ -51,7 +51,7 @@ content = """<!DOCTYPE html>
 		<br>
 		<h2 id='contact'>{IMPRESS_CONTACT}</h2>
 		<address>
-			<b>E-Mail:</b> brandtner_michael@yahoo.de<br>
+			<b>E-Mail:</b> babykarte@posteo.de<br>
 		</address>
 		<br>
 		<span id='note'>
