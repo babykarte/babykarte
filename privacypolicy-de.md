@@ -66,7 +66,7 @@ Weißenburgstraße 3
 24116 Kiel  
 
 Telefon: 0431 64367480  
-E-Mail: [brandtner_michael@yahoo.de](mailto:brandtner_michael@yahoo.de)
+E-Mail: [babykarte@posteo.de](mailto:babykarte@posteo.de)
 
 Verantwortliche Stelle ist die natürliche oder juristische Person,
 die allein oder gemeinsam mit anderen über die Zwecke und Mittel der
