@@ -41,6 +41,7 @@ function loadLang(e, lang) {
 	if (lang in langRef[document.body.id] == false) {
 		var script = document.createElement("script");
 		script.setAttribute("src", "js/" + String(lang) + ".js");
+		script.onerror = function() {if (lang != lang_default) {loadLang(e, lang_default);}};
 		document.body.appendChild(script);
 	} else {
 		setLang(e, lang);
