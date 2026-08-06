@@ -2,6 +2,10 @@
 
 https://wiki.openstreetmap.org/wiki/Baby-Karte
 
+## This Project is not maintained at the moment
+
+**As the main developer has left the project a long time ago and there was no transfer of backend code and knowledge needed for deployment, it is not possible to make changes to Babykarte at the moment. I can not tell if this will change anytime soon.**
+
 ## Run Babykarte locally
 
 In order to run a local copy of this branch perform these steps:
