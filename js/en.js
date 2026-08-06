@@ -1,11 +1,11 @@
 var refEn = {"site-map": {
 	"ABOUT": "Babykarte helps parents of infants and toddlers to search for changing tables, playgrounds etc. It also shows the baby friendliness of cafes and restaurants.",
-	"USAGE": "Icons in the details view for POI's:",
+	"USAGE": "Icons in the details view for points of interest:",
 	"MENUBUTTONS": {
 		"btn_info": "Show help",
 		"btn_lang": "Select language",
 		"btn_search": "Search for a place",
-		"btn_filtersbar": "Select POI's to show",
+		"btn_filtersbar": "Select points of interest to show",
 		"btn_locating": "Shows your location"
 	},
 	"MAP_MARKERDOTS_GENERAL": "Traffic light system for indication of baby friendliness of restaurants und cafes:",
@@ -22,7 +22,7 @@ var refEn = {"site-map": {
 		"PDV_ICON_BALL": "<img class='small-icon' src='images/ball.svg' /> Kids area",
 		"PDV_ICON_BREASTFEEDING": "<span class='small-icon'>&#129329;</span> Feeding facilities <br>",
 		"PDV_ICON_PEN": "<span class='small-icon'>✏️</span> Edit in OpenStreetMap (external website, registration necessary)",
-		"PDV_ICON_SHARE": "<img class='small-icon' src='images/share.svg' /> Share POI"
+		"PDV_ICON_SHARE": "<img class='small-icon' src='images/share.svg' /> Share point of interest"
 	},
 	"LOCATING_FAILURE": "Did not find your location",
 	"LOCATING_SUCCESS": "Your location",
@@ -34,7 +34,7 @@ var refEn = {"site-map": {
 	"AGE_RANGE": "👶 %1 - %2",
 	"LNK_OSM_EDIT": "Edit in OSM",
 	"LNK_OSM_REPORT": "Report wrong information",
-	"LNK_OSM_VIEW": "View POI in OpenStreetMap",
+	"LNK_OSM_VIEW": "View point of interest in OpenStreetMap",
 	"LNK_OPEN_WITH": "Open with an app",
 	"FLTR_NOTHINGSELECTED": "Please touch the <img class='bar-icon' src='images/checkmark.svg' /> icon in the menu to select filters or the <img class='bar-icon' src='images/info.svg.png' /> one to get help using Babykarte.",
 	"FLTR_SELECTALL": "(De)select all",
